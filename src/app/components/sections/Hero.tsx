@@ -1,11 +1,9 @@
 "use client";
-import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
-  const t = useTranslations("Hero");
 
   return (
     <section className="container-main min-h-screen flex items-center justify-center relative">

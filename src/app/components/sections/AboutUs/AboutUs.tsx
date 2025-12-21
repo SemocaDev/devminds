@@ -1,11 +1,9 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 
 const AboutUs = () => {
-  const t = useTranslations('AboutUs');
 
   const technologies = [
     'React', 'Next.js', 'TypeScript', 'Node.js',
