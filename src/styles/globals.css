@@ -127,4 +127,18 @@
   .card-lift:hover {
     @apply -translate-y-2 shadow-xl;
   }
+
+  /* Cursor blink animation */
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
 }

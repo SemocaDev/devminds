@@ -1,9 +1,26 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "DevMinds";
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 200); // 200ms entre cada letra - más lento y realista
+
+    return () => clearInterval(typingInterval);
+  }, []);
 
   return (
     <section className="container-main min-h-screen flex items-center justify-center relative">
@@ -25,14 +42,15 @@ const Hero = () => {
             Hola, somos
           </motion.p>
 
-          {/* Título gigante con gradiente */}
+          {/* Título gigante con gradiente y efecto typewriter */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="hero-title"
+            className="hero-title relative"
           >
-            DevMinds
+            {displayedText}
+            <span className="cursor-blink">_</span>
           </motion.h1>
 
           {/* Subtítulo grande */}
