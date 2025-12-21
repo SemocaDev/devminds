@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import Hero from "@/app/components/sections/Hero";
 import CallToAction from "@/app/components/sections/CallToAction";
 import AboutUs from "@/app/components/sections/AboutUs/AboutUs";
@@ -12,49 +14,61 @@ import EmailSidebar from "@/app/components/layout/EmailSidebar";
 import Footer from "@/app/components/layout/Footer/Footer";
 import ScrollIndicator from "@/app/components/ui/ScrollIndicator/ScrollIndicator";
 import ScrollRevealWrapper from "@/app/components/ui/ScrollReveal/ScrollRevealWrapper";
+import LoadingScreen from "@/app/components/layout/LoadingScreen";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
 export default function Home() {
   const { hasScrolled } = useScrollReveal(300);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* New Navigation */}
-      <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
-      {/* Main Content */}
-      <main className="flex-1">
-        {/* Hero - Full Screen */}
-        <Hero />
+      {!isLoading && (
+        <div className="min-h-screen flex flex-col">
+          {/* New Navigation */}
+          <Navbar />
+          <SocialSidebar />
+          <EmailSidebar />
 
-        {/* Resto de secciones reveladas con scroll */}
-        <ScrollRevealWrapper isVisible={hasScrolled} delay={0.2}>
-          {/* CallToAction con fondo de gradiente */}
-          <div className="gradient-bg">
-            <CallToAction />
-          </div>
+          {/* Main Content */}
+          <main className="flex-1">
+            {/* Hero - Full Screen */}
+            <Hero />
 
-          {/* About con fondo claro */}
-          <AboutUs />
+            {/* Resto de secciones reveladas con scroll */}
+            <ScrollRevealWrapper isVisible={hasScrolled} delay={0.2}>
+              {/* CallToAction con fondo de gradiente */}
+              <div className="gradient-bg">
+                <CallToAction />
+              </div>
 
-          {/* Services con gradiente */}
-          <Services />
+              {/* About con fondo claro */}
+              <AboutUs />
 
-          {/* Projects con fondo claro */}
-          <Projects />
+              {/* Services con gradiente */}
+              <Services />
 
-          {/* Contact con gradiente */}
-          <div className="gradient-bg">
-            <Contact />
-          </div>
-        </ScrollRevealWrapper>
-      </main>
+              {/* Projects con fondo claro */}
+              <Projects />
 
-      <ScrollIndicator show={!hasScrolled} />
+              {/* Contact con gradiente */}
+              <div className="gradient-bg">
+                <Contact />
+              </div>
+            </ScrollRevealWrapper>
+          </main>
 
-      <Footer />
-    </div>
+          <ScrollIndicator show={!hasScrolled} />
+
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }

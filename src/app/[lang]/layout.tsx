@@ -157,41 +157,11 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang={lang} className={`${roboto.variable} ${doto.variable}`}>
       <head>
-        {/* Colores del tema para navegadores móviles - Minimalista */}
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
-
-        {/* Para mejor SEO local */}
         <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
-
-        {/* Structured Data (JSON-LD) para SEO avanzado */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "DevMinds",
-              "url": "https://devminds.online",
-              "description": "Creamos soluciones digitales profesionales y eficientes para empresas",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "hello@devminds.com",
-                "contactType": "customer service"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "CO"
-              },
-              "offers": {
-                "@type": "Service",
-                "serviceType": "Professional Web Development and Custom Software"
-              }
-            })
-          }}
-        />
       </head>
       <body className="min-h-screen flex flex-col font-roboto antialiased">
         <ClientThemeWrapper>
