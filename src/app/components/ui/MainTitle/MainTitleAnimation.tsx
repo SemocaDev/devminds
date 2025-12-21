@@ -11,13 +11,12 @@ interface TitleAnimationProps {
 
 export const TitleAnimation = ({
   text: fullText,
-  speed = 150,
+  speed = 80,
   className = "",
 }: TitleAnimationProps) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
     if (currentIndex < fullText.length) {
@@ -25,56 +24,29 @@ export const TitleAnimation = ({
         setDisplayText((prev) => prev + fullText[currentIndex]);
         setCurrentIndex((prev) => prev + 1);
       }, speed);
-
       return () => clearTimeout(timeout);
     } else {
-      // Marcar que la escritura está completa
-      setIsTypingComplete(true);
+      const cursorInterval = setInterval(() => {
+        setShowCursor((prev) => !prev);
+      }, 530);
+      return () => clearInterval(cursorInterval);
     }
   }, [currentIndex, fullText, speed]);
 
-  useEffect(() => {
-    // Solo hacer el cursor destelle después de completar la escritura
-    if (isTypingComplete) {
-      const cursorInterval = setInterval(() => {
-        setShowCursor((prev) => !prev);
-      }, 500);
-
-      return () => clearInterval(cursorInterval);
-    } else {
-      // Mientras escribe, mantener el cursor visible
-      setShowCursor(true);
-    }
-  }, [isTypingComplete]);
-
   return (
-    <div className={`container-main pt-20 lg:pt-32 ${className}`}>
+    <div className={`container-main ${className}`}>
       <motion.h1
-        className="title-hero text-left break-all mb-8 lg:mb-12"
-        initial={{ opacity: 1 }}
+        className="hero-title mb-6"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {displayText.split("").map((char, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.1,
-              type: "spring",
-              stiffness: 500,
-              damping: 10,
-            }}
-          >
-            {char}
-          </motion.span>
-        ))}
+        {displayText}
         <motion.span
           animate={{ opacity: showCursor ? 1 : 0 }}
           transition={{ duration: 0.1 }}
-          className="text-primary"
-        >
-          _
-        </motion.span>
+          className="inline-block w-1.5 h-[0.85em] bg-primary ml-2 align-middle rounded-sm"
+        />
       </motion.h1>
     </div>
   );

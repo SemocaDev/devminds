@@ -1,12 +1,15 @@
 'use client';
 
+import { Separator } from '@/components/ui/separator';
+
 const Footer = () => {
   return (
-    <footer className="footer-bg border-footer shadow-sm mt-auto">
+    <footer className="bg-card border-t border-border mt-auto">
       <div className="container-main">
-        <div className="py-3 sm:py-4 md:py-5">
-          <p className="text-center font-doto font-medium text-small text-main tracking-wide">
-            Copyright © {new Date().getFullYear()} DevMinds
+        <div className="py-6">
+          <Separator className="mb-6" />
+          <p className="text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} DevMinds. All rights reserved.
           </p>
         </div>
       </div>

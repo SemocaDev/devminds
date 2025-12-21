@@ -58,7 +58,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
-    
+
+    // Iconos
+    icons: {
+      icon: [
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+      ],
+      apple: [
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+      ],
+    },
+
     // Metadatos básicos
     authors: [{ name: "DevMinds Team" }],
     creator: "DevMinds",
@@ -147,17 +157,15 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang={lang} className={`${roboto.variable} ${doto.variable}`}>
       <head>
-        {/* Favicon básico por ahora */}
-        <link rel="icon" href="/favicon.ico" />
-        
-        {/* Colores del tema para navegadores móviles */}
-        <meta name="theme-color" content="#00ff88" />
-        <meta name="msapplication-TileColor" content="#00ff88" />
-        
+        {/* Colores del tema para navegadores móviles - Minimalista */}
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+
         {/* Para mejor SEO local */}
         <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
-        
+
         {/* Structured Data (JSON-LD) para SEO avanzado */}
         <script
           type="application/ld+json"

@@ -40,32 +40,23 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = '' }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`relative flex items-center justify-center p-2 text-text-primary hover:text-primary transition-colors duration-300 focus:outline-none ${className}`}
+      className={`relative flex items-center justify-center p-2 text-foreground hover:bg-accent rounded-md transition-colors duration-200 focus:outline-none ${className}`}
       aria-label={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
     >
       <motion.div
         initial={false}
-        animate={{ 
+        animate={{
           rotate: theme === 'light' ? 0 : 180,
-          scale: theme === 'light' ? 1 : 0.8
+          scale: 1
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         {theme === 'light' ? (
-          <Sun size={24} className="text-yellow-500" />
+          <Sun size={20} className="text-foreground" />
         ) : (
-          <Moon size={24} className="text-blue-400" />
+          <Moon size={20} className="text-foreground" />
         )}
       </motion.div>
-      
-      {/* Efecto de fondo sutil */}
-      <motion.div
-        className="absolute inset-0 rounded-full bg-primary/10"
-        initial={{ scale: 0, opacity: 0 }}
-        whileHover={{ scale: 1, opacity: 1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.2 }}
-      />
     </button>
   );
 };

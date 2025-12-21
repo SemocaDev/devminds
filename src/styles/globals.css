@@ -2,196 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles for dark theme */
-.dark body {
-  @apply bg-carbon text-text-primary font-roboto antialiased;
+@layer base {
+  :root {
+    /* Light theme - Profesional Azul */
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme - Slate Profesional */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
 }
 
-/* Base styles for light theme */
-.light body {
-  @apply bg-snow text-text-primary-light font-roboto antialiased;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 }
 
-/* Component utilities */
+/* Tipografía personalizada */
 @layer components {
-  /* Button styles - Dark theme */
-  .dark .btn-primary {
-    @apply px-6 py-3 bg-white text-black font-medium transition-all duration-300 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-carbon;
-  }
-  
-  .dark .btn-secondary {
-    @apply px-6 py-3 border-2 border-primary text-primary font-medium transition-all duration-300 hover:bg-primary hover:text-black focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-carbon;
-  }
-  
-  .dark .btn-ghost {
-    @apply px-4 py-2 text-text-secondary font-medium transition-colors duration-300 hover:text-text-primary focus:outline-none focus:text-text-primary;
+  .hero-title {
+    @apply text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Button styles - Light theme */
-  .light .btn-primary {
-    @apply px-6 py-3 bg-primary text-black font-medium transition-all duration-300 hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-snow;
-  }
-  
-  .light .btn-secondary {
-    @apply px-6 py-3 border-2 border-primary text-primary font-medium transition-all duration-300 hover:bg-primary hover:text-black focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-snow;
-  }
-  
-  .light .btn-ghost {
-    @apply px-4 py-2 text-text-secondary-light font-medium transition-colors duration-300 hover:text-text-primary-light focus:outline-none focus:text-text-primary-light;
-  }
-  
-  /* Card styles - Dark theme */
-  .dark .card {
-    @apply bg-dark-gray border border-border-primary rounded-lg p-6;
-  }
-  
-  .dark .card-simple {
-    @apply bg-dark-gray border border-border-secondary rounded p-4;
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4;
   }
 
-  /* Card styles - Light theme - Más integradas */
-  .light .card {
-    @apply bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-lg p-6 shadow-sm;
-  }
-  
-  .light .card-simple {
-    @apply bg-white/50 backdrop-blur-sm border border-gray-100/50 rounded p-4;
+  .subtitle {
+    @apply text-lg md:text-xl text-muted-foreground;
   }
 
-  /* Card glassmorphism para mejor integración */
-  .light .card-glass {
-    @apply bg-white/40 backdrop-blur-md border border-white/30 rounded-lg p-6 shadow-lg;
-  }
-  
-  .light .card-soft {
-    @apply bg-white/60 backdrop-blur-sm border-0 rounded-lg p-6 shadow-sm;
-  }
-  
-  /* Typography utilities - Dark theme */
-  .dark .title-hero {
-    @apply font-roboto font-bold text-title-hero text-text-primary;
-  }
-  
-  .dark .title-section {
-    @apply font-roboto font-bold text-title-section text-text-primary;
-  }
-  
-  .dark .title-sub {
-    @apply font-roboto font-semibold text-title-sub text-text-primary;
-  }
-  
-  .dark .text-body {
-    @apply font-roboto text-base text-text-secondary leading-relaxed;
-  }
-  
-  .dark .text-small {
-    @apply font-roboto text-sm text-text-tertiary;
-  }
-
-  /* Typography utilities - Light theme */
-  .light .title-hero {
-    @apply font-roboto font-bold text-title-hero text-text-primary-light;
-  }
-  
-  .light .title-section {
-    @apply font-roboto font-bold text-title-section text-text-primary-light;
-  }
-  
-  .light .title-sub {
-    @apply font-roboto font-semibold text-title-sub text-text-primary-light;
-  }
-  
-  .light .text-body {
-    @apply font-roboto text-base text-text-secondary-light leading-relaxed;
-  }
-  
-  .light .text-small {
-    @apply font-roboto text-sm text-text-tertiary-light;
-  }
-
-  /* Common styles */
-  .title-decorative {
-    @apply font-doto font-bold;
-  }
-  
-  .text-code {
-    @apply font-mono text-sm text-primary;
-  }
-  
-  /* Layout utilities */
   .container-main {
-    @apply w-full mx-auto px-6 lg:px-12;
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
-  
+
   .section-spacing {
-    @apply py-12 md:py-16 lg:py-20;
+    @apply py-20 md:py-28 lg:py-36;
   }
 
-  /* Background utilities */
-  .bg-main {
-    @apply bg-carbon;
-  }
-  
-  .light .bg-main {
-    @apply bg-snow;
+  /* Efectos de gradiente */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
   }
 
-  .bg-secondary {
-    @apply bg-dark-gray;
-  }
-  
-  .light .bg-secondary {
-    @apply bg-white;
+  .glass-effect {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
   }
 
-  /* Border utilities with better visibility */
-  .border-main {
-    @apply border-border-primary;
-  }
-  
-  .light .border-main {
-    @apply border-border-primary-light;
+  /* Numbered sections */
+  .numbered-section {
+    @apply flex items-center gap-4 mb-6;
   }
 
-  /* Sidebar specific borders */
-  .border-sidebar {
-    @apply border-border-primary;
-  }
-  
-  .light .border-sidebar {
-    @apply border-gray-200;
+  .numbered-section::before {
+    content: attr(data-number) ".";
+    @apply text-2xl md:text-3xl font-mono text-primary font-bold;
   }
 
-  /* Footer specific borders */
-  .border-footer {
-    @apply border-border-primary;
-  }
-  
-  .light .border-footer {
-    @apply border-gray-200;
+  /* Link hover effects */
+  .link-hover {
+    @apply relative transition-colors;
   }
 
-  .text-main {
-    @apply text-text-primary;
-  }
-  
-  .light .text-main {
-    @apply text-text-primary-light;
+  .link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
   }
 
-  .text-secondary {
-    @apply text-text-secondary;
-  }
-  
-  .light .text-secondary {
-    @apply text-text-secondary-light;
+  .link-hover:hover::after {
+    @apply w-full;
   }
 
-  .text-tertiary {
-    @apply text-text-tertiary;
+  /* Card lift effect */
+  .card-lift {
+    @apply transition-all duration-300;
   }
-  
-  .light .text-tertiary {
-    @apply text-text-tertiary-light;
+
+  .card-lift:hover {
+    @apply -translate-y-2 shadow-xl;
   }
 }
