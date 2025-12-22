@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Check, Clock, Code, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const CallToAction = () => {
+  const t = useTranslations('CTA');
+
   const features = [
-    { icon: Code, text: 'Arquitectura optimizada' },
-    { icon: Zap, text: 'Código limpio y escalable' },
-    { icon: Check, text: 'Sin deuda técnica' }
+    { icon: Code, text: t('feature1') },
+    { icon: Zap, text: t('feature2') },
+    { icon: Check, text: t('feature3') }
   ];
 
   return (
@@ -28,16 +31,15 @@ const CallToAction = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-xs font-medium text-primary">Ready for deployment</span>
+              <span className="text-xs font-medium text-primary">{t('status')}</span>
             </div>
 
             <h2 className="section-title">
-              ¿Listo para optimizar tu proyecto?
+              {t('title')}
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Transformamos ideas en soluciones digitales eficientes. Sin complejidad innecesaria,
-              solo resultados que funcionan.
+              {t('description')}
             </p>
 
             {/* Features list */}
@@ -65,12 +67,12 @@ const CallToAction = () => {
             {/* CTA Button */}
             <div className="pt-6">
               <Button size="lg" className="group text-lg px-8 py-6 h-auto">
-                INICIAR CONSULTA
+                {t('buttonText')}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <p className="text-sm text-muted-foreground mt-3 flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                Respuesta garantizada en {'<'} 24 horas
+                {t('responseTime')}
               </p>
             </div>
           </motion.div>
@@ -104,10 +106,10 @@ const CallToAction = () => {
 
               {/* Status indicator */}
               <div className="mt-6 pt-6 border-t border-border flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Status:</span>
+                <span className="text-sm text-muted-foreground">{t('statusLabel')}</span>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-sm font-semibold text-green-500">Online & Ready</span>
+                  <span className="text-sm font-semibold text-green-500">{t('onlineReady')}</span>
                 </div>
               </div>
 

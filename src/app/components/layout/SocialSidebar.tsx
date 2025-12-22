@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
+import contactConfig from '@/config/contact.json';
 
 const SocialSidebar = () => {
   const socials = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' }
+    { icon: Github, href: contactConfig.socials.github, label: 'GitHub' },
+    { icon: Linkedin, href: contactConfig.socials.linkedin, label: 'LinkedIn' }
   ];
 
   return (

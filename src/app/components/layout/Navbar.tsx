@@ -5,18 +5,20 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
+  const t = useTranslations('Navbar');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { number: '01', label: 'About', href: '#about' },
-    { number: '02', label: 'Servicios', href: '#services' },
-    { number: '03', label: 'Proyectos', href: '#projects' },
-    { number: '04', label: 'Contacto', href: '#contact' }
+    { number: '01', label: t('about'), href: '#about' },
+    { number: '02', label: t('services'), href: '#services' },
+    { number: '03', label: t('projects'), href: '#projects' },
+    { number: '04', label: t('contact'), href: '#contact' }
   ];
 
   useEffect(() => {
@@ -96,7 +98,7 @@ const Navbar = () => {
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
               onClick={() => scrollToSection('#contact')}
             >
-              Comenzar Proyecto
+              {t('startProject')}
             </Button>
           </div>
 
@@ -125,7 +127,7 @@ const Navbar = () => {
                   className="mt-4"
                   onClick={() => scrollToSection('#contact')}
                 >
-                  Comenzar Proyecto
+                  {t('startProject')}
                 </Button>
               </div>
             </SheetContent>

@@ -2,7 +2,12 @@
   "Hero": {
     "title": "SISTEMAS//<wbr>OPTIMIZADOS",
     "subtitle": "ARQUITECTURA DE SOLUCIONES DIGITALES",
-    "aboutText": "DevMinds construye infraestructuras digitales a medida desde principios fundamentales. Diseños modulares. Arquitecturas escalables. Sin complejidad innecesaria. Tecnología que funciona."
+    "aboutText": "DevMinds construye infraestructuras digitales a medida desde principios fundamentales. Diseños modulares. Arquitecturas escalables. Sin complejidad innecesaria. Tecnología que funciona.",
+    "greeting": "Hola, somos",
+    "mainSubtitle": "Construimos soluciones digitales profesionales",
+    "description": "Somos una empresa especializada en desarrollo web, aplicaciones móviles y consultoría tecnológica. Transformamos ideas en productos digitales excepcionales.",
+    "viewProjects": "Ver Proyectos",
+    "contactButton": "Contactar"
   },
   "Menu": {
     "projects": "PROYECTOS",
@@ -11,21 +16,39 @@
     "contact": "CONTACTO",
     "soon": "PRÓXIMAMENTE"
   },
+  "Navbar": {
+    "about": "Nosotros",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "startProject": "Comenzar Proyecto"
+  },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
     "title": "¿Listo para optimizar tu proyecto?",
     "description": "Transformamos ideas en soluciones digitales eficientes. Sin complejidad innecesaria, solo resultados que funcionan.",
-    "buttonText": "INICIAR_CONSULTA",
+    "buttonText": "INICIAR CONSULTA",
     "buttonHover": "ejecutar_consulta",
-    "responseTime": "// Respuesta garantizada en < 24 horas",
+    "responseTime": "Respuesta garantizada en < 24 horas",
     "feature1": "Arquitectura optimizada",
     "feature2": "Código limpio y escalable",
     "feature3": "Sin deuda técnica",
-    "status": "Status: Ready for deployment"
+    "status": "Listo para despliegue",
+    "statusLabel": "Estado:",
+    "onlineReady": "En línea y listo"
   },
   "AboutUs": {
-    "title": "Sobre DevMinds",
+    "title": "Sobre Nosotros",
     "description": "Somos un equipo especializado en crear soluciones digitales de última generación. Nos enfocamos en arquitecturas limpias, código escalable y resultados que perduran en el tiempo.",
+    "paragraph1": "Somos DevMinds, un equipo de desarrolladores apasionados por crear soluciones digitales que transforman negocios. Nos especializamos en desarrollo web moderno, aplicaciones móviles y consultoría tecnológica.",
+    "paragraph2": "Nuestro enfoque se centra en entender las necesidades únicas de cada cliente para ofrecer soluciones personalizadas que realmente funcionen y escalen.",
+    "paragraph3": "Trabajamos con las tecnologías más recientes del mercado, asegurando que tu proyecto esté preparado para el futuro.",
+    "technologiesLabel": "Tecnologías que dominamos:",
+    "stats": {
+      "projects": "Proyectos",
+      "satisfaction": "Satisfacción",
+      "support": "Soporte"
+    },
     "value1": {
       "title": "Eficiencia",
       "description": "Optimizamos cada línea de código para máximo rendimiento"
@@ -97,9 +120,26 @@
       },
       "email": {
         "title": "Contacto Directo",
-        "description": "hello@devminds.com"
+        "description": "semoca00@gmail.com"
       }
     },
     "detailedContact": "Más opciones de contacto"
+  },
+  "Footer": {
+    "copyright": "© {year} DevMinds. Todos los derechos reservados."
+  },
+  "LoadingScreen": {
+    "loading": "Cargando experiencia..."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "backHome": "Volver al Inicio",
+    "goBack": "Ir Atrás",
+    "usefulPages": "Páginas útiles:",
+    "aboutLink": "Sobre Nosotros",
+    "servicesLink": "Servicios",
+    "projectsLink": "Proyectos",
+    "contactLink": "Contacto"
   }
 }

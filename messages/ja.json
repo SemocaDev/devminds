@@ -2,7 +2,12 @@
   "Hero": {
     "title": "最適化された//<wbr>システム",
     "subtitle": "デジタルソリューションアーキテクチャ",
-    "aboutText": "DevMindsは基本原理からデジタルインフラストラクチャを構築します。モジュール設計。スケーラブルなアーキテクチャ。不必要な複雑性なし。機能するテクノロジー。"
+    "aboutText": "DevMindsは基本原理からデジタルインフラストラクチャを構築します。モジュール設計。スケーラブルなアーキテクチャ。不必要な複雑性なし。機能するテクノロジー。",
+    "greeting": "こんにちは、私たちは",
+    "mainSubtitle": "プロフェッショナルなデジタルソリューションを構築します",
+    "description": "私たちはウェブ開発、モバイルアプリケーション、技術コンサルティングを専門とする会社です。アイデアを優れたデジタル製品に変えます。",
+    "viewProjects": "プロジェクトを見る",
+    "contactButton": "お問い合わせ"
   },
   "Menu": {
     "projects": "プロジェクト",
@@ -11,21 +16,39 @@
     "contact": "お問い合わせ",
     "soon": "近日公開"
   },
+  "Navbar": {
+    "about": "私たちについて",
+    "services": "サービス",
+    "projects": "プロジェクト",
+    "contact": "お問い合わせ",
+    "startProject": "プロジェクト開始"
+  },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
     "title": "プロジェクトを最適化する準備はできていますか？",
     "description": "アイデアを効率的なデジタルソリューションに変換します。不必要な複雑性はありません。機能する結果のみです。",
     "buttonText": "相談開始",
     "buttonHover": "相談実行",
-    "responseTime": "// 24時間以内の返答を保証",
+    "responseTime": "24時間以内の返答を保証",
     "feature1": "最適化されたアーキテクチャ",
     "feature2": "クリーンでスケーラブルなコード",
     "feature3": "技術的負債なし",
-    "status": "ステータス: デプロイ準備完了"
+    "status": "デプロイ準備完了",
+    "statusLabel": "ステータス:",
+    "onlineReady": "オンライン＆準備完了"
   },
   "AboutUs": {
-    "title": "DevMindsについて",
+    "title": "私たちについて",
     "description": "私たちは最先端のデジタルソリューションの作成を専門とするチームです。クリーンなアーキテクチャ、スケーラブルなコード、そして時代を超えた結果に重点を置いています。",
+    "paragraph1": "私たちはDevMinds、ビジネスを変革するデジタルソリューションの作成に情熱を持つ開発者チームです。モダンなウェブ開発、モバイルアプリケーション、技術コンサルティングを専門としています。",
+    "paragraph2": "私たちのアプローチは、各クライアントの固有のニーズを理解し、本当に機能しスケールするカスタマイズされたソリューションを提供することに焦点を当てています。",
+    "paragraph3": "市場で最新のテクノロジーを使用し、あなたのプロジェクトが未来に備えていることを保証します。",
+    "technologiesLabel": "私たちが習得している技術:",
+    "stats": {
+      "projects": "プロジェクト",
+      "satisfaction": "満足度",
+      "support": "サポート"
+    },
     "value1": {
       "title": "効率性",
       "description": "最大のパフォーマンスのためにコードの各行を最適化します"
@@ -97,9 +120,26 @@
       },
       "email": {
         "title": "直接連絡",
-        "description": "hello@devminds.com"
+        "description": "semoca00@gmail.com"
       }
     },
     "detailedContact": "その他の連絡オプション"
+  },
+  "Footer": {
+    "copyright": "© {year} DevMinds. 著作権所有。"
+  },
+  "LoadingScreen": {
+    "loading": "エクスペリエンスを読み込み中..."
+  },
+  "NotFound": {
+    "title": "ページが見つかりません",
+    "description": "申し訳ございません。お探しのページは存在しないか、移動されました。",
+    "backHome": "ホームに戻る",
+    "goBack": "戻る",
+    "usefulPages": "便利なページ:",
+    "aboutLink": "私たちについて",
+    "servicesLink": "サービス",
+    "projectsLink": "プロジェクト",
+    "contactLink": "お問い合わせ"
   }
 }

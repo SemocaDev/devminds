@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import contactConfig from '@/config/contact.json';
 
 const EmailSidebar = () => {
   return (
@@ -15,13 +16,13 @@ const EmailSidebar = () => {
 
       {/* Email Link */}
       <a
-        href="mailto:contact@devminds.com"
+        href={`mailto:${contactConfig.email}`}
         className="text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-300 text-xs tracking-widest"
         style={{
           writingMode: 'vertical-rl',
         }}
       >
-        contact@devminds.com
+        {contactConfig.email}
       </a>
     </motion.div>
   );

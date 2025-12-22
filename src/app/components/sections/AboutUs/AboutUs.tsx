@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
+import { useTranslations } from 'next-intl';
 
 const AboutUs = () => {
+  const t = useTranslations('AboutUs');
 
   const technologies = [
     'React', 'Next.js', 'TypeScript', 'Node.js',
@@ -11,9 +13,9 @@ const AboutUs = () => {
   ];
 
   const stats = [
-    { value: '50+', label: 'Proyectos' },
-    { value: '100%', label: 'Satisfacción' },
-    { value: '24/7', label: 'Soporte' }
+    { value: '50+', label: t('stats.projects') },
+    { value: '100%', label: t('stats.satisfaction') },
+    { value: '24/7', label: t('stats.support') }
   ];
 
   return (
@@ -27,7 +29,7 @@ const AboutUs = () => {
         >
           {/* Título numerado */}
           <h2 className="numbered-section section-title" data-number="01">
-            Sobre Nosotros
+            {t('title')}
           </h2>
 
           {/* Grid 2 columnas */}
@@ -36,25 +38,20 @@ const AboutUs = () => {
             <div className="space-y-6">
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Somos <span className="text-primary font-semibold">DevMinds</span>, un equipo de
-                  desarrolladores apasionados por crear soluciones digitales que transforman negocios.
-                  Nos especializamos en desarrollo web moderno, aplicaciones móviles y consultoría tecnológica.
+                  {t('paragraph1')}
                 </p>
                 <p>
-                  Nuestro enfoque se centra en entender las necesidades únicas de cada cliente
-                  y traducirlas en productos digitales excepcionales que no solo cumplen,
-                  sino que superan las expectativas.
+                  {t('paragraph2')}
                 </p>
                 <p>
-                  Trabajamos con las tecnologías más recientes y las mejores prácticas de la industria
-                  para garantizar que cada proyecto sea escalable, mantenible y de alta calidad.
+                  {t('paragraph3')}
                 </p>
               </div>
 
               {/* Tecnologías */}
               <div className="space-y-3">
                 <p className="text-sm font-semibold text-foreground">
-                  Tecnologías que dominamos:
+                  {t('technologiesLabel')}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {technologies.map((tech) => (

@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
+  const t = useTranslations('NotFound');
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       <div className="container-main relative z-10">
@@ -48,10 +50,10 @@ export default function NotFound() {
             className="space-y-4"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Página no encontrada
+              {t('title')}
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Lo sentimos, la página que buscas no existe o ha sido movida.
+              {t('description')}
             </p>
           </motion.div>
 
@@ -85,7 +87,7 @@ export default function NotFound() {
             <Link href="/">
               <Button size="lg" className="group">
                 <Home className="mr-2 w-5 h-5" />
-                Volver al Inicio
+                {t('backHome')}
               </Button>
             </Link>
 
@@ -96,7 +98,7 @@ export default function NotFound() {
               className="group"
             >
               <ArrowLeft className="mr-2 w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              Ir Atrás
+              {t('goBack')}
             </Button>
           </motion.div>
 
@@ -108,20 +110,20 @@ export default function NotFound() {
             className="pt-8 border-t border-border/50"
           >
             <p className="text-sm text-muted-foreground mb-4">
-              Páginas útiles:
+              {t('usefulPages')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center text-sm">
               <Link href="/#about" className="text-primary hover:underline">
-                Sobre Nosotros
+                {t('aboutLink')}
               </Link>
               <Link href="/#services" className="text-primary hover:underline">
-                Servicios
+                {t('servicesLink')}
               </Link>
               <Link href="/#projects" className="text-primary hover:underline">
-                Proyectos
+                {t('projectsLink')}
               </Link>
               <Link href="/#contact" className="text-primary hover:underline">
-                Contacto
+                {t('contactLink')}
               </Link>
             </div>
           </motion.div>

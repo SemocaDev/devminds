@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface LoadingScreenProps {
   onLoadingComplete?: () => void;
 }
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
+  const t = useTranslations('LoadingScreen');
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -78,7 +80,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
             DevMinds
           </h1>
           <p className="text-sm text-muted-foreground mt-2 font-mono">
-            Cargando experiencia...
+            {t('loading')}
           </p>
         </motion.div>
 

@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations("Hero");
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "DevMinds";
 
@@ -39,7 +41,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-primary font-mono text-sm md:text-base"
           >
-            Hola, somos
+            {t("greeting")}
           </motion.p>
 
           {/* Título gigante con gradiente y efecto typewriter */}
@@ -60,7 +62,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground"
           >
-            Construimos soluciones digitales profesionales
+            {t("mainSubtitle")}
           </motion.p>
 
           {/* Descripción */}
@@ -70,9 +72,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 1 }}
             className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            Somos una empresa especializada en desarrollo web, aplicaciones móviles
-            y consultoría tecnológica. Transformamos ideas en productos digitales
-            excepcionales.
+            {t("description")}
           </motion.p>
 
           {/* CTAs */}
@@ -83,7 +83,7 @@ const Hero = () => {
             className="flex flex-wrap gap-4 justify-center pt-4"
           >
             <Button size="lg" className="group">
-              Ver Proyectos
+              {t("viewProjects")}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
@@ -91,7 +91,7 @@ const Hero = () => {
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
-              Contactar
+              {t("contactButton")}
             </Button>
           </motion.div>
         </motion.div>

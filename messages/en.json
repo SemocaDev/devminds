@@ -2,7 +2,12 @@
   "Hero": {
     "title": "SYSTEMS//<wbr>OPTIMIZED",
     "subtitle": "DIGITAL SOLUTIONS ENGINEERING",
-    "aboutText": "DevMinds delivers precision-coded architectures for the post-digital era. Specializing in lean full-stack implementations. No legacy code. No technical debt. Pure computational efficiency."
+    "aboutText": "DevMinds delivers precision-coded architectures for the post-digital era. Specializing in lean full-stack implementations. No legacy code. No technical debt. Pure computational efficiency.",
+    "greeting": "Hello, we are",
+    "mainSubtitle": "We build professional digital solutions",
+    "description": "We are a company specialized in web development, mobile applications and technology consulting. We transform ideas into exceptional digital products.",
+    "viewProjects": "View Projects",
+    "contactButton": "Contact"
   },
   "Menu": {
     "projects": "PROJECTS",
@@ -11,21 +16,39 @@
     "contact": "CONTACT",
     "soon": "SOON"
   },
+  "Navbar": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "startProject": "Start Project"
+  },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
     "title": "Ready to optimize your project?",
     "description": "We transform ideas into efficient digital solutions. No unnecessary complexity, just results that work.",
-    "buttonText": "START_CONSULTATION",
+    "buttonText": "START CONSULTATION",
     "buttonHover": "execute_consultation",
-    "responseTime": "// Guaranteed response in < 24 hours",
+    "responseTime": "Guaranteed response in < 24 hours",
     "feature1": "Optimized architecture",
     "feature2": "Clean and scalable code",
     "feature3": "Zero technical debt",
-    "status": "Status: Ready for deployment"
+    "status": "Ready for deployment",
+    "statusLabel": "Status:",
+    "onlineReady": "Online & Ready"
   },
   "AboutUs": {
-    "title": "About DevMinds",
+    "title": "About Us",
     "description": "We are a team specialized in creating cutting-edge digital solutions. We focus on clean architectures, scalable code and results that stand the test of time.",
+    "paragraph1": "We are DevMinds, a team of developers passionate about creating digital solutions that transform businesses. We specialize in modern web development, mobile applications and technology consulting.",
+    "paragraph2": "Our approach focuses on understanding each client's unique needs to deliver customized solutions that truly work and scale.",
+    "paragraph3": "We work with the latest technologies on the market, ensuring your project is ready for the future.",
+    "technologiesLabel": "Technologies we master:",
+    "stats": {
+      "projects": "Projects",
+      "satisfaction": "Satisfaction",
+      "support": "Support"
+    },
     "value1": {
       "title": "Efficiency",
       "description": "We optimize every line of code for maximum performance"
@@ -97,9 +120,26 @@
       },
       "email": {
         "title": "Direct Contact",
-        "description": "hello@devminds.com"
+        "description": "semoca00@gmail.com"
       }
     },
     "detailedContact": "More contact options"
+  },
+  "Footer": {
+    "copyright": "© {year} DevMinds. All rights reserved."
+  },
+  "LoadingScreen": {
+    "loading": "Loading experience..."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "backHome": "Back to Home",
+    "goBack": "Go Back",
+    "usefulPages": "Useful pages:",
+    "aboutLink": "About Us",
+    "servicesLink": "Services",
+    "projectsLink": "Projects",
+    "contactLink": "Contact"
   }
 }
