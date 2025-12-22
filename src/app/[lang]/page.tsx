@@ -7,6 +7,7 @@ import CallToAction from "@/app/components/sections/CallToAction";
 import AboutUs from "@/app/components/sections/AboutUs/AboutUs";
 import Services from "@/app/components/sections/Services/Services";
 import Projects from "@/app/components/sections/Projects/Projects";
+import FAQ from "@/app/components/sections/FAQ/FAQ";
 import Contact from "@/app/components/sections/Contact/Contact";
 import Navbar from "@/app/components/layout/Navbar";
 import SocialSidebar from "@/app/components/layout/SocialSidebar";
@@ -56,6 +57,9 @@ export default function Home() {
 
               {/* Projects con fondo claro */}
               <Projects />
+
+              {/* FAQ Section */}
+              <FAQ />
 
               {/* Contact con gradiente */}
               <div className="gradient-bg">

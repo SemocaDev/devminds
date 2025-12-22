@@ -20,6 +20,7 @@
     "about": "Nosotros",
     "services": "Servicios",
     "projects": "Proyectos",
+    "faq": "FAQ",
     "contact": "Contacto",
     "startProject": "Comenzar Proyecto"
   },
@@ -141,5 +142,57 @@
     "servicesLink": "Servicios",
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
+  },
+  "FAQ": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre nuestros servicios",
+    "categories": {
+      "general": "General",
+      "services": "Servicios",
+      "pricing": "Precios",
+      "technical": "Técnico"
+    },
+    "questions": {
+      "faq-general-1": {
+        "question": "¿Qué servicios ofrece DevMinds?",
+        "answer": "Ofrecemos desarrollo web moderno, software personalizado, consultoría técnica y soporte continuo. Trabajamos con las tecnologías más recientes para crear soluciones digitales escalables y eficientes."
+      },
+      "faq-general-2": {
+        "question": "¿En qué se diferencia DevMinds de otras empresas de desarrollo?",
+        "answer": "Nos enfocamos en arquitecturas limpias, código escalable y sin deuda técnica. Cada proyecto es tratado con dedicación personalizada, asegurando soluciones que realmente funcionen y perduren en el tiempo."
+      },
+      "faq-general-3": {
+        "question": "¿Cómo puedo comenzar un proyecto con DevMinds?",
+        "answer": "Es simple: contáctanos a través del formulario, email o WhatsApp. Agendaremos una consulta inicial gratuita para entender tus necesidades y diseñar una solución a tu medida."
+      },
+      "faq-services-1": {
+        "question": "¿Realizan proyectos de desarrollo web completos?",
+        "answer": "Sí, trabajamos con todo tipo de proyectos: desde sitios simples con WordPress o Wix hasta aplicaciones web complejas hechas a la medida con Next.js, React, TypeScript y todas las tecnologías modernas necesarias para un producto robusto y escalable."
+      },
+      "faq-services-2": {
+        "question": "¿Ofrecen servicios de consultoría para proyectos existentes?",
+        "answer": "Por supuesto. Realizamos auditorías de código, optimización de performance, mejoras de arquitectura y recomendaciones técnicas para proyectos en producción."
+      },
+      "faq-services-3": {
+        "question": "¿Dan soporte después de entregar el proyecto?",
+        "answer": "Sí, ofrecemos planes de soporte y mantenimiento continuo para asegurar que tu aplicación se mantenga actualizada, segura y funcionando óptimamente."
+      },
+      "faq-pricing-1": {
+        "question": "¿Cómo manejan los presupuestos?",
+        "answer": "Cada proyecto es único. Después de la consulta inicial, elaboramos una propuesta detallada con alcance, timeline y precio fijo. También ofrecemos opciones de pago por etapas."
+      },
+      "faq-pricing-2": {
+        "question": "¿Cuál es el tiempo estimado para completar un proyecto?",
+        "answer": "Depende del alcance. Un landing page puede estar listo en 1-2 semanas, mientras que aplicaciones complejas pueden tomar 2-3 meses. Siempre establecemos timelines claros desde el inicio."
+      },
+      "faq-technical-1": {
+        "question": "¿Qué tecnologías utilizan?",
+        "answer": "Trabajamos con React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS y otras tecnologías modernas del stack web. Elegimos las herramientas según las necesidades específicas de cada proyecto."
+      },
+      "faq-technical-2": {
+        "question": "¿El código fuente queda de mi propiedad?",
+        "answer": "Absolutamente. Al finalizar el proyecto, recibes todo el código fuente, documentación y accesos necesarios. Tú eres el dueño completo de tu producto."
+      }
+    }
   }
 }

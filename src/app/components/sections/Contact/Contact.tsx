@@ -21,7 +21,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="numbered-section section-title justify-center" data-number="04">
+          <h2 className="numbered-section section-title justify-center" data-number="05">
             {t('title')}
           </h2>
           <p className="subtitle max-w-2xl mx-auto">

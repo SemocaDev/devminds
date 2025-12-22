@@ -1,0 +1,20 @@
+{
+  "general": [
+    { "id": "faq-general-1" },
+    { "id": "faq-general-2" },
+    { "id": "faq-general-3" }
+  ],
+  "services": [
+    { "id": "faq-services-1" },
+    { "id": "faq-services-2" },
+    { "id": "faq-services-3" }
+  ],
+  "pricing": [
+    { "id": "faq-pricing-1" },
+    { "id": "faq-pricing-2" }
+  ],
+  "technical": [
+    { "id": "faq-technical-1" },
+    { "id": "faq-technical-2" }
+  ]
+}

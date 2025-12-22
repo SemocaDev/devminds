@@ -20,6 +20,7 @@
     "about": "About",
     "services": "Services",
     "projects": "Projects",
+    "faq": "FAQ",
     "contact": "Contact",
     "startProject": "Start Project"
   },
@@ -141,5 +142,57 @@
     "servicesLink": "Services",
     "projectsLink": "Projects",
     "contactLink": "Contact"
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about our services",
+    "categories": {
+      "general": "General",
+      "services": "Services",
+      "pricing": "Pricing",
+      "technical": "Technical"
+    },
+    "questions": {
+      "faq-general-1": {
+        "question": "What services does DevMinds offer?",
+        "answer": "We offer modern web development, custom software, technical consulting and ongoing support. We work with the latest technologies to create scalable and efficient digital solutions."
+      },
+      "faq-general-2": {
+        "question": "What makes DevMinds different from other development companies?",
+        "answer": "We focus on clean architectures, scalable code and zero technical debt. Each project is treated with personalized dedication, ensuring solutions that truly work and stand the test of time."
+      },
+      "faq-general-3": {
+        "question": "How can I start a project with DevMinds?",
+        "answer": "It's simple: contact us through the form, email or WhatsApp. We'll schedule a free initial consultation to understand your needs and design a tailored solution."
+      },
+      "faq-services-1": {
+        "question": "Do you handle complete web development projects?",
+        "answer": "Yes, we develop everything from landing pages to complex web applications with Next.js, React, TypeScript and all the modern technologies needed for a robust product."
+      },
+      "faq-services-2": {
+        "question": "Do you offer consulting services for existing projects?",
+        "answer": "Absolutely. We perform code audits, performance optimization, architecture improvements and technical recommendations for projects in production."
+      },
+      "faq-services-3": {
+        "question": "Do you provide support after project delivery?",
+        "answer": "Yes, we offer ongoing support and maintenance plans to ensure your application stays updated, secure and running optimally."
+      },
+      "faq-pricing-1": {
+        "question": "How do you handle budgets?",
+        "answer": "Each project is unique. After the initial consultation, we create a detailed proposal with scope, timeline and fixed price. We also offer payment options by stages."
+      },
+      "faq-pricing-2": {
+        "question": "What's the estimated time to complete a project?",
+        "answer": "It depends on scope. A landing page can be ready in 1-2 weeks, while complex applications may take 2-3 months. We always establish clear timelines from the start."
+      },
+      "faq-technical-1": {
+        "question": "What technologies do you use?",
+        "answer": "We work with React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS and other modern web stack technologies. We choose tools based on each project's specific needs."
+      },
+      "faq-technical-2": {
+        "question": "Does the source code remain my property?",
+        "answer": "Absolutely. Upon project completion, you receive all source code, documentation and necessary access. You are the complete owner of your product."
+      }
+    }
   }
 }
