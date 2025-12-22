@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
+import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -154,64 +154,106 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="w-6 h-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
-              <div className="flex flex-col gap-8 mt-12">
-                {/* ThemeSwitcher en Mobile (opcional) */}
-                <div className="flex justify-center mb-4">
-                  <ThemeSwitcher />
+          <div className="lg:hidden flex items-center gap-4">
+            {/* Theme Switcher en Mobile */}
+            <ThemeSwitcher className="hover:bg-accent/20" />
+
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  className="h-10 w-10 border-border/50 hover:border-primary/50 hover:bg-accent/20"
+                >
+                  <Menu className="w-5 h-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent 
+                side="right" 
+                className="w-[300px] p-0"
+                onInteractOutside={(e) => e.preventDefault()} // Previene cerrar al hacer clic fuera
+              >
+                {/* Header del Sheet con botón de cerrar */}
+                <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-border/50 bg-background/95 backdrop-blur-sm">
+                  <Link
+                    href={`/${lang}`}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-bold text-primary"
+                  >
+                    DevMinds
+                  </Link>
+                  
+                  {/* Botón de cerrar - IDÉNTICO al de abrir */}
+                  <SheetClose asChild>
+                    <Button 
+                      variant="outline" 
+                      size="icon"
+                      className="h-10 w-10 border-border/50 hover:border-primary/50 hover:bg-accent/20"
+                    >
+                      <X className="w-5 h-5" />
+                    </Button>
+                  </SheetClose>
                 </div>
 
-                {isHomepage ? (
-                  <>
-                    {homeNavItems.map((item) => (
-                      <button
-                        key={item.href}
-                        onClick={() => scrollToSection(item.href)}
-                        className="flex items-center gap-3 text-lg hover:text-primary transition-colors text-left"
+                {/* SheetTitle oculto para accesibilidad */}
+                <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
+                
+                {/* Contenido del menú */}
+                <div className="flex flex-col gap-4 p-6">
+                  {isHomepage ? (
+                    <>
+                      {homeNavItems.map((item) => (
+                        <button
+                          key={item.href}
+                          onClick={() => scrollToSection(item.href)}
+                          className="flex items-center gap-3 text-base hover:text-primary transition-colors text-left py-3 px-2 rounded-lg hover:bg-accent/10"
+                        >
+                          <span className="text-primary font-mono text-sm">
+                            {item.number}.
+                          </span>
+                          <span>{item.label}</span>
+                        </button>
+                      ))}
+                      <Button
+                        className="mt-2"
+                        onClick={() => {
+                          setIsOpen(false);
+                          scrollToSection('#contact');
+                        }}
                       >
-                        <span className="text-primary font-mono text-sm">
-                          {item.number}.
-                        </span>
-                        <span>{item.label}</span>
-                      </button>
-                    ))}
-                    <Button
-                      className="mt-4"
-                      onClick={() => scrollToSection('#contact')}
-                    >
-                      {t('startProject')}
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    {globalNavItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`text-lg hover:text-primary transition-colors text-left ${
-                          pathname === item.href ? 'text-primary' : ''
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                    <Link href={`/${lang}#contact`} onClick={() => setIsOpen(false)}>
-                      <Button className="mt-4 w-full">
                         {t('startProject')}
                       </Button>
-                    </Link>
-                  </>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
+                    </>
+                  ) : (
+                    <>
+                      {globalNavItems.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center gap-3 text-base hover:text-primary transition-colors text-left py-3 px-2 rounded-lg hover:bg-accent/10 ${
+                            pathname === item.href ? 'text-primary bg-primary/5' : ''
+                          }`}
+                        >
+                          <span className="text-muted-foreground font-mono text-sm">•</span>
+                          <span>{item.label}</span>
+                        </Link>
+                      ))}
+                      <Link 
+                        href={`/${lang}#contact`} 
+                        onClick={() => setIsOpen(false)}
+                        className="mt-2"
+                      >
+                        <Button className="w-full">
+                          {t('startProject')}
+                        </Button>
+                      </Link>
+                    </>
+                  )}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </motion.nav>
