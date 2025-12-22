@@ -155,15 +155,16 @@ export default async function RootLayout(props: Props) {
   }
 
   return (
-    <html lang={lang} className={`${roboto.variable} ${doto.variable}`}>
+    <html lang={lang} className={`${roboto.variable} ${doto.variable} overflow-x-hidden`}>
       <head>
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
       </head>
-      <body className="min-h-screen flex flex-col font-roboto antialiased">
+      <body className="min-h-screen flex flex-col font-roboto antialiased overflow-x-hidden">
         <ClientThemeWrapper>
           <NextIntlClientProvider locale={lang} messages={messages}>
             {props.children}

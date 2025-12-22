@@ -31,7 +31,7 @@ export default function Home() {
       </AnimatePresence>
 
       {!isLoading && (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
           {/* New Navigation */}
           <Navbar />
           <SocialSidebar />

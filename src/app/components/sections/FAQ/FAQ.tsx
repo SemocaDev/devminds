@@ -32,7 +32,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="section-spacing bg-background">
+    <section id="faq" className="section-spacing bg-background overflow-hidden">
       <div className="container-main">
         <motion.div
           className="text-center mb-16 space-y-4"
