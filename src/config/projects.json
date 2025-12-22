@@ -7,9 +7,9 @@
       "technologies": ["Next.js", "TypeScript", "PostgreSQL"],
       "images": [
         "/projects/softcount/screenshot-1.png",
-        "/Projects/softcount/screenshot-2.png",
-        "/Projects/softcount/screenshot-3.png",
-        "/Projects/softcount/screenshot-4.png"
+        "/projects/softcount/screenshot-2.png",
+        "/projects/softcount/screenshot-3.png",
+        "/projects/softcount/screenshot-4.png"
       ],
       "gradient": "from-blue-600 to-cyan-600",
       "featured": true,
@@ -24,10 +24,10 @@
       "category": "wordpress",
       "technologies": ["WordPress"],
       "images": [
-        "/Projects/wilson-isaza/screenshot-1.png",
-        "/Projects/wilson-isaza/screenshot-2.png",
-        "/Projects/wilson-isaza/screenshot-3.png",
-        "/Projects/wilson-isaza/screenshot-4.png"
+        "/projects/wilson-isaza/screenshot-1.png",
+        "/projects/wilson-isaza/screenshot-2.png",
+        "/projects/wilson-isaza/screenshot-3.png",
+        "/projects/wilson-isaza/screenshot-4.png"
       ],
       "gradient": "from-red-600 to-orange-600",
       "featured": true,
@@ -42,9 +42,9 @@
       "category": "custom-code",
       "technologies": ["Wix"],
       "images": [
-        "/Projects/empo-guzman/screenshot-1.png",
-        "/Projects/empo-guzman/screenshot-2.png",
-        "/Projects/empo-guzman/screenshot-3.png"
+        "/projects/empo-guzman/screenshot-1.png",
+        "/projects/empo-guzman/screenshot-2.png",
+        "/projects/empo-guzman/screenshot-3.png"
         
       ],
       "gradient": "from-indigo-600 to-purple-600",
@@ -60,7 +60,7 @@
       "category": "web-app",
       "technologies": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
       "images": [
-        "/Projects/devminds-portfolio/screenshot-1.png"
+        "/projects/devminds-portfolio/screenshot-1.png"
       ],
       "gradient": "from-purple-600 to-pink-600",
       "featured": true,
