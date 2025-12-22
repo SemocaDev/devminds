@@ -17,6 +17,8 @@
     "soon": "SOON"
   },
   "Navbar": {
+    "home": "Home",
+    "portfolio": "Portfolio",
     "about": "About",
     "services": "Services",
     "projects": "Projects",
@@ -88,18 +90,6 @@
   "Projects": {
     "title": "Featured Projects",
     "subtitle": "Some examples of our work and the technologies we use",
-    "project1": {
-      "title": "Modern E-commerce",
-      "description": "Online sales platform with complete inventory management"
-    },
-    "project2": {
-      "title": "Management System",
-      "description": "Administrative dashboard for business process control"
-    },
-    "project3": {
-      "title": "Native Mobile App",
-      "description": "Cross-platform application with real-time synchronization"
-    },
     "ctaButton": "View complete portfolio"
   },
   "Contact": {
@@ -192,6 +182,44 @@
       "faq-technical-2": {
         "question": "Does the source code remain my property?",
         "answer": "Absolutely. Upon project completion, you receive all source code, documentation and necessary access. You are the complete owner of your product."
+      }
+    }
+  },
+  "Portfolio": {
+    "title": "Our Portfolio",
+    "subtitle": "Explore our completed projects and the work we've done for our clients",
+    "description": "Description",
+    "technologies": "Technologies Used",
+    "viewDemo": "View Demo",
+    "viewCode": "View Code",
+    "noDemo": "Private Project",
+    "categories": {
+      "all": "All",
+      "web-app": "Web Apps",
+      "wordpress": "WordPress",
+      "custom-code": "Custom Code",
+      "open-source": "Open Source"
+    },
+    "projects": {
+      "softcount": {
+        "title": "SoftCount - Accounting Software",
+        "description": "Professional accounting software (Under construction)",
+        "fullDescription": "SoftCount is an accounting software developed with Next.js, TypeScript and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution."
+      },
+      "wilson-isaza": {
+        "title": "Wilson Isaza - Political Website",
+        "description": "WordPress website for politician",
+        "fullDescription": "WordPress website developed for politician Wilson Isaza. Professional informative platform for his political campaign."
+      },
+      "empo-guzman": {
+        "title": "Empo Guzmán - Public Companies Website",
+        "description": "Website for public companies on Wix",
+        "fullDescription": "Website developed on Wix for Empo Guzmán, focused on public companies. Design with customized templates."
+      },
+      "devminds-portfolio": {
+        "title": "DevMinds - Professional Portfolio",
+        "description": "This very website you're viewing",
+        "fullDescription": "Professional portfolio built with Next.js 16, TypeScript, TailwindCSS and Framer Motion. Features multi-language i18n system (ES, EN, JA), smooth animations and modern responsive design."
       }
     }
   }

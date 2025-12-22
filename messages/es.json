@@ -17,6 +17,8 @@
     "soon": "PRÓXIMAMENTE"
   },
   "Navbar": {
+    "home": "Inicio",
+    "portfolio": "Portafolio",
     "about": "Nosotros",
     "services": "Servicios",
     "projects": "Proyectos",
@@ -88,18 +90,6 @@
   "Projects": {
     "title": "Proyectos Destacados",
     "subtitle": "Algunos ejemplos de nuestro trabajo y las tecnologías que utilizamos",
-    "project1": {
-      "title": "E-commerce Moderno",
-      "description": "Plataforma de ventas online con gestión completa de inventario"
-    },
-    "project2": {
-      "title": "Sistema de Gestión",
-      "description": "Dashboard administrativo para control de procesos empresariales"
-    },
-    "project3": {
-      "title": "App Móvil Nativa",
-      "description": "Aplicación multiplataforma con sincronización en tiempo real"
-    },
     "ctaButton": "Ver portfolio completo"
   },
   "Contact": {
@@ -192,6 +182,44 @@
       "faq-technical-2": {
         "question": "¿El código fuente queda de mi propiedad?",
         "answer": "Absolutamente. Al finalizar el proyecto, recibes todo el código fuente, documentación y accesos necesarios. Tú eres el dueño completo de tu producto."
+      }
+    }
+  },
+  "Portfolio": {
+    "title": "Nuestro Portfolio",
+    "subtitle": "Explora nuestros proyectos completados y el trabajo que hemos realizado para nuestros clientes",
+    "description": "Descripción",
+    "technologies": "Tecnologías Utilizadas",
+    "viewDemo": "Ver Demo",
+    "viewCode": "Ver Código",
+    "noDemo": "Proyecto Privado",
+    "categories": {
+      "all": "Todos",
+      "web-app": "Web Apps",
+      "wordpress": "WordPress",
+      "custom-code": "Código Custom",
+      "open-source": "Open Source"
+    },
+    "projects": {
+      "softcount": {
+        "title": "SoftCount - Software de Contabilidad",
+        "description": "Software de contabilidad profesional (En construcción)",
+        "fullDescription": "SoftCount es un software de contabilidad desarrollado con Next.js, TypeScript y PostgreSQL. Proyecto propio en construcción diseñado para ofrecer una solución completa de gestión contable y financiera."
+      },
+      "wilson-isaza": {
+        "title": "Wilson Isaza - Sitio Político",
+        "description": "Sitio web en WordPress para político",
+        "fullDescription": "Sitio web desarrollado en WordPress para el político Wilson Isaza. Plataforma informativa profesional para su campaña política."
+      },
+      "empo-guzman": {
+        "title": "Empo Guzmán - Sitio Empresas Públicas",
+        "description": "Sitio web para empresas públicas en Wix",
+        "fullDescription": "Sitio web desarrollado en Wix para Empo Guzmán, enfocado en empresas públicas. Diseño con plantillas personalizadas."
+      },
+      "devminds-portfolio": {
+        "title": "DevMinds - Portfolio Profesional",
+        "description": "Este mismo sitio web que estás viendo",
+        "fullDescription": "Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno."
       }
     }
   }

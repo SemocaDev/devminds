@@ -17,6 +17,8 @@
     "soon": "近日公開"
   },
   "Navbar": {
+    "home": "ホーム",
+    "portfolio": "ポートフォリオ",
     "about": "私たちについて",
     "services": "サービス",
     "projects": "プロジェクト",
@@ -88,18 +90,6 @@
   "Projects": {
     "title": "注目プロジェクト",
     "subtitle": "私たちの作品と使用技術の例",
-    "project1": {
-      "title": "モダンEコマース",
-      "description": "完全な在庫管理を備えたオンライン販売プラットフォーム"
-    },
-    "project2": {
-      "title": "管理システム",
-      "description": "ビジネスプロセス制御のための管理ダッシュボード"
-    },
-    "project3": {
-      "title": "ネイティブモバイルアプリ",
-      "description": "リアルタイム同期を備えたクロスプラットフォームアプリケーション"
-    },
     "ctaButton": "完全なポートフォリオを見る"
   },
   "Contact": {
@@ -192,6 +182,44 @@
       "faq-technical-2": {
         "question": "ソースコードは私の所有物になりますか？",
         "answer": "もちろんです。プロジェクト完了時に、すべてのソースコード、ドキュメント、必要なアクセスを受け取ります。あなたは製品の完全な所有者です。"
+      }
+    }
+  },
+  "Portfolio": {
+    "title": "ポートフォリオ",
+    "subtitle": "完成したプロジェクトとクライアント向けに行った仕事をご覧ください",
+    "description": "説明",
+    "technologies": "使用技術",
+    "viewDemo": "デモを見る",
+    "viewCode": "コードを見る",
+    "noDemo": "非公開プロジェクト",
+    "categories": {
+      "all": "すべて",
+      "web-app": "Webアプリ",
+      "wordpress": "WordPress",
+      "custom-code": "カスタムコード",
+      "open-source": "オープンソース"
+    },
+    "projects": {
+      "softcount": {
+        "title": "SoftCount - 会計ソフトウェア",
+        "description": "プロフェッショナル会計ソフトウェア（開発中）",
+        "fullDescription": "SoftCountは、Next.js、TypeScript、PostgreSQLで開発された会計ソフトウェアです。完全な会計および財務管理ソリューションを提供するために設計された開発中の自社プロジェクトです。"
+      },
+      "wilson-isaza": {
+        "title": "Wilson Isaza - 政治ウェブサイト",
+        "description": "政治家向けWordPressウェブサイト",
+        "fullDescription": "政治家Wilson Isaza向けに開発されたWordPressウェブサイト。政治キャンペーン用のプロフェッショナルな情報プラットフォーム。"
+      },
+      "empo-guzman": {
+        "title": "Empo Guzmán - 公共企業ウェブサイト",
+        "description": "公共企業向けWixウェブサイト",
+        "fullDescription": "公共企業に焦点を当てたEmpo Guzmán向けにWixで開発されたウェブサイト。カスタマイズされたテンプレートでのデザイン。"
+      },
+      "devminds-portfolio": {
+        "title": "DevMinds - プロフェッショナルポートフォリオ",
+        "description": "現在ご覧いただいているこのウェブサイト",
+        "fullDescription": "Next.js 16、TypeScript、TailwindCSS、Framer Motionで構築されたプロフェッショナルポートフォリオ。多言語i18nシステム（ES、EN、JA）、スムーズなアニメーション、モダンなレスポンシブデザインを特徴としています。"
       }
     }
   }

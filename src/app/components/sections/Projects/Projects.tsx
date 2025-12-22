@@ -1,20 +1,23 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import projectsData from '@/config/projects.json';
 
 const Projects = () => {
   const t = useTranslations('Projects');
+  const tPortfolio = useTranslations('Portfolio');
+  const params = useParams();
+  const lang = params.lang as string;
 
-  const projects = [
-    { key: 'project1', tech: ['React', 'Node.js', 'MongoDB'], color: 'from-blue-600 to-cyan-600' },
-    { key: 'project2', tech: ['Next.js', 'TypeScript', 'PostgreSQL'], color: 'from-purple-600 to-pink-600' },
-    { key: 'project3', tech: ['Vue.js', 'Express', 'MySQL'], color: 'from-green-600 to-emerald-600' }
-  ];
+  // Obtener los 3 proyectos destacados del JSON
+  const featuredProjects = projectsData.projects.filter(p => p.featured).slice(0, 3);
 
   const container = {
     hidden: { opacity: 0 },
@@ -56,37 +59,53 @@ const Projects = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {projects.map((project) => (
-            <motion.div key={project.key} variants={item}>
-              <Card className="group h-full flex flex-col hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/30">
-                {/* Imagen con gradiente */}
-                <div className="relative w-full h-56 overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-90 group-hover:opacity-100 transition-opacity`} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <ExternalLink className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-110 duration-300" />
+          {featuredProjects.map((project) => (
+            <motion.div key={project.id} variants={item}>
+              <Link href={`/${lang}/portfolio`}>
+                <Card className="group h-full flex flex-col hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/30 cursor-pointer">
+                  {/* Imagen con gradiente */}
+                  <div className="relative w-full h-56 overflow-hidden">
+                    {/* Gradiente de fondo como fallback */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+                    {/* Imagen visible por defecto */}
+                    {project.images && project.images[0] && (
+                      <img
+                        src={project.images[0]}
+                        alt={tPortfolio(`projects.${project.id}.title`)}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    )}
+                    {/* Overlay oscuro en hover */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <ExternalLink className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-110 duration-300" />
+                    </div>
                   </div>
-                </div>
 
                 <CardHeader>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {t(`${project.key}.title`)}
+                    {tPortfolio(`projects.${project.id}.title`)}
                   </CardTitle>
                 </CardHeader>
 
                 <CardContent className="flex-1">
                   <CardDescription className="leading-relaxed">
-                    {t(`${project.key}.description`)}
+                    {tPortfolio(`projects.${project.id}.description`)}
                   </CardDescription>
                 </CardContent>
 
                 <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-                  {project.tech.map((tech) => (
+                  {project.technologies.map((tech) => (
                     <Badge key={tech} variant="secondary" className="text-xs px-3 py-1">
                       {tech}
                     </Badge>
                   ))}
                 </CardFooter>
               </Card>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -98,10 +117,12 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <Button size="lg" variant="outline" className="group">
-            {t('ctaButton')}
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link href={`/${lang}/portfolio`}>
+            <Button size="lg" variant="outline" className="group">
+              {t('ctaButton')}
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

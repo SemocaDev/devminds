@@ -6,20 +6,47 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { usePathname, useParams } from 'next/navigation';
+import Link from 'next/link';
+
+type HomeNavItem = {
+  number: string;
+  label: string;
+  href: string;
+};
+
+type GlobalNavItem = {
+  label: string;
+  href: string;
+};
 
 const Navbar = () => {
   const t = useTranslations('Navbar');
+  const pathname = usePathname();
+  const params = useParams();
+  const lang = params.lang as string;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
+  const isHomepage = pathname === `/${lang}`;
+
+  // Homepage navigation items (scroll to sections)
+  const homeNavItems: HomeNavItem[] = [
     { number: '01', label: t('about'), href: '#about' },
     { number: '02', label: t('services'), href: '#services' },
     { number: '03', label: t('projects'), href: '#projects' },
     { number: '04', label: t('faq'), href: '#faq' },
     { number: '05', label: t('contact'), href: '#contact' }
+  ];
+
+  // Global navigation items (page links)
+  const globalNavItems: GlobalNavItem[] = [
+    { label: t('home'), href: `/${lang}` },
+    { label: t('portfolio'), href: `/${lang}/portfolio` },
+    { label: t('about'), href: `/${lang}/about` },
+    { label: t('contact'), href: `/${lang}/contact` }
   ];
 
   useEffect(() => {
@@ -65,31 +92,49 @@ const Navbar = () => {
       <div className="container-main">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href={`/${lang}`}
             className="text-xl md:text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
           >
             DevMinds
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <button
-                  onClick={() => scrollToSection(item.href)}
-                  className="group flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <span className="text-primary font-mono text-xs">
-                    {item.number}.
-                  </span>
-                  <span className="relative">
-                    {item.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-                  </span>
-                </button>
-              </li>
-            ))}
+            {isHomepage ? (
+              homeNavItems.map((item) => (
+                <li key={item.href}>
+                  <button
+                    onClick={() => scrollToSection(item.href)}
+                    className="group flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                  >
+                    <span className="text-primary font-mono text-xs">
+                      {item.number}.
+                    </span>
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </button>
+                </li>
+              ))
+            ) : (
+              globalNavItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`group text-sm hover:text-primary transition-colors ${
+                      pathname === item.href ? 'text-primary' : ''
+                    }`}
+                  >
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
 
           {/* CTA Button (Desktop) */}
@@ -112,24 +157,48 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-8 mt-12">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="flex items-center gap-3 text-lg hover:text-primary transition-colors text-left"
-                  >
-                    <span className="text-primary font-mono text-sm">
-                      {item.number}.
-                    </span>
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-                <Button
-                  className="mt-4"
-                  onClick={() => scrollToSection('#contact')}
-                >
-                  {t('startProject')}
-                </Button>
+                {isHomepage ? (
+                  <>
+                    {homeNavItems.map((item) => (
+                      <button
+                        key={item.href}
+                        onClick={() => scrollToSection(item.href)}
+                        className="flex items-center gap-3 text-lg hover:text-primary transition-colors text-left"
+                      >
+                        <span className="text-primary font-mono text-sm">
+                          {item.number}.
+                        </span>
+                        <span>{item.label}</span>
+                      </button>
+                    ))}
+                    <Button
+                      className="mt-4"
+                      onClick={() => scrollToSection('#contact')}
+                    >
+                      {t('startProject')}
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    {globalNavItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`text-lg hover:text-primary transition-colors text-left ${
+                          pathname === item.href ? 'text-primary' : ''
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                    <Link href={`/${lang}#contact`} onClick={() => setIsOpen(false)}>
+                      <Button className="mt-4 w-full">
+                        {t('startProject')}
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </SheetContent>
           </Sheet>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Hero = () => {
   const t = useTranslations("Hero");
@@ -19,7 +20,7 @@ const Hero = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 200); // 200ms entre cada letra - más lento y realista
+    }, 200);
 
     return () => clearInterval(typingInterval);
   }, []);
@@ -75,23 +76,35 @@ const Hero = () => {
             {t("description")}
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs - VERSIÓN CORREGIDA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
             className="flex flex-wrap gap-4 justify-center pt-4"
           >
-            <Button size="lg" className="group">
-              {t("viewProjects")}
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            {/* Botón View Projects - Versión moderna sin legacyBehavior */}
             <Button
+              asChild
+              size="lg"
+              className="group cursor-pointer"
+            >
+              <Link href="/portfolio">
+                {t("viewProjects")}
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+
+            {/* Botón Contact - Versión moderna sin legacyBehavior */}
+            <Button
+              asChild
               size="lg"
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
             >
-              {t("contactButton")}
+              <Link href="/contact">
+                {t("contactButton")}
+              </Link>
             </Button>
           </motion.div>
         </motion.div>
