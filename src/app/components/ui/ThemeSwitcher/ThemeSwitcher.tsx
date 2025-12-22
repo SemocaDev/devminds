@@ -2,7 +2,7 @@
 
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Monitor } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface ThemeSwitcherProps {
@@ -12,23 +12,48 @@ interface ThemeSwitcherProps {
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = '' }) => {
   const [mounted, setMounted] = useState(false);
   
-  // Solo usar el hook después de que el componente esté montado
-  let theme = 'light';
-  let toggleTheme = () => {};
+  // Usar el hook del nuevo contexto
+  let theme = 'system';
+  let setTheme = (theme: 'light' | 'dark' | 'system') => {};
   
   try {
     const themeContext = useTheme();
     theme = themeContext.theme;
-    toggleTheme = themeContext.toggleTheme;
+    setTheme = themeContext.setTheme;
   } catch {
-    // Si falla, usar valores por defecto hasta que se monte el provider
+    // Si falla, usar valores por defecto
   }
+
+  // Función para alternar entre light/dark (manteniendo compatibilidad)
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      // Si está en 'system', cambiar a 'dark'
+      setTheme('dark');
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // No renderizar hasta que esté montado para evitar hydration mismatch
+  // Determinar qué icono mostrar basado en el tema
+  const getIcon = () => {
+    if (theme === 'system') {
+      // Para system, mostrar según la preferencia real
+      if (typeof window !== 'undefined') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return prefersDark ? <Moon size={20} /> : <Sun size={20} />;
+      }
+      return <Monitor size={20} />;
+    }
+    return theme === 'light' ? <Sun size={20} /> : <Moon size={20} />;
+  };
+
+  // No renderizar hasta que esté montado
   if (!mounted) {
     return (
       <div className="relative flex items-center justify-center p-2 w-10 h-10">
@@ -41,21 +66,18 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = '' }) => {
     <button
       onClick={toggleTheme}
       className={`relative flex items-center justify-center p-2 text-foreground hover:bg-accent rounded-md transition-colors duration-200 focus:outline-none ${className}`}
-      aria-label={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+      aria-label={`Tema actual: ${theme}. Click para cambiar`}
+      title={`Tema: ${theme}`}
     >
       <motion.div
         initial={false}
         animate={{
-          rotate: theme === 'light' ? 0 : 180,
+          rotate: theme === 'light' ? 0 : theme === 'dark' ? 180 : 90,
           scale: 1
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        {theme === 'light' ? (
-          <Sun size={20} className="text-foreground" />
-        ) : (
-          <Moon size={20} className="text-foreground" />
-        )}
+        {getIcon()}
       </motion.div>
     </button>
   );

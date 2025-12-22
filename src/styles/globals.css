@@ -57,10 +57,6 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    overflow-x: hidden;
-  }
-  html {
-    overflow-x: hidden;
   }
 }
 
