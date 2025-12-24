@@ -1,48 +1,62 @@
-# DevMinds
+# DevMinds Portfolio
 
-Una landing page moderna y multiidioma construida con Next.js 15, que presenta la arquitectura de soluciones digitales de DevMinds con un diseño minimalista inspirado en interfaces de terminal.
+Portfolio profesional multiidioma para DevMinds, construido con Next.js 16, TypeScript y TailwindCSS.
 
 ## 🚀 Características
 
 - **Multiidioma**: Soporte completo para Español, Inglés y Japonés
 - **Responsive**: Diseño adaptativo para todos los dispositivos
+- **Tema Claro/Oscuro**: Cambio dinámico de tema con persistencia
 - **Animaciones fluidas**: Implementadas con Framer Motion
-- **Tipografía moderna**: Fuentes Google (Roboto y Doto)
-- **Interfaz terminal**: Diseño inspirado en interfaces de línea de comandos
-- **Performance optimizada**: Construido con Next.js 15 y React 19
+- **Sistema de Gestión de Equipo**: Carousel automático para fundadores + grid para equipo
+- **Portfolio Dinámico**: Sistema de categorías y proyectos con imágenes
+- **SEO Optimizado**: Sitemap dinámico y metadata por página
+- **Performance**: Optimizado con Next.js 16 y Turbopack
 
-## 🛠️ Tecnologías
+## 🛠️ Stack Tecnológico
 
-- **Frontend**: Next.js 15.1.5, React 19, TypeScript 5.7.3
-- **Internacionalización**: next-intl 4.1.0
+- **Framework**: Next.js 16.1.0 (App Router)
+- **Frontend**: React 19, TypeScript 5.7.3
+- **Estilos**: TailwindCSS 3.4.17, shadcn/ui
 - **Animaciones**: Framer Motion 12.0.0
-- **Estilos**: Tailwind CSS 3.4.17
-- **Linting**: ESLint con configuración de Next.js
+- **Internacionalización**: next-intl 4.1.0
+- **Carousel**: Embla Carousel con autoplay
+- **Iconos**: Lucide React
 - **Gestión de paquetes**: pnpm
 
-## 🏗️ Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
-src/
-├── app/
-│   ├── [lang]/                    # Rutas dinámicas por idioma
-│   │   ├── layout.tsx            # Layout principal con proveedores
-│   │   └── page.tsx              # Página principal
-│   └── components/
-│       ├── layout/               # Componentes de layout
-│       │   ├── Footer/
-│       │   ├── Overlay/          # Menú overlay con animaciones
-│       │   └── Sidebar/          # Barra lateral con selector de idioma
-│       ├── sections/             # Secciones de la página
-│       │   └── Hero.tsx
-│       └── ui/                   # Componentes de interfaz
-│           └── MainTitle/        # Título animado con efecto typewriter
-├── config/
-│   └── i18n-config.ts           # Configuración de idiomas
-├── styles/
-│   └── globals.css              # Estilos globales
-├── middleware.ts                # Middleware de internacionalización
-└── i18n.ts                     # Configuración de next-intl
+devminds/
+├── src/
+│   ├── app/
+│   │   ├── [lang]/                 # Rutas dinámicas por idioma
+│   │   │   ├── page.tsx           # Homepage
+│   │   │   ├── about/page.tsx     # Página del equipo
+│   │   │   ├── portfolio/page.tsx # Portfolio completo
+│   │   │   └── layout.tsx         # Layout con providers
+│   │   ├── components/
+│   │   │   ├── layout/            # Navbar, Footer, Sidebars
+│   │   │   ├── sections/          # Hero, Services, Projects, etc.
+│   │   │   └── ui/                # Componentes UI reutilizables
+│   │   ├── contexts/              # ThemeContext
+│   │   ├── hooks/                 # Custom hooks
+│   │   └── sitemap.ts             # Generación de sitemap
+│   ├── components/ui/             # shadcn/ui components
+│   ├── config/                    # Archivos de configuración JSON
+│   │   ├── projects.json          # Catálogo de proyectos
+│   │   ├── team.json              # Información del equipo
+│   │   ├── faq.json               # Preguntas frecuentes
+│   │   ├── contact.json           # Datos de contacto
+│   │   └── i18n-config.ts         # Config de idiomas
+│   ├── types/                     # TypeScript interfaces
+│   ├── lib/                       # Utilidades
+│   └── middleware.ts              # i18n middleware
+├── messages/                      # Traducciones (es, en, ja)
+├── public/
+│   ├── projects/                  # Imágenes de proyectos
+│   └── team/                      # Fotos del equipo
+└── tailwind.config.ts
 ```
 
 ## ⚡ Inicio Rápido
@@ -50,28 +64,24 @@ src/
 ### Prerrequisitos
 
 - Node.js 18.17.0 o superior
-- pnpm (recomendado) o npm
+- pnpm (recomendado)
 
 ### Instalación
 
 1. **Clona el repositorio**:
    ```bash
-   git clone <tu-repositorio>
+   git clone https://github.com/SemocaDev/devminds.git
    cd devminds
    ```
 
 2. **Instala las dependencias**:
    ```bash
    pnpm install
-   # o
-   npm install
    ```
 
 3. **Ejecuta el servidor de desarrollo**:
    ```bash
    pnpm dev
-   # o
-   npm run dev
    ```
 
 4. **Abre tu navegador**:
@@ -80,107 +90,161 @@ src/
 ### Scripts Disponibles
 
 ```bash
-pnpm dev      # Inicia el servidor de desarrollo
-pnpm build    # Construye la aplicación para producción
-pnpm start    # Inicia el servidor de producción
-pnpm lint     # Ejecuta el linter
+pnpm dev      # Servidor de desarrollo (puerto 3000)
+pnpm build    # Build de producción
+pnpm start    # Servidor de producción
+pnpm lint     # Ejecuta ESLint
 ```
 
 ## 🌐 Internacionalización
 
-El proyecto soporta tres idiomas:
+### Idiomas Soportados
 
 - **Español (es)** - Idioma por defecto
 - **Inglés (en)**
 - **Japonés (ja)**
 
-### Estructura de mensajes
+### Archivos de Traducción
 
-Los archivos de traducción se encuentran en `messages/`:
-- `es.json` - Traducciones en español
-- `en.json` - Traducciones en inglés  
-- `ja.json` - Traducciones en japonés
+- `messages/es.json` - Español
+- `messages/en.json` - Inglés
+- `messages/ja.json` - Japonés
 
-### Agregar nuevos idiomas
+### Agregar Nuevo Idioma
 
-1. Agrega el nuevo idioma en `src/config/i18n-config.ts`
-2. Crea el archivo de traducciones correspondiente en `messages/`
-3. El middleware automáticamente detectará y manejará el nuevo idioma
+1. Agrega el código de idioma en `src/config/i18n-config.ts`
+2. Crea `messages/{codigo}.json` con las traducciones
+3. El middleware detectará automáticamente el nuevo idioma
+
+## 📝 Gestión de Contenido
+
+### Proyectos (`src/config/projects.json`)
+
+```json
+{
+  "projects": [
+    {
+      "id": "proyecto-id",
+      "slug": "proyecto-slug",
+      "category": "web-app",
+      "technologies": ["Next.js", "TypeScript"],
+      "images": ["/projects/slug/screenshot-1.png"],
+      "gradient": "from-blue-600 to-cyan-600",
+      "featured": true,
+      "github": "url-opcional",
+      "demo": "url-opcional",
+      "year": 2024,
+      "client": "Nombre Cliente"
+    }
+  ]
+}
+```
+
+**Imágenes**: Guardar en `/public/projects/{slug}/`
+
+### Equipo (`src/config/team.json`)
+
+```json
+{
+  "team": [
+    {
+      "id": "miembro-id",
+      "name": "Nombre Completo",
+      "nickname": "Alias",
+      "role": "softwareEngineer",
+      "hierarchy": "co-founder",
+      "specialization": "frontendUX",
+      "bio": "claveBio",
+      "location": "Ciudad, País",
+      "education": "Universidad (años)",
+      "skills": ["Skill1", "Skill2"],
+      "email": "email@ejemplo.com",
+      "linkedin": "url",
+      "github": "url",
+      "photo": "/team/foto.jpg",
+      "interests": [
+        {"icon": "IconName", "labelKey": "interestKey"}
+      ]
+    }
+  ]
+}
+```
+
+**Jerarquías**: `co-founder`, `developer`, `designer`, `marketing`
+**Fotos**: Guardar en `/public/team/`
+
+### FAQ (`src/config/faq.json`)
+
+Estructura de categorías con preguntas y respuestas.
+
+### Contacto (`src/config/contact.json`)
+
+URLs de redes sociales y email.
 
 ## 🎨 Personalización
 
-### Colores
+### Temas
 
-El proyecto utiliza un esquema de colores personalizado definido en la configuración de Tailwind:
+El proyecto soporta tema claro y oscuro con persistencia en localStorage.
 
-- **carbon**: Color de fondo principal
-- **whiteText**: Color de texto principal  
-- **primary-300/400**: Colores de acento
+### Colores (TailwindCSS)
+
+Los colores se definen en `tailwind.config.ts`:
+- Variables CSS para temas dinámicos
+- Paleta personalizada de colores
 
 ### Fuentes
 
-- **Roboto**: Fuente principal para el contenido
-- **Doto**: Fuente decorativa para elementos específicos
+- **Geist Sans** - Fuente principal
+- **Geist Mono** - Fuente monoespaciada
 
-### Animaciones
+## 🏗️ Arquitectura
 
-Las animaciones están implementadas con Framer Motion e incluyen:
-- Efecto typewriter en el título principal
-- Transiciones suaves en el overlay del menú
-- Animaciones de entrada para secciones
+### Páginas
 
-## 📱 Responsive Design
+- `/` - Homepage con todas las secciones
+- `/about` - Página del equipo (carousel + grid)
+- `/portfolio` - Portfolio completo con filtros
 
-El diseño se adapta automáticamente a diferentes tamaños de pantalla:
+### Características Destacadas
 
-- **Desktop (≥1024px)**: Sidebar vertical fijo
-- **Tablet/Mobile (<1024px)**: Sidebar horizontal superior
-- **Breakpoints personalizados** para una experiencia óptima
-
-## 🔧 Configuración
-
-### Variables de entorno
-
-El proyecto no requiere variables de entorno específicas para funcionar, pero puedes agregar las tuyas en `.env.local`.
-
-### Tailwind CSS
-
-La configuración de Tailwind se encuentra en `tailwind.config.js` e incluye:
-- Colores personalizados
-- Variables de fuente
-- Configuración responsive personalizada
+1. **Carousel de Fundadores**: Auto-rotación cada 5 segundos con dots de navegación
+2. **Grid de Equipo**: Responsive (1→2→3 columnas)
+3. **Filtros de Portfolio**: Por categoría con animaciones
+4. **Sidebars Fijos**: Social (izquierda) y Email (derecha)
+5. **Navbar Responsive**: Sheet menu para móvil
 
 ## 🚀 Despliegue
 
 ### Vercel (Recomendado)
 
-1. Conecta tu repositorio a Vercel
-2. Vercel detectará automáticamente que es un proyecto Next.js
-3. El despliegue se realizará automáticamente
+El proyecto está optimizado para Vercel:
 
-### Otros servicios
+1. Conecta el repositorio
+2. Vercel detecta Next.js automáticamente
+3. Deploy automático en cada push
 
-El proyecto es compatible con cualquier plataforma que soporte Node.js:
-- Netlify
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
+### Variables de Entorno
 
-## 🤝 Contribución
+No se requieren variables de entorno para el funcionamiento básico.
 
-Si deseas contribuir al proyecto:
+## 📄 Licencia
 
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
-3. Commit tus cambios (`git commit -m 'Agrega nueva característica'`)
-4. Push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre un Pull Request
+Proyecto privado de DevMinds.
 
+## 👥 Equipo
+
+- **Sebastian Morea Cañón** (ItsEnder) - Co-fundador, Frontend & UX
+- **Juan David Gomez Perez** - Co-fundador, Backend
+- **Carlos Alberto Castillo Roa** (CarlosLite) - Full Stack Developer
+- **Maria Jose Vargas Bustos** (Mavabu) - UX Research & Marketing
 
 ## 📞 Contacto
 
-**DevMinds** - Arquitectura de Soluciones Digitales
+**Email**: semoca00@gmail.com
+**GitHub**: [github.com/SemocaDev](https://github.com/SemocaDev)
+**LinkedIn**: [Sebastian Morea Cañón](https://www.linkedin.com/in/sebastian-morea-ca%C3%B1on-5ba97729a/)
 
 ---
 
-Construido con ❤️ usando Next.js y tecnologías modernas de desarrollo web.
+Construido con ❤️ por DevMinds usando Next.js 16 y tecnologías modernas.
