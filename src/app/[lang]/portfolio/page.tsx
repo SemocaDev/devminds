@@ -73,14 +73,16 @@ export default function PortfolioPage() {
             </motion.div>
 
             {/* Category Tabs */}
-            <Tabs defaultValue="all" className="mb-12" onValueChange={setActiveCategory}>
-              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 md:grid-cols-5">
-                {projectsData.categories.map((category) => (
-                  <TabsTrigger key={category.id} value={category.id}>
-                    {t(`categories.${category.id}`)}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+            <Tabs defaultValue="all" onValueChange={setActiveCategory}>
+              <div className="flex justify-center mb-12">
+                <TabsList className="inline-flex h-auto w-auto flex-wrap justify-center gap-2 p-2">
+                  {projectsData.categories.map((category) => (
+                    <TabsTrigger key={category.id} value={category.id} className="px-6">
+                      {t(`categories.${category.id}`)}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
 
               {projectsData.categories.map((category) => (
                 <TabsContent key={category.id} value={category.id}>

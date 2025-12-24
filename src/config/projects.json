@@ -85,11 +85,7 @@
     },
     {
       "id": "custom-code",
-      "name": "Custom Code"
-    },
-    {
-      "id": "open-source",
-      "name": "Open Source"
+      "name": "Wix/Plantillas"
     }
   ]
 }

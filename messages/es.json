@@ -47,6 +47,7 @@
     "paragraph2": "Nuestro enfoque se centra en entender las necesidades únicas de cada cliente para ofrecer soluciones personalizadas que realmente funcionen y escalen.",
     "paragraph3": "Trabajamos con las tecnologías más recientes del mercado, asegurando que tu proyecto esté preparado para el futuro.",
     "technologiesLabel": "Tecnologías que dominamos:",
+    "meetTheTeam": "Conocer al Equipo",
     "stats": {
       "projects": "Proyectos",
       "satisfaction": "Satisfacción",
@@ -195,10 +196,9 @@
     "noDemo": "Proyecto Privado",
     "categories": {
       "all": "Todos",
-      "web-app": "Web Apps",
+      "web-app": "Aplicaciones Web",
       "wordpress": "WordPress",
-      "custom-code": "Código Custom",
-      "open-source": "Open Source"
+      "custom-code": "Wix/Plantillas"
     },
     "projects": {
       "softcount": {
@@ -221,6 +221,50 @@
         "description": "Este mismo sitio web que estás viendo",
         "fullDescription": "Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno."
       }
+    }
+  },
+  "About": {
+    "title": "Nuestro Equipo",
+    "subtitle": "Conoce a las personas que hacen realidad las ideas",
+    "foundersTitle": "Fundadores",
+    "teamTitle": "Nuestro Equipo",
+    "contact": "Contactar",
+    "hierarchy": {
+      "founder": "Fundador",
+      "co-founder": "Co-fundador",
+      "developer": "Desarrollador",
+      "designer": "Diseñador",
+      "marketing": "Marketing"
+    },
+    "roles": {
+      "softwareEngineer": "Ingeniero de Software",
+      "psychologist": "Psicóloga"
+    },
+    "specializations": {
+      "frontendUX": "Especialista en Frontend y UX",
+      "backend": "Especialista en Backend",
+      "fullstack": "Desarrollador Full Stack",
+      "uxResearch": "Investigación UX y Marketing"
+    },
+    "bios": {
+      "sebastianBio": "Ingeniero de Software apasionado por crear experiencias de usuario excepcionales. Especializado en desarrollo frontend con Next.js, React y TypeScript. Me enfoco en construir aplicaciones web modernas, eficientes y escalables que resuelvan problemas reales.",
+      "juanBio": "Ingeniero de Software enfocado en el desarrollo backend y arquitectura de sistemas. Experto en diseño de APIs, bases de datos y soluciones escalables que dan soporte a aplicaciones robustas.",
+      "mariaBio": "Psicóloga especializada en investigación de usuarios y estrategia de contenido. Apasionada por entender el comportamiento del usuario y crear experiencias digitales que conecten emocionalmente.",
+      "carlosBio": "Desarrollador Full Stack con experiencia en crear aplicaciones web completas. Especializado en tecnologías modernas y arquitecturas escalables tanto en frontend como backend."
+    },
+    "skills": {
+      "title": "Habilidades Técnicas"
+    },
+    "interests": {
+      "title": "Intereses",
+      "gaming": "Videojuegos",
+      "anime": "Anime",
+      "manga": "Manga",
+      "cooking": "Cocinar",
+      "systemDesign": "Diseño de Sistemas",
+      "databases": "Bases de Datos",
+      "reading": "Lectura",
+      "coding": "Programación"
     }
   }
 }

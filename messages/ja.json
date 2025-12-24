@@ -47,6 +47,7 @@
     "paragraph2": "私たちのアプローチは、各クライアントの固有のニーズを理解し、本当に機能しスケールするカスタマイズされたソリューションを提供することに焦点を当てています。",
     "paragraph3": "市場で最新のテクノロジーを使用し、あなたのプロジェクトが未来に備えていることを保証します。",
     "technologiesLabel": "私たちが習得している技術:",
+    "meetTheTeam": "チームに会う",
     "stats": {
       "projects": "プロジェクト",
       "satisfaction": "満足度",
@@ -195,10 +196,9 @@
     "noDemo": "非公開プロジェクト",
     "categories": {
       "all": "すべて",
-      "web-app": "Webアプリ",
+      "web-app": "Webアプリケーション",
       "wordpress": "WordPress",
-      "custom-code": "カスタムコード",
-      "open-source": "オープンソース"
+      "custom-code": "Wix/テンプレート"
     },
     "projects": {
       "softcount": {
@@ -221,6 +221,50 @@
         "description": "現在ご覧いただいているこのウェブサイト",
         "fullDescription": "Next.js 16、TypeScript、TailwindCSS、Framer Motionで構築されたプロフェッショナルポートフォリオ。多言語i18nシステム（ES、EN、JA）、スムーズなアニメーション、モダンなレスポンシブデザインを特徴としています。"
       }
+    }
+  },
+  "About": {
+    "title": "チーム紹介",
+    "subtitle": "アイデアを実現する人々に出会う",
+    "foundersTitle": "創設者",
+    "teamTitle": "チーム",
+    "contact": "お問い合わせ",
+    "hierarchy": {
+      "founder": "創設者",
+      "co-founder": "共同創設者",
+      "developer": "開発者",
+      "designer": "デザイナー",
+      "marketing": "マーケティング"
+    },
+    "roles": {
+      "softwareEngineer": "ソフトウェアエンジニア",
+      "psychologist": "心理学者"
+    },
+    "specializations": {
+      "frontendUX": "フロントエンド・UXスペシャリスト",
+      "backend": "バックエンドスペシャリスト",
+      "fullstack": "フルスタック開発者",
+      "uxResearch": "UXリサーチ・マーケティング"
+    },
+    "bios": {
+      "sebastianBio": "卓越したユーザーエクスペリエンスの創造に情熱を注ぐソフトウェアエンジニア。Next.js、React、TypeScriptを使用したフロントエンド開発を専門としています。実際の問題を解決するモダンで効率的でスケーラブルなウェブアプリケーションの構築に注力しています。",
+      "juanBio": "バックエンド開発とシステムアーキテクチャに焦点を当てたソフトウェアエンジニア。API設計、データベース、堅牢なアプリケーションをサポートするスケーラブルなソリューションの専門家です。",
+      "mariaBio": "ユーザーリサーチとコンテンツ戦略を専門とする心理学者。ユーザーの行動を理解し、感情的につながるデジタル体験を創造することに情熱を注いでいます。",
+      "carlosBio": "完全なウェブアプリケーションの構築経験を持つフルスタック開発者。フロントエンドとバックエンドの両方で最新技術とスケーラブルなアーキテクチャを専門としています。"
+    },
+    "skills": {
+      "title": "技術スキル"
+    },
+    "interests": {
+      "title": "興味",
+      "gaming": "ゲーム",
+      "anime": "アニメ",
+      "manga": "マンガ",
+      "cooking": "料理",
+      "systemDesign": "システム設計",
+      "databases": "データベース",
+      "reading": "読書",
+      "coding": "プログラミング"
     }
   }
 }

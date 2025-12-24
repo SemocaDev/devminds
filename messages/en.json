@@ -47,6 +47,7 @@
     "paragraph2": "Our approach focuses on understanding each client's unique needs to deliver customized solutions that truly work and scale.",
     "paragraph3": "We work with the latest technologies on the market, ensuring your project is ready for the future.",
     "technologiesLabel": "Technologies we master:",
+    "meetTheTeam": "Meet the Team",
     "stats": {
       "projects": "Projects",
       "satisfaction": "Satisfaction",
@@ -195,10 +196,9 @@
     "noDemo": "Private Project",
     "categories": {
       "all": "All",
-      "web-app": "Web Apps",
+      "web-app": "Web Applications",
       "wordpress": "WordPress",
-      "custom-code": "Custom Code",
-      "open-source": "Open Source"
+      "custom-code": "Wix/Templates"
     },
     "projects": {
       "softcount": {
@@ -221,6 +221,50 @@
         "description": "This very website you're viewing",
         "fullDescription": "Professional portfolio built with Next.js 16, TypeScript, TailwindCSS and Framer Motion. Features multi-language i18n system (ES, EN, JA), smooth animations and modern responsive design."
       }
+    }
+  },
+  "About": {
+    "title": "Our Team",
+    "subtitle": "Meet the people who bring ideas to life",
+    "foundersTitle": "Founders",
+    "teamTitle": "Our Team",
+    "contact": "Contact",
+    "hierarchy": {
+      "founder": "Founder",
+      "co-founder": "Co-Founder",
+      "developer": "Developer",
+      "designer": "Designer",
+      "marketing": "Marketing"
+    },
+    "roles": {
+      "softwareEngineer": "Software Engineer",
+      "psychologist": "Psychologist"
+    },
+    "specializations": {
+      "frontendUX": "Frontend & UX Specialist",
+      "backend": "Backend Specialist",
+      "fullstack": "Full Stack Developer",
+      "uxResearch": "UX Research & Marketing"
+    },
+    "bios": {
+      "sebastianBio": "Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React and TypeScript. I focus on building modern, efficient and scalable web applications that solve real problems.",
+      "juanBio": "Software Engineer focused on backend development and system architecture. Expert in API design, databases and scalable solutions that support robust applications.",
+      "mariaBio": "Psychologist specialized in user research and content strategy. Passionate about understanding user behavior and creating digital experiences that connect emotionally.",
+      "carlosBio": "Full Stack Developer with experience in building complete web applications. Specialized in modern technologies and scalable architectures for both frontend and backend."
+    },
+    "skills": {
+      "title": "Technical Skills"
+    },
+    "interests": {
+      "title": "Interests",
+      "gaming": "Gaming",
+      "anime": "Anime",
+      "manga": "Manga",
+      "cooking": "Cooking",
+      "systemDesign": "System Design",
+      "databases": "Databases",
+      "reading": "Reading",
+      "coding": "Coding"
     }
   }
 }

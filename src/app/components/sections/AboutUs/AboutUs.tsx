@@ -2,10 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const AboutUs = () => {
   const t = useTranslations('AboutUs');
+  const params = useParams();
+  const lang = params.lang as string;
 
   const technologies = [
     'React', 'Next.js', 'TypeScript', 'Node.js',
@@ -78,6 +84,16 @@ const AboutUs = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Meet the Team Button */}
+              <div className="pt-6">
+                <Link href={`/${lang}/about`}>
+                  <Button variant="outline" className="group">
+                    {t('meetTheTeam')}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
               </div>
             </div>
 
