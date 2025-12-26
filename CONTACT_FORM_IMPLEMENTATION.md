@@ -111,9 +111,9 @@ Crear `.env.local` con:
 EMAIL_PROVIDER=resend     # o 'mock' para development
 
 # Resend Configuration
-RESEND_API_KEY=re_2QHYgkxv_3hrazJGTn1qeVoQMpLrxe3tH
-RESEND_FROM_EMAIL=onboarding@resend.dev
-RESEND_TO_EMAIL=semoca00@gmail.com
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+RESEND_TO_EMAIL=
 ```
 
 ### 2. Instalación
