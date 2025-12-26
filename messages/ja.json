@@ -266,5 +266,34 @@
       "reading": "読書",
       "coding": "プログラミング"
     }
+  },
+  "EmailTemplate": {
+    "subject": "新しいお問い合わせ - DevMinds",
+    "header": {
+      "title": "新しいお問い合わせメッセージ",
+      "subtitle": "お問い合わせフォーム - DevMinds Portfolio"
+    },
+    "fields": {
+      "name": "名前",
+      "email": "メールアドレス",
+      "subject": "件名",
+      "message": "メッセージ"
+    },
+    "metadata": {
+      "title": "技術情報",
+      "ip": "IPアドレス",
+      "userAgent": "ブラウザ",
+      "language": "フォームの言語",
+      "timestamp": "日時"
+    },
+    "footer": {
+      "followUs": "フォロー",
+      "contact": "直接連絡",
+      "email": "semoca00@gmail.com",
+      "copyright": "© {year} DevMinds. All rights reserved."
+    },
+    "cta": {
+      "reply": "クライアントに返信"
+    }
   }
 }

@@ -409,6 +409,35 @@
       "button": "Enviar Email Directo"
     }
   },
+  "EmailTemplate": {
+    "subject": "Nuevo Mensaje de Contacto - DevMinds",
+    "header": {
+      "title": "Nuevo Mensaje de Contacto",
+      "subtitle": "Formulario de Contacto - DevMinds Portfolio"
+    },
+    "fields": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje"
+    },
+    "metadata": {
+      "title": "Información Técnica",
+      "ip": "Dirección IP",
+      "userAgent": "Navegador",
+      "language": "Idioma del Formulario",
+      "timestamp": "Fecha y Hora"
+    },
+    "footer": {
+      "followUs": "Síguenos en",
+      "contact": "Contacto Directo",
+      "email": "semoca00@gmail.com",
+      "copyright": "© {year} DevMinds. Todos los derechos reservados."
+    },
+    "cta": {
+      "reply": "Responder al Cliente"
+    }
+  },
   "ServicesPage": {
     "hero": {
       "title": "Nuestros Servicios",

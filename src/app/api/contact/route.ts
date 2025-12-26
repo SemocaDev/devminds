@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { SendContactMessage, SendContactMessageDTO } from '@/core/domain/contact/use-cases/SendContactMessage';
 import { EmailServiceFactory } from '@/core/infrastructure/email/EmailServiceFactory';
 import { InMemoryContactRepository } from '@/core/infrastructure/repositories/InMemoryContactRepository';
+import { EmailMetadata } from '@/core/domain/contact/ports/IEmailService';
 
 /**
  * API Route: POST /api/contact
@@ -90,13 +91,24 @@ export async function POST(request: NextRequest) {
       subject: body.subject
     };
 
+    // Extraer locale del body (enviado por el frontend)
+    const locale = body.locale || 'es';
+
+    // Crear metadata con información técnica
+    const metadata: EmailMetadata = {
+      ip: ip,
+      userAgent: request.headers.get('user-agent') || 'unknown',
+      timestamp: new Date().toISOString(),
+      language: locale
+    };
+
     // 3. Crear el caso de uso con dependencias
     const emailService = EmailServiceFactory.create();
     const contactRepository = new InMemoryContactRepository();
     const sendContactMessage = new SendContactMessage(emailService, contactRepository);
 
-    // 4. Ejecutar el caso de uso
-    const result = await sendContactMessage.execute(dto);
+    // 4. Ejecutar el caso de uso con locale y metadata
+    const result = await sendContactMessage.execute(dto, locale, metadata);
 
     // 5. Retornar respuesta apropiada
     if (result.success) {

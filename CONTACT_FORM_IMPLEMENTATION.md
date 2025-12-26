@@ -111,8 +111,8 @@ Crear `.env.local` con:
 EMAIL_PROVIDER=resend     # o 'mock' para development
 
 # Resend Configuration
-RESEND_API_KEY=re_2QHYgkxv_3hrazJGTn1qeVoQMpLrxe3tH
-RESEND_FROM_EMAIL=onboarding@resend.dev
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+RESEND_FROM_EMAIL=noreply@devmind.online    # Dominio verificado en Resend
 RESEND_TO_EMAIL=semoca00@gmail.com
 ```
 

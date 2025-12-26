@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
@@ -43,6 +43,7 @@ interface FormErrors {
 
 export default function ContactPage() {
   const t = useTranslations("ContactPage");
+  const locale = useLocale(); // Obtener idioma actual (es, en, ja)
 
   // Estado del formulario
   const [formData, setFormData] = useState<FormData>({
@@ -117,7 +118,10 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          locale // Incluir idioma actual
+        })
       });
 
       const data = await response.json();

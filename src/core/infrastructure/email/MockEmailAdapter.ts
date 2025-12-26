@@ -1,4 +1,4 @@
-import { IEmailService } from '@/core/domain/contact/ports/IEmailService';
+import { IEmailService, EmailMetadata } from '@/core/domain/contact/ports/IEmailService';
 import { ContactMessage } from '@/core/domain/contact/entities/ContactMessage';
 
 /**
@@ -11,7 +11,11 @@ import { ContactMessage } from '@/core/domain/contact/entities/ContactMessage';
  * - Debugging
  */
 export class MockEmailAdapter implements IEmailService {
-  async sendContactEmail(message: ContactMessage): Promise<string> {
+  async sendContactEmail(
+    message: ContactMessage,
+    locale?: string,
+    metadata?: EmailMetadata
+  ): Promise<string> {
     // Simular delay de red
     await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -20,8 +24,18 @@ export class MockEmailAdapter implements IEmailService {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log(`From: ${message.name} <${message.email}>`);
     console.log(`Subject: ${message.subject || 'No subject'}`);
+    console.log(`Locale: ${locale || 'es'}`);
     console.log(`Message:\n${message.message}`);
     console.log(`Timestamp: ${message.createdAt.toISOString()}`);
+
+    if (metadata) {
+      console.log('\n📊 Metadata:');
+      console.log(`  Language: ${metadata.language}`);
+      console.log(`  IP: ${metadata.ip || 'N/A'}`);
+      console.log(`  User-Agent: ${metadata.userAgent || 'N/A'}`);
+      console.log(`  Timestamp: ${metadata.timestamp}`);
+    }
+
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
     // Simular posible error (5% de probabilidad para testing)

@@ -266,5 +266,34 @@
       "reading": "Reading",
       "coding": "Coding"
     }
+  },
+  "EmailTemplate": {
+    "subject": "New Contact Message - DevMinds",
+    "header": {
+      "title": "New Contact Message",
+      "subtitle": "Contact Form - DevMinds Portfolio"
+    },
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "metadata": {
+      "title": "Technical Information",
+      "ip": "IP Address",
+      "userAgent": "Browser",
+      "language": "Form Language",
+      "timestamp": "Date & Time"
+    },
+    "footer": {
+      "followUs": "Follow Us",
+      "contact": "Direct Contact",
+      "email": "semoca00@gmail.com",
+      "copyright": "© {year} DevMinds. All rights reserved."
+    },
+    "cta": {
+      "reply": "Reply to Client"
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { ContactMessage } from '../entities/ContactMessage';
-import { IEmailService } from '../ports/IEmailService';
+import { IEmailService, EmailMetadata } from '../ports/IEmailService';
 import { IContactRepository } from '../ports/IContactRepository';
 
 /**
@@ -38,8 +38,15 @@ export class SendContactMessage {
 
   /**
    * Ejecuta el caso de uso de enviar un mensaje de contacto
+   * @param dto Datos del mensaje de contacto
+   * @param locale Idioma del formulario (es, en, ja) para traducciones
+   * @param metadata Información técnica adicional (opcional)
    */
-  async execute(dto: SendContactMessageDTO): Promise<SendContactMessageResult> {
+  async execute(
+    dto: SendContactMessageDTO,
+    locale?: string,
+    metadata?: EmailMetadata
+  ): Promise<SendContactMessageResult> {
     try {
       // 1. Crear la entidad de dominio (incluye validación)
       const contactMessage = new ContactMessage(
@@ -54,8 +61,12 @@ export class SendContactMessage {
         await this.contactRepository.save(contactMessage);
       }
 
-      // 3. Enviar el email a través del servicio
-      const messageId = await this.emailService.sendContactEmail(contactMessage);
+      // 3. Enviar el email a través del servicio con locale y metadata
+      const messageId = await this.emailService.sendContactEmail(
+        contactMessage,
+        locale,
+        metadata
+      );
 
       // 4. Retornar resultado exitoso
       return {
