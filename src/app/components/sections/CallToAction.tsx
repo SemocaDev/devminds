@@ -5,9 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Check, Clock, Code, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 const CallToAction = () => {
   const t = useTranslations('CTA');
+  const params = useParams();
+  const lang = params.lang as string;
 
   const features = [
     { icon: Code, text: t('feature1') },
@@ -66,9 +70,11 @@ const CallToAction = () => {
 
             {/* CTA Button */}
             <div className="pt-6">
-              <Button size="lg" className="group text-lg px-8 py-6 h-auto">
-                {t('buttonText')}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button asChild size="lg" className="group text-lg px-8 py-6 h-auto">
+                <Link href={`/${lang}/contact`}>
+                  {t('buttonText')}
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <p className="text-sm text-muted-foreground mt-3 flex items-center gap-2">
                 <Clock className="w-4 h-4" />
