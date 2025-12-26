@@ -45,6 +45,40 @@ export default function TechStack() {
       {/* Fondo decorativo */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-muted/30 to-background/50 pointer-events-none" />
 
+      {/* CSS para animación infinita suave */}
+      <style jsx>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes scroll-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        .animate-scroll-left {
+          animation: scroll-left 40s linear infinite;
+        }
+
+        .animate-scroll-right {
+          animation: scroll-right 40s linear infinite;
+        }
+
+        .tech-marquee:hover .animate-scroll-left,
+        .tech-marquee:hover .animate-scroll-right {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="container-main relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -67,98 +101,68 @@ export default function TechStack() {
             {t("subtitle")}
           </motion.p>
         </div>
-
-        {/* Marquee Container - Full width */}
       </div>
 
       {/* Marquee fuera del container para full width */}
       <div className="relative w-full overflow-hidden mt-8">
         {/* Primera fila - Izquierda a Derecha */}
-        <div className="mb-8">
-          <motion.div
-            className="flex gap-12 md:gap-16"
-            animate={{
-              x: [0, -50 * technologies.length],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-            style={{ width: "fit-content", willChange: "transform" }}
-          >
-              {duplicatedTechs.map((tech, index) => (
-                <div
-                  key={`tech-1-${index}`}
-                  className="flex-shrink-0 flex flex-col items-center gap-3 group/tech"
-                >
-                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transition-all duration-300 grayscale group-hover/tech:grayscale-0">
-                    <tech.icon
-                      className="w-full h-full transition-colors duration-300"
-                      style={{
-                        color: "currentColor",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = tech.color;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = "currentColor";
-                      }}
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground group-hover/tech:text-foreground transition-colors">
-                    {tech.name}
-                  </span>
+        <div className="mb-8 tech-marquee">
+          <div className="flex gap-12 md:gap-16 animate-scroll-left">
+            {duplicatedTechs.map((tech, index) => (
+              <div
+                key={`tech-1-${index}`}
+                className="flex-shrink-0 flex flex-col items-center gap-3 group/tech"
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transition-all duration-300 grayscale group-hover/tech:grayscale-0">
+                  <tech.icon
+                    className="w-full h-full transition-colors duration-300"
+                    style={{
+                      color: "currentColor",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = tech.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "currentColor";
+                    }}
+                  />
                 </div>
-              ))}
-            </motion.div>
+                <span className="text-sm font-medium text-muted-foreground group-hover/tech:text-foreground transition-colors">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
           </div>
+        </div>
 
         {/* Segunda fila - Derecha a Izquierda */}
-        <div>
-          <motion.div
-            className="flex gap-12 md:gap-16"
-            animate={{
-              x: [-50 * technologies.length, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-            style={{ width: "fit-content", willChange: "transform" }}
-          >
-              {duplicatedTechs.reverse().map((tech, index) => (
-                <div
-                  key={`tech-2-${index}`}
-                  className="flex-shrink-0 flex flex-col items-center gap-3 group/tech"
-                >
-                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transition-all duration-300 grayscale group-hover/tech:grayscale-0">
-                    <tech.icon
-                      className="w-full h-full transition-colors duration-300"
-                      style={{
-                        color: "currentColor",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = tech.color;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = "currentColor";
-                      }}
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground group-hover/tech:text-foreground transition-colors">
-                    {tech.name}
-                  </span>
+        <div className="tech-marquee">
+          <div className="flex gap-12 md:gap-16 animate-scroll-right">
+            {[...duplicatedTechs].reverse().map((tech, index) => (
+              <div
+                key={`tech-2-${index}`}
+                className="flex-shrink-0 flex flex-col items-center gap-3 group/tech"
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transition-all duration-300 grayscale group-hover/tech:grayscale-0">
+                  <tech.icon
+                    className="w-full h-full transition-colors duration-300"
+                    style={{
+                      color: "currentColor",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = tech.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "currentColor";
+                    }}
+                  />
                 </div>
-              ))}
-            </motion.div>
+                <span className="text-sm font-medium text-muted-foreground group-hover/tech:text-foreground transition-colors">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Gradient Overlays para efecto fade en los bordes */}
