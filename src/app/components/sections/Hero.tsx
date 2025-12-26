@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import HeroBackground from "@/app/components/backgrounds/HeroBackground";
 
 const Hero = () => {
   const t = useTranslations("Hero");
@@ -26,8 +27,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="container-main min-h-screen flex items-center justify-center relative">
-      <div className="w-full max-w-5xl mx-auto">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background animado con partículas - Full width solo en Hero */}
+      <div className="absolute inset-0 w-full h-full -z-10">
+        <HeroBackground particleCount={40} speed={25} opacity={0.4} />
+      </div>
+
+      <div className="container-main w-full max-w-5xl mx-auto relative z-10">
         {/* Contenido centrado */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -108,34 +114,6 @@ const Hero = () => {
             </Button>
           </motion.div>
         </motion.div>
-
-        {/* Círculos decorativos de fondo */}
-        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [360, 180, 0],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-tr from-accent/10 to-primary/10 blur-3xl"
-          />
-        </div>
       </div>
     </section>
   );

@@ -6,7 +6,9 @@ import Hero from "@/app/components/sections/Hero";
 import CallToAction from "@/app/components/sections/CallToAction";
 import AboutUs from "@/app/components/sections/AboutUs/AboutUs";
 import Services from "@/app/components/sections/Services/Services";
+import TechStack from "@/app/components/sections/TechStack/TechStack";
 import Projects from "@/app/components/sections/Projects/Projects";
+import Process from "@/app/components/sections/Process/Process";
 import FAQ from "@/app/components/sections/FAQ/FAQ";
 import Contact from "@/app/components/sections/Contact/Contact";
 import Navbar from "@/app/components/layout/Navbar";
@@ -55,8 +57,14 @@ export default function Home() {
               {/* Services con gradiente */}
               <Services />
 
+              {/* TechStack - Cinta infinita de tecnologías */}
+              <TechStack />
+
               {/* Projects con fondo claro */}
               <Projects />
+
+              {/* Process - Timeline del proceso */}
+              <Process />
 
               {/* FAQ Section */}
               <FAQ />

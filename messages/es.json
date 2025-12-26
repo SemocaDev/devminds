@@ -21,7 +21,9 @@
     "portfolio": "Portafolio",
     "about": "Nosotros",
     "services": "Servicios",
+    "stack": "Stack",
     "projects": "Proyectos",
+    "process": "Proceso",
     "faq": "FAQ",
     "contact": "Contacto",
     "startProject": "Comenzar Proyecto"
@@ -265,6 +267,34 @@
       "databases": "Bases de Datos",
       "reading": "Lectura",
       "coding": "Programación"
+    }
+  },
+  "TechStack": {
+    "title": "Tecnologías que dominamos",
+    "subtitle": "Trabajamos con las herramientas más modernas y potentes del mercado para construir soluciones robustas y escalables"
+  },
+  "Process": {
+    "title": "Nuestro Proceso de Trabajo",
+    "subtitle": "Un enfoque estructurado y probado para llevar tu proyecto desde la idea hasta el lanzamiento exitoso",
+    "step1": {
+      "title": "Consulta Inicial",
+      "description": "Entendemos tu proyecto, necesidades y objetivos para crear una solución a medida"
+    },
+    "step2": {
+      "title": "Planificación",
+      "description": "Diseñamos la arquitectura y seleccionamos las tecnologías más adecuadas"
+    },
+    "step3": {
+      "title": "Desarrollo",
+      "description": "Construimos tu solución paso a paso con comunicación constante"
+    },
+    "step4": {
+      "title": "Testing & Deploy",
+      "description": "Aseguramos la calidad con pruebas exhaustivas y lanzamos tu proyecto"
+    },
+    "step5": {
+      "title": "Soporte",
+      "description": "Mantenimiento continuo y mejoras para que tu proyecto evolucione"
     }
   }
 }

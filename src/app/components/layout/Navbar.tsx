@@ -37,9 +37,11 @@ const Navbar = () => {
   const homeNavItems: HomeNavItem[] = [
     { number: '01', label: t('about'), href: '#about' },
     { number: '02', label: t('services'), href: '#services' },
-    { number: '03', label: t('projects'), href: '#projects' },
-    { number: '04', label: t('faq'), href: '#faq' },
-    { number: '05', label: t('contact'), href: '#contact' }
+    { number: '03', label: t('stack'), href: '#techstack' },
+    { number: '04', label: t('projects'), href: '#projects' },
+    { number: '05', label: t('process'), href: '#process' },
+    { number: '06', label: t('faq'), href: '#faq' },
+    { number: '07', label: t('contact'), href: '#contact' }
   ];
 
   // Global navigation items (page links)
