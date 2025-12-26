@@ -296,5 +296,91 @@
       "title": "Soporte",
       "description": "Mantenimiento continuo y mejoras para que tu proyecto evolucione"
     }
+  },
+  "ServicesPage": {
+    "hero": {
+      "title": "Nuestros Servicios",
+      "subtitle": "Soluciones tecnológicas completas para transformar tus ideas en productos digitales exitosos"
+    },
+    "services": {
+      "title": "¿Qué Ofrecemos?",
+      "technologies": "Tecnologías",
+      "idealFor": "Ideal para",
+      "features": "Características",
+      "items": {
+        "webdev": {
+          "title": "Desarrollo Web Moderno",
+          "shortDescription": "Sitios web y aplicaciones web de última generación",
+          "description": "Creamos sitios web y aplicaciones web modernas utilizando las tecnologías más avanzadas del mercado. Desde landing pages impactantes hasta aplicaciones web complejas con funcionalidades personalizadas.",
+          "technologies": "React, Next.js, TypeScript, Tailwind CSS, Framer Motion",
+          "idealFor": "Landing pages, sitios corporativos, portafolios, aplicaciones web interactivas",
+          "features": [
+            "Diseño responsive y mobile-first",
+            "Optimización SEO avanzada",
+            "Performance ultra-rápido",
+            "Animaciones fluidas y modernas",
+            "Integración con APIs y servicios externos"
+          ]
+        },
+        "custom": {
+          "title": "Software a Medida",
+          "shortDescription": "Aplicaciones personalizadas para tu negocio",
+          "description": "Desarrollamos software personalizado que se adapta perfectamente a tus necesidades específicas. Desde sistemas internos hasta plataformas complejas, creamos soluciones escalables y mantenibles.",
+          "technologies": "Node.js, Express, PostgreSQL, MongoDB, TypeScript, Docker",
+          "idealFor": "Sistemas de gestión, CRM, ERP, plataformas SaaS, dashboards administrativos",
+          "features": [
+            "Arquitectura escalable y modular",
+            "Base de datos optimizada",
+            "APIs RESTful seguras",
+            "Panel de administración personalizado",
+            "Integración con sistemas existentes"
+          ]
+        },
+        "wordpress": {
+          "title": "Sitios WordPress",
+          "shortDescription": "Sitios profesionales con WordPress",
+          "description": "Creamos sitios web profesionales con WordPress, el CMS más popular del mundo. Temas personalizados, plugins a medida y optimización completa para un sitio que destaque.",
+          "technologies": "WordPress, PHP, WooCommerce, Custom Themes, Elementor",
+          "idealFor": "Blogs, sitios corporativos, e-commerce, portales de contenido",
+          "features": [
+            "Temas personalizados y únicos",
+            "Plugins desarrollados a medida",
+            "Optimización de velocidad",
+            "Configuración SEO completa",
+            "Integración con WooCommerce para tiendas online"
+          ]
+        },
+        "consulting": {
+          "title": "Consultoría Técnica",
+          "shortDescription": "Asesoría experta para tus proyectos",
+          "description": "Ofrecemos servicios de consultoría técnica para optimizar tus proyectos existentes. Auditorías de código, mejoras de arquitectura, optimización de performance y recomendaciones de mejores prácticas.",
+          "technologies": "Arquitectura de Software, Code Review, Performance, DevOps, Git",
+          "idealFor": "Proyectos existentes, equipos de desarrollo, startups tecnológicas",
+          "features": [
+            "Auditoría completa de código",
+            "Análisis de arquitectura y escalabilidad",
+            "Optimización de performance",
+            "Recomendaciones de mejores prácticas",
+            "Estrategia de migración y actualización"
+          ]
+        }
+      }
+    },
+    "techStack": {
+      "title": "Stack Tecnológico Completo",
+      "subtitle": "Trabajamos con las tecnologías más modernas y probadas del mercado",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "cms": "CMS & Plantillas",
+        "devops": "DevOps & Hosting",
+        "tools": "Herramientas"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para comenzar tu proyecto?",
+      "subtitle": "Contáctanos y trabajemos juntos para hacer realidad tu idea",
+      "button": "Contactar Ahora"
+    }
   }
 }

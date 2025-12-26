@@ -5,9 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Code2, Laptop, Search, Wrench, ArrowRight } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 const Services = () => {
   const t = useTranslations('Services');
+  const params = useParams();
+  const lang = params.lang as string;
 
   const services = [
     { key: 'web', icon: Laptop, gradient: 'from-blue-500 to-cyan-500' },
@@ -95,9 +99,11 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <Button size="lg" className="group">
-            {t('ctaButton')}
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Button asChild size="lg" className="group">
+            <Link href={`/${lang}/services`}>
+              {t('ctaButton')}
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </motion.div>
       </div>

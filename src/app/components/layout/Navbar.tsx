@@ -47,8 +47,9 @@ const Navbar = () => {
   // Global navigation items (page links)
   const globalNavItems: GlobalNavItem[] = [
     { label: t('home'), href: `/${lang}` },
-    { label: t('portfolio'), href: `/${lang}/portfolio` },
     { label: t('about'), href: `/${lang}/about` },
+    { label: t('services'), href: `/${lang}/services` },
+    { label: t('portfolio'), href: `/${lang}/portfolio` },
     { label: t('contact'), href: `/${lang}/contact` }
   ];
 
