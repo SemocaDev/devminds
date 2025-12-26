@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   Code2,
   Palette,
@@ -97,6 +98,22 @@ export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
   const params = useParams();
   const lang = params.lang as string;
+  const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined);
+
+  // Detectar hash en la URL y abrir el acordeón correspondiente
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && services.some(s => s.key === hash)) {
+      setOpenAccordion(hash);
+      // Scroll al acordeón después de un pequeño delay para que se renderice
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  }, []);
 
   return (
     <>
@@ -137,12 +154,19 @@ export default function ServicesPage() {
             {t("services.title")}
           </motion.h2>
 
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-4"
+            value={openAccordion}
+            onValueChange={setOpenAccordion}
+          >
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div
                   key={service.key}
+                  id={service.key}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

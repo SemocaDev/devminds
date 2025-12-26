@@ -72,21 +72,21 @@
   "Services": {
     "title": "Nuestros Servicios",
     "subtitle": "Soluciones tecnológicas integrales para hacer realidad tus ideas digitales",
-    "web": {
+    "webdev": {
       "title": "Desarrollo Web",
-      "description": "Landing pages, sitios corporativos y aplicaciones web modernas"
+      "description": "Landing pages, sitios corporativos y aplicaciones web modernas con las últimas tecnologías"
     },
-    "software": {
+    "custom": {
       "title": "Software Personalizado",
-      "description": "Aplicaciones a medida que resuelven problemas específicos"
+      "description": "Aplicaciones a medida que resuelven problemas específicos de tu negocio"
+    },
+    "wordpress": {
+      "title": "WordPress & CMS",
+      "description": "Sitios web administrables con WordPress, optimizados para SEO y rendimiento"
     },
     "consulting": {
       "title": "Consultoría Técnica",
-      "description": "Auditorías de código y optimización de sistemas existentes"
-    },
-    "support": {
-      "title": "Soporte & Mantenimiento",
-      "description": "Acompañamiento continuo para mantener tu tecnología actualizada"
+      "description": "Auditorías de código, arquitectura y optimización de sistemas existentes"
     },
     "ctaButton": "Ver todos los servicios"
   },
