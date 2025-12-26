@@ -120,7 +120,22 @@
     "detailedContact": "Más opciones de contacto"
   },
   "Footer": {
-    "copyright": "© {year} DevMinds. Todos los derechos reservados."
+    "copyright": "© {year} DevMinds. Todos los derechos reservados.",
+    "tagline": "Soluciones digitales profesionales",
+    "navigation": "Navegación",
+    "resourcesTitle": "Recursos",
+    "social": "Redes Sociales",
+    "nav": {
+      "home": "Inicio",
+      "about": "Nosotros",
+      "services": "Servicios",
+      "portfolio": "Portfolio",
+      "contact": "Contacto"
+    },
+    "resources": {
+      "portfolio": "Proyectos",
+      "faq": "Preguntas Frecuentes"
+    }
   },
   "LoadingScreen": {
     "loading": "Cargando experiencia..."
