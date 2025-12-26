@@ -35,6 +35,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import Navbar from "@/app/components/layout/Navbar";
+import Footer from "@/app/components/layout/Footer/Footer";
+import SocialSidebar from "@/app/components/layout/SocialSidebar";
+import EmailSidebar from "@/app/components/layout/EmailSidebar";
 
 const services = [
   {
@@ -92,8 +96,13 @@ export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
+    <>
+      <Navbar />
+      <SocialSidebar />
+      <EmailSidebar />
+
+      <div className="min-h-screen flex flex-col">
+        {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-primary/5 overflow-hidden">
         <div className="container-main relative z-10">
           <motion.div
@@ -301,6 +310,9 @@ export default function ServicesPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+
+      <Footer />
+    </>
   );
 }
