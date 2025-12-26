@@ -10,7 +10,7 @@ import TechStack from "@/app/components/sections/TechStack/TechStack";
 import Projects from "@/app/components/sections/Projects/Projects";
 import Process from "@/app/components/sections/Process/Process";
 import FAQ from "@/app/components/sections/FAQ/FAQ";
-import Contact from "@/app/components/sections/Contact/Contact";
+import ContactCTA from "@/app/components/sections/ContactCTA/ContactCTA";
 import Navbar from "@/app/components/layout/Navbar";
 import SocialSidebar from "@/app/components/layout/SocialSidebar";
 import EmailSidebar from "@/app/components/layout/EmailSidebar";
@@ -69,9 +69,9 @@ export default function Home() {
               {/* FAQ Section */}
               <FAQ />
 
-              {/* Contact con gradiente */}
+              {/* Contact CTA */}
               <div className="gradient-bg">
-                <Contact />
+                <ContactCTA />
               </div>
             </ScrollRevealWrapper>
           </main>

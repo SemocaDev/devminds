@@ -95,6 +95,13 @@
     "subtitle": "Algunos ejemplos de nuestro trabajo y las tecnologías que utilizamos",
     "ctaButton": "Ver portfolio completo"
   },
+  "ContactCTA": {
+    "title": "¿Tienes un proyecto en mente?",
+    "subtitle": "Estamos listos para ayudarte a convertir tus ideas en realidad. Contáctanos y comencemos a trabajar juntos.",
+    "primaryButton": "Contáctanos Ahora",
+    "secondaryButton": "Enviar Email",
+    "responseTime": "⚡ Respuesta en menos de 24 horas"
+  },
   "Contact": {
     "title": "Hablemos de tu Proyecto",
     "subtitle": "¿Tienes una idea? Cuéntanos y trabajemos juntos para hacerla realidad",
@@ -354,6 +361,52 @@
     "step5": {
       "title": "Soporte",
       "description": "Mantenimiento continuo y mejoras para que tu proyecto evolucione"
+    }
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Contacto",
+      "subtitle": "Estamos aquí para ayudarte. Cuéntanos sobre tu proyecto y trabajemos juntos para hacerlo realidad."
+    },
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "subtitle": "Completa el formulario y nos pondremos en contacto contigo lo antes posible.",
+      "name": "Nombre completo",
+      "namePlaceholder": "Juan Pérez",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿En qué podemos ayudarte?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto, tus necesidades o cualquier pregunta que tengas...",
+      "submit": "Enviar Mensaje",
+      "privacy": "Al enviar este formulario, aceptas que procesemos tu información de contacto."
+    },
+    "contactInfo": {
+      "title": "Información de Contacto",
+      "subtitle": "Otras formas de ponerte en contacto con nosotros.",
+      "email": {
+        "title": "Email Directo"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "defaultMessage": "Hola! Me gustaría saber más sobre sus servicios."
+      },
+      "responseTime": {
+        "title": "Tiempo de Respuesta",
+        "description": "Menos de 24 horas hábiles"
+      },
+      "github": {
+        "title": "GitHub"
+      },
+      "linkedin": {
+        "title": "LinkedIn"
+      }
+    },
+    "quickContact": {
+      "title": "¿Prefieres un email directo?",
+      "description": "Envíanos un email y te responderemos lo antes posible.",
+      "button": "Enviar Email Directo"
     }
   },
   "ServicesPage": {

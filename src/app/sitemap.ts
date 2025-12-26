@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://devminds.online'
   
   // Rutas disponibles
-  const routes = ['', '/about', '/services', '/portfolio']
+  const routes = ['', '/about', '/services', '/portfolio', '/contact']
   const languages = ['es'] // Temporalmente solo español activo
   
   const urls: MetadataRoute.Sitemap = []

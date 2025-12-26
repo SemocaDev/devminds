@@ -44,7 +44,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="numbered-section section-title justify-center" data-number="03">
+          <h2 className="numbered-section section-title justify-center" data-number="04">
             {t('title')}
           </h2>
           <p className="subtitle max-w-2xl mx-auto">

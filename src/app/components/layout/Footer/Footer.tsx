@@ -21,7 +21,7 @@ const Footer = () => {
 
   const resources = [
     { label: t('resources.portfolio'), href: `/${lang}/portfolio` },
-    { label: t('resources.faq'), href: `/${lang}#faq` },
+    { label: t('resources.faq'), href: `/${lang}/#faq` },
   ];
 
   const social = [

@@ -4,11 +4,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import HeroBackground from "@/app/components/backgrounds/HeroBackground";
 
 const Hero = () => {
   const t = useTranslations("Hero");
+  const params = useParams();
+  const lang = params.lang as string;
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "DevMinds";
 
@@ -95,7 +98,7 @@ const Hero = () => {
               size="lg"
               className="group cursor-pointer"
             >
-              <Link href="/portfolio">
+              <Link href={`/${lang}/portfolio`}>
                 {t("viewProjects")}
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -108,7 +111,7 @@ const Hero = () => {
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
             >
-              <Link href="/contact">
+              <Link href={`/${lang}/contact`}>
                 {t("contactButton")}
               </Link>
             </Button>

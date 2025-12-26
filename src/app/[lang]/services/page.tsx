@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 import {
   Code2,
   Palette,
@@ -94,6 +95,8 @@ const techStack = {
 
 export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
+  const params = useParams();
+  const lang = params.lang as string;
 
   return (
     <>
@@ -235,7 +238,7 @@ export default function ServicesPage() {
           </motion.div>
 
           {/* Tech Categories */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             {Object.entries(techStack).map(([category, techs], categoryIndex) => (
               <motion.div
                 key={category}
@@ -244,10 +247,15 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               >
-                <h3 className="text-xl font-bold mb-6 capitalize">
-                  {t(`techStack.categories.${category}`)}
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="h-1 w-12 bg-primary rounded-full" />
+                  <h3 className="text-2xl font-bold capitalize">
+                    {t(`techStack.categories.${category}`)}
+                  </h3>
+                  <div className="h-1 flex-1 bg-border rounded-full" />
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {techs.map((tech, techIndex) => {
                     const TechIcon = tech.icon;
                     return (
@@ -257,23 +265,36 @@ export default function ServicesPage() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: techIndex * 0.05 }}
-                        className="flex flex-col items-center gap-3 p-4 rounded-lg bg-card hover:shadow-md transition-shadow group"
+                        className="group relative"
                       >
-                        <div className="w-12 h-12 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all">
-                          <TechIcon
-                            className="w-full h-full transition-colors"
-                            style={{ color: "currentColor" }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color = tech.color;
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color = "currentColor";
-                            }}
-                          />
+                        <div className="relative h-full p-6 rounded-xl bg-card border-2 border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                          {/* Icon */}
+                          <div className="flex flex-col items-center gap-4">
+                            <div className="w-16 h-16 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                              <TechIcon
+                                className="w-full h-full transition-all duration-300 group-hover:scale-110"
+                                style={{ color: "currentColor" }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.color = tech.color;
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.color = "currentColor";
+                                }}
+                              />
+                            </div>
+
+                            {/* Name */}
+                            <div className="text-center">
+                              <span className="text-sm font-semibold group-hover:text-primary transition-colors">
+                                {tech.name}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Decorative corner accent */}
+                          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary rounded-bl-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <span className="text-sm font-medium text-center">
-                          {tech.name}
-                        </span>
                       </motion.div>
                     );
                   })}
@@ -301,7 +322,7 @@ export default function ServicesPage() {
               {t("cta.subtitle")}
             </p>
             <Link
-              href="/contact"
+              href={`/${lang}/contact`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
             >
               {t("cta.button")}

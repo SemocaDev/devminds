@@ -81,26 +81,20 @@ export default function TechStack() {
 
       <div className="container-main relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+        <motion.div
+          className="text-center mb-16 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="numbered-section section-title justify-center" data-number="03">
             {t("title")}
-          </motion.h2>
-          <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          </h2>
+          <p className="subtitle max-w-2xl mx-auto">
             {t("subtitle")}
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
       </div>
 
       {/* Marquee fuera del container para full width */}
