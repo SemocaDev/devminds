@@ -20,7 +20,7 @@ const CallToAction = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section className="py-16 md:py-20 lg:py-24 bg-muted/50">
       <div className="container-main">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -35,7 +35,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section-spacing bg-background">
+    <section id="projects" className="section-spacing bg-muted/50">
       <div className="container-main">
         <motion.div
           className="text-center mb-16 space-y-4"

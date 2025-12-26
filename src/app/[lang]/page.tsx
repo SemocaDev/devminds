@@ -46,15 +46,13 @@ export default function Home() {
 
             {/* Resto de secciones reveladas con scroll */}
             <ScrollRevealWrapper isVisible={hasScrolled} delay={0.2}>
-              {/* CallToAction con fondo de gradiente */}
-              <div className="gradient-bg">
-                <CallToAction />
-              </div>
+              {/* CallToAction */}
+              <CallToAction />
 
               {/* About con fondo claro */}
               <AboutUs />
 
-              {/* Services con gradiente */}
+              {/* Services */}
               <Services />
 
               {/* TechStack - Cinta infinita de tecnologías */}
@@ -70,9 +68,7 @@ export default function Home() {
               <FAQ />
 
               {/* Contact CTA */}
-              <div className="gradient-bg">
-                <ContactCTA />
-              </div>
+              <ContactCTA />
             </ScrollRevealWrapper>
           </main>
 

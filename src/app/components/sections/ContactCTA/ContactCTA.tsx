@@ -13,10 +13,10 @@ const ContactCTA = () => {
   const lang = params.lang as string;
 
   return (
-    <section id="contact" className="py-16 md:py-20">
+    <section id="contact" className="py-16 md:py-20 lg:py-24 bg-background">
       <div className="container-main">
         <motion.div
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-background to-accent/10 border-2 border-primary/20 shadow-2xl"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/5 via-background/50 to-accent/5 border-2 border-primary/20 shadow-2xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

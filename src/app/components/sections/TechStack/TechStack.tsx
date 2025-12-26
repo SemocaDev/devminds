@@ -41,9 +41,9 @@ export default function TechStack() {
   const t = useTranslations("TechStack");
 
   return (
-    <section id="techstack" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="techstack" className="section-spacing bg-background relative overflow-hidden">
       {/* Fondo decorativo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-muted/30 to-background/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background pointer-events-none" />
 
       {/* CSS para animación infinita suave */}
       <style jsx>{`
@@ -160,8 +160,8 @@ export default function TechStack() {
         </div>
 
         {/* Gradient Overlays para efecto fade en los bordes */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-muted/30 to-transparent pointer-events-none z-10" />
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-muted/30 to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );
