@@ -5,7 +5,26 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, MapPin, Calendar, Code2, Gamepad2, BookOpen, ChefHat, Database, Linkedin as LinkedinIcon, Github as GithubIcon } from 'lucide-react';
+import {
+  Mail,
+  MapPin,
+  Calendar,
+  Code2,
+  Gamepad2,
+  BookOpen,
+  ChefHat,
+  Database,
+  Linkedin as LinkedinIcon,
+  Github as GithubIcon,
+  Lightbulb,
+  Target,
+  Heart,
+  Zap,
+  Shield,
+  Users,
+  Clock,
+  MessageCircle
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/app/components/layout/Navbar';
@@ -225,6 +244,75 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
+            {/* Historia de DevMinds */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-20"
+            >
+              <div className="max-w-4xl mx-auto">
+                <div className="flex items-center gap-3 mb-6">
+                  <Lightbulb className="w-8 h-8 text-primary" />
+                  <h2 className="text-3xl font-bold">{t('history.title')}</h2>
+                </div>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p className="text-lg">{t('history.paragraph1')}</p>
+                  <p className="text-lg">{t('history.paragraph2')}</p>
+                  <p className="text-lg">{t('history.paragraph3')}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Valores de la Empresa */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-20"
+            >
+              <h2 className="text-3xl font-bold text-center mb-12">
+                {t('values.title')}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                {[
+                  { icon: Zap, key: 'innovation', color: 'text-yellow-500' },
+                  { icon: Heart, key: 'quality', color: 'text-red-500' },
+                  { icon: Shield, key: 'commitment', color: 'text-blue-500' },
+                  { icon: Users, key: 'transparency', color: 'text-green-500' },
+                ].map((value, index) => {
+                  const Icon = value.icon;
+                  return (
+                    <motion.div
+                      key={value.key}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <Card className="h-full hover:shadow-lg transition-shadow">
+                        <CardContent className="p-6 text-center">
+                          <div className="flex justify-center mb-4">
+                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                              <Icon className={`w-8 h-8 ${value.color}`} />
+                            </div>
+                          </div>
+                          <h3 className="text-xl font-bold mb-2">
+                            {t(`values.${value.key}.title`)}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {t(`values.${value.key}.description`)}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
             {/* Founders Carousel */}
             {founders.length > 0 && (
               <motion.div
@@ -313,6 +401,51 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             )}
+
+            {/* Por qué elegirnos */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-20"
+            >
+              <h2 className="text-3xl font-bold text-center mb-12">
+                {t('whyChooseUs.title')}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                {[
+                  { icon: Code2, key: 'cleanCode', color: 'bg-blue-500' },
+                  { icon: MessageCircle, key: 'communication', color: 'bg-green-500' },
+                  { icon: Clock, key: 'onTime', color: 'bg-purple-500' },
+                  { icon: Target, key: 'support', color: 'bg-orange-500' },
+                ].map((reason, index) => {
+                  const Icon = reason.icon;
+                  return (
+                    <motion.div
+                      key={reason.key}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="text-center"
+                    >
+                      <div className="flex flex-col items-center gap-3">
+                        <div className={`w-14 h-14 rounded-lg ${reason.color} flex items-center justify-center`}>
+                          <Icon className="w-7 h-7 text-white" />
+                        </div>
+                        <h3 className="font-bold text-lg">
+                          {t(`whyChooseUs.${reason.key}.title`)}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {t(`whyChooseUs.${reason.key}.description`)}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>

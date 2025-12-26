@@ -267,6 +267,50 @@
       "databases": "Bases de Datos",
       "reading": "Lectura",
       "coding": "Programación"
+    },
+    "history": {
+      "title": "Nuestra Historia",
+      "paragraph1": "DevMinds nació de la pasión por crear soluciones digitales que realmente marcan la diferencia. Como recién graduados en ingeniería de software, identificamos una oportunidad clara: muchas empresas y emprendedores necesitan tecnología de calidad, pero se encuentran con soluciones genéricas o demasiado costosas.",
+      "paragraph2": "Decidimos crear DevMinds con una visión clara: ofrecer desarrollo web y software personalizado con los más altos estándares de calidad, utilizando las tecnologías más modernas del mercado. Nuestro enfoque se centra en entender las necesidades reales de cada cliente y construir soluciones que no solo funcionen, sino que escalen y perduren en el tiempo.",
+      "paragraph3": "Hoy, DevMinds es más que una empresa de desarrollo. Somos un equipo de profesionales comprometidos con la excelencia técnica, la comunicación transparente y la satisfacción del cliente. Cada proyecto que realizamos es una oportunidad para demostrar que la tecnología bien hecha puede transformar negocios."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "innovation": {
+        "title": "Innovación",
+        "description": "Adoptamos las últimas tecnologías y mejores prácticas para ofrecer soluciones modernas y eficientes"
+      },
+      "quality": {
+        "title": "Calidad",
+        "description": "Código limpio, arquitectura sólida y atención al detalle en cada línea que escribimos"
+      },
+      "commitment": {
+        "title": "Compromiso",
+        "description": "Tu proyecto es nuestra prioridad. Nos comprometemos con plazos, calidad y resultados"
+      },
+      "transparency": {
+        "title": "Transparencia",
+        "description": "Comunicación clara y honesta en cada etapa del proyecto, sin sorpresas ni costos ocultos"
+      }
+    },
+    "whyChooseUs": {
+      "title": "¿Por qué elegirnos?",
+      "cleanCode": {
+        "title": "Código Limpio",
+        "description": "Código bien estructurado, documentado y mantenible que facilita futuras actualizaciones"
+      },
+      "communication": {
+        "title": "Comunicación Constante",
+        "description": "Actualizaciones regulares y disponibilidad para resolver dudas en cada etapa"
+      },
+      "onTime": {
+        "title": "Entrega a Tiempo",
+        "description": "Cumplimos con los plazos establecidos sin comprometer la calidad del producto"
+      },
+      "support": {
+        "title": "Soporte Post-Lanzamiento",
+        "description": "No te dejamos solo. Ofrecemos soporte continuo y mantenimiento después del lanzamiento"
+      }
     }
   },
   "TechStack": {
