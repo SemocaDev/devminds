@@ -51,7 +51,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
           >
             {t("title")}
           </motion.h2>
@@ -60,7 +60,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             {t("subtitle")}
           </motion.p>
@@ -77,7 +77,7 @@ export default function Process() {
                 initial={{ width: "0%" }}
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.3 }}
+                transition={{ duration: 2.5, delay: 0.4 }}
               />
             </div>
 
@@ -92,7 +92,7 @@ export default function Process() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                    transition={{ duration: 0.8, delay: 0.4 + index * 0.15 }}
                   >
                     {/* Icon Circle */}
                     <div className="relative z-10 w-40 h-40 rounded-full bg-background border-4 border-primary flex flex-col items-center justify-center mb-6 shadow-lg">
@@ -126,7 +126,7 @@ export default function Process() {
                 initial={{ height: "0%" }}
                 whileInView={{ height: "100%" }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.3 }}
+                transition={{ duration: 2.5, delay: 0.4 }}
               />
             </div>
 
@@ -141,7 +141,7 @@ export default function Process() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.8 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
+                    transition={{ duration: 0.8, delay: 0.4 + index * 0.12 }}
                   >
                     {/* Icon Circle */}
                     <div className="relative z-10 w-20 h-20 rounded-full bg-background border-4 border-primary flex flex-col items-center justify-center flex-shrink-0 shadow-lg">
