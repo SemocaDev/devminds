@@ -5,9 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 export default function NotFound() {
   const t = useTranslations('NotFound');
+  const params = useParams();
+  const lang = params.lang as string;
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       <div className="container-main relative z-10">
@@ -84,7 +87,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-wrap gap-4 justify-center pt-4"
           >
-            <Link href="/">
+            <Link href={`/${lang}`}>
               <Button size="lg" className="group">
                 <Home className="mr-2 w-5 h-5" />
                 {t('backHome')}
@@ -113,16 +116,16 @@ export default function NotFound() {
               {t('usefulPages')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center text-sm">
-              <Link href="/#about" className="text-primary hover:underline">
+              <Link href={`/${lang}/about`} className="text-primary hover:underline">
                 {t('aboutLink')}
               </Link>
-              <Link href="/#services" className="text-primary hover:underline">
+              <Link href={`/${lang}/services`} className="text-primary hover:underline">
                 {t('servicesLink')}
               </Link>
-              <Link href="/#projects" className="text-primary hover:underline">
+              <Link href={`/${lang}/portfolio`} className="text-primary hover:underline">
                 {t('projectsLink')}
               </Link>
-              <Link href="/#contact" className="text-primary hover:underline">
+              <Link href={`/${lang}/contact`} className="text-primary hover:underline">
                 {t('contactLink')}
               </Link>
             </div>
