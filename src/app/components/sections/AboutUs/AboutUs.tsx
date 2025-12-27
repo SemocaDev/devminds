@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import NetworkAnimation from '@/app/components/animations/NetworkAnimation';
 
 const AboutUs = () => {
   const t = useTranslations('AboutUs');
@@ -97,7 +98,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            {/* Columna derecha: Imagen/Placeholder */}
+            {/* Columna derecha: Animación de Red */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -105,21 +106,12 @@ const AboutUs = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative group"
             >
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary via-accent to-primary overflow-hidden relative">
-                {/* Overlay con patrón */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 overflow-hidden relative border border-primary/10">
+                {/* Animación de red interconectada */}
+                <NetworkAnimation />
 
-                {/* Efecto de brillo en hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
-                </div>
-
-                {/* Logo o texto centrado */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl md:text-8xl font-bold text-white/20 select-none">
-                    DM
-                  </span>
-                </div>
+                {/* Overlay sutil en hover */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
 
               {/* Efecto de sombra en hover */}
