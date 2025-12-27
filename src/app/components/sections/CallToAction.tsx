@@ -26,13 +26,13 @@ const CallToAction = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="max-w-6xl mx-auto"
         >
           {/* Card principal con diseño profesional y compacto */}
-          <Card className="relative overflow-hidden border-2 border-primary/20 bg-card/90 shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-xl" />
+          <Card className="relative overflow-hidden border-2 border-primary/20 bg-card shadow-2xl">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/5 to-transparent rounded-full" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full" />
 
             <div className="relative z-10 p-6 md:p-10 lg:p-12">
               <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-8 lg:gap-12 items-center">
@@ -58,19 +58,15 @@ const CallToAction = () => {
                     {features.map((feature, index) => {
                       const Icon = feature.icon;
                       return (
-                        <motion.div
+                        <div
                           key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: index * 0.1 }}
                           className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/30 transition-all"
                         >
                           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent p-2 flex items-center justify-center flex-shrink-0">
                             <Icon className="w-full h-full text-white" />
                           </div>
                           <span className="text-sm font-semibold">{feature.text}</span>
-                        </motion.div>
+                        </div>
                       );
                     })}
                   </div>
@@ -92,31 +88,23 @@ const CallToAction = () => {
 
                 {/* Stats visuales compactos */}
                 <div className="space-y-3 lg:pl-4">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-3"
-                  >
-                    {/* Stat 1 */}
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20">
-                      <div className="text-3xl font-bold text-blue-600 mb-1">24h</div>
-                      <div className="text-xs font-medium text-muted-foreground">Tiempo de respuesta</div>
-                    </div>
+                  {/* Stat 1 */}
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20">
+                    <div className="text-3xl font-bold text-blue-600 mb-1">24h</div>
+                    <div className="text-xs font-medium text-muted-foreground">Tiempo de respuesta</div>
+                  </div>
 
-                    {/* Stat 2 */}
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20">
-                      <div className="text-3xl font-bold text-green-600 mb-1">100%</div>
-                      <div className="text-xs font-medium text-muted-foreground">Proyectos completados</div>
-                    </div>
+                  {/* Stat 2 */}
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20">
+                    <div className="text-3xl font-bold text-green-600 mb-1">100%</div>
+                    <div className="text-xs font-medium text-muted-foreground">Proyectos completados</div>
+                  </div>
 
-                    {/* Stat 3 */}
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-500/20">
-                      <div className="text-3xl font-bold text-purple-600 mb-1">5★</div>
-                      <div className="text-xs font-medium text-muted-foreground">Calidad garantizada</div>
-                    </div>
-                  </motion.div>
+                  {/* Stat 3 */}
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-500/20">
+                    <div className="text-3xl font-bold text-purple-600 mb-1">5★</div>
+                    <div className="text-xs font-medium text-muted-foreground">Calidad garantizada</div>
+                  </div>
                 </div>
 
               </div>
