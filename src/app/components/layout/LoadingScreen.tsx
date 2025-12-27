@@ -11,25 +11,60 @@ interface LoadingScreenProps {
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const t = useTranslations('LoadingScreen');
   const [progress, setProgress] = useState(0);
+  const [isPageReady, setIsPageReady] = useState(false);
 
   useEffect(() => {
-    // Simular progreso de carga
-    const interval = setInterval(() => {
+    // Progreso simulado mientras la página real se carga
+    const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          // Esperar un poco antes de ocultar la pantalla
-          setTimeout(() => {
-            onLoadingComplete?.();
-          }, 500);
-          return 100;
-        }
-        return prev + 10;
+        // Aumentar más rápido al inicio, más lento cerca del 90%
+        if (prev < 60) return prev + 15;
+        if (prev < 90) return prev + 5;
+        return prev; // Pausar en 90% hasta que la página esté lista
       });
-    }, 150);
+    }, 100);
 
-    return () => clearInterval(interval);
-  }, [onLoadingComplete]);
+    // Detectar cuando la página ha cargado completamente
+    const checkPageReady = () => {
+      if (document.readyState === 'complete') {
+        setIsPageReady(true);
+      }
+    };
+
+    // Verificar inmediatamente
+    checkPageReady();
+
+    // Escuchar el evento de carga completa
+    window.addEventListener('load', checkPageReady);
+    document.addEventListener('readystatechange', checkPageReady);
+
+    return () => {
+      clearInterval(progressInterval);
+      window.removeEventListener('load', checkPageReady);
+      document.removeEventListener('readystatechange', checkPageReady);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Cuando la página esté lista, completar el progreso
+    if (isPageReady) {
+      const completeProgress = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(completeProgress);
+            // Esperar un poco antes de ocultar la pantalla
+            setTimeout(() => {
+              onLoadingComplete?.();
+            }, 300);
+            return 100;
+          }
+          return Math.min(prev + 10, 100);
+        });
+      }, 50);
+
+      return () => clearInterval(completeProgress);
+    }
+  }, [isPageReady, onLoadingComplete]);
 
   return (
     <motion.div

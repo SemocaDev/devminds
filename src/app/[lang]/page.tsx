@@ -23,11 +23,28 @@ import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 export default function Home() {
   const { hasScrolled } = useScrollReveal(300);
   const [isLoading, setIsLoading] = useState(true);
+  const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    // Verificar si ya se mostró el loading en esta sesión
+    const hasSeenLoading = sessionStorage.getItem('devminds-loading-shown');
+
+    if (hasSeenLoading) {
+      // Si ya se vio, no mostrar la pantalla de carga
+      setIsLoading(false);
+      setShowLoading(false);
+    } else {
+      // Primera vez en esta sesión, mostrar loading
+      setShowLoading(true);
+      // Marcar como visto para el resto de la sesión
+      sessionStorage.setItem('devminds-loading-shown', 'true');
+    }
+  }, []);
 
   return (
     <>
       <AnimatePresence mode="wait">
-        {isLoading && (
+        {showLoading && isLoading && (
           <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
