@@ -79,54 +79,6 @@
           "labelKey": "databases"
         }
       ]
-    },
-    {
-      "id": "maria-vargas",
-      "name": "Maria Jose Vargas Bustos",
-      "nickname": "Mavabu",
-      "role": "psychologist",
-      "hierarchy": "marketing",
-      "specialization": "uxResearch",
-      "bio": "mariaBio",
-      "location": "Colombia",
-      "education": "Placeholder University",
-      "skills": [
-        "UX Research",
-        "User Psychology",
-        "Content Strategy",
-        "Digital Marketing"
-      ],
-      "interests": [
-        {
-          "icon": "BookOpen",
-          "labelKey": "reading"
-        }
-      ]
-    },
-    {
-      "id": "carlos-castillo",
-      "name": "Carlos Alberto Castillo Roa",
-      "nickname": "CarlosLite",
-      "role": "softwareEngineer",
-      "hierarchy": "developer",
-      "specialization": "fullstack",
-      "bio": "carlosBio",
-      "location": "Colombia",
-      "education": "Placeholder University",
-      "skills": [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Express",
-        "TypeScript",
-        "Docker"
-      ],
-      "interests": [
-        {
-          "icon": "Code2",
-          "labelKey": "coding"
-        }
-      ]
     }
   ]
 }

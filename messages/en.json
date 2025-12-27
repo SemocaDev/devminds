@@ -1,11 +1,11 @@
 {
   "Hero": {
-    "title": "SYSTEMS//<wbr>OPTIMIZED",
-    "subtitle": "DIGITAL SOLUTIONS ENGINEERING",
-    "aboutText": "DevMinds delivers precision-coded architectures for the post-digital era. Specializing in lean full-stack implementations. No legacy code. No technical debt. Pure computational efficiency.",
+    "title": "OPTIMIZED//<wbr>SYSTEMS",
+    "subtitle": "DIGITAL SOLUTIONS ARCHITECTURE",
+    "aboutText": "DevMinds builds custom digital infrastructures from fundamental principles. Modular designs. Scalable architectures. No unnecessary complexity. Technology that works.",
     "greeting": "Hello, we are",
     "mainSubtitle": "We build professional digital solutions",
-    "description": "We are a company specialized in web development, mobile applications and technology consulting. We transform ideas into exceptional digital products.",
+    "description": "We are a company specialized in web development, mobile applications, and technology consulting. We transform ideas into exceptional digital products.",
     "viewProjects": "View Projects",
     "contactButton": "Contact"
   },
@@ -14,14 +14,16 @@
     "services": "SERVICES",
     "about": "ABOUT",
     "contact": "CONTACT",
-    "soon": "SOON"
+    "soon": "COMING SOON"
   },
   "Navbar": {
     "home": "Home",
     "portfolio": "Portfolio",
     "about": "About",
     "services": "Services",
+    "stack": "Stack",
     "projects": "Projects",
+    "process": "Process",
     "faq": "FAQ",
     "contact": "Contact",
     "startProject": "Start Project"
@@ -35,17 +37,17 @@
     "responseTime": "Guaranteed response in < 24 hours",
     "feature1": "Optimized architecture",
     "feature2": "Clean and scalable code",
-    "feature3": "Zero technical debt",
+    "feature3": "No technical debt",
     "status": "Ready for deployment",
     "statusLabel": "Status:",
-    "onlineReady": "Online & Ready"
+    "onlineReady": "Online and ready"
   },
   "AboutUs": {
     "title": "About Us",
-    "description": "We are a team specialized in creating cutting-edge digital solutions. We focus on clean architectures, scalable code and results that stand the test of time.",
-    "paragraph1": "We are DevMinds, a team of developers passionate about creating digital solutions that transform businesses. We specialize in modern web development, mobile applications and technology consulting.",
+    "description": "We are a team specialized in creating cutting-edge digital solutions. We focus on clean architectures, scalable code, and results that stand the test of time.",
+    "paragraph1": "We are DevMinds, a team of developers passionate about creating digital solutions that transform businesses. We specialize in modern web development, mobile applications, and technology consulting.",
     "paragraph2": "Our approach focuses on understanding each client's unique needs to deliver customized solutions that truly work and scale.",
-    "paragraph3": "We work with the latest technologies on the market, ensuring your project is ready for the future.",
+    "paragraph3": "We work with the latest technologies on the market, ensuring your project is prepared for the future.",
     "technologiesLabel": "Technologies we master:",
     "meetTheTeam": "Meet the Team",
     "stats": {
@@ -63,39 +65,46 @@
     },
     "value3": {
       "title": "Quality",
-      "description": "No technical debt, just clean and maintainable code"
+      "description": "No technical debt, only clean and maintainable code"
     },
     "ctaButton": "Learn more about us"
   },
   "Services": {
     "title": "Our Services",
     "subtitle": "Comprehensive technology solutions to bring your digital ideas to life",
-    "web": {
+    "webdev": {
       "title": "Web Development",
-      "description": "Landing pages, corporate sites and modern web applications"
+      "description": "Landing pages, corporate websites, and modern web applications with the latest technologies"
     },
-    "software": {
+    "custom": {
       "title": "Custom Software",
-      "description": "Tailor-made applications that solve specific problems"
+      "description": "Tailored applications that solve your business's specific problems"
+    },
+    "wordpress": {
+      "title": "WordPress & CMS",
+      "description": "Manageable websites with WordPress, optimized for SEO and performance"
     },
     "consulting": {
       "title": "Technical Consulting",
-      "description": "Code audits and optimization of existing systems"
-    },
-    "support": {
-      "title": "Support & Maintenance",
-      "description": "Continuous support to keep your technology up to date"
+      "description": "Code audits, architecture, and optimization of existing systems"
     },
     "ctaButton": "View all services"
   },
   "Projects": {
     "title": "Featured Projects",
     "subtitle": "Some examples of our work and the technologies we use",
-    "ctaButton": "View complete portfolio"
+    "ctaButton": "View full portfolio"
+  },
+  "ContactCTA": {
+    "title": "Have a project in mind?",
+    "subtitle": "We're ready to help you turn your ideas into reality. Contact us and let's start working together.",
+    "primaryButton": "Contact Us Now",
+    "secondaryButton": "Send Email",
+    "responseTime": "⚡ Response in less than 24 hours"
   },
   "Contact": {
     "title": "Let's Talk About Your Project",
-    "subtitle": "Have an idea? Tell us and let's work together to make it happen",
+    "subtitle": "Have an idea? Tell us about it and let's work together to make it happen",
     "form": {
       "name": "Name",
       "namePlaceholder": "Your full name",
@@ -118,14 +127,29 @@
     "detailedContact": "More contact options"
   },
   "Footer": {
-    "copyright": "© {year} DevMinds. All rights reserved."
+    "copyright": "© {year} DevMinds. All rights reserved.",
+    "tagline": "Professional digital solutions",
+    "navigation": "Navigation",
+    "resourcesTitle": "Resources",
+    "social": "Social Media",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "contact": "Contact"
+    },
+    "resources": {
+      "portfolio": "Projects",
+      "faq": "Frequently Asked Questions"
+    }
   },
   "LoadingScreen": {
     "loading": "Loading experience..."
   },
   "NotFound": {
     "title": "Page not found",
-    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved.",
     "backHome": "Back to Home",
     "goBack": "Go Back",
     "usefulPages": "Useful pages:",
@@ -146,43 +170,43 @@
     "questions": {
       "faq-general-1": {
         "question": "What services does DevMinds offer?",
-        "answer": "We offer modern web development, custom software, technical consulting and ongoing support. We work with the latest technologies to create scalable and efficient digital solutions."
+        "answer": "We offer modern web development, custom software, technical consulting, and ongoing support. We work with the latest technologies to create scalable and efficient digital solutions."
       },
       "faq-general-2": {
-        "question": "What makes DevMinds different from other development companies?",
-        "answer": "We focus on clean architectures, scalable code and zero technical debt. Each project is treated with personalized dedication, ensuring solutions that truly work and stand the test of time."
+        "question": "What sets DevMinds apart from other development companies?",
+        "answer": "We focus on clean architectures, scalable code, and no technical debt. Each project is treated with personalized dedication, ensuring solutions that truly work and stand the test of time."
       },
       "faq-general-3": {
         "question": "How can I start a project with DevMinds?",
-        "answer": "It's simple: contact us through the form, email or WhatsApp. We'll schedule a free initial consultation to understand your needs and design a tailored solution."
+        "answer": "It's simple: contact us through the form, email, or WhatsApp. We'll schedule a free initial consultation to understand your needs and design a customized solution."
       },
       "faq-services-1": {
         "question": "Do you handle complete web development projects?",
-        "answer": "Yes, we develop everything from landing pages to complex web applications with Next.js, React, TypeScript and all the modern technologies needed for a robust product."
+        "answer": "Yes, we work with all types of projects: from simple sites with WordPress or Wix to complex custom-built web applications with Next.js, React, TypeScript, and all the modern technologies needed for a robust and scalable product."
       },
       "faq-services-2": {
         "question": "Do you offer consulting services for existing projects?",
-        "answer": "Absolutely. We perform code audits, performance optimization, architecture improvements and technical recommendations for projects in production."
+        "answer": "Absolutely. We perform code audits, performance optimization, architecture improvements, and technical recommendations for projects in production."
       },
       "faq-services-3": {
         "question": "Do you provide support after project delivery?",
-        "answer": "Yes, we offer ongoing support and maintenance plans to ensure your application stays updated, secure and running optimally."
+        "answer": "Yes, we offer ongoing support and maintenance plans to ensure your application stays updated, secure, and running optimally."
       },
       "faq-pricing-1": {
         "question": "How do you handle budgets?",
-        "answer": "Each project is unique. After the initial consultation, we create a detailed proposal with scope, timeline and fixed price. We also offer payment options by stages."
+        "answer": "Each project is unique. After the initial consultation, we prepare a detailed proposal with scope, timeline, and fixed price. We also offer payment options in stages."
       },
       "faq-pricing-2": {
-        "question": "What's the estimated time to complete a project?",
-        "answer": "It depends on scope. A landing page can be ready in 1-2 weeks, while complex applications may take 2-3 months. We always establish clear timelines from the start."
+        "question": "What is the estimated time to complete a project?",
+        "answer": "It depends on the scope. A landing page can be ready in 1-2 weeks, while complex applications can take 2-3 months. We always establish clear timelines from the start."
       },
       "faq-technical-1": {
         "question": "What technologies do you use?",
-        "answer": "We work with React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS and other modern web stack technologies. We choose tools based on each project's specific needs."
+        "answer": "We work with React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS, and other modern web stack technologies. We choose tools based on the specific needs of each project."
       },
       "faq-technical-2": {
-        "question": "Does the source code remain my property?",
-        "answer": "Absolutely. Upon project completion, you receive all source code, documentation and necessary access. You are the complete owner of your product."
+        "question": "Do I own the source code?",
+        "answer": "Absolutely. Upon project completion, you receive all the source code, documentation, and necessary access. You are the complete owner of your product."
       }
     }
   },
@@ -204,22 +228,22 @@
       "softcount": {
         "title": "SoftCount - Accounting Software",
         "description": "Professional accounting software (Under construction)",
-        "fullDescription": "SoftCount is an accounting software developed with Next.js, TypeScript and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution."
+        "fullDescription": "SoftCount is accounting software developed with Next.js, TypeScript, and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution."
       },
       "wilson-isaza": {
         "title": "Wilson Isaza - Political Website",
         "description": "WordPress website for politician",
-        "fullDescription": "WordPress website developed for politician Wilson Isaza. Professional informative platform for his political campaign."
+        "fullDescription": "Website developed in WordPress for politician Wilson Isaza. Professional informational platform for his political campaign."
       },
       "empo-guzman": {
         "title": "Empo Guzmán - Public Companies Website",
-        "description": "Website for public companies on Wix",
-        "fullDescription": "Website developed on Wix for Empo Guzmán, focused on public companies. Design with customized templates."
+        "description": "Website for public companies in Wix",
+        "fullDescription": "Website developed in Wix for Empo Guzmán, focused on public companies. Design with custom templates."
       },
       "devminds-portfolio": {
         "title": "DevMinds - Professional Portfolio",
         "description": "This very website you're viewing",
-        "fullDescription": "Professional portfolio built with Next.js 16, TypeScript, TailwindCSS and Framer Motion. Features multi-language i18n system (ES, EN, JA), smooth animations and modern responsive design."
+        "fullDescription": "Professional portfolio developed with Next.js 16, TypeScript, TailwindCSS, and Framer Motion. Includes multi-language i18n system (ES, EN, JA), smooth animations, and modern responsive design."
       }
     }
   },
@@ -231,7 +255,7 @@
     "contact": "Contact",
     "hierarchy": {
       "founder": "Founder",
-      "co-founder": "Co-Founder",
+      "co-founder": "Co-founder",
       "developer": "Developer",
       "designer": "Designer",
       "marketing": "Marketing"
@@ -241,30 +265,148 @@
       "psychologist": "Psychologist"
     },
     "specializations": {
-      "frontendUX": "Frontend & UX Specialist",
+      "frontendUX": "Frontend and UX Specialist",
       "backend": "Backend Specialist",
       "fullstack": "Full Stack Developer",
-      "uxResearch": "UX Research & Marketing"
+      "uxResearch": "UX Research and Marketing"
     },
     "bios": {
-      "sebastianBio": "Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React and TypeScript. I focus on building modern, efficient and scalable web applications that solve real problems.",
-      "juanBio": "Software Engineer focused on backend development and system architecture. Expert in API design, databases and scalable solutions that support robust applications.",
+      "sebastianBio": "Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React, and TypeScript. I focus on building modern, efficient, and scalable web applications that solve real problems.",
+      "juanBio": "Software Engineer focused on backend development and system architecture. Expert in API design, databases, and scalable solutions that support robust applications.",
       "mariaBio": "Psychologist specialized in user research and content strategy. Passionate about understanding user behavior and creating digital experiences that connect emotionally.",
-      "carlosBio": "Full Stack Developer with experience in building complete web applications. Specialized in modern technologies and scalable architectures for both frontend and backend."
+      "carlosBio": "Full Stack Developer with experience creating complete web applications. Specialized in modern technologies and scalable architectures for both frontend and backend."
     },
     "skills": {
       "title": "Technical Skills"
     },
     "interests": {
       "title": "Interests",
-      "gaming": "Gaming",
+      "gaming": "Video Games",
       "anime": "Anime",
       "manga": "Manga",
       "cooking": "Cooking",
       "systemDesign": "System Design",
       "databases": "Databases",
       "reading": "Reading",
-      "coding": "Coding"
+      "coding": "Programming"
+    },
+    "history": {
+      "title": "Our History",
+      "paragraph1": "DevMinds was born from the passion to create digital solutions that truly make a difference. As recent software engineering graduates, we identified a clear opportunity: many businesses and entrepreneurs need quality technology but encounter generic or overly expensive solutions.",
+      "paragraph2": "We decided to create DevMinds with a clear vision: to offer web development and custom software with the highest quality standards, using the most modern technologies on the market. Our focus centers on understanding each client's real needs and building solutions that not only work but scale and stand the test of time.",
+      "paragraph3": "Today, DevMinds is more than a development company. We are a team of professionals committed to technical excellence, transparent communication, and client satisfaction. Every project we undertake is an opportunity to demonstrate that well-crafted technology can transform businesses."
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We adopt the latest technologies and best practices to deliver modern and efficient solutions"
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "Clean code, solid architecture, and attention to detail in every line we write"
+      },
+      "commitment": {
+        "title": "Commitment",
+        "description": "Your project is our priority. We commit to deadlines, quality, and results"
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "Clear and honest communication at every stage of the project, no surprises or hidden costs"
+      }
+    },
+    "whyChooseUs": {
+      "title": "Why choose us?",
+      "cleanCode": {
+        "title": "Clean Code",
+        "description": "Well-structured, documented, and maintainable code that facilitates future updates"
+      },
+      "communication": {
+        "title": "Constant Communication",
+        "description": "Regular updates and availability to answer questions at every stage"
+      },
+      "onTime": {
+        "title": "On-Time Delivery",
+        "description": "We meet established deadlines without compromising product quality"
+      },
+      "support": {
+        "title": "Post-Launch Support",
+        "description": "We don't leave you alone. We offer ongoing support and maintenance after launch"
+      }
+    }
+  },
+  "TechStack": {
+    "title": "Technologies we master",
+    "subtitle": "We work with the most modern and powerful tools on the market to build robust and scalable solutions"
+  },
+  "Process": {
+    "title": "Our Work Process",
+    "subtitle": "A structured and proven approach to take your project from idea to successful launch",
+    "step1": {
+      "title": "Initial Consultation",
+      "description": "We understand your project, needs, and goals to create a customized solution"
+    },
+    "step2": {
+      "title": "Planning",
+      "description": "We design the architecture and select the most suitable technologies"
+    },
+    "step3": {
+      "title": "Development",
+      "description": "We build your solution step by step with constant communication"
+    },
+    "step4": {
+      "title": "Testing & Deploy",
+      "description": "We ensure quality with thorough testing and launch your project"
+    },
+    "step5": {
+      "title": "Support",
+      "description": "Ongoing maintenance and improvements so your project evolves"
+    }
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Contact",
+      "subtitle": "We're here to help you. Tell us about your project and let's work together to make it happen."
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "Fill out the form and we'll get in touch with you as soon as possible.",
+      "name": "Full name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help you?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project, needs, or any questions you have...",
+      "submit": "Send Message",
+      "privacy": "By submitting this form, you agree that we process your contact information."
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "subtitle": "Other ways to get in touch with us.",
+      "email": {
+        "title": "Direct Email"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "defaultMessage": "Hello! I would like to know more about your services."
+      },
+      "responseTime": {
+        "title": "Response Time",
+        "description": "Less than 24 business hours"
+      },
+      "github": {
+        "title": "GitHub"
+      },
+      "linkedin": {
+        "title": "LinkedIn"
+      }
+    },
+    "quickContact": {
+      "title": "Prefer a direct email?",
+      "description": "Send us an email and we'll respond as soon as possible.",
+      "button": "Send Direct Email"
     }
   },
   "EmailTemplate": {
@@ -284,16 +426,168 @@
       "ip": "IP Address",
       "userAgent": "Browser",
       "language": "Form Language",
-      "timestamp": "Date & Time"
+      "timestamp": "Date and Time"
     },
     "footer": {
-      "followUs": "Follow Us",
+      "followUs": "Follow us on",
       "contact": "Direct Contact",
       "email": "semoca00@gmail.com",
       "copyright": "© {year} DevMinds. All rights reserved."
     },
     "cta": {
       "reply": "Reply to Client"
+    }
+  },
+  "ContactForm": {
+    "requiredFieldsLegend": "Fields marked with * are required",
+    "draft": {
+      "recoveryMessage": "We found a saved draft. Do you want to recover it?",
+      "recover": "Recover",
+      "dismiss": "Dismiss"
+    },
+    "placeholders": {
+      "name": "Enter your full name",
+      "email": "name@company.com",
+      "subject": "Subject of your inquiry",
+      "message": "Describe your project, needs, or any questions you have..."
+    },
+    "labels": {
+      "name": "Full name",
+      "email": "Email address",
+      "subjectOptional": "Subject (optional)",
+      "message": "Message"
+    },
+    "characterCount": {
+      "current": "{current} / {max} characters"
+    },
+    "button": {
+      "idle": "Send Message",
+      "loading": "Sending...",
+      "success": "Sent!",
+      "error": "Retry"
+    },
+    "validation": {
+      "NAME_REQUIRED": "Name is required",
+      "NAME_TOO_SHORT": "Name must be at least 2 characters",
+      "NAME_TOO_LONG": "Name cannot exceed 100 characters",
+      "NAME_INVALID_FORMAT": "Name can only contain letters, spaces, hyphens, and apostrophes",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Please enter a valid email",
+      "EMAIL_TOO_LONG": "Email cannot exceed 254 characters",
+      "SUBJECT_TOO_LONG": "Subject cannot exceed 200 characters",
+      "MESSAGE_REQUIRED": "Message is required",
+      "MESSAGE_TOO_SHORT": "Message must be at least 10 characters",
+      "MESSAGE_TOO_LONG": "Message cannot exceed 5000 characters"
+    },
+    "toast": {
+      "success": {
+        "title": "Message sent!",
+        "description": "Thank you for contacting us. We'll respond in less than 24 hours."
+      },
+      "error": {
+        "validation": {
+          "title": "Validation error",
+          "description": "Please review the fields marked in red."
+        },
+        "rateLimit": {
+          "title": "Too many attempts",
+          "description": "You've sent too many messages. Please wait {seconds} seconds."
+        },
+        "network": {
+          "title": "Connection error",
+          "description": "Could not connect to the server. Check your internet connection."
+        },
+        "server": {
+          "title": "Server error",
+          "description": "There was a problem on our server. Please try again later."
+        }
+      }
+    }
+  },
+  "ServicesPage": {
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "Complete technology solutions to transform your ideas into successful digital products"
+    },
+    "services": {
+      "title": "What We Offer?",
+      "technologies": "Technologies",
+      "idealFor": "Ideal for",
+      "features": "Features",
+      "items": {
+        "webdev": {
+          "title": "Modern Web Development",
+          "shortDescription": "Cutting-edge websites and web applications",
+          "description": "We create modern websites and web applications using the most advanced technologies on the market. From impactful landing pages to complex web applications with custom functionalities.",
+          "technologies": "React, Next.js, TypeScript, Tailwind CSS, Framer Motion",
+          "idealFor": "Landing pages, corporate websites, portfolios, interactive web applications",
+          "features": [
+            "Responsive and mobile-first design",
+            "Advanced SEO optimization",
+            "Ultra-fast performance",
+            "Smooth and modern animations",
+            "Integration with APIs and external services"
+          ]
+        },
+        "custom": {
+          "title": "Custom Software",
+          "shortDescription": "Personalized applications for your business",
+          "description": "We develop custom software that perfectly adapts to your specific needs. From internal systems to complex platforms, we create scalable and maintainable solutions.",
+          "technologies": "Node.js, Express, PostgreSQL, MongoDB, TypeScript, Docker",
+          "idealFor": "Management systems, CRM, ERP, SaaS platforms, administrative dashboards",
+          "features": [
+            "Scalable and modular architecture",
+            "Optimized database",
+            "Secure RESTful APIs",
+            "Custom administration panel",
+            "Integration with existing systems"
+          ]
+        },
+        "wordpress": {
+          "title": "WordPress Sites",
+          "shortDescription": "Professional websites with WordPress",
+          "description": "We create professional websites with WordPress, the world's most popular CMS. Custom themes, tailored plugins, and complete optimization for a standout site.",
+          "technologies": "WordPress, PHP, WooCommerce, Custom Themes, Elementor",
+          "idealFor": "Blogs, corporate websites, e-commerce, content portals",
+          "features": [
+            "Custom and unique themes",
+            "Custom-developed plugins",
+            "Speed optimization",
+            "Complete SEO setup",
+            "WooCommerce integration for online stores"
+          ]
+        },
+        "consulting": {
+          "title": "Technical Consulting",
+          "shortDescription": "Expert advice for your projects",
+          "description": "We offer technical consulting services to optimize your existing projects. Code audits, architecture improvements, performance optimization, and best practice recommendations.",
+          "technologies": "Software Architecture, Code Review, Performance, DevOps, Git",
+          "idealFor": "Existing projects, development teams, technology startups",
+          "features": [
+            "Complete code audit",
+            "Architecture and scalability analysis",
+            "Performance optimization",
+            "Best practice recommendations",
+            "Migration and update strategy"
+          ]
+        }
+      }
+    },
+    "techStack": {
+      "title": "Complete Technology Stack",
+      "subtitle": "We work with the most modern and proven technologies on the market",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "cms": "CMS & Templates",
+        "devops": "DevOps & Hosting",
+        "tools": "Tools"
+      }
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "Contact us and let's work together to make your idea a reality",
+      "button": "Contact Now"
     }
   }
 }
