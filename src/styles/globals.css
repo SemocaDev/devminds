@@ -141,4 +141,143 @@
       opacity: 0;
     }
   }
+
+  /* ========================================
+     TOAST CUSTOMIZATION
+     ======================================== */
+
+  /* Base toast styling */
+  [data-sonner-toast] {
+    border-radius: 10px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Success toast - color sólido verde profesional */
+  [data-sonner-toast][data-type="success"] {
+    background: #10b981 !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  [data-sonner-toast][data-type="success"] [data-title] {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    margin-bottom: 4px !important;
+  }
+
+  [data-sonner-toast][data-type="success"] [data-description] {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  [data-sonner-toast][data-type="success"] [data-button] {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  [data-sonner-toast][data-type="success"] [data-button]:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Error toast - color sólido rojo profesional */
+  [data-sonner-toast][data-type="error"] {
+    background: #ef4444 !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  [data-sonner-toast][data-type="error"] [data-title] {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    margin-bottom: 4px !important;
+  }
+
+  [data-sonner-toast][data-type="error"] [data-description] {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Info toast (para el draft recovery) */
+  [data-sonner-toast]:not([data-type]) {
+    background: hsl(var(--card)) !important;
+    color: hsl(var(--foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+  }
+
+  [data-sonner-toast]:not([data-type]) [data-title] {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+  }
+
+  [data-sonner-toast]:not([data-type]) [data-button] {
+    background: hsl(var(--primary)) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  [data-sonner-toast]:not([data-type]) [data-button]:hover {
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+  }
+
+  [data-sonner-toast]:not([data-type]) [data-cancel-button] {
+    background: transparent !important;
+    color: hsl(var(--muted-foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  [data-sonner-toast]:not([data-type]) [data-cancel-button]:hover {
+    background: hsl(var(--muted)) !important;
+    border-color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* Toast icon animations */
+  [data-sonner-toast] [data-icon] {
+    animation: scaleIn 0.3s ease-out !important;
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/* ========================================
+   FIX AUTOFILL BLANCO EN MÓVIL
+   ======================================== */
+@layer base {
+  /* Prevenir background blanco en autofill */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    -webkit-box-shadow: 0 0 0px 1000px hsl(var(--background)) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* Dark mode autofill */
+  .dark input:-webkit-autofill,
+  .dark textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px hsl(var(--card)) inset;
+  }
 }

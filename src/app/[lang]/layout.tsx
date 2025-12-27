@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import ClientThemeWrapper from "@/app/components/ClientThemeWrapper";
+import { Toaster } from "@/components/ui/sonner";
 import "@/styles/globals.css";
 
 // Font configurations
@@ -169,6 +170,16 @@ export default async function RootLayout(props: Props) {
           <NextIntlClientProvider locale={lang} messages={messages}>
             {props.children}
           </NextIntlClientProvider>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              classNames: {
+                toast: 'font-mono',
+                title: 'font-semibold',
+                description: 'text-sm opacity-90',
+              },
+            }}
+          />
         </ClientThemeWrapper>
       </body>
     </html>

@@ -438,6 +438,72 @@
       "reply": "Responder al Cliente"
     }
   },
+  "ContactForm": {
+    "requiredFieldsLegend": "Los campos marcados con * son obligatorios",
+    "draft": {
+      "recoveryMessage": "Encontramos un borrador guardado. ¿Deseas recuperarlo?",
+      "recover": "Recuperar",
+      "dismiss": "Descartar"
+    },
+    "placeholders": {
+      "name": "Ingresa tu nombre completo",
+      "email": "nombre@empresa.com",
+      "subject": "Tema de tu consulta",
+      "message": "Describe tu proyecto, necesidades o cualquier pregunta que tengas..."
+    },
+    "labels": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "subjectOptional": "Asunto (opcional)",
+      "message": "Mensaje"
+    },
+    "characterCount": {
+      "current": "{current} / {max} caracteres"
+    },
+    "button": {
+      "idle": "Enviar Mensaje",
+      "loading": "Enviando...",
+      "success": "¡Enviado!",
+      "error": "Reintentar"
+    },
+    "validation": {
+      "NAME_REQUIRED": "El nombre es obligatorio",
+      "NAME_TOO_SHORT": "El nombre debe tener al menos 2 caracteres",
+      "NAME_TOO_LONG": "El nombre no puede exceder 100 caracteres",
+      "NAME_INVALID_FORMAT": "El nombre solo puede contener letras, espacios, guiones y apóstrofes",
+      "EMAIL_REQUIRED": "El email es obligatorio",
+      "EMAIL_INVALID": "Por favor ingresa un email válido",
+      "EMAIL_TOO_LONG": "El email no puede exceder 254 caracteres",
+      "SUBJECT_TOO_LONG": "El asunto no puede exceder 200 caracteres",
+      "MESSAGE_REQUIRED": "El mensaje es obligatorio",
+      "MESSAGE_TOO_SHORT": "El mensaje debe tener al menos 10 caracteres",
+      "MESSAGE_TOO_LONG": "El mensaje no puede exceder 5000 caracteres"
+    },
+    "toast": {
+      "success": {
+        "title": "¡Mensaje enviado!",
+        "description": "Gracias por contactarnos. Responderemos en menos de 24 horas."
+      },
+      "error": {
+        "validation": {
+          "title": "Error de validación",
+          "description": "Por favor revisa los campos marcados en rojo."
+        },
+        "rateLimit": {
+          "title": "Demasiados intentos",
+          "description": "Has enviado muchos mensajes. Por favor espera {seconds} segundos."
+        },
+        "network": {
+          "title": "Error de conexión",
+          "description": "No se pudo conectar al servidor. Verifica tu conexión a internet."
+        },
+        "server": {
+          "title": "Error del servidor",
+          "description": "Hubo un problema en nuestro servidor. Por favor inténtalo más tarde."
+        }
+      }
+    }
+  },
   "ServicesPage": {
     "hero": {
       "title": "Nuestros Servicios",

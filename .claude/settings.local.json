@@ -3,7 +3,9 @@
     "allow": [
       "Bash(pnpm dlx:*)",
       "Bash(cat:*)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)"
     ]
   }
 }

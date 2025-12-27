@@ -2,7 +2,10 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import {
   Mail,
   Clock,
@@ -10,174 +13,250 @@ import {
   Github,
   Linkedin,
   MessageCircle,
+  Loader2,
   CheckCircle2,
   AlertCircle,
-  Loader2
 } from "lucide-react";
-import contactConfig from "@/config/contact.json";
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer/Footer";
 import SocialSidebar from "@/app/components/layout/SocialSidebar";
 import EmailSidebar from "@/app/components/layout/EmailSidebar";
 
-// Tipos para el estado del formulario
-type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+import { contactMessageSchema, type ContactFormData } from "@/core/domain/contact/schemas/contactMessageSchema";
+import contactConfig from "@/config/contact.json";
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+const DRAFT_KEY = 'devminds_contact_draft';
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+type ButtonStatus = 'idle' | 'loading' | 'success' | 'error';
 
 export default function ContactPage() {
-  const t = useTranslations("ContactPage");
-  const locale = useLocale(); // Obtener idioma actual (es, en, ja)
+  const t = useTranslations("ContactForm");
+  const tPage = useTranslations("ContactPage");
+  const locale = useLocale();
 
-  // Estado del formulario
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+  const [buttonStatus, setButtonStatus] = useState<ButtonStatus>('idle');
+  const [messageLength, setMessageLength] = useState(0);
+  const hasMountedRef = useRef(false);
+
+  // React Hook Form con Zod resolver
+  const form = useForm<ContactFormData>({
+    resolver: async (values, context, options) => {
+      // Resolver con zodResolver
+      const result = await zodResolver(contactMessageSchema)(values, context, options);
+
+      // Traducir los mensajes de error
+      if (result.errors) {
+        Object.keys(result.errors).forEach((key) => {
+          const error = result.errors[key as keyof typeof result.errors];
+          if (error && error.message) {
+            // Traducir el código de error
+            const translationKey = `validation.${error.message}` as any;
+            const translated = t(translationKey);
+
+            // Actualizar el mensaje con la traducción
+            error.message = translated;
+          }
+        });
+      }
+
+      return result;
+    },
+    mode: 'onBlur',
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      website: '', // honeypot
+    },
   });
 
-  const [formErrors, setFormErrors] = useState<FormErrors>({});
-  const [formStatus, setFormStatus] = useState<FormStatus>('idle');
-  const [submitMessage, setSubmitMessage] = useState<string>('');
+  // Watch para contador de caracteres
+  const messageValue = form.watch('message');
+  useEffect(() => {
+    setMessageLength(messageValue?.length || 0);
+  }, [messageValue]);
 
-  /**
-   * Valida el formulario
-   */
-  const validateForm = (): boolean => {
-    const errors: FormErrors = {};
+  // localStorage draft con debounce (1 segundo)
+  useEffect(() => {
+    const subscription = form.watch((values) => {
+      if (values.name || values.email || values.message) {
+        const timeoutId = setTimeout(() => {
+          localStorage.setItem(DRAFT_KEY, JSON.stringify({
+            name: values.name,
+            email: values.email,
+            subject: values.subject,
+            message: values.message,
+            savedAt: new Date().toISOString()
+          }));
+        }, 1000);
+        return () => clearTimeout(timeoutId);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [form]);
 
-    if (!formData.name.trim()) {
-      errors.name = "Name is required";
+  // Recuperar draft al montar componente
+  useEffect(() => {
+    // Prevenir duplicados en React StrictMode
+    if (hasMountedRef.current) return;
+    hasMountedRef.current = true;
+
+    const draft = localStorage.getItem(DRAFT_KEY);
+    if (draft) {
+      try {
+        const draftData = JSON.parse(draft);
+
+        toast(t('draft.recoveryMessage'), {
+          duration: 10000,
+          action: {
+            label: t('draft.recover'),
+            onClick: () => {
+              form.reset(draftData);
+              toast.dismiss();
+            },
+          },
+          cancel: {
+            label: t('draft.dismiss'),
+            onClick: () => {
+              localStorage.removeItem(DRAFT_KEY);
+              toast.dismiss();
+            },
+          },
+        });
+      } catch (error) {
+        console.error('Error parsing draft:', error);
+        localStorage.removeItem(DRAFT_KEY);
+      }
     }
+  }, [form, t]);
 
-    if (!formData.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = "Invalid email format";
-    }
-
-    if (!formData.message.trim()) {
-      errors.message = "Message is required";
-    } else if (formData.message.length > 5000) {
-      errors.message = "Message is too long (max 5000 characters)";
-    }
-
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  /**
-   * Maneja el cambio en los inputs
-   */
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    // Limpiar error del campo cuando el usuario escribe
-    if (formErrors[name as keyof FormErrors]) {
-      setFormErrors(prev => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  /**
-   * Maneja el envío del formulario
-   */
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Validar
-    if (!validateForm()) {
-      return;
-    }
-
-    // Enviar
-    setFormStatus('loading');
-    setSubmitMessage('');
+  // Submit handler
+  const onSubmit = async (data: ContactFormData) => {
+    setButtonStatus('loading');
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          locale // Incluir idioma actual
-        })
+          ...data,
+          locale
+        }),
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
-      if (response.ok && data.success) {
-        setFormStatus('success');
-        setSubmitMessage("Message sent successfully! We'll get back to you soon.");
-        // Limpiar formulario
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+      if (response.ok && result.success) {
+        // Éxito
+        setButtonStatus('success');
+
+        toast.success(t('toast.success.title'), {
+          description: t('toast.success.description'),
+          duration: 5000,
         });
+
+        // Limpiar formulario y draft
+        form.reset();
+        localStorage.removeItem(DRAFT_KEY);
+
+        // Scroll suave al top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Volver a idle después de 2 segundos
+        setTimeout(() => setButtonStatus('idle'), 2000);
+
       } else {
-        setFormStatus('error');
-        setSubmitMessage(data.error || "Failed to send message. Please try again.");
+        // Error
+        setButtonStatus('error');
+        const errorCode = result.errorCode || 'UNKNOWN';
+
+        switch (errorCode) {
+          case 'RATE_LIMIT_EXCEEDED':
+            toast.error(t('toast.error.rateLimit.title'), {
+              description: t('toast.error.rateLimit.description', {
+                seconds: result.retryAfter || 60
+              }),
+              duration: 8000,
+            });
+            break;
+
+          case 'VALIDATION_ERROR':
+            toast.error(t('toast.error.validation.title'), {
+              description: t('toast.error.validation.description'),
+              duration: 5000,
+            });
+            break;
+
+          default:
+            toast.error(t('toast.error.server.title'), {
+              description: t('toast.error.server.description'),
+              duration: 5000,
+            });
+        }
+
+        setTimeout(() => setButtonStatus('idle'), 3000);
       }
     } catch (error) {
-      setFormStatus('error');
-      setSubmitMessage("Failed to send message. Please try again.");
       console.error('Contact form error:', error);
+      setButtonStatus('error');
+
+      toast.error(t('toast.error.network.title'), {
+        description: t('toast.error.network.description'),
+        duration: 5000,
+      });
+
+      setTimeout(() => setButtonStatus('idle'), 3000);
     }
   };
 
+  // Info de contacto
   const contactInfo = [
     {
       icon: Mail,
-      title: t("contactInfo.email.title"),
+      title: tPage("contactInfo.email.title"),
       description: contactConfig.email,
       href: `mailto:${contactConfig.email}`,
       color: "text-blue-500"
     },
     {
       icon: MessageCircle,
-      title: t("contactInfo.whatsapp.title"),
+      title: tPage("contactInfo.whatsapp.title"),
       description: contactConfig.phone,
-      href: `https://wa.me/${contactConfig.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t("contactInfo.whatsapp.defaultMessage"))}`,
+      href: `https://wa.me/${contactConfig.phone.replace(/\+/g, '')}?text=${encodeURIComponent(tPage("contactInfo.whatsapp.defaultMessage"))}`,
       color: "text-green-500"
     },
     {
       icon: Clock,
-      title: t("contactInfo.responseTime.title"),
-      description: t("contactInfo.responseTime.description"),
+      title: tPage("contactInfo.responseTime.title"),
+      description: tPage("contactInfo.responseTime.description"),
       color: "text-amber-500"
     },
     {
       icon: Github,
-      title: t("contactInfo.github.title"),
+      title: tPage("contactInfo.github.title"),
       description: "@SemocaDev",
       href: contactConfig.socials.github,
       color: "text-purple-500"
     },
     {
       icon: Linkedin,
-      title: t("contactInfo.linkedin.title"),
+      title: tPage("contactInfo.linkedin.title"),
       description: "Sebastian Morea",
       href: contactConfig.socials.linkedin,
       color: "text-blue-600"
@@ -201,10 +280,10 @@ export default function ContactPage() {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                {t("hero.title")}
+                {tPage("hero.title")}
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
-                {t("hero.subtitle")}
+                {tPage("hero.subtitle")}
               </p>
             </motion.div>
           </div>
@@ -214,7 +293,8 @@ export default function ContactPage() {
         <section className="py-20 bg-background">
           <div className="container-main">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Form */}
+
+              {/* FORMULARIO CON REACT HOOK FORM */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -223,149 +303,191 @@ export default function ContactPage() {
               >
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold mb-4">
-                    {t("form.title")}
+                    {tPage("form.title")}
                   </h2>
                   <p className="text-muted-foreground">
-                    {t("form.subtitle")}
+                    {tPage("form.subtitle")}
                   </p>
                 </div>
 
                 <Card className="border-2">
                   <CardContent className="pt-6">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      {/* Name Field */}
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium">
-                          {t("form.name")} <span className="text-destructive">*</span>
-                        </label>
-                        <Input
-                          id="name"
+                    <Form {...form}>
+                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+
+                        {/* Leyenda de campos requeridos */}
+                        <p className="text-sm text-muted-foreground -mt-2">
+                          {t('requiredFieldsLegend')}
+                        </p>
+
+                        {/* Name Field */}
+                        <FormField
+                          control={form.control}
                           name="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder={t("form.namePlaceholder")}
-                          className={`h-12 ${formErrors.name ? 'border-destructive' : ''}`}
-                          disabled={formStatus === 'loading'}
-                          required
-                        />
-                        {formErrors.name && (
-                          <p className="text-sm text-destructive flex items-center gap-1">
-                            <AlertCircle className="w-4 h-4" />
-                            {formErrors.name}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Email Field */}
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                          {t("form.email")} <span className="text-destructive">*</span>
-                        </label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder={t("form.emailPlaceholder")}
-                          className={`h-12 ${formErrors.email ? 'border-destructive' : ''}`}
-                          disabled={formStatus === 'loading'}
-                          required
-                        />
-                        {formErrors.email && (
-                          <p className="text-sm text-destructive flex items-center gap-1">
-                            <AlertCircle className="w-4 h-4" />
-                            {formErrors.email}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Subject Field */}
-                      <div className="space-y-2">
-                        <label htmlFor="subject" className="text-sm font-medium">
-                          {t("form.subject")}
-                        </label>
-                        <Input
-                          id="subject"
-                          name="subject"
-                          type="text"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          placeholder={t("form.subjectPlaceholder")}
-                          className="h-12"
-                          disabled={formStatus === 'loading'}
-                        />
-                      </div>
-
-                      {/* Message Field */}
-                      <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium">
-                          {t("form.message")} <span className="text-destructive">*</span>
-                        </label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          rows={6}
-                          placeholder={t("form.messagePlaceholder")}
-                          className={`resize-none ${formErrors.message ? 'border-destructive' : ''}`}
-                          disabled={formStatus === 'loading'}
-                          required
-                        />
-                        {formErrors.message && (
-                          <p className="text-sm text-destructive flex items-center gap-1">
-                            <AlertCircle className="w-4 h-4" />
-                            {formErrors.message}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Submit Button */}
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full group"
-                        disabled={formStatus === 'loading'}
-                      >
-                        {formStatus === 'loading' ? (
-                          <>
-                            <Loader2 className="mr-2 w-4 h-4 animate-spin" />
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            <Send className="mr-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            {t("form.submit")}
-                          </>
-                        )}
-                      </Button>
-
-                      {/* Status Messages */}
-                      {submitMessage && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className={`p-4 rounded-lg flex items-center gap-2 ${
-                            formStatus === 'success'
-                              ? 'bg-green-50 text-green-800 border border-green-200 dark:bg-green-950 dark:text-green-200 dark:border-green-800'
-                              : 'bg-red-50 text-red-800 border border-red-200 dark:bg-red-950 dark:text-red-200 dark:border-red-800'
-                          }`}
-                        >
-                          {formStatus === 'success' ? (
-                            <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                          ) : (
-                            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>
+                                {t('labels.name')} <span className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder={t('placeholders.name')}
+                                  className={`h-12 transition-colors ${
+                                    form.formState.errors.name
+                                      ? 'border-destructive focus-visible:ring-destructive'
+                                      : field.value && !form.formState.errors.name
+                                      ? 'border-green-500 focus-visible:ring-green-500'
+                                      : ''
+                                  }`}
+                                  disabled={buttonStatus === 'loading'}
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
                           )}
-                          <p className="text-sm font-medium">{submitMessage}</p>
-                        </motion.div>
-                      )}
+                        />
 
-                      <p className="text-xs text-muted-foreground text-center">
-                        {t("form.privacy")}
-                      </p>
-                    </form>
+                        {/* Email Field */}
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>
+                                {t('labels.email')} <span className="text-destructive">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="email"
+                                  placeholder={t('placeholders.email')}
+                                  className={`h-12 transition-colors ${
+                                    form.formState.errors.email
+                                      ? 'border-destructive focus-visible:ring-destructive'
+                                      : field.value && !form.formState.errors.email
+                                      ? 'border-green-500 focus-visible:ring-green-500'
+                                      : ''
+                                  }`}
+                                  disabled={buttonStatus === 'loading'}
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        {/* Subject Field */}
+                        <FormField
+                          control={form.control}
+                          name="subject"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>
+                                {t('labels.subjectOptional')}
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder={t('placeholders.subject')}
+                                  className="h-12"
+                                  disabled={buttonStatus === 'loading'}
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        {/* Message Field con Contador */}
+                        <FormField
+                          control={form.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <div className="flex justify-between items-center">
+                                <FormLabel>
+                                  {t('labels.message')} <span className="text-destructive">*</span>
+                                </FormLabel>
+                                <span className={`text-xs font-mono transition-colors ${
+                                  messageLength > 5000
+                                    ? 'text-red-600 font-semibold'
+                                    : messageLength > 4500
+                                    ? 'text-amber-600 font-semibold'
+                                    : 'text-muted-foreground'
+                                }`}>
+                                  {t('characterCount.current', {
+                                    current: messageLength,
+                                    max: 5000
+                                  })}
+                                </span>
+                              </div>
+                              <FormControl>
+                                <Textarea
+                                  rows={6}
+                                  placeholder={t('placeholders.message')}
+                                  className={`resize-none transition-colors ${
+                                    form.formState.errors.message
+                                      ? 'border-destructive focus-visible:ring-destructive'
+                                      : field.value && !form.formState.errors.message
+                                      ? 'border-green-500 focus-visible:ring-green-500'
+                                      : ''
+                                  }`}
+                                  disabled={buttonStatus === 'loading'}
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        {/* Honeypot Field (invisible) */}
+                        <FormField
+                          control={form.control}
+                          name="website"
+                          render={({ field }) => (
+                            <FormItem className="absolute left-[-9999px] opacity-0 pointer-events-none">
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  tabIndex={-1}
+                                  autoComplete="off"
+                                  {...field}
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+
+                        {/* Submit Button con Estados */}
+                        <Button
+                          type="submit"
+                          size="lg"
+                          className="w-full group"
+                          disabled={buttonStatus === 'loading'}
+                        >
+                          {buttonStatus === 'loading' && (
+                            <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                          )}
+                          {buttonStatus === 'success' && (
+                            <CheckCircle2 className="mr-2 w-4 h-4" />
+                          )}
+                          {buttonStatus === 'error' && (
+                            <AlertCircle className="mr-2 w-4 h-4" />
+                          )}
+                          {buttonStatus === 'idle' && (
+                            <Send className="mr-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          )}
+                          {t(`button.${buttonStatus}`)}
+                        </Button>
+
+                        {/* Privacy Notice */}
+                        <p className="text-xs text-muted-foreground text-center">
+                          {tPage("form.privacy")}
+                        </p>
+                      </form>
+                    </Form>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -380,10 +502,10 @@ export default function ContactPage() {
               >
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold mb-4">
-                    {t("contactInfo.title")}
+                    {tPage("contactInfo.title")}
                   </h2>
                   <p className="text-muted-foreground">
-                    {t("contactInfo.subtitle")}
+                    {tPage("contactInfo.subtitle")}
                   </p>
                 </div>
 
@@ -431,29 +553,8 @@ export default function ContactPage() {
                     );
                   })}
                 </div>
-
-                {/* Additional CTA */}
-                <motion.div
-                  className="mt-8 p-6 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <h3 className="text-xl font-bold mb-2">
-                    {t("quickContact.title")}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {t("quickContact.description")}
-                  </p>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href="mailto:semoca00@gmail.com">
-                      <Mail className="mr-2 w-4 h-4" />
-                      {t("quickContact.button")}
-                    </Link>
-                  </Button>
-                </motion.div>
               </motion.div>
+
             </div>
           </div>
         </section>

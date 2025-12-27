@@ -1,16 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { ZodError } from 'zod';
 import { SendContactMessage, SendContactMessageDTO } from '@/core/domain/contact/use-cases/SendContactMessage';
 import { EmailServiceFactory } from '@/core/infrastructure/email/EmailServiceFactory';
 import { InMemoryContactRepository } from '@/core/infrastructure/repositories/InMemoryContactRepository';
 import { EmailMetadata } from '@/core/domain/contact/ports/IEmailService';
+import { contactApiSchema } from '@/core/domain/contact/schemas/contactMessageSchema';
 
 /**
  * API Route: POST /api/contact
- * Maneja el envío de mensajes de contacto
+ * Maneja el envío de mensajes de contacto con validación Zod y protección anti-spam
  *
  * Arquitectura:
  * - Esta capa es solo un adaptador de entrada (HTTP)
  * - Convierte Request HTTP -> DTO del dominio
+ * - Valida con Zod antes de ejecutar caso de uso
+ * - Verifica honeypot para detectar bots
  * - Ejecuta el caso de uso
  * - Convierte resultado -> Response HTTP
  */
@@ -60,7 +64,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Too many requests. Please try again later.',
+          errorCode: 'RATE_LIMIT_EXCEEDED',
           retryAfter: rateLimit.retryAfter
         },
         {
@@ -72,62 +76,82 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 2. Parsear y validar el body
+    // 2. Parsear body
     const body = await request.json();
 
-    // Validación básica de estructura
-    if (!body || typeof body !== 'object') {
+    // 3. Validar con Zod
+    let validatedData;
+    try {
+      validatedData = contactApiSchema.parse(body);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return NextResponse.json(
+          {
+            success: false,
+            errorCode: 'VALIDATION_ERROR',
+            errors: error.flatten().fieldErrors
+          },
+          { status: 400 }
+        );
+      }
+      throw error;
+    }
+
+    // 4. Verificar honeypot
+    if (validatedData.website && validatedData.website.trim() !== '') {
+      console.warn('[SPAM DETECTED] Honeypot triggered:', {
+        ip,
+        timestamp: new Date().toISOString(),
+        website: validatedData.website
+      });
+
+      // Responder exitosamente para no alertar al bot
       return NextResponse.json(
-        { success: false, error: 'Invalid request body' },
-        { status: 400 }
+        { success: true, messageId: 'spam-blocked' },
+        { status: 200 }
       );
     }
 
-    // Crear DTO
+    // 5. Crear DTO (sin el campo website)
     const dto: SendContactMessageDTO = {
-      name: body.name,
-      email: body.email,
-      message: body.message,
-      subject: body.subject
+      name: validatedData.name,
+      email: validatedData.email,
+      message: validatedData.message,
+      subject: validatedData.subject
     };
 
-    // Extraer locale del body (enviado por el frontend)
-    const locale = body.locale || 'es';
-
-    // Crear metadata con información técnica
+    // 6. Crear metadata con información técnica
     const metadata: EmailMetadata = {
       ip: ip,
       userAgent: request.headers.get('user-agent') || 'unknown',
       timestamp: new Date().toISOString(),
-      language: locale
+      language: validatedData.locale
     };
 
-    // 3. Crear el caso de uso con dependencias
+    // 7. Ejecutar el caso de uso con dependencias
     const emailService = EmailServiceFactory.create();
     const contactRepository = new InMemoryContactRepository();
     const sendContactMessage = new SendContactMessage(emailService, contactRepository);
 
-    // 4. Ejecutar el caso de uso con locale y metadata
-    const result = await sendContactMessage.execute(dto, locale, metadata);
+    const result = await sendContactMessage.execute(dto, validatedData.locale, metadata);
 
-    // 5. Retornar respuesta apropiada
+    // 8. Retornar respuesta
     if (result.success) {
       return NextResponse.json(
         {
           success: true,
           messageId: result.messageId,
-          message: 'Message sent successfully'
         },
         { status: 200 }
       );
     } else {
-      // Error en la lógica de negocio (validación, envío, etc.)
       return NextResponse.json(
         {
           success: false,
-          error: result.error || 'Failed to send message'
+          errorCode: 'SEND_FAILED',
+          error: result.error
         },
-        { status: 400 }
+        { status: 500 }
       );
     }
   } catch (error) {
@@ -137,7 +161,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        error: 'Internal server error. Please try again later.'
+        errorCode: 'SERVER_ERROR'
       },
       { status: 500 }
     );
