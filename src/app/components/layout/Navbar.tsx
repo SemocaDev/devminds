@@ -152,14 +152,16 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             {/* Theme Switcher */}
             <ThemeSwitcher className="hover:bg-accent/20" />
-            
+
             {/* CTA Button */}
             <Button
+              asChild
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={() => scrollToSection('#contact')}
             >
-              {t('startProject')}
+              <Link href={`/${lang}/contact`}>
+                {t('startProject')}
+              </Link>
             </Button>
           </div>
 
@@ -225,13 +227,12 @@ const Navbar = () => {
                         </button>
                       ))}
                       <Button
+                        asChild
                         className="mt-2"
-                        onClick={() => {
-                          setIsOpen(false);
-                          scrollToSection('#contact');
-                        }}
                       >
-                        {t('startProject')}
+                        <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)}>
+                          {t('startProject')}
+                        </Link>
                       </Button>
                     </>
                   ) : (
@@ -249,15 +250,14 @@ const Navbar = () => {
                           <span>{item.label}</span>
                         </Link>
                       ))}
-                      <Link 
-                        href={`/${lang}#contact`} 
-                        onClick={() => setIsOpen(false)}
-                        className="mt-2"
+                      <Button
+                        asChild
+                        className="mt-2 w-full"
                       >
-                        <Button className="w-full">
+                        <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)}>
                           {t('startProject')}
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </>
                   )}
                 </div>
