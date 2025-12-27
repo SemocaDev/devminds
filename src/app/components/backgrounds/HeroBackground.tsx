@@ -42,6 +42,7 @@ export default function HeroBackground({
             width: particle.size,
             height: particle.size,
             opacity: opacity,
+            willChange: 'transform, opacity',
           }}
           animate={{
             y: [0, -30, 0],

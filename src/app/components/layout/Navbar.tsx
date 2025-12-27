@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
@@ -30,6 +30,7 @@ const Navbar = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const throttleRef = useRef(false);
 
   const isHomepage = pathname === `/${lang}`;
 
@@ -55,19 +56,25 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (throttleRef.current) return;
+      throttleRef.current = true;
 
-      // Show shadow after scrolling
-      setIsScrolled(currentScrollY > 50);
+      setTimeout(() => {
+        const currentScrollY = window.scrollY;
 
-      // Hide navbar on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
-      }
+        // Show shadow after scrolling
+        setIsScrolled(currentScrollY > 50);
 
-      setLastScrollY(currentScrollY);
+        // Hide navbar on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsHidden(true);
+        } else {
+          setIsHidden(false);
+        }
+
+        setLastScrollY(currentScrollY);
+        throttleRef.current = false;
+      }, 100);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

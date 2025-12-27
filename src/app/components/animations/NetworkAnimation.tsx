@@ -21,7 +21,7 @@ const NetworkAnimation = () => {
   const [connections, setConnections] = useState<Connection[]>([]);
   const [key, setKey] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   useEffect(() => {
     // Nodo central (punto de inicio)
@@ -119,6 +119,8 @@ const NetworkAnimation = () => {
         className="absolute inset-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
+        style={{ willChange: 'transform' }}
+        shapeRendering="optimizeSpeed"
       >
         <defs>
           {/* Gradiente para las líneas */}
@@ -226,6 +228,7 @@ const NetworkAnimation = () => {
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              willChange: 'transform, opacity',
             }}
             animate={{
               y: [0, -30, 0],

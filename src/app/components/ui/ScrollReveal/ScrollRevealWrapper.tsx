@@ -18,18 +18,16 @@ const ScrollRevealWrapper = ({
 }: ScrollRevealWrapperProps) => {
   return (
     <motion.div
-      initial={{ 
-        opacity: 0, 
-        y: 60,
-        filter: 'blur(10px)'
+      initial={{
+        opacity: 0,
+        y: 60
       }}
-      animate={{ 
+      animate={{
         opacity: isVisible ? 1 : 0,
-        y: isVisible ? 0 : 60,
-        filter: isVisible ? 'blur(0px)' : 'blur(10px)'
+        y: isVisible ? 0 : 60
       }}
-      transition={{ 
-        duration: 0.8,
+      transition={{
+        duration: 0.6,
         delay: delay,
         ease: [0.25, 0.25, 0, 1]
       }}

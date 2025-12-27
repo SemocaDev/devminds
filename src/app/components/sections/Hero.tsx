@@ -24,7 +24,7 @@ const Hero = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 200);
+    }, 150);
 
     return () => clearInterval(typingInterval);
   }, []);

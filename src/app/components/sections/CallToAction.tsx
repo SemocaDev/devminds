@@ -30,9 +30,9 @@ const CallToAction = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Card principal con diseño profesional y compacto */}
-          <Card className="relative overflow-hidden border-2 border-primary/20 bg-card/80 backdrop-blur-xl shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-3xl" />
+          <Card className="relative overflow-hidden border-2 border-primary/20 bg-card/90 shadow-2xl">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-xl" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-xl" />
 
             <div className="relative z-10 p-6 md:p-10 lg:p-12">
               <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-8 lg:gap-12 items-center">
