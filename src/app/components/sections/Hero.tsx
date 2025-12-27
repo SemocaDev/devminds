@@ -62,7 +62,6 @@ const Hero = () => {
             className="hero-title relative"
           >
             {displayedText}
-            <span className="cursor-blink">_</span>
           </motion.h1>
 
           {/* Subtítulo grande */}

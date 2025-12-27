@@ -1,7 +1,5 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import Hero from "@/app/components/sections/Hero";
 import CallToAction from "@/app/components/sections/CallToAction";
 import AboutUs from "@/app/components/sections/AboutUs/AboutUs";
@@ -17,39 +15,13 @@ import EmailSidebar from "@/app/components/layout/EmailSidebar";
 import Footer from "@/app/components/layout/Footer/Footer";
 import ScrollIndicator from "@/app/components/ui/ScrollIndicator/ScrollIndicator";
 import ScrollRevealWrapper from "@/app/components/ui/ScrollReveal/ScrollRevealWrapper";
-import LoadingScreen from "@/app/components/layout/LoadingScreen";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 
 export default function Home() {
   const { hasScrolled } = useScrollReveal(300);
-  const [isLoading, setIsLoading] = useState(true);
-  const [showLoading, setShowLoading] = useState(false);
-
-  useEffect(() => {
-    // Verificar si ya se mostró el loading en esta sesión
-    const hasSeenLoading = sessionStorage.getItem('devminds-loading-shown');
-
-    if (hasSeenLoading) {
-      // Si ya se vio, no mostrar la pantalla de carga
-      setIsLoading(false);
-      setShowLoading(false);
-    } else {
-      // Primera vez en esta sesión, mostrar loading
-      setShowLoading(true);
-      // Marcar como visto para el resto de la sesión
-      sessionStorage.setItem('devminds-loading-shown', 'true');
-    }
-  }, []);
 
   return (
     <>
-      <AnimatePresence mode="wait">
-        {showLoading && isLoading && (
-          <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-
-      {!isLoading && (
         <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
           {/* New Navigation */}
           <Navbar />
@@ -93,7 +65,6 @@ export default function Home() {
 
           <Footer />
         </div>
-      )}
     </>
   );
 }

@@ -131,6 +131,11 @@
   /* Cursor blink animation */
   .cursor-blink {
     animation: blink 1s step-end infinite;
+    /* Override transparent text from hero-title gradient */
+    -webkit-text-fill-color: hsl(var(--primary));
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
   }
 
   @keyframes blink {

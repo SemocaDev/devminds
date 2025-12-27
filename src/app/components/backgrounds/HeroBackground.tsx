@@ -1,7 +1,17 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+  xOffset: number;
+}
 
 interface HeroBackgroundProps {
   particleCount?: number;
@@ -14,16 +24,20 @@ export default function HeroBackground({
   speed = 20,
   opacity = 0.3,
 }: HeroBackgroundProps) {
-  // Generar partículas con posiciones y tamaños aleatorios
-  const particles = useMemo(() => {
-    return Array.from({ length: particleCount }, (_, i) => ({
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  // Generar partículas solo en el cliente para evitar hydration mismatch
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 4 + 2, // 2-6px
-      duration: Math.random() * speed + speed, // Variación en velocidad
-      delay: Math.random() * 2, // Delay aleatorio
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * speed + speed,
+      delay: Math.random() * 2,
+      xOffset: Math.random() * 20 - 10,
     }));
+    setParticles(generatedParticles);
   }, [particleCount, speed]);
 
   return (
@@ -46,7 +60,7 @@ export default function HeroBackground({
           }}
           animate={{
             y: [0, -30, 0],
-            x: [0, Math.random() * 20 - 10, 0],
+            x: [0, particle.xOffset, 0],
             scale: [1, 1.2, 1],
             opacity: [opacity, opacity * 1.5, opacity],
           }}

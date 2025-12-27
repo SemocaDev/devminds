@@ -19,7 +19,6 @@ interface Connection {
 const NetworkAnimation = () => {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
-  const [key, setKey] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -105,22 +104,18 @@ const NetworkAnimation = () => {
     setConnections([...generatedConnections, ...crossConnections]);
   }, []);
 
-  // Reiniciar animación cuando entra en viewport
-  useEffect(() => {
-    if (isInView) {
-      setKey(prev => prev + 1);
-    }
-  }, [isInView]);
+  // No renderizar nada hasta que esté en viewport
+  if (!isInView) {
+    return <div ref={ref} className="relative w-full h-full" />;
+  }
 
   return (
     <div ref={ref} className="relative w-full h-full">
       <svg
-        key={`svg-${key}`}
         className="absolute inset-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
         style={{ willChange: 'transform' }}
-        shapeRendering="optimizeSpeed"
       >
         <defs>
           {/* Gradiente para las líneas */}
@@ -220,7 +215,7 @@ const NetworkAnimation = () => {
       </svg>
 
       {/* Efecto de partículas flotantes en el fondo */}
-      <div key={`particles-${key}`} className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
