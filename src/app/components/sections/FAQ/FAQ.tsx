@@ -62,7 +62,7 @@ const FAQ = () => {
               variants={item}
               className="space-y-4"
             >
-              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2 border-l-2 border-dotted border-primary/40 pl-4">
                 <span className="w-2 h-2 rounded-full bg-primary" />
                 {t(`categories.${category}`)}
               </h3>
@@ -72,7 +72,7 @@ const FAQ = () => {
                   <AccordionItem
                     key={faqItem.id}
                     value={faqItem.id}
-                    className="border border-border/50 rounded-lg px-6 data-[state=open]:border-primary/50 transition-colors"
+                    className="border border-border/50 rounded-lg px-6 data-[state=open]:border-primary/50 transition-colors border-l-4 border-l-dotted border-l-primary/20"
                   >
                     <AccordionTrigger className="text-left hover:text-primary transition-colors">
                       {t(`questions.${faqItem.id}.question`)}

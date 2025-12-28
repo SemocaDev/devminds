@@ -409,12 +409,12 @@ export default function ContactPage() {
                                 <FormLabel>
                                   {t('labels.message')} <span className="text-destructive">*</span>
                                 </FormLabel>
-                                <span className={`text-xs font-mono transition-colors ${
+                                <span className={`text-xs font-mono transition-colors px-2 py-1 rounded pattern-dots-dense ${
                                   messageLength > 5000
-                                    ? 'text-red-600 font-semibold'
+                                    ? 'text-red-600 font-semibold bg-red-50 dark:bg-red-950'
                                     : messageLength > 4500
-                                    ? 'text-amber-600 font-semibold'
-                                    : 'text-muted-foreground'
+                                    ? 'text-amber-600 font-semibold bg-amber-50 dark:bg-amber-950'
+                                    : 'text-muted-foreground bg-muted/50'
                                 }`}>
                                   {t('characterCount.current', {
                                     current: messageLength,

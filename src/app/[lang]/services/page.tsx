@@ -36,6 +36,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer/Footer";
@@ -174,7 +175,7 @@ export default function ServicesPage() {
                 >
                   <AccordionItem
                     value={service.key}
-                    className="border rounded-lg px-6 bg-card hover:shadow-lg transition-shadow"
+                    className="border-l-4 border-l-dotted border-l-primary/30 border rounded-lg px-6 bg-card hover:shadow-lg transition-shadow data-[state=open]:border-l-primary/60"
                   >
                     <AccordionTrigger className="hover:no-underline">
                       <div className="flex items-center gap-4">
@@ -261,8 +262,8 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          {/* Tech Categories */}
-          <div className="space-y-16">
+          {/* Tech Categories - Badges Compacto */}
+          <div className="space-y-10 max-w-5xl mx-auto">
             {Object.entries(techStack).map(([category, techs], categoryIndex) => (
               <motion.div
                 key={category}
@@ -271,55 +272,31 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="h-1 w-12 bg-primary rounded-full" />
-                  <h3 className="text-2xl font-bold capitalize">
-                    {t(`techStack.categories.${category}`)}
-                  </h3>
-                  <div className="h-1 flex-1 bg-border rounded-full" />
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                  {techs.map((tech, techIndex) => {
+                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  {t(`techStack.categories.${category}`)}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {techs.map((tech) => {
                     const TechIcon = tech.icon;
                     return (
-                      <motion.div
+                      <Badge
                         key={tech.name}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: techIndex * 0.05 }}
-                        className="group relative"
+                        variant="outline"
+                        className="px-3 py-2 text-sm gap-2 hover:bg-primary/10 hover:border-primary transition-all cursor-pointer group"
                       >
-                        <div className="relative h-full p-6 rounded-xl bg-card border-2 border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                          {/* Icon */}
-                          <div className="flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
-                              <TechIcon
-                                className="w-full h-full transition-all duration-300 group-hover:scale-110"
-                                style={{ color: "currentColor" }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.color = tech.color;
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.color = "currentColor";
-                                }}
-                              />
-                            </div>
-
-                            {/* Name */}
-                            <div className="text-center">
-                              <span className="text-sm font-semibold group-hover:text-primary transition-colors">
-                                {tech.name}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Decorative corner accent */}
-                          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary rounded-bl-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      </motion.div>
+                        <TechIcon
+                          className="w-4 h-4 transition-all grayscale group-hover:grayscale-0"
+                          style={{ color: "currentColor" }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = tech.color;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "currentColor";
+                          }}
+                        />
+                        <span>{tech.name}</span>
+                      </Badge>
                     );
                   })}
                 </div>

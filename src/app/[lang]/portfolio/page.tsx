@@ -75,7 +75,7 @@ export default function PortfolioPage() {
             {/* Category Tabs */}
             <Tabs defaultValue="all" onValueChange={setActiveCategory}>
               <div className="flex justify-center mb-12">
-                <TabsList className="inline-flex h-auto w-auto flex-wrap justify-center gap-2 p-2">
+                <TabsList className="inline-flex h-auto w-auto flex-wrap justify-center gap-2 p-2 border-b-2 border-b-dotted border-b-primary/30 pb-4">
                   {projectsData.categories.map((category) => (
                     <TabsTrigger key={category.id} value={category.id} className="px-6">
                       {t(`categories.${category.id}`)}
@@ -94,11 +94,11 @@ export default function PortfolioPage() {
                   >
                     {filteredProjects.map((project) => (
                       <motion.div key={project.id} variants={item}>
-                        <Card className="border-2 hover:shadow-2xl transition-all duration-500 hover:border-primary/50 overflow-hidden group cursor-pointer h-full flex flex-col"
+                        <Card className="border-2 hover:shadow-2xl transition-all duration-500 hover:border-primary/50 overflow-hidden group cursor-pointer h-full flex flex-col bracket-corners"
                           onClick={() => setSelectedProject(project)}
                         >
                           {/* Project Image/Gradient */}
-                          <div className={`h-56 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+                          <div className={`h-56 bg-gradient-to-br ${project.gradient} relative overflow-hidden pattern-diagonal-reverse`}>
                             {project.images && project.images[0] && (
                               <Image
                                 src={project.images[0]}
@@ -186,7 +186,7 @@ export default function PortfolioPage() {
 
       {/* Project Detail Dialog */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bracket-corners">
           {selectedProject && (
             <>
               <DialogHeader>

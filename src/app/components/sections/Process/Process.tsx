@@ -52,7 +52,11 @@ export default function Process() {
   const circleFillDuration = 0.6;
 
   return (
-    <section id="process" className="section-spacing bg-background" ref={ref}>
+    <section id="process" className="section-spacing bg-background relative" ref={ref}>
+      {/* Elementos decorativos */}
+      <div className="absolute top-8 right-8 w-28 h-28 pattern-dots-normal opacity-95 pointer-events-none" />
+      <div className="absolute bottom-8 left-8 w-24 h-24 pattern-diagonal opacity-95 pointer-events-none" />
+
       <div className="container-main">
         {/* Header */}
         <motion.div

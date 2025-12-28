@@ -34,6 +34,10 @@ const CallToAction = () => {
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/5 to-transparent rounded-full" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full" />
 
+            {/* Elementos decorativos pequeños con patrones */}
+            <div className="absolute top-8 right-8 w-20 h-20 pattern-dots-sparse opacity-95 pointer-events-none" />
+            <div className="absolute bottom-8 left-8 w-24 h-24 pattern-lines-grid opacity-95 pointer-events-none" />
+
             <div className="relative z-10 p-6 md:p-10 lg:p-12">
               <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-8 lg:gap-12 items-center">
 

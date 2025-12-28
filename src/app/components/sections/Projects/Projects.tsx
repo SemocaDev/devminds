@@ -62,7 +62,7 @@ const Projects = () => {
           {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={item}>
               <Link href={`/${lang}/portfolio`}>
-                <Card className="group h-full flex flex-col hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/30 cursor-pointer">
+                <Card className="group h-full flex flex-col hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/30 cursor-pointer bracket-corners">
                   {/* Imagen con gradiente */}
                   <div className="relative w-full h-56 overflow-hidden">
                     {/* Gradiente de fondo como fallback */}

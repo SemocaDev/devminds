@@ -65,7 +65,7 @@ const hierarchyColors: Record<TeamHierarchy, string> = {
 // Team Member Card Component
 function TeamMemberCard({ member, t }: { member: TeamMember; t: any }) {
   return (
-    <Card className="border-2 hover:shadow-2xl transition-all duration-500 h-full">
+    <Card className="border-2 hover:shadow-2xl transition-all duration-500 h-full bracket-corners">
       <CardContent className="p-8">
         {/* Header with Photo and Basic Info */}
         <div className="flex flex-col sm:flex-row gap-6 mb-6">
@@ -252,7 +252,10 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="mb-20"
             >
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-4xl mx-auto relative">
+                {/* Elemento decorativo diagonal en el fondo */}
+                <div className="absolute -top-8 -right-8 w-40 h-40 pattern-diagonal-reverse opacity-95 pointer-events-none -z-10" />
+
                 <div className="flex items-center gap-3 mb-6">
                   <Lightbulb className="w-8 h-8 text-primary" />
                   <h2 className="text-3xl font-bold">{t('history.title')}</h2>
@@ -292,7 +295,7 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                      <Card className="h-full hover:shadow-lg transition-shadow">
+                      <Card className="h-full hover:shadow-lg transition-shadow bracket-corners">
                         <CardContent className="p-6 text-center">
                           <div className="flex justify-center mb-4">
                             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
@@ -356,17 +359,17 @@ export default function AboutPage() {
                     <CarouselNext className="right-0 sm:-right-12" />
                   </Carousel>
 
-                  {/* Dots indicator */}
+                  {/* Dots indicator - más prominentes */}
                   {founders.length > 1 && (
-                    <div className="flex justify-center gap-2 mt-6">
+                    <div className="flex justify-center gap-3 mt-6">
                       {founders.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => api?.scrollTo(index)}
-                          className={`h-2 rounded-full transition-all ${
+                          className={`h-3 rounded-full transition-all border-2 ${
                             current === index
-                              ? 'w-8 bg-primary'
-                              : 'w-2 bg-primary/30 hover:bg-primary/50'
+                              ? 'w-12 bg-primary border-primary'
+                              : 'w-3 bg-transparent border-primary/40 hover:border-primary/70'
                           }`}
                           aria-label={`Go to slide ${index + 1}`}
                         />

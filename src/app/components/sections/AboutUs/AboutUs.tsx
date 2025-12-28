@@ -42,7 +42,9 @@ const AboutUs = () => {
           {/* Grid 2 columnas */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Columna izquierda: Texto */}
-            <div className="space-y-6">
+            <div className="space-y-6 relative">
+              {/* Elemento decorativo con dots */}
+              <div className="absolute -top-4 -left-4 w-32 h-32 pattern-dots-sparse opacity-95 pointer-events-none -z-10" />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   {t('paragraph1')}

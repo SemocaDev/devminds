@@ -65,7 +65,7 @@ const Services = () => {
             return (
               <motion.div key={service.key} variants={item}>
                 <Link href={`/${lang}/services#${service.key}`} className="block h-full">
-                  <Card className="relative group h-full hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/50 cursor-pointer">
+                  <Card className="relative group h-full hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/50 cursor-pointer bracket-corners">
                     {/* Gradiente de fondo al hacer hover */}
                     <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-500 from-primary to-accent" />
 

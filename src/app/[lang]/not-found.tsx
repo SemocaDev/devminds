@@ -13,6 +13,10 @@ export default function NotFound() {
   const lang = params.lang as string;
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+      {/* Elementos decorativos con patrones */}
+      <div className="absolute top-12 right-12 w-32 h-32 pattern-dots-sparse opacity-95 pointer-events-none" />
+      <div className="absolute bottom-12 left-12 w-28 h-28 pattern-lines-grid opacity-95 pointer-events-none" />
+
       <div className="container-main relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Error code animado */}
@@ -20,7 +24,7 @@ export default function NotFound() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative"
+            className="relative bracket-corners"
           >
             <h1 className="text-[10rem] md:text-[14rem] font-bold leading-none">
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
@@ -67,16 +71,16 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="inline-block"
           >
-            <div className="bg-card/50 backdrop-blur border border-border/50 rounded-lg p-4 font-mono text-sm text-left">
-              <div className="text-muted-foreground">
+            <div className="bg-card/50 backdrop-blur border-2 border-dotted-primary rounded-lg p-4 font-mono text-sm text-left relative pattern-diagonal">
+              <div className="text-muted-foreground relative z-10">
                 <span className="text-accent">if</span> (
                 <span className="text-primary">pageNotFound</span>) {'{'}
               </div>
-              <div className="text-muted-foreground pl-4">
+              <div className="text-muted-foreground pl-4 relative z-10">
                 <span className="text-accent">return</span>{' '}
                 <span className="text-orange-500">&lt;Home /&gt;</span>;
               </div>
-              <div className="text-muted-foreground">{'}'}</div>
+              <div className="text-muted-foreground relative z-10">{'}'}</div>
             </div>
           </motion.div>
 
@@ -110,7 +114,7 @@ export default function NotFound() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="pt-8 border-t border-border/50"
+            className="pt-8 border-t-2 border-t-dotted border-t-primary/40"
           >
             <p className="text-sm text-muted-foreground mb-4">
               {t('usefulPages')}

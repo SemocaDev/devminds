@@ -45,6 +45,10 @@ export default function TechStack() {
       {/* Fondo decorativo */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background pointer-events-none" />
 
+      {/* Elementos decorativos con patrones diagonales */}
+      <div className="absolute top-10 left-10 w-40 h-40 pattern-diagonal-reverse opacity-95 pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-36 h-36 pattern-lines-grid opacity-95 pointer-events-none" />
+
       {/* CSS para animación infinita suave */}
       <style jsx>{`
         @keyframes scroll-left {

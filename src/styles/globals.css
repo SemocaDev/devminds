@@ -286,3 +286,148 @@
     -webkit-box-shadow: 0 0 0px 1000px hsl(var(--card)) inset;
   }
 }
+
+/* ========================================
+   DECORATIVE PATTERNS - DOTO AESTHETIC
+   ======================================== */
+@layer components {
+  /* Dot Grid Patterns - Usando foreground (blanco en dark, oscuro en light) */
+  .pattern-dots-sparse {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--foreground) / 0.06) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 40px 40px;
+  }
+
+  .pattern-dots-normal {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--foreground) / 0.08) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 24px 24px;
+  }
+
+  .pattern-dots-dense {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--foreground) / 0.10) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
+
+  /* Diagonal Line Patterns - Usando foreground */
+  .pattern-diagonal {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      hsl(var(--foreground) / 0.04) 30px,
+      hsl(var(--foreground) / 0.04) 31px
+    );
+  }
+
+  .pattern-diagonal-reverse {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      hsl(var(--foreground) / 0.04) 30px,
+      hsl(var(--foreground) / 0.04) 31px
+    );
+  }
+
+  /* Grid Line Pattern */
+  .pattern-lines-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Bracket Corners - Líneas tipo [ ] con foreground */
+  .bracket-corners {
+    position: relative;
+  }
+
+  .bracket-corners::before,
+  .bracket-corners::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: hsl(var(--foreground) / 0.25);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .bracket-corners::before {
+    top: 8px;
+    left: 8px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+
+  .bracket-corners::after {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+
+  /* Hover effect para brackets */
+  .bracket-corners:hover::before,
+  .bracket-corners:hover::after {
+    border-color: hsl(var(--primary));
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Dotted Border Variant */
+  .border-dotted-primary {
+    border-style: dotted;
+    border-color: hsl(var(--foreground) / 0.2);
+  }
+
+  /* Mobile: Patrones con mayor espaciado para mejor rendimiento */
+  @media (max-width: 640px) {
+    .pattern-dots-sparse {
+      background-size: 60px 60px;
+    }
+
+    .pattern-dots-normal {
+      background-size: 40px 40px;
+    }
+
+    .pattern-dots-dense {
+      background-size: 32px 32px;
+    }
+
+    .pattern-diagonal {
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 50px,
+        hsl(var(--foreground) / 0.04) 50px,
+        hsl(var(--foreground) / 0.04) 51px
+      );
+    }
+
+    .pattern-diagonal-reverse {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 50px,
+        hsl(var(--foreground) / 0.04) 50px,
+        hsl(var(--foreground) / 0.04) 51px
+      );
+    }
+
+    .pattern-lines-grid {
+      background-size: 50px 50px;
+    }
+  }
+}

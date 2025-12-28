@@ -31,14 +31,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border mt-auto">
-      <div className="container-main">
+    <footer className="bg-card border-t border-border mt-auto relative overflow-hidden">
+      {/* Decorative pattern elements */}
+      <div className="absolute top-8 right-8 w-32 h-32 pattern-dots-sparse opacity-95 pointer-events-none" />
+
+      <div className="container-main relative z-10">
         <div className="py-12">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Brand Column */}
             <div>
-              <h3 className="text-xl font-bold text-primary mb-4">DevMinds</h3>
+              <h3 className="text-xl font-bold text-primary mb-4 font-doto">DevMinds</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 {t('tagline')}
               </p>
@@ -103,7 +106,7 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="pt-8 border-t border-border">
+          <div className="pt-8 border-t border-dotted border-t-primary/20">
             <p className="text-center text-sm text-muted-foreground">
               {t('copyright', { year })}
             </p>
