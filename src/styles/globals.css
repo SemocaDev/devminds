@@ -430,4 +430,21 @@
       background-size: 50px 50px;
     }
   }
+
+  /* ========================================
+     HERO PARTICLES ANIMATION
+     ======================================== */
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(var(--x-offset, 0), -30px) scale(1.2);
+    }
+  }
+
+  .hero-particle {
+    animation: float-particle var(--duration, 20s) ease-in-out var(--delay, 0s) infinite;
+    will-change: auto;
+  }
 }

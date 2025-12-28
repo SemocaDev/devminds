@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 
 interface Node {
   id: number;
@@ -16,11 +16,32 @@ interface Connection {
   delay: number;
 }
 
+interface BackgroundParticle {
+  id: number;
+  x: number;
+  y: number;
+  xOffset: number;
+  duration: number;
+  delay: number;
+}
+
 const NetworkAnimation = () => {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  // Generar partículas de fondo una sola vez con useMemo
+  const backgroundParticles = useMemo<BackgroundParticle[]>(() => {
+    return Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      xOffset: Math.random() * 20 - 10,
+      duration: 4 + Math.random() * 3,
+      delay: Math.random() * 2,
+    }));
+  }, []);
 
   useEffect(() => {
     // Nodo central (punto de inicio)
@@ -214,28 +235,20 @@ const NetworkAnimation = () => {
         ))}
       </svg>
 
-      {/* Efecto de partículas flotantes en el fondo */}
+      {/* Efecto de partículas flotantes en el fondo - usando CSS */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={`particle-${i}`}
+        {backgroundParticles.map((particle) => (
+          <div
+            key={`particle-${particle.id}`}
             className="absolute w-1 h-1 rounded-full bg-primary/20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              willChange: 'transform, opacity',
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 3,
-              delay: Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              '--x-offset': `${particle.xOffset}px`,
+              '--duration': `${particle.duration}s`,
+              '--delay': `${particle.delay}s`,
+              animation: `float-particle var(--duration) ease-in-out var(--delay) infinite`,
+            } as React.CSSProperties}
           />
         ))}
       </div>

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 interface Particle {
@@ -45,31 +44,21 @@ export default function HeroBackground({
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
 
-      {/* Partículas flotantes */}
+      {/* Partículas flotantes con CSS animation */}
       {particles.map((particle) => (
-        <motion.div
+        <div
           key={particle.id}
-          className="absolute rounded-full bg-primary"
+          className="absolute rounded-full bg-primary hero-particle"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: particle.size,
             height: particle.size,
             opacity: opacity,
-            willChange: 'transform, opacity',
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, particle.xOffset, 0],
-            scale: [1, 1.2, 1],
-            opacity: [opacity, opacity * 1.5, opacity],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-            ease: "easeInOut",
-          }}
+            '--x-offset': `${particle.xOffset}px`,
+            '--duration': `${particle.duration}s`,
+            '--delay': `${particle.delay}s`,
+          } as React.CSSProperties}
         />
       ))}
 
