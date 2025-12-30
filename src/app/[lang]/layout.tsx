@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import ClientThemeWrapper from "@/app/components/ClientThemeWrapper";
 import { Toaster } from "@/components/ui/sonner";
+import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/schemas/organization-schema";
 import "@/styles/globals.css";
 
 // Font configurations
@@ -166,6 +167,20 @@ export default async function RootLayout(props: Props) {
         <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+        {/* JSON-LD Schemas para SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateOrganizationSchema(lang))
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateLocalBusinessSchema(lang))
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col font-roboto antialiased overflow-x-hidden">
         <ClientThemeWrapper>

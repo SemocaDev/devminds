@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { generateServiceSchema } from '@/lib/schemas/service-schema';
+import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 
 type Props = {
   params: Promise<{ lang: string }>;
+  children: React.ReactNode;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -49,10 +52,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ServicesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+export default async function ServicesLayout({ params, children }: Props) {
+  const { lang } = await params;
+
+  return (
+    <>
+      {/* JSON-LD Schemas para SEO de Services */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateServiceSchema(lang))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema('/services', lang))
+        }}
+      />
+      {children}
+    </>
+  );
 }

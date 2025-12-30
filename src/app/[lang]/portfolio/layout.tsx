@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
+import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 
 type Props = {
   params: Promise<{ lang: string }>;
+  children: React.ReactNode;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -49,10 +51,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function PortfolioLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+export default async function PortfolioLayout({ params, children }: Props) {
+  const { lang } = await params;
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema('/portfolio', lang))
+        }}
+      />
+      {children}
+    </>
+  );
 }
