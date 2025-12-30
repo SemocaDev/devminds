@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -67,15 +68,15 @@ const Projects = () => {
                   <div className="relative w-full h-56 overflow-hidden">
                     {/* Gradiente de fondo como fallback */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
-                    {/* Imagen visible por defecto */}
+                    {/* Imagen visible por defecto - Optimizada con Next.js Image */}
                     {project.images && project.images[0] && (
-                      <img
+                      <Image
                         src={project.images[0]}
                         alt={tPortfolio(`projects.${project.id}.title`)}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        priority={false}
                       />
                     )}
                     {/* Overlay oscuro en hover */}
