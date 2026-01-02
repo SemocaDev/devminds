@@ -26,7 +26,7 @@ const Footer = () => {
 
   const social = [
     { label: 'GitHub', href: 'https://github.com/SemocaDev', icon: Github },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-morea', icon: Linkedin },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-morea-cañon-5ba97729a/', icon: Linkedin },
     { label: 'Email', href: 'mailto:semoca00@gmail.com', icon: Mail },
   ];
 
