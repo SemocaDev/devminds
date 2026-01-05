@@ -1,6 +1,6 @@
 # DevMinds
 
-Una landing page moderna y multiidioma construida con Next.js 15, que presenta la arquitectura de soluciones digitales de DevMinds con un diseño minimalista inspirado en interfaces de terminal.
+Una landing page moderna y multiidioma construida con Next.js 15, que presenta la arquitectura de soluciones digitales de DevMinds con un diseño minimalista inspirado en interfaces de terminal. en Colombia
 
 ## 🚀 Características
 
