@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 
 type Props = {
@@ -8,44 +9,35 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
+  const t = await getTranslations({ locale: lang, namespace: 'Metadata' });
 
-  const metadata = {
-    es: {
-      title: "Portafolio de Proyectos Web - DevMinds | Neiva, Huila",
-      description: "Explora nuestro portafolio de proyectos de desarrollo web en Neiva, Colombia. Aplicaciones web modernas con Next.js, React y TypeScript. Ejemplos de software personalizado y sitios web profesionales.",
-      keywords: "portafolio desarrollo web neiva, proyectos web colombia, ejemplos desarrollo next.js, trabajos devminds, portfolio neiva"
-    },
-    en: {
-      title: "Web Projects Portfolio - DevMinds | Neiva, Huila",
-      description: "Explore our web development projects portfolio in Neiva, Colombia. Modern web applications with Next.js, React and TypeScript. Custom software and professional websites examples.",
-      keywords: "web development portfolio neiva, web projects colombia, nextjs examples, devminds work"
-    }
-  } as const;
-
-  const meta = metadata[lang as keyof typeof metadata] || metadata.es;
+  const title = t('portfolio.title');
+  const description = t('portfolio.description');
+  const keywords = t('portfolio.keywords');
 
   return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    title,
+    description,
+    keywords,
     openGraph: {
-      title: meta.title,
-      description: meta.description,
-      url: `https://devminds.online/${lang}/portfolio`,
+      title,
+      description,
+      url: `https://www.devminds.online/${lang}/portfolio`,
       siteName: 'DevMinds',
-      locale: lang === 'es' ? 'es_CO' : 'en_US',
+      locale: lang === 'es' ? 'es_CO' : lang === 'en' ? 'en_US' : 'ja_JP',
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: meta.title,
-      description: meta.description,
+      title,
+      description,
     },
     alternates: {
-      canonical: `https://devminds.online/${lang}/portfolio`,
+      canonical: `https://www.devminds.online/${lang}/portfolio`,
       languages: {
-        'es': 'https://devminds.online/es/portfolio',
-        'en': 'https://devminds.online/en/portfolio',
+        'es': 'https://www.devminds.online/es/portfolio',
+        'en': 'https://www.devminds.online/en/portfolio',
+        'ja': 'https://www.devminds.online/ja/portfolio',
       },
     },
   };
@@ -53,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PortfolioLayout({ params, children }: Props) {
   const { lang } = await params;
+  setRequestLocale(lang);
 
   return (
     <>

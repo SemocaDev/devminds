@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateServiceSchema } from '@/lib/schemas/service-schema';
 import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 
@@ -9,44 +10,35 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
+  const t = await getTranslations({ locale: lang, namespace: 'Metadata' });
 
-  const metadata = {
-    es: {
-      title: "Servicios de Desarrollo Web - DevMinds | Next.js, React, WordPress en Neiva",
-      description: "Servicios de desarrollo web profesional en Neiva, Colombia. Desarrollo web moderno con Next.js y React, software personalizado, WordPress y consultoría técnica. Agencia de software en Huila.",
-      keywords: "servicios desarrollo web neiva, next.js neiva, react developer neiva, wordpress neiva, software a medida colombia, consultoría técnica neiva"
-    },
-    en: {
-      title: "Web Development Services - DevMinds | Next.js, React, WordPress in Neiva",
-      description: "Professional web development services in Neiva, Colombia. Modern web development with Next.js and React, custom software, WordPress and technical consulting.",
-      keywords: "web development services neiva, next.js neiva, react developer neiva, custom software colombia"
-    }
-  } as const;
-
-  const meta = metadata[lang as keyof typeof metadata] || metadata.es;
+  const title = t('services.title');
+  const description = t('services.description');
+  const keywords = t('services.keywords');
 
   return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    title,
+    description,
+    keywords,
     openGraph: {
-      title: meta.title,
-      description: meta.description,
-      url: `https://devminds.online/${lang}/services`,
+      title,
+      description,
+      url: `https://www.devminds.online/${lang}/services`,
       siteName: 'DevMinds',
-      locale: lang === 'es' ? 'es_CO' : 'en_US',
+      locale: lang === 'es' ? 'es_CO' : lang === 'en' ? 'en_US' : 'ja_JP',
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: meta.title,
-      description: meta.description,
+      title,
+      description,
     },
     alternates: {
-      canonical: `https://devminds.online/${lang}/services`,
+      canonical: `https://www.devminds.online/${lang}/services`,
       languages: {
-        'es': 'https://devminds.online/es/services',
-        'en': 'https://devminds.online/en/services',
+        'es': 'https://www.devminds.online/es/services',
+        'en': 'https://www.devminds.online/en/services',
+        'ja': 'https://www.devminds.online/ja/services',
       },
     },
   };
@@ -54,6 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicesLayout({ params, children }: Props) {
   const { lang } = await params;
+  setRequestLocale(lang);
 
   return (
     <>

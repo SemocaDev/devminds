@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       // Por ahora no tienes rutas privadas, pero es buena práctica tenerlo
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://devminds.online/sitemap.xml',
+    sitemap: 'https://www.devminds.online/sitemap.xml',
   }
 }

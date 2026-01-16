@@ -1,7 +1,34 @@
 {
+  "Metadata": {
+    "home": {
+      "title": "DevMinds - Desarrollo Web y Software en Neiva, Huila | Agencia de Programadores",
+      "description": "Agencia de desarrollo web en Neiva, Colombia. Creamos páginas web profesionales, software personalizado, tiendas online y aplicaciones con Next.js y React. Programadores en Huila. Cotización gratis.",
+      "keywords": "desarrollo web neiva, agencia desarrollo web neiva, diseño páginas web neiva, desarrollo de software neiva, programador neiva, páginas web huila, sitios web neiva colombia, diseño web profesional neiva, tienda online neiva, e-commerce huila, next.js neiva, react developer neiva"
+    },
+    "services": {
+      "title": "Servicios Desarrollo Web Neiva | Páginas Web, Software, WordPress - DevMinds",
+      "description": "Servicios de desarrollo web profesional en Neiva, Huila. Diseño de páginas web, software a medida, tiendas online WooCommerce, aplicaciones Next.js y React. Cotización gratis para empresas en Colombia.",
+      "keywords": "servicios desarrollo web neiva, diseño páginas web neiva, software a medida neiva, tienda online neiva, e-commerce huila, wordpress neiva, páginas web personalizadas neiva"
+    },
+    "about": {
+      "title": "Sobre Nosotros - DevMinds | Programadores Web en Neiva, Huila",
+      "description": "Conoce al equipo de DevMinds. Ingenieros de software y programadores en Neiva, Huila especializados en desarrollo web moderno, Next.js, React y TypeScript. Agencia de software colombiana.",
+      "keywords": "equipo desarrollo web neiva, programadores neiva, ingenieros software huila, desarrolladores web neiva colombia, agencia programadores neiva"
+    },
+    "contact": {
+      "title": "Contacto - DevMinds | Cotización Páginas Web Neiva, Huila",
+      "description": "Contacta a DevMinds para tu proyecto web en Neiva, Huila. Cotización gratis para páginas web, software personalizado, tiendas online y aplicaciones. Respuesta en 24h.",
+      "keywords": "contacto desarrollo web neiva, cotización páginas web neiva, presupuesto software neiva, precio página web neiva"
+    },
+    "portfolio": {
+      "title": "Portafolio Proyectos Web - DevMinds | Trabajos en Neiva, Huila",
+      "description": "Portafolio de proyectos de desarrollo web en Neiva, Colombia. Ejemplos de páginas web, aplicaciones Next.js, tiendas online y software personalizado realizados en Huila.",
+      "keywords": "portafolio desarrollo web neiva, proyectos web neiva, ejemplos páginas web huila, trabajos devminds"
+    }
+  },
   "Hero": {
     "title": "SISTEMAS//<wbr>OPTIMIZADOS",
-    "subtitle": "DESARROLLO WEB PROFESIONAL EN NEIVA, COLOMBIA",
+    "subtitle": "DESARROLLO WEB PROFESIONAL EN NEIVA, HUILA - COLOMBIA",
     "aboutText": "DevMinds construye infraestructuras digitales a medida desde principios fundamentales. Diseños modulares. Arquitecturas escalables. Sin complejidad innecesaria. Tecnología que funciona.",
     "greeting": "Hola, somos",
     "mainSubtitle": "Desarrollo Web y Software Personalizado",
@@ -30,8 +57,8 @@
   },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
-    "title": "¿Listo para tu proyecto web en Neiva?",
-    "description": "Desarrollo web profesional en Colombia. Aplicaciones modernas con Next.js, React y TypeScript. Cotización gratis y sin compromiso.",
+    "title": "¿Listo para tu proyecto web en Neiva, Huila?",
+    "description": "Agencia de desarrollo web profesional en Neiva, Colombia. Aplicaciones modernas con Next.js, React y TypeScript. Cotización gratis y sin compromiso para empresas del Huila.",
     "buttonText": "SOLICITAR COTIZACIÓN",
     "buttonHover": "ejecutar_consulta",
     "responseTime": "Respuesta en menos de 24 horas",
@@ -45,7 +72,7 @@
   "AboutUs": {
     "title": "Sobre Nosotros",
     "description": "Agencia de desarrollo web en Neiva, Huila. Ingenieros de software especializados en aplicaciones web modernas con Next.js, React y TypeScript. Soluciones digitales profesionales para empresas.",
-    "paragraph1": "Somos DevMinds, una agencia de desarrollo web en Neiva, Colombia. Equipo de ingenieros de software especializados en crear aplicaciones web modernas, software personalizado y consultoría técnica para empresas.",
+    "paragraph1": "Somos DevMinds, agencia de desarrollo web con sede en Neiva, Huila. Nuestro equipo de ingenieros de software colombianos está especializado en crear aplicaciones web modernas, software personalizado y consultoría técnica para empresas en Neiva, el Huila y toda Colombia.",
     "paragraph2": "Nuestro enfoque combina tecnologías de vanguardia con prácticas de desarrollo profesional. Entendemos las necesidades de tu negocio para crear soluciones web escalables y eficientes.",
     "paragraph3": "Trabajamos con Next.js, React, TypeScript, Node.js y las tecnologías más demandadas del mercado. Tu proyecto web estará construido con estándares profesionales y preparado para crecer.",
     "technologiesLabel": "Tecnologías que dominamos:",

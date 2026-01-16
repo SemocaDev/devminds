@@ -4,7 +4,7 @@
  */
 
 export function generateBreadcrumbSchema(pathname: string, lang: string) {
-  const baseUrl = 'https://devminds.online';
+  const baseUrl = 'https://www.devminds.online';
   const segments = pathname.split('/').filter(Boolean);
 
   // Nombres traducidos de las rutas

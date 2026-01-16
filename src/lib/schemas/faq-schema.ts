@@ -28,6 +28,14 @@ export function generateFAQSchema(questions: FAQItem[]) {
  */
 export const faqsES: FAQItem[] = [
   {
+    question: "¿Dónde está ubicada la agencia DevMinds?",
+    answer: "DevMinds está ubicada en Neiva, capital del departamento del Huila, Colombia. Somos una agencia de desarrollo web local que atiende a empresas y emprendedores en Neiva, el Huila y toda Colombia. También trabajamos de forma remota con clientes internacionales."
+  },
+  {
+    question: "¿Hacen páginas web para empresas de Neiva?",
+    answer: "Sí, somos especialistas en desarrollo web para empresas de Neiva y el Huila. Creamos páginas web profesionales, tiendas online, software a medida y aplicaciones web modernas. Ofrecemos cotizaciones gratuitas y personalizadas para negocios locales."
+  },
+  {
     question: "¿Cuánto cuesta desarrollar un sitio web en Neiva?",
     answer: "El costo de desarrollo web en Neiva varía según complejidad. Una landing page simple puede costar desde $800.000 COP, mientras que una aplicación web completa puede ir desde $3.000.000 COP. Ofrecemos cotizaciones gratuitas adaptadas a tu presupuesto y necesidades."
   },
@@ -53,6 +61,14 @@ export const faqsES: FAQItem[] = [
  * FAQs predefinidas para la homepage en inglés
  */
 export const faqsEN: FAQItem[] = [
+  {
+    question: "Where is DevMinds agency located?",
+    answer: "DevMinds is located in Neiva, capital of the Huila department, Colombia. We are a local web development agency serving businesses and entrepreneurs in Neiva, Huila and throughout Colombia. We also work remotely with international clients."
+  },
+  {
+    question: "Do you create websites for businesses in Neiva?",
+    answer: "Yes, we specialize in web development for businesses in Neiva and Huila. We create professional websites, online stores, custom software and modern web applications. We offer free and personalized quotes for local businesses."
+  },
   {
     question: "How much does it cost to develop a website in Neiva?",
     answer: "Web development costs in Neiva vary by complexity. A simple landing page can start from $200 USD, while a complete web application can range from $800 USD. We offer free quotes tailored to your budget and needs."

@@ -6,7 +6,23 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tu configuración de Next.js aquí
+  // Redirects para consolidar www como canónica
+  async redirects() {
+    return [
+      // Redirect non-www to www
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'devminds.online',
+          },
+        ],
+        destination: 'https://www.devminds.online/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

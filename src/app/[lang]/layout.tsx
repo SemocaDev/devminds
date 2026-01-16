@@ -2,6 +2,7 @@
 import { Roboto, Doto } from "next/font/google";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import ClientThemeWrapper from "@/app/components/ClientThemeWrapper";
 import { Toaster } from "@/components/ui/sonner";
@@ -30,36 +31,24 @@ type Props = {
   params: Promise<{ lang: string; }>;
 };
 
-// Función para generar metadatos dinámicos según el idioma
+// Generar rutas estáticas para todos los idiomas
+export function generateStaticParams() {
+  return locales.map((locale) => ({ lang: locale }));
+}
+
+// Función para generar metadatos dinámicos según el idioma usando traducciones
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
-  
-  // Metadatos por idioma
-  const metadata = {
-    es: {
-      title: "DevMinds - Desarrollo Web y Software Personalizado",
-      description: "Creamos soluciones digitales eficientes y profesionales. Desarrollo web, software personalizado y consultoría técnica. Código limpio y escalable para empresas.",
-      keywords: "desarrollo web, software personalizado, Next.js, React, consultoría técnica, desarrollo colombia, soluciones empresariales"
-    },
-    en: {
-      title: "DevMinds - Professional Web Development & Custom Software",
-      description: "We create efficient and professional digital solutions. Web development, custom software and technical consulting. Clean and scalable code for businesses.",
-      keywords: "web development, custom software, Next.js, React, technical consulting, development colombia, business solutions"
-    },
-    ja: {
-      title: "DevMinds - プロフェッショナルウェブ開発とカスタムソフトウェア",
-      description: "効率的でプロフェッショナルなデジタルソリューションを作成します。ウェブ開発、カスタムソフトウェア、技術コンサルティング。",
-      keywords: "ウェブ開発, カスタムソフトウェア, Next.js, React, 技術コンサルティング, ビジネスソリューション"
-    }
-  };
+  const t = await getTranslations({ locale: lang, namespace: 'Metadata' });
 
-  const currentLang = lang as keyof typeof metadata;
-  const meta = metadata[currentLang] || metadata.es;
+  const title = t('home.title');
+  const description = t('home.description');
+  const keywords = t('home.keywords');
 
   return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    title,
+    description,
+    keywords,
 
     // Iconos - PWA optimizado
     icons: {
@@ -77,34 +66,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     authors: [{ name: "DevMinds Team" }],
     creator: "DevMinds",
     publisher: "DevMinds",
-    
+
     // Open Graph para redes sociales
     openGraph: {
       type: 'website',
-      locale: lang,
-      url: `https://devminds.online/${lang}`,
-      title: meta.title,
-      description: meta.description,
+      locale: lang === 'es' ? 'es_CO' : lang === 'en' ? 'en_US' : 'ja_JP',
+      url: `https://www.devminds.online/${lang}`,
+      title,
+      description,
       siteName: 'DevMinds',
       images: [
         {
-          url: 'https://devminds.online/og-image.jpg',
+          url: 'https://www.devminds.online/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'DevMinds - Soluciones Digitales Profesionales',
+          alt: 'DevMinds - Desarrollo Web Profesional en Neiva, Colombia',
         }
       ],
     },
-    
+
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
-      title: meta.title,
-      description: meta.description,
+      title,
+      description,
       creator: '@devminds',
-      images: ['https://devminds.online/og-image.jpg'],
+      images: ['https://www.devminds.online/og-image.jpg'],
     },
-    
+
     // Robots y indexación
     robots: {
       index: true,
@@ -117,24 +106,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
-    
-    // Canonical URL
+
+    // Canonical URL - Usando www como canónica
     alternates: {
-      canonical: `https://devminds.online/${lang}`,
+      canonical: `https://www.devminds.online/${lang}`,
       languages: {
-        'es': 'https://devminds.online/es',
-        'en': 'https://devminds.online/en',
-        'ja': 'https://devminds.online/ja',
+        'es': 'https://www.devminds.online/es',
+        'en': 'https://www.devminds.online/en',
+        'ja': 'https://www.devminds.online/ja',
       },
     },
-    
+
     // Metadatos adicionales
     category: 'technology',
     classification: 'Professional Web Development Services',
-    
+
     // Para aplicaciones web progresivas (PWA)
     manifest: '/manifest.json',
-    
+
     // Verificación de motores de búsqueda (agregar cuando tengas las keys)
     // verification: {
     //   google: 'tu-codigo-de-verificacion-google',
@@ -146,6 +135,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function RootLayout(props: Props) {
   const { lang } = await props.params;
+
+  // Habilitar renderizado estático para este locale
+  setRequestLocale(lang);
 
   if (!locales.includes(lang as Locale)) {
     notFound();

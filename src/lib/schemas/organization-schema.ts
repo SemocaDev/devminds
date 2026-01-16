@@ -4,7 +4,7 @@
  */
 
 export function generateOrganizationSchema(lang: string) {
-  const baseUrl = 'https://devminds.online';
+  const baseUrl = 'https://www.devminds.online';
 
   return {
     "@context": "https://schema.org",
@@ -74,14 +74,16 @@ export function generateOrganizationSchema(lang: string) {
 export function generateLocalBusinessSchema(lang: string) {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "DevMinds",
-    "image": `https://devminds.online/icon-512x512.svg`,
-    "@id": "https://devminds.online/#localbusiness",
+    "@type": "ProfessionalService",
+    "@id": "https://www.devminds.online/#localbusiness",
+    "name": "DevMinds - Desarrollo Web Neiva",
+    "alternateName": "DevMinds",
+    "image": "https://www.devminds.online/icon-512x512.svg",
     "email": "semoca00@gmail.com",
+    "url": "https://www.devminds.online",
     "description": lang === 'es'
-      ? "Agencia de desarrollo web profesional en Neiva, Huila. Desarrollo de aplicaciones web modernas, software a medida y consultoría técnica."
-      : "Professional web development agency in Neiva, Huila. Modern web application development, custom software and technical consulting.",
+      ? "Agencia de desarrollo web profesional en Neiva, Huila. Diseño de páginas web, software personalizado, tiendas online y aplicaciones modernas con Next.js y React. Programadores en Colombia."
+      : "Professional web development agency in Neiva, Huila. Website design, custom software, online stores and modern applications with Next.js and React. Programmers in Colombia.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Neiva",
@@ -95,25 +97,92 @@ export function generateLocalBusinessSchema(lang: string) {
       "latitude": "2.9273",
       "longitude": "-75.2819"
     },
-    "url": "https://devminds.online",
-    "telephone": "+57",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Neiva",
+        "@id": "https://www.wikidata.org/wiki/Q205737"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Huila"
+      },
+      {
+        "@type": "Country",
+        "name": "Colombia",
+        "@id": "https://www.wikidata.org/wiki/Q739"
+      }
+    ],
+    "serviceType": [
+      "Desarrollo Web",
+      "Diseño de Páginas Web",
+      "Software Personalizado",
+      "Tiendas Online",
+      "E-commerce",
+      "Aplicaciones Web",
+      "Consultoría Técnica",
+      "WordPress"
+    ],
     "priceRange": "$$",
+    "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer", "Nequi", "Daviplata"],
+    "currenciesAccepted": "COP, USD",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "08:00",
         "closes": "18:00"
       }
     ],
-    "servesCuisine": null,
-    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-    "currenciesAccepted": "COP, USD"
+    "sameAs": [
+      "https://github.com/SemocaDev",
+      "https://www.linkedin.com/in/sebastian-morea"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": lang === 'es' ? "Servicios de Desarrollo Web" : "Web Development Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Landing Page",
+            "description": lang === 'es'
+              ? "Página web de una sola página optimizada para conversión"
+              : "Single page website optimized for conversion"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": lang === 'es' ? "Sitio Web Corporativo" : "Corporate Website",
+            "description": lang === 'es'
+              ? "Sitio web profesional multi-página para empresas en Neiva"
+              : "Professional multi-page website for businesses"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": lang === 'es' ? "Tienda Online" : "Online Store",
+            "description": lang === 'es'
+              ? "E-commerce completo con carrito de compras y pagos para negocios en Huila"
+              : "Complete e-commerce with shopping cart and payments"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": lang === 'es' ? "Software a Medida" : "Custom Software",
+            "description": lang === 'es'
+              ? "Desarrollo de software personalizado para empresas en Neiva, Colombia"
+              : "Custom software development for businesses in Colombia"
+          }
+        }
+      ]
+    }
   };
 }

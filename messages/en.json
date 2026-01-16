@@ -1,4 +1,31 @@
 {
+  "Metadata": {
+    "home": {
+      "title": "DevMinds - Web Development & Software in Neiva, Colombia | Programming Agency",
+      "description": "Web development agency in Neiva, Huila, Colombia. We create professional websites, custom software, online stores and applications with Next.js and React. Programmers in Colombia. Free quote.",
+      "keywords": "web development neiva, web agency neiva colombia, software development huila, programmer neiva, websites neiva colombia, next.js react developer colombia, custom software neiva, e-commerce huila"
+    },
+    "services": {
+      "title": "Web Development Services Neiva | Websites, Software, WordPress - DevMinds",
+      "description": "Professional web development services in Neiva, Huila. Website design, custom software, WooCommerce online stores, Next.js and React applications. Free quote for businesses in Colombia.",
+      "keywords": "web development services neiva, website design neiva, custom software neiva, online store huila, wordpress neiva, custom websites neiva"
+    },
+    "about": {
+      "title": "About Us - DevMinds | Web Programmers in Neiva, Huila",
+      "description": "Meet the DevMinds team. Software engineers and programmers in Neiva, Huila specialized in modern web development, Next.js, React and TypeScript. Colombian software agency.",
+      "keywords": "web development team neiva, programmers neiva, software engineers huila, web developers neiva colombia"
+    },
+    "contact": {
+      "title": "Contact - DevMinds | Website Quote Neiva, Huila",
+      "description": "Contact DevMinds for your web project in Neiva, Huila. Free quote for websites, custom software, online stores and applications. Response within 24h.",
+      "keywords": "contact web development neiva, website quote neiva, software budget neiva"
+    },
+    "portfolio": {
+      "title": "Web Projects Portfolio - DevMinds | Work in Neiva, Huila",
+      "description": "Web development project portfolio in Neiva, Colombia. Examples of websites, Next.js applications, online stores and custom software made in Huila.",
+      "keywords": "web development portfolio neiva, web projects neiva, website examples huila"
+    }
+  },
   "Hero": {
     "title": "OPTIMIZED//<wbr>SYSTEMS",
     "subtitle": "PROFESSIONAL WEB DEVELOPMENT IN COLOMBIA",

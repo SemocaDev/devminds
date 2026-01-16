@@ -64,7 +64,7 @@ export function generateServiceSchema(lang: string) {
         "description": service.description,
         "provider": {
           "@type": "Organization",
-          "@id": "https://devminds.online/#organization"
+          "@id": "https://www.devminds.online/#organization"
         },
         "areaServed": [
           {
