@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Rutas disponibles
   const routes = ['', '/about', '/services', '/portfolio', '/contact']
-  const languages = ['es', 'en'] // Español e inglés activos para SEO
+  const languages = ['es', 'en', 'ja'] // Todos los idiomas soportados
 
   const urls: MetadataRoute.Sitemap = []
 
