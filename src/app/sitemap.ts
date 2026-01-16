@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['', '/about', '/services', '/portfolio', '/contact']
   const languages = ['es', 'en', 'ja'] // Todos los idiomas soportados
 
+  // Fecha de la última actualización importante de SEO (Fase 3 - 16 enero 2026)
+  const lastSEOUpdate = new Date('2026-01-16')
+
   const urls: MetadataRoute.Sitemap = []
 
   // Generar URLs para cada idioma con prioridades diferenciadas y hreflang alternates
@@ -33,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       urls.push({
         url: `${baseUrl}/${lang}${route}`,
-        lastModified: new Date(),
+        lastModified: lastSEOUpdate, // Usar fecha específica de última actualización SEO
         changeFrequency,
         priority,
         alternates: {
