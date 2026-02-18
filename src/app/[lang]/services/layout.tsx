@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://www.devminds.online/${lang}/services`,
       languages: {
+        'x-default': 'https://www.devminds.online/es/services',
         'es': 'https://www.devminds.online/es/services',
         'en': 'https://www.devminds.online/en/services',
         'ja': 'https://www.devminds.online/ja/services',

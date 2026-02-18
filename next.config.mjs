@@ -9,7 +9,7 @@ const nextConfig = {
   // Redirects para consolidar www como canónica
   async redirects() {
     return [
-      // Redirect non-www to www
+      // Redirect non-www to www (preserva path completo)
       {
         source: '/:path*',
         has: [
@@ -21,6 +21,7 @@ const nextConfig = {
         destination: 'https://www.devminds.online/:path*',
         permanent: true,
       },
+      // El redirect / → /es lo maneja el middleware de next-intl
     ];
   },
 };
