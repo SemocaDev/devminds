@@ -1,18 +1,43 @@
 // src/proxy.ts (Next.js 16 usa "proxy" en vez de "middleware")
+import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './i18n';
+import { verifyTokenEdge } from './lib/admin/auth';
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   locales,
   defaultLocale,
-  // 'always' = siempre muestra /es, /en, /ja en la URL
   localePrefix: 'always',
-  // NO detectar idioma del navegador — siempre redirigir a ES por defecto
-  // Esto evita que Google vea diferentes respuestas según el crawler
   localeDetection: false,
 });
 
-// Match all paths except for static files, API routes, and Vercel internals
+export default async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Admin routes: verify JWT (except login page and API routes)
+  if (pathname.startsWith('/admin')) {
+    // Let the login page and API routes pass through
+    if (pathname === '/admin/login') {
+      return NextResponse.next();
+    }
+
+    const token = request.cookies.get('admin_token')?.value;
+    if (!token) {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+
+    const payload = await verifyTokenEdge(token);
+    if (!payload) {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+
+    return NextResponse.next();
+  }
+
+  // All other routes: handle with next-intl
+  return intlMiddleware(request);
+}
+
 export const config = {
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };
