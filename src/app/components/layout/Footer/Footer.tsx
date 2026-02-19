@@ -107,7 +107,7 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-dotted border-t-primary/20">
-            <p className="text-center text-sm text-muted-foreground">
+            <p className="text-center text-sm text-muted-foreground font-mono">
               {t('copyright', { year })}
             </p>
           </div>
