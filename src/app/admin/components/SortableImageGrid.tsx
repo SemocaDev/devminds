@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import {
   DndContext,
@@ -132,6 +132,27 @@ export default function SortableImageGrid({ images, onChange, folder }: Props) {
     setUploading(false);
   }, [images, folder, onChange]);
 
+  const handlePaste = useCallback((e: ClipboardEvent) => {
+    const items = e.clipboardData?.items;
+    if (!items || uploading) return;
+    const imageFiles: File[] = [];
+    for (const item of Array.from(items)) {
+      if (item.type.startsWith('image/')) {
+        const file = item.getAsFile();
+        if (file) imageFiles.push(file);
+      }
+    }
+    if (imageFiles.length > 0) {
+      e.preventDefault();
+      uploadFiles(imageFiles);
+    }
+  }, [uploading, uploadFiles]);
+
+  useEffect(() => {
+    document.addEventListener('paste', handlePaste);
+    return () => document.removeEventListener('paste', handlePaste);
+  }, [handlePaste]);
+
   function handleDrop(e: React.DragEvent) {
     e.preventDefault();
     setDragOver(false);
@@ -204,7 +225,7 @@ export default function SortableImageGrid({ images, onChange, folder }: Props) {
       />
 
       <p className="text-xs text-gray-500">
-        Arrastra imágenes para reordenar. Máximo 5MB por imagen.
+        Arrastra, pega (Ctrl+V) o haz click para agregar. Máximo 5MB por imagen.
       </p>
     </div>
   );

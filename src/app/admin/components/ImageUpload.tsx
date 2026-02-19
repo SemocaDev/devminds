@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { Upload, X, Loader2 } from 'lucide-react';
 
@@ -59,6 +59,24 @@ export default function ImageUpload({ value, onChange, folder }: Props) {
     e.target.value = '';
   }
 
+  const handlePaste = useCallback((e: ClipboardEvent) => {
+    const items = e.clipboardData?.items;
+    if (!items || value || uploading) return;
+    for (const item of Array.from(items)) {
+      if (item.type.startsWith('image/')) {
+        e.preventDefault();
+        const file = item.getAsFile();
+        if (file) uploadFile(file);
+        return;
+      }
+    }
+  }, [value, uploading, uploadFile]);
+
+  useEffect(() => {
+    document.addEventListener('paste', handlePaste);
+    return () => document.removeEventListener('paste', handlePaste);
+  }, [handlePaste]);
+
   function handleRemove() {
     onChange(null);
   }
@@ -102,7 +120,7 @@ export default function ImageUpload({ value, onChange, folder }: Props) {
         <>
           <Upload className="w-8 h-8 text-gray-500 mb-2" />
           <span className="text-xs text-gray-500 text-center px-2">
-            Arrastra o haz click
+            Arrastra, pega o haz click
           </span>
         </>
       )}
