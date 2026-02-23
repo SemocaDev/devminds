@@ -14,8 +14,9 @@ const nextConfig = {
       },
     ],
   },
-  // Redirects para consolidar www como canónica
+  // Redirects para consolidar www y rutas sin idioma
   async redirects() {
+    const unlocalized = ['/about', '/services', '/portfolio', '/contact'];
     return [
       // Redirect non-www to www (preserva path completo)
       {
@@ -29,7 +30,12 @@ const nextConfig = {
         destination: 'https://www.devminds.online/:path*',
         permanent: true,
       },
-      // El redirect / → /es lo maneja el middleware de next-intl
+      // Redirect rutas sin prefijo de idioma → /es (canónica española)
+      ...unlocalized.map((route) => ({
+        source: route,
+        destination: `/es${route}`,
+        permanent: true,
+      })),
     ];
   },
 };
