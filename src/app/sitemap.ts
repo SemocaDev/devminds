@@ -12,13 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const urls: MetadataRoute.Sitemap = []
 
-  // URL raíz canónica (redirige a /es pero Google debe conocerla)
-  urls.push({
-    url: baseUrl,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: 1.0,
-  })
+  // No incluir baseUrl sin idioma — redirige a /es y genera duplicado
 
   languages.forEach(lang => {
     routes.forEach(route => {
