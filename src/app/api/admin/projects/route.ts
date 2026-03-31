@@ -4,6 +4,7 @@ import { projects, projectTranslations } from '@/db/schema';
 import { projectSchema } from '@/lib/admin/schemas';
 import { getAdminSession } from '@/lib/admin/auth';
 import { revalidateTag } from 'next/cache';
+import { max } from 'drizzle-orm';
 
 export async function GET() {
   const session = await getAdminSession();
@@ -30,8 +31,13 @@ export async function POST(request: NextRequest) {
 
     const { translations, ...projectData } = data;
 
+    // Auto-asignar sortOrder: max actual + 1
+    const [{ maxOrder }] = await db.select({ maxOrder: max(projects.sortOrder) }).from(projects);
+    const nextOrder = (maxOrder ?? -1) + 1;
+
     await db.insert(projects).values({
       ...projectData,
+      sortOrder: nextOrder,
       github: projectData.github ?? null,
       demo: projectData.demo ?? null,
       client: projectData.client ?? null,
