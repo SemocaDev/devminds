@@ -36,7 +36,11 @@ type ProjectRow = {
   translations: { locale: string; title: string }[];
 };
 
-function SortableRow({ project, onDelete }: { project: ProjectRow; onDelete: (id: string) => void }) {
+function SortableRow({ project, onDelete, onToggleFeatured }: {
+  project: ProjectRow;
+  onDelete: (id: string) => void;
+  onToggleFeatured: (id: string, current: boolean) => void;
+}) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: project.id });
   const esTitle = project.translations.find(t => t.locale === 'es')?.title || project.id;
 
@@ -58,7 +62,14 @@ function SortableRow({ project, onDelete }: { project: ProjectRow; onDelete: (id
       </td>
       <td className="px-4 py-4 text-sm font-medium">
         <div className="flex items-center gap-2">
-          {project.featured && <Star className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" fill="currentColor" />}
+          <button
+            type="button"
+            onClick={() => onToggleFeatured(project.id, project.featured)}
+            title={project.featured ? 'Quitar de destacados' : 'Marcar como destacado'}
+            className={`transition-colors flex-shrink-0 ${project.featured ? 'text-cyan-400 hover:text-gray-500' : 'text-gray-700 hover:text-cyan-400'}`}
+          >
+            <Star className="w-3.5 h-3.5" fill={project.featured ? 'currentColor' : 'none'} />
+          </button>
           {esTitle}
         </div>
       </td>
@@ -121,6 +132,15 @@ export default function AdminProjectsPage() {
     });
   }
 
+  async function handleToggleFeatured(id: string, current: boolean) {
+    setProjects(prev => prev.map(p => p.id === id ? { ...p, featured: !current } : p));
+    await fetch(`/api/admin/projects/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ featured: !current }),
+    });
+  }
+
   async function handleDelete(id: string) {
     const title = projects.find(p => p.id === id)?.translations.find(t => t.locale === 'es')?.title || id;
     if (!confirm(`¿Eliminar el proyecto "${title}"? Esta acción no se puede deshacer.`)) return;
@@ -176,7 +196,7 @@ export default function AdminProjectsPage() {
               <SortableContext items={projects.map(p => p.id)} strategy={verticalListSortingStrategy}>
                 <tbody>
                   {projects.map(project => (
-                    <SortableRow key={project.id} project={project} onDelete={handleDelete} />
+                    <SortableRow key={project.id} project={project} onDelete={handleDelete} onToggleFeatured={handleToggleFeatured} />
                   ))}
                 </tbody>
               </SortableContext>
