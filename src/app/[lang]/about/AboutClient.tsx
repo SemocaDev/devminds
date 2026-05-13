@@ -198,19 +198,19 @@ export default function AboutClient({ members }: Props) {
         {/* Hero */}
         <section className="section-spacing bg-background">
           <div className="container-main">
-            <div className="about-hero opacity-0 mb-16">
+            <div className="about-hero opacity-0 mb-16 text-center">
               <p className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase mb-4">
                 <span className="w-6 h-px bg-primary" />
                 {t('pageLabel')}
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 max-w-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 max-w-2xl mx-auto">
                 {t('title')}
               </h1>
-              <p className="text-lg text-muted-foreground max-w-[55ch] leading-relaxed">{t('subtitle')}</p>
+              <p className="text-lg text-muted-foreground max-w-[55ch] leading-relaxed mx-auto">{t('subtitle')}</p>
             </div>
 
             {/* Historia */}
-            <div className="gsap-reveal mb-20 max-w-3xl">
+            <div className="gsap-reveal mb-20 max-w-3xl mx-auto">
               <div className="flex items-center gap-3 mb-6">
                 <Lightbulb className="w-5 h-5 text-foreground/50" />
                 <h2 className="text-2xl font-display font-bold">{t('history.title')}</h2>
@@ -224,8 +224,8 @@ export default function AboutClient({ members }: Props) {
 
             {/* Valores — grid 2×2, sin colores hardcoded */}
             <div className="gsap-reveal mb-20">
-              <h2 className="text-2xl font-display font-bold mb-8">{t('values.title')}</h2>
-              <div className="grid md:grid-cols-2 gap-px bg-border/40 border border-border/40 rounded-2xl overflow-hidden max-w-3xl">
+              <h2 className="text-2xl font-display font-bold mb-8 text-center">{t('values.title')}</h2>
+              <div className="grid md:grid-cols-2 gap-px bg-border/40 border border-border/40 rounded-2xl overflow-hidden max-w-3xl mx-auto">
                 {values.map(({ icon: Icon, key }) => (
                   <div key={key} className="bg-background p-6 hover:bg-muted/20 transition-colors duration-200">
                     <div className="w-8 h-8 rounded-lg border border-border/60 flex items-center justify-center mb-4">
@@ -241,8 +241,8 @@ export default function AboutClient({ members }: Props) {
             {/* Founders Carousel */}
             {founders.length > 0 && (
               <div className="gsap-reveal mb-20">
-                <h2 className="text-2xl font-display font-bold mb-8">{t('foundersTitle')}</h2>
-                <div className="max-w-3xl">
+                <h2 className="text-2xl font-display font-bold mb-8 text-center">{t('foundersTitle')}</h2>
+                <div className="max-w-3xl mx-auto">
                   <Carousel
                     setApi={setApi}
                     opts={{ align: 'center', loop: true }}
@@ -260,7 +260,7 @@ export default function AboutClient({ members }: Props) {
                     <CarouselNext className="right-0 sm:-right-12" />
                   </Carousel>
                   {founders.length > 1 && (
-                    <div className="flex gap-2 mt-5">
+                    <div className="flex justify-center gap-2 mt-5">
                       {founders.map((_, index) => (
                         <button
                           key={index}
@@ -280,8 +280,8 @@ export default function AboutClient({ members }: Props) {
             {/* Resto del equipo */}
             {restOfTeam.length > 0 && (
               <div className="gsap-reveal mb-20">
-                <h2 className="text-2xl font-display font-bold mb-8">{t('teamTitle')}</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h2 className="text-2xl font-display font-bold mb-8 text-center">{t('teamTitle')}</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                   {restOfTeam.map((member) => (
                     <TeamMemberCard key={member.id} member={member} t={t} />
                   ))}
@@ -289,10 +289,10 @@ export default function AboutClient({ members }: Props) {
               </div>
             )}
 
-            {/* Por qué elegirnos — lista, no grid de cards centradas */}
+            {/* Por qué elegirnos */}
             <div className="gsap-reveal">
-              <h2 className="text-2xl font-display font-bold mb-8">{t('whyChooseUs.title')}</h2>
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
+              <h2 className="text-2xl font-display font-bold mb-8 text-center">{t('whyChooseUs.title')}</h2>
+              <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 {reasons.map(({ icon: Icon, key }) => (
                   <div key={key} className="flex items-start gap-4">
                     <div className="w-9 h-9 rounded-lg border border-border/60 flex items-center justify-center flex-shrink-0 mt-0.5">
