@@ -27,7 +27,7 @@ export default function HomeClient({ featuredProjects }: Props) {
 
   return (
     <>
-        <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
+        <div className="min-h-screen flex flex-col w-full">
           {/* New Navigation */}
           <Navbar />
           <SocialSidebar />

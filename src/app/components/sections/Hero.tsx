@@ -1,122 +1,169 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import HeroBackground from "@/app/components/backgrounds/HeroBackground";
+
+const FULL_TEXT = "DevMinds";
+const TYPING_SPEED = 90; // ms por carácter — más rápido que el original (150ms)
 
 const Hero = () => {
   const t = useTranslations("Hero");
   const params = useParams();
   const lang = params.lang as string;
+
   const [displayedText, setDisplayedText] = useState("");
-  const fullText = "DevMinds";
+  const sectionRef = useRef<HTMLElement>(null);
+  const labelRef = useRef<HTMLParagraphElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
+  // Typewriter
   useEffect(() => {
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex++;
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i <= FULL_TEXT.length) {
+        setDisplayedText(FULL_TEXT.slice(0, i));
+        i++;
       } else {
-        clearInterval(typingInterval);
+        clearInterval(interval);
       }
-    }, 150);
+    }, TYPING_SPEED);
+    return () => clearInterval(interval);
+  }, []);
 
-    return () => clearInterval(typingInterval);
+  // GSAP entrada para todo menos el título (que hace typewriter)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const ease = "cubic-bezier(0.16, 1, 0.3, 1)";
+      gsap.set(
+        [labelRef.current, subtitleRef.current, descRef.current, ctaRef.current],
+        { opacity: 0, y: 20 }
+      );
+      gsap.set(titleRef.current, { opacity: 1 });
+
+      gsap.timeline({ delay: 0.1 })
+        .to(labelRef.current,    { opacity: 1, y: 0, duration: 0.5, ease })
+        .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.6, ease }, `+=${FULL_TEXT.length * TYPING_SPEED / 1000 - 0.2}`)
+        .to(descRef.current,     { opacity: 1, y: 0, duration: 0.5, ease }, "-=0.35")
+        .to(ctaRef.current,      { opacity: 1, y: 0, duration: 0.45, ease }, "-=0.3");
+    }, sectionRef);
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background animado con partículas - Full width solo en Hero */}
-      <div className="absolute inset-0 w-full h-full -z-10">
-        <HeroBackground particleCount={40} speed={25} opacity={0.4} />
+    <section
+      ref={sectionRef}
+      className="relative min-h-[100dvh] flex items-center overflow-hidden"
+    >
+      {/* Fondo: grid + glows + partículas */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute inset-0 bg-background" />
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)
+            `,
+            backgroundSize: "64px 64px",
+          }}
+        />
+        {/* Glows sutiles — monocromático */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-foreground/5 blur-[120px] translate-x-1/4 -translate-y-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-foreground/4 blur-[100px] -translate-x-1/4 translate-y-1/4" />
+        {/* Partículas CSS */}
+        {[
+          { top: "15%", left: "8%",  size: 3, dur: "18s", delay: "0s",   opacity: 0.5  },
+          { top: "25%", left: "82%", size: 2, dur: "22s", delay: "3s",   opacity: 0.35 },
+          { top: "60%", left: "5%",  size: 2, dur: "26s", delay: "6s",   opacity: 0.4  },
+          { top: "72%", left: "90%", size: 3, dur: "20s", delay: "1.5s", opacity: 0.45 },
+          { top: "40%", left: "92%", size: 2, dur: "24s", delay: "4s",   opacity: 0.3  },
+          { top: "85%", left: "25%", size: 2, dur: "19s", delay: "8s",   opacity: 0.35 },
+          { top: "10%", left: "55%", size: 2, dur: "28s", delay: "2s",   opacity: 0.25 },
+          { top: "50%", left: "15%", size: 3, dur: "21s", delay: "5s",   opacity: 0.4  },
+          { top: "30%", left: "45%", size: 2, dur: "23s", delay: "7s",   opacity: 0.2  },
+          { top: "78%", left: "65%", size: 2, dur: "17s", delay: "9s",   opacity: 0.3  },
+        ].map((p, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-foreground hero-particle"
+            style={{
+              top: p.top, left: p.left,
+              width: p.size, height: p.size,
+              opacity: p.opacity,
+              ["--duration" as string]: p.dur,
+              ["--delay" as string]: p.delay,
+              ["--x-offset" as string]: `${(i % 2 === 0 ? 1 : -1) * (8 + i * 3)}px`,
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container-main w-full max-w-5xl mx-auto relative z-10">
-        {/* Contenido centrado */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center space-y-6 md:space-y-8"
-        >
-          {/* Pequeño saludo */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-primary font-mono text-sm md:text-base"
-          >
-            {t("greeting")}
-          </motion.p>
+      <div className="container-main w-full">
+        <div className="flex items-center justify-center py-32 lg:min-h-[100dvh]">
 
-          {/* Título gigante con gradiente y efecto typewriter */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="hero-title relative"
-          >
-            {displayedText}
-          </motion.h1>
+          <div className="flex flex-col gap-7 max-w-3xl items-center text-center">
 
-          {/* Subtítulo grande */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground"
-          >
-            {t("mainSubtitle")}
-          </motion.p>
-
-          {/* Descripción */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
-            {t("description")}
-          </motion.p>
-
-          {/* CTAs - VERSIÓN CORREGIDA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="flex flex-wrap gap-4 justify-center pt-4"
-          >
-            {/* Botón View Projects - Versión moderna sin legacyBehavior */}
-            <Button
-              asChild
-              size="lg"
-              className="group cursor-pointer"
+            <p
+              ref={labelRef}
+              className="inline-flex items-center gap-3 text-xs font-mono font-semibold text-primary tracking-[0.18em] uppercase"
             >
-              <Link href={`/${lang}/portfolio`}>
-                {t("viewProjects")}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+              <span className="w-6 h-px bg-primary" />
+              {t("greeting")}
+            </p>
 
-            {/* Botón Contact - Versión moderna sin legacyBehavior */}
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
+            {/* Título con typewriter — cursor visible mientras escribe */}
+            <h1 ref={titleRef} className="hero-title">
+              {displayedText}
+              {displayedText.length < FULL_TEXT.length && (
+                <span className="cursor-blink ml-1" aria-hidden="true">|</span>
+              )}
+            </h1>
+
+            <p
+              ref={subtitleRef}
+              className="text-2xl md:text-3xl font-display font-medium text-foreground/75 leading-snug max-w-2xl"
             >
-              <Link href={`/${lang}/contact`}>
-                {t("contactButton")}
-              </Link>
-            </Button>
-          </motion.div>
-        </motion.div>
+              {t("mainSubtitle")}
+            </p>
+
+            <p
+              ref={descRef}
+              className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl"
+            >
+              {t("description")}
+            </p>
+
+            <div ref={ctaRef} className="flex flex-wrap gap-4 pt-2 justify-center">
+              <Button asChild size="lg" className="gap-2 font-semibold shadow-md shadow-primary/25">
+                <Link href={`/${lang}/portfolio`}>
+                  {t("viewProjects")}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="gap-2 font-semibold border-border/60 hover:border-primary hover:text-primary"
+              >
+                <Link href={`/${lang}/contact`}>
+                  {t("contactButton")}
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </section>
   );
 };

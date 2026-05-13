@@ -1,120 +1,108 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { ArrowRight, Check, Clock, Code, Zap } from 'lucide-react';
+import { ArrowRight, Code, Zap, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CallToAction = () => {
   const t = useTranslations('CTA');
   const params = useParams();
   const lang = params.lang as string;
+  const sectionRef = useRef<HTMLElement>(null);
 
   const features = [
-    { icon: Code, text: t('feature1') },
-    { icon: Zap, text: t('feature2') },
-    { icon: Check, text: t('feature3') }
+    { icon: Code,  text: t('feature1') },
+    { icon: Zap,   text: t('feature2') },
+    { icon: Check, text: t('feature3') },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', once: true },
+        defaults: { ease },
+      });
+      tl.fromTo('.cta-badge',   { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 })
+        .fromTo('.cta-title',   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55 }, '-=0.1')
+        .fromTo('.cta-desc',    { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+        .fromTo('.cta-feature', { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.07 }, '-=0.2')
+        .fromTo('.cta-buttons', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, '-=0.1');
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-muted/50">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-muted/20">
       <div className="container-main">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Card principal con diseño profesional y compacto */}
-          <Card className="relative overflow-hidden border-2 border-primary/20 bg-card shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/5 to-transparent rounded-full" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/5 to-transparent rounded-full" />
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 xl:gap-20 items-center">
 
-            {/* Elementos decorativos pequeños con patrones */}
-            <div className="absolute top-8 right-8 w-20 h-20 pattern-dots-sparse opacity-95 pointer-events-none" />
-            <div className="absolute bottom-8 left-8 w-24 h-24 pattern-lines-grid opacity-95 pointer-events-none" />
+          {/* Contenido */}
+          <div className="space-y-6 max-w-2xl">
+            <div className="cta-badge inline-flex items-center gap-2 opacity-0">
+              <div className="w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />
+              <span className="text-xs font-mono font-semibold text-muted-foreground tracking-[0.15em] uppercase">{t('status')}</span>
+            </div>
 
-            <div className="relative z-10 p-6 md:p-10 lg:p-12">
-              <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-8 lg:gap-12 items-center">
+            <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight opacity-0">
+              {t('title')}
+            </h2>
+            <p className="cta-desc text-base md:text-lg text-muted-foreground leading-relaxed max-w-[55ch] opacity-0">
+              {t('description')}
+            </p>
 
-                {/* Contenido principal */}
-                <div className="space-y-5">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                    <span className="text-xs font-semibold text-primary">{t('status')}</span>
+            <div className="space-y-3">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="cta-feature flex items-center gap-3 opacity-0">
+                    <Icon className="w-4 h-4 text-foreground/50 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">{feature.text}</span>
                   </div>
+                );
+              })}
+            </div>
 
-                  <div className="space-y-3">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                      {t('title')}
-                    </h2>
-                    <p className="text-base md:text-lg text-muted-foreground">
-                      {t('description')}
-                    </p>
-                  </div>
+            <div className="cta-buttons flex flex-col sm:flex-row gap-3 items-start pt-2 opacity-0">
+              <Button asChild size="lg" className="group gap-2 font-semibold">
+                <Link href={`/${lang}/contact`}>
+                  {t('buttonText')}
+                  <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
+          </div>
 
-                  {/* Features en lista compacta */}
-                  <div className="grid gap-2.5 pt-2">
-                    {features.map((feature, index) => {
-                      const Icon = feature.icon;
-                      return (
-                        <div
-                          key={index}
-                          className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/30 transition-all"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent p-2 flex items-center justify-center flex-shrink-0">
-                            <Icon className="w-full h-full text-white" />
-                          </div>
-                          <span className="text-sm font-semibold">{feature.text}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* CTA Button compacto */}
-                  <div className="pt-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-                    <Button asChild size="lg" className="group shadow-lg hover:shadow-xl">
-                      <Link href={`/${lang}/contact`}>
-                        {t('buttonText')}
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4" />
-                      <span>{t('responseTime')}</span>
-                    </div>
-                  </div>
+          {/* Bloque derecho — tipográfico, sin métricas falsas */}
+          <div className="hidden lg:block">
+            <div className="border border-border/50 rounded-2xl p-8 space-y-6 min-w-[220px]">
+              <div className="space-y-1">
+                <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Respuesta</div>
+                <div className="text-2xl font-display font-bold">24 h</div>
+              </div>
+              <div className="h-px bg-border/40" />
+              <div className="space-y-1">
+                <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Tecnología</div>
+                <div className="text-sm font-medium leading-relaxed text-muted-foreground">
+                  Next.js · React<br />TypeScript · Node
                 </div>
-
-                {/* Stats visuales compactos */}
-                <div className="space-y-3 lg:pl-4">
-                  {/* Stat 1 */}
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20">
-                    <div className="text-3xl font-bold text-blue-600 mb-1">24h</div>
-                    <div className="text-xs font-medium text-muted-foreground">Tiempo de respuesta</div>
-                  </div>
-
-                  {/* Stat 2 */}
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/20">
-                    <div className="text-3xl font-bold text-green-600 mb-1">100%</div>
-                    <div className="text-xs font-medium text-muted-foreground">Proyectos completados</div>
-                  </div>
-
-                  {/* Stat 3 */}
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-500/20">
-                    <div className="text-3xl font-bold text-purple-600 mb-1">5★</div>
-                    <div className="text-xs font-medium text-muted-foreground">Calidad garantizada</div>
-                  </div>
-                </div>
-
+              </div>
+              <div className="h-px bg-border/40" />
+              <div className="space-y-1">
+                <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Ubicación</div>
+                <div className="text-sm font-medium text-muted-foreground">Neiva, Colombia</div>
               </div>
             </div>
-          </Card>
-        </motion.div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

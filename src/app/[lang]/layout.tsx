@@ -1,5 +1,5 @@
 // src/app/[lang]/layout.tsx - Versión mejorada con SEO y Temas
-import { Roboto, Doto } from "next/font/google";
+import { Geist, Outfit, Doto } from "next/font/google";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -10,10 +10,16 @@ import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/s
 import "@/styles/globals.css";
 
 // Font configurations
-const roboto = Roboto({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto",
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -154,7 +160,7 @@ export default async function RootLayout(props: Props) {
   }
 
   return (
-    <html lang={lang} className={`${roboto.variable} ${doto.variable} overflow-x-hidden`}>
+    <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} overflow-x-hidden`}>
       <head>
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
@@ -199,7 +205,7 @@ export default async function RootLayout(props: Props) {
           </>
         )}
       </head>
-      <body className="min-h-screen flex flex-col font-roboto antialiased overflow-x-hidden">
+      <body className="min-h-screen flex flex-col font-sans antialiased">
         <ClientThemeWrapper>
           <NextIntlClientProvider locale={lang} messages={messages}>
             {props.children}

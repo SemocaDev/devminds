@@ -72,9 +72,9 @@
   "AboutUs": {
     "title": "About Us",
     "description": "Web development agency in Neiva, Colombia. Software engineers specialized in modern web applications with Next.js, React and TypeScript. Professional digital solutions for businesses.",
-    "paragraph1": "We are DevMinds, a web development agency in Neiva, Colombia. Team of software engineers specialized in creating modern web applications, custom software and technical consulting for businesses.",
-    "paragraph2": "Our approach combines cutting-edge technologies with professional development practices. We understand your business needs to create scalable and efficient web solutions.",
-    "paragraph3": "We work with Next.js, React, TypeScript, Node.js and the most in-demand technologies. Your web project will be built with professional standards and ready to scale.",
+    "paragraph1": "We are DevMinds, a web development agency based in Neiva, Huila. Our team of Colombian software engineers specializes in building modern web applications, custom software and technical consulting for businesses in Neiva, Huila and across Colombia.",
+    "paragraph2": "We combine cutting-edge technologies with professional development practices. We understand your business needs to create scalable, efficient web solutions that are built to grow.",
+    "paragraph3": "We work with Next.js, React, TypeScript, Node.js and the most in-demand technologies. Your project will be built to professional standards and ready to scale.",
     "technologiesLabel": "Technologies we master:",
     "meetTheTeam": "Meet the Team",
     "stats": {
@@ -238,6 +238,8 @@
     }
   },
   "Portfolio": {
+    "pageLabel": "Portfolio",
+    "label": "Portfolio",
     "title": "Our Portfolio",
     "subtitle": "Explore our completed projects and the work we've done for our clients",
     "description": "Description",
@@ -275,6 +277,7 @@
     }
   },
   "About": {
+    "pageLabel": "About Us",
     "title": "Our Team",
     "subtitle": "Meet the people who bring ideas to life",
     "foundersTitle": "Founders",
@@ -533,6 +536,7 @@
   },
   "ServicesPage": {
     "hero": {
+      "pageLabel": "Services",
       "title": "Our Services",
       "subtitle": "Complete technology solutions to transform your ideas into successful digital products"
     },

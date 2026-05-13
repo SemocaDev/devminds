@@ -1,111 +1,90 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import Link from 'next/link';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactCTA = () => {
   const t = useTranslations('ContactCTA');
   const params = useParams();
   const lang = params.lang as string;
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', once: true },
+        defaults: { ease },
+      });
+      tl.fromTo('.contact-label', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 })
+        .fromTo('.contact-title', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.2')
+        .fromTo('.contact-sub',   { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+        .fromTo('.contact-status',{ opacity: 0 },         { opacity: 1, duration: 0.4 }, '-=0.2')
+        .fromTo('.contact-btns',  { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45 }, '-=0.1');
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="contact" className="py-16 md:py-20 lg:py-24 bg-background">
+    <section id="contact" ref={sectionRef} className="section-spacing bg-background">
       <div className="container-main">
-        <motion.div
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/5 via-background/50 to-accent/5 border-2 border-primary/20 shadow-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 xl:gap-20 items-end">
 
-          <div className="relative z-10 py-12 md:py-16 lg:py-20 px-6 md:px-12">
-            <div className="max-w-4xl mx-auto">
-              {/* Content Grid - Desktop: horizontal, Mobile: vertical */}
-              <div className="grid lg:grid-cols-[1fr,auto] gap-8 lg:gap-12 items-center">
+          {/* Texto */}
+          <div className="space-y-6">
+            <p className="contact-label inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase opacity-0">
+              <span className="w-6 h-px bg-primary" />
+              07
+            </p>
 
-                {/* Left: Text Content */}
-                <div className="text-center lg:text-left space-y-6">
-                  {/* Icon - Solo móvil */}
-                  <motion.div
-                    className="inline-flex lg:hidden items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4 mx-auto"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <MessageCircle className="w-8 h-8 text-primary" />
-                  </motion.div>
+            <h2 className="contact-title text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight max-w-2xl opacity-0">
+              {t('title')}
+            </h2>
 
-                  {/* Title */}
-                  <motion.h2
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    {t('title')}
-                  </motion.h2>
+            <p className="contact-sub text-base md:text-lg text-muted-foreground max-w-[55ch] leading-relaxed opacity-0">
+              {t('subtitle')}
+            </p>
 
-                  {/* Subtitle */}
-                  <motion.p
-                    className="text-base md:text-lg text-muted-foreground"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                  >
-                    {t('subtitle')}
-                  </motion.p>
+            <div className="contact-status flex items-center gap-2 text-sm text-muted-foreground opacity-0">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground/40 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground/60" />
+              </span>
+              {t('responseTime')}
+            </div>
 
-                  {/* Quick info */}
-                  <motion.div
-                    className="flex items-center justify-center lg:justify-start gap-2 text-sm text-muted-foreground"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span>{t('responseTime')}</span>
-                  </motion.div>
-                </div>
-
-                {/* Right: CTA Buttons */}
-                <motion.div
-                  className="flex flex-col gap-3 lg:gap-4 min-w-[240px]"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <Button asChild size="lg" className="group shadow-lg hover:shadow-xl w-full">
-                    <Link href={`/${lang}/contact`}>
-                      {t('primaryButton')}
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-
-                  <Button asChild variant="outline" size="lg" className="group w-full border-2">
-                    <Link href="mailto:semoca00@gmail.com">
-                      <Mail className="mr-2 w-4 h-4" />
-                      {t('secondaryButton')}
-                    </Link>
-                  </Button>
-                </motion.div>
-
-              </div>
+            <div className="contact-btns flex flex-col sm:flex-row gap-3 pt-2 opacity-0">
+              <Button asChild size="lg" className="group gap-2 font-semibold">
+                <Link href={`/${lang}/contact`}>
+                  {t('primaryButton')}
+                  <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group gap-2 border-foreground/20 hover:border-foreground">
+                <Link href="mailto:semoca00@gmail.com">
+                  <Mail className="w-4 h-4" />
+                  {t('secondaryButton')}
+                </Link>
+              </Button>
             </div>
           </div>
-        </motion.div>
+
+          {/* Bloque derecho — número grande tipográfico */}
+          <div className="hidden lg:block text-right pb-2">
+            <div className="text-[11rem] xl:text-[13rem] font-display font-extrabold leading-none text-foreground/6 select-none">
+              07
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

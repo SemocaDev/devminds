@@ -90,7 +90,8 @@ async function _getFeaturedProjects(locale: string): Promise<ProjectWithTranslat
       )
     )
     .where(eq(projects.featured, true))
-    .orderBy(projects.sortOrder);
+    .orderBy(projects.sortOrder)
+    .limit(3);
 
   return rows;
 }

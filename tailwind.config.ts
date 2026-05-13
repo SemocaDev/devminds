@@ -51,7 +51,12 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          'var(--font-roboto)',
+          'var(--font-geist)',
+          'system-ui',
+          'sans-serif'
+        ],
+        display: [
+          'var(--font-outfit)',
           'system-ui',
           'sans-serif'
         ],

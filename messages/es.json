@@ -73,8 +73,8 @@
     "title": "Sobre Nosotros",
     "description": "Agencia de desarrollo web en Neiva, Huila. Ingenieros de software especializados en aplicaciones web modernas con Next.js, React y TypeScript. Soluciones digitales profesionales para empresas.",
     "paragraph1": "Somos DevMinds, agencia de desarrollo web con sede en Neiva, Huila. Nuestro equipo de ingenieros de software colombianos está especializado en crear aplicaciones web modernas, software personalizado y consultoría técnica para empresas en Neiva, el Huila y toda Colombia.",
-    "paragraph2": "Nuestro enfoque combina tecnologías de vanguardia con prácticas de desarrollo profesional. Entendemos las necesidades de tu negocio para crear soluciones web escalables y eficientes.",
-    "paragraph3": "Trabajamos con Next.js, React, TypeScript, Node.js y las tecnologías más demandadas del mercado. Tu proyecto web estará construido con estándares profesionales y preparado para crecer.",
+    "paragraph2": "Combinamos tecnologías de vanguardia con prácticas de desarrollo profesional. Entendemos las necesidades de tu negocio para crear soluciones web escalables, eficientes y listas para crecer.",
+    "paragraph3": "Trabajamos con Next.js, React, TypeScript, Node.js y las tecnologías más demandadas del mercado. Tu proyecto estará construido con estándares profesionales y preparado para escalar.",
     "technologiesLabel": "Tecnologías que dominamos:",
     "meetTheTeam": "Conocer al Equipo",
     "stats": {
@@ -238,6 +238,8 @@
     }
   },
   "Portfolio": {
+    "pageLabel": "Portafolio",
+    "label": "Portafolio",
     "title": "Nuestro Portfolio",
     "subtitle": "Explora nuestros proyectos completados y el trabajo que hemos realizado para nuestros clientes",
     "description": "Descripción",
@@ -275,6 +277,7 @@
     }
   },
   "About": {
+    "pageLabel": "Nosotros",
     "title": "Nuestro Equipo",
     "subtitle": "Conoce a las personas que hacen realidad las ideas",
     "foundersTitle": "Fundadores",
@@ -533,6 +536,7 @@
   },
   "ServicesPage": {
     "hero": {
+      "pageLabel": "Servicios",
       "title": "Nuestros Servicios",
       "subtitle": "Soluciones tecnológicas completas para transformar tus ideas en productos digitales exitosos"
     },

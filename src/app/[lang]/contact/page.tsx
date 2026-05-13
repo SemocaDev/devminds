@@ -232,34 +232,29 @@ export default function ContactPage() {
       title: tPage("contactInfo.email.title"),
       description: contactConfig.email,
       href: `mailto:${contactConfig.email}`,
-      color: "text-blue-500"
     },
     {
       icon: MessageCircle,
       title: tPage("contactInfo.whatsapp.title"),
       description: contactConfig.phone,
       href: `https://wa.me/${contactConfig.phone.replace(/\+/g, '')}?text=${encodeURIComponent(tPage("contactInfo.whatsapp.defaultMessage"))}`,
-      color: "text-green-500"
     },
     {
       icon: Clock,
       title: tPage("contactInfo.responseTime.title"),
       description: tPage("contactInfo.responseTime.description"),
-      color: "text-amber-500"
     },
     {
       icon: Github,
       title: tPage("contactInfo.github.title"),
       description: "@SemocaDev",
       href: contactConfig.socials.github,
-      color: "text-purple-500"
     },
     {
       icon: Linkedin,
       title: tPage("contactInfo.linkedin.title"),
       description: "Sebastian Morea",
       href: contactConfig.socials.linkedin,
-      color: "text-blue-600"
     }
   ];
 
@@ -270,19 +265,23 @@ export default function ContactPage() {
       <EmailSidebar />
 
       <div className="min-h-screen flex flex-col">
-        {/* Hero Section */}
-        <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-primary/5 overflow-hidden">
-          <div className="container-main relative z-10">
+        {/* Hero */}
+        <section className="section-spacing bg-background">
+          <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto"
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-16 max-w-2xl"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <p className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase mb-4">
+                <span className="w-6 h-px bg-primary" />
+                Contacto
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4">
                 {tPage("hero.title")}
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground">
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-[55ch]">
                 {tPage("hero.subtitle")}
               </p>
             </motion.div>
@@ -290,27 +289,27 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form & Info */}
-        <section className="py-20 bg-background">
+        <section className="pb-20 bg-background">
           <div className="container-main">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 max-w-5xl">
 
-              {/* FORMULARIO CON REACT HOOK FORM */}
+              {/* FORMULARIO */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="mb-8">
-                  <h2 className="text-3xl font-bold mb-4">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-display font-bold mb-2">
                     {tPage("form.title")}
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {tPage("form.subtitle")}
                   </p>
                 </div>
 
-                <Card className="border-2">
+                <Card className="border border-border/50">
                   <CardContent className="pt-6">
                     <Form {...form}>
                       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -492,64 +491,48 @@ export default function ContactPage() {
                 </Card>
               </motion.div>
 
-              {/* Contact Info */}
+              {/* Info de contacto */}
               <motion.div
-                className="space-y-6"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="space-y-5"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               >
-                <div className="mb-8">
-                  <h2 className="text-3xl font-bold mb-4">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-display font-bold mb-2">
                     {tPage("contactInfo.title")}
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {tPage("contactInfo.subtitle")}
                   </p>
                 </div>
 
-                <div className="space-y-4">
-                  {contactInfo.map((item, index) => {
+                <div className="space-y-2">
+                  {contactInfo.map((item) => {
                     const Icon = item.icon;
                     const isLink = !!item.href;
 
                     const content = (
-                      <Card className={`border-2 transition-all duration-300 ${isLink ? 'hover:border-primary/50 hover:shadow-lg cursor-pointer' : ''} group`}>
-                        <CardContent className="pt-6">
-                          <div className="flex items-start gap-4">
-                            <div className={`w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 ${isLink ? 'group-hover:scale-110' : ''} transition-transform`}>
-                              <Icon className={`w-6 h-6 ${item.color}`} />
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="text-lg font-semibold mb-1">
-                                {item.title}
-                              </h3>
-                              <p className={`${isLink ? 'text-primary group-hover:underline' : 'text-muted-foreground'}`}>
-                                {item.description}
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
+                      <div className={`flex items-start gap-4 p-4 rounded-xl border border-border/50 transition-colors duration-200 ${isLink ? 'hover:border-foreground/30 cursor-pointer group' : ''}`}>
+                        <div className="w-8 h-8 rounded-lg border border-border/60 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4 text-foreground/60" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold mb-0.5">{item.title}</p>
+                          <p className={`text-sm ${isLink ? 'text-muted-foreground group-hover:text-foreground transition-colors' : 'text-muted-foreground'}`}>
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
                     );
 
-                    return (
-                      <motion.div
-                        key={item.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                      >
-                        {isLink ? (
-                          <Link href={item.href} target="_blank" rel="noopener noreferrer">
-                            {content}
-                          </Link>
-                        ) : (
-                          content
-                        )}
-                      </motion.div>
+                    return isLink ? (
+                      <Link key={item.title} href={item.href!} target="_blank" rel="noopener noreferrer">
+                        {content}
+                      </Link>
+                    ) : (
+                      <div key={item.title}>{content}</div>
                     );
                   })}
                 </div>

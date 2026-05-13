@@ -1,20 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import type { ProjectWithTranslation, CategoryWithTranslation } from '@/db/queries/projects';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import Image from 'next/image';
@@ -22,6 +16,8 @@ import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
 import SocialSidebar from '@/app/components/layout/SocialSidebar';
 import EmailSidebar from '@/app/components/layout/EmailSidebar';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
   projects: ProjectWithTranslation[];
@@ -32,20 +28,31 @@ export default function PortfolioClient({ projects, categories }: Props) {
   const t = useTranslations('Portfolio');
   const [selectedProject, setSelectedProject] = useState<ProjectWithTranslation | null>(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const mainRef = useRef<HTMLElement>(null);
 
   const filteredProjects = activeCategory === 'all'
     ? projects
     : projects.filter(p => p.category === activeCategory);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      gsap.fromTo('.portfolio-hero',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease, delay: 0.1 }
+      );
+    }, mainRef);
+    return () => ctx.revert();
+  }, []);
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
+  useEffect(() => {
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    gsap.fromTo('.project-card',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease, stagger: 0.08,
+        scrollTrigger: { trigger: '.projects-grid', start: 'top 82%', once: false } }
+    );
+  }, [filteredProjects]);
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
@@ -53,24 +60,32 @@ export default function PortfolioClient({ projects, categories }: Props) {
       <SocialSidebar />
       <EmailSidebar />
 
-      <main className="flex-1">
+      <main ref={mainRef} className="flex-1">
         <section className="section-spacing bg-background">
           <div className="container-main">
-            <motion.div
-              className="text-center mb-16 space-y-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="section-title">{t('title')}</h1>
-              <p className="subtitle max-w-2xl mx-auto">{t('subtitle')}</p>
-            </motion.div>
 
+            {/* Hero — alineado a la izquierda */}
+            <div className="portfolio-hero opacity-0 mb-12">
+              <p className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase mb-4">
+                <span className="w-6 h-px bg-primary" />
+                {t('label') || 'Portafolio'}
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-4 max-w-2xl">
+                {t('title')}
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-[55ch] leading-relaxed">{t('subtitle')}</p>
+            </div>
+
+            {/* Filtro por categoría */}
             <Tabs defaultValue="all" onValueChange={setActiveCategory}>
-              <div className="flex justify-center mb-12">
-                <TabsList className="inline-flex h-auto w-auto flex-wrap justify-center gap-2 p-2 border-b-2 border-b-dotted border-b-primary/30 pb-4">
+              <div className="mb-10">
+                <TabsList className="h-auto w-auto flex flex-wrap gap-1 p-1 bg-muted/40 rounded-xl">
                   {categories.map((category) => (
-                    <TabsTrigger key={category.id} value={category.id} className="px-6">
+                    <TabsTrigger
+                      key={category.id}
+                      value={category.id}
+                      className="px-4 py-1.5 text-sm rounded-lg data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                    >
                       {category.name}
                     </TabsTrigger>
                   ))}
@@ -79,155 +94,140 @@ export default function PortfolioClient({ projects, categories }: Props) {
 
               {categories.map((category) => (
                 <TabsContent key={category.id} value={category.id}>
-                  <motion.div
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    variants={container}
-                    initial="hidden"
-                    animate="show"
-                  >
+                  <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredProjects.map((project) => (
-                      <motion.div key={project.id} variants={item}>
-                        <Card
-                          className="border-2 hover:shadow-2xl transition-all duration-500 hover:border-primary/50 overflow-hidden group cursor-pointer h-full flex flex-col bracket-corners"
-                          onClick={() => setSelectedProject(project)}
-                        >
-                          <div className={`h-56 bg-gradient-to-br ${project.gradient || 'from-gray-700 to-gray-900'} relative overflow-hidden pattern-diagonal-reverse`}>
-                            {project.images?.[0] ? (
-                              <Image
-                                src={project.images[0]}
-                                alt={project.title}
-                                fill
-                                className="object-cover group-hover:opacity-80 transition-opacity"
-                                onError={(e) => { e.currentTarget.style.opacity = '0'; }}
-                              />
-                            ) : (
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Code2 className="w-16 h-16 text-white/20" />
-                              </div>
-                            )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
-                              {project.featured && (
-                                <Badge className="bg-white/90 text-black">Featured</Badge>
+                      <article
+                        key={project.id}
+                        className="project-card opacity-0 group border border-border/50 rounded-2xl overflow-hidden hover:border-foreground/30 transition-colors duration-300 cursor-pointer flex flex-col"
+                        onClick={() => setSelectedProject(project)}
+                      >
+                        {/* Imagen */}
+                        <div className="relative h-48 overflow-hidden bg-muted">
+                          {project.images?.[0] ? (
+                            <Image
+                              src={project.images[0]}
+                              alt={project.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <Code2 className="w-12 h-12 text-muted-foreground/20" />
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                          {project.featured && (
+                            <div className="absolute top-3 left-3">
+                              <Badge variant="outline" className="bg-background/90 text-xs border-border/60">Featured</Badge>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Contenido */}
+                        <div className="flex-1 flex flex-col p-5">
+                          <h3 className="font-display font-semibold mb-1.5 group-hover:text-foreground transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                            {project.description}
+                          </p>
+                          {project.technologies?.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-border/40">
+                              {project.technologies.slice(0, 4).map((tech) => (
+                                <Badge key={tech} variant="outline" className="text-xs px-2 py-0.5 border-border/50">
+                                  {tech}
+                                </Badge>
+                              ))}
+                              {project.technologies.length > 4 && (
+                                <Badge variant="outline" className="text-xs px-2 py-0.5 border-border/50">
+                                  +{project.technologies.length - 4}
+                                </Badge>
                               )}
                             </div>
-                          </div>
-
-                          <CardHeader className="flex-1">
-                            <CardTitle className="group-hover:text-primary transition-colors">
-                              {project.title}
-                            </CardTitle>
-                            <CardDescription>{project.description}</CardDescription>
-                          </CardHeader>
-
-                          <CardContent>
-                            <div className="flex flex-wrap gap-2">
-                              {project.technologies.map((tech) => (
-                                <Badge key={tech} variant="secondary">{tech}</Badge>
-                              ))}
-                            </div>
-                          </CardContent>
-
-                          <CardFooter className="flex gap-2 pt-4 border-t">
-                            {project.demo && (
-                              <Button variant="default" size="sm" className="flex-1" asChild onClick={(e) => e.stopPropagation()}>
-                                <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                                  <ExternalLink className="w-4 h-4 mr-2" />{t('viewDemo')}
-                                </a>
-                              </Button>
-                            )}
-                            {project.github && (
-                              <Button variant="outline" size="sm" className="flex-1" asChild onClick={(e) => e.stopPropagation()}>
-                                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                  <Github className="w-4 h-4 mr-2" />{t('viewCode')}
-                                </a>
-                              </Button>
-                            )}
-                            {!project.demo && !project.github && (
-                              <Badge variant="secondary" className="flex-1 justify-center">{t('noDemo')}</Badge>
-                            )}
-                          </CardFooter>
-                        </Card>
-                      </motion.div>
+                          )}
+                        </div>
+                      </article>
                     ))}
-                  </motion.div>
+                  </div>
                 </TabsContent>
               ))}
             </Tabs>
+
           </div>
         </section>
       </main>
 
       <Footer />
 
+      {/* Modal de detalle */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bracket-corners">
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
           {selectedProject && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-3xl">{selectedProject.title}</DialogTitle>
-                <DialogDescription className="text-base">
-                  {selectedProject.client && `${selectedProject.client} • `}{selectedProject.year}
+                <DialogTitle className="text-2xl font-display">{selectedProject.title}</DialogTitle>
+                <DialogDescription className="text-sm text-muted-foreground">
+                  {selectedProject.client && `${selectedProject.client} · `}{selectedProject.year}
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {selectedProject.images && selectedProject.images.length > 0 && (
-                  <div className="space-y-4">
-                    <Carousel className="w-full">
-                      <CarouselContent>
-                        {selectedProject.images.map((image, index) => (
-                          <CarouselItem key={index}>
-                            <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
-                              <Image
-                                src={image}
-                                alt={`${selectedProject.title} - ${index + 1}`}
-                                fill
-                                className="object-contain p-4"
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 800px"
-                                priority={index === 0}
-                              />
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      {selectedProject.images.length > 1 && (
-                        <>
-                          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 h-8 w-8 md:h-10 md:w-10 z-10" />
-                          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 md:h-10 md:w-10 z-10" />
-                        </>
-                      )}
-                    </Carousel>
-                  </div>
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {selectedProject.images.map((image, index) => (
+                        <CarouselItem key={index}>
+                          <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
+                            <Image
+                              src={image}
+                              alt={`${selectedProject.title} - ${index + 1}`}
+                              fill
+                              className="object-contain p-4"
+                              sizes="(max-width: 640px) 100vw, 700px"
+                              priority={index === 0}
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 z-10" />
+                        <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 z-10" />
+                      </>
+                    )}
+                  </Carousel>
                 )}
 
                 {selectedProject.fullDescription && (
-                <div className="pt-2">
-                  <h3 className="text-xl font-semibold mb-3">{t('description')}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{selectedProject.fullDescription}</p>
-                </div>
+                  <div>
+                    <p className="text-xs font-mono font-semibold uppercase tracking-widest text-muted-foreground/60 mb-2">{t('description')}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-[65ch]">{selectedProject.fullDescription}</p>
+                  </div>
                 )}
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">{t('technologies')}</h3>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-xs font-mono font-semibold uppercase tracking-widest text-muted-foreground/60 mb-3">{t('technologies')}</p>
+                  <div className="flex flex-wrap gap-1.5">
                     {selectedProject.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-sm py-1.5 px-3">{tech}</Badge>
+                      <Badge key={tech} variant="outline" className="text-xs border-border/50">{tech}</Badge>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex gap-4 pt-4">
+                <div className="flex gap-3 pt-2">
                   {selectedProject.demo && (
-                    <Button asChild className="flex-1">
+                    <Button asChild className="flex-1 gap-2">
                       <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />{t('viewDemo')}
+                        <ExternalLink className="w-4 h-4" />{t('viewDemo')}
                       </a>
                     </Button>
                   )}
                   {selectedProject.github && (
-                    <Button variant="outline" asChild className="flex-1">
+                    <Button variant="outline" asChild className="flex-1 gap-2 border-border/50 hover:border-foreground">
                       <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />{t('viewCode')}
+                        <Github className="w-4 h-4" />{t('viewCode')}
                       </a>
                     </Button>
                   )}

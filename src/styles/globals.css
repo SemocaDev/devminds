@@ -4,50 +4,50 @@
 
 @layer base {
   :root {
-    /* Light theme - Turquesa Tecnológico */
-    --background: 0 0% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light theme — blanco puro + negro */
+    --background: 0 0% 99%;
+    --foreground: 0 0% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 189 94% 43%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 189 30% 96.1%;
-    --secondary-foreground: 189 47.4% 11.2%;
-    --muted: 189 20% 96.1%;
-    --muted-foreground: 189 16.3% 46.9%;
-    --accent: 174 72% 56%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 99%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 99%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 189 31.8% 91.4%;
-    --input: 189 31.8% 91.4%;
-    --ring: 189 94% 43%;
-    --radius: 0.75rem;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 4%;
+    --radius: 0.625rem;
   }
 
   .dark {
-    /* Dark theme - Turquesa Tecnológico */
-    --background: 189 84% 4.9%;
-    --foreground: 189 40% 98%;
-    --card: 189 84% 8%;
-    --card-foreground: 189 40% 98%;
-    --popover: 189 84% 8%;
-    --popover-foreground: 189 40% 98%;
-    --primary: 189 94% 50%;
-    --primary-foreground: 189 47.4% 11.2%;
-    --secondary: 189 32.6% 17.5%;
-    --secondary-foreground: 189 40% 98%;
-    --muted: 189 32.6% 17.5%;
-    --muted-foreground: 189 20.2% 65.1%;
-    --accent: 174 72% 60%;
-    --accent-foreground: 189 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 189 40% 98%;
-    --border: 189 32.6% 17.5%;
-    --input: 189 32.6% 17.5%;
-    --ring: 189 94% 50%;
+    /* Dark theme — carbón + blanco puro, más contraste */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 62%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 8%;
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
   }
 }
 
@@ -57,25 +57,57 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-optical-sizing: auto;
+  }
+  /* Emil: botones deben sentirse físicos — scale en :active */
+  button, [role="button"] {
+    transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  button:active, [role="button"]:active {
+    transform: scale(0.97);
+  }
+  /* Impeccable typography.md: text-wrap para mejor composición tipográfica */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  p, li {
+    text-wrap: pretty;
+  }
+  /* tabular-nums para datos numéricos */
+  [data-numeric], .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Impeccable motion.md: prefers-reduced-motion — no es opcional */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 /* Tipografía personalizada */
 @layer components {
   .hero-title {
-    @apply text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none;
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    @apply font-display font-extrabold tracking-tight;
+    /* clamp conservador: siempre en una sola línea dentro de max-w-2xl */
+    font-size: clamp(3.5rem, 7vw + 1rem, 8rem);
+    line-height: 1.06;
+    padding-bottom: 0.08em;
+    background: linear-gradient(125deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight mb-3;
   }
 
   .subtitle {
-    @apply text-lg md:text-xl text-muted-foreground;
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
   }
 
   .container-main {

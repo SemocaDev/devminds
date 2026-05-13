@@ -1,7 +1,9 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
 import {
   Accordion,
   AccordionContent,
@@ -11,81 +13,71 @@ import {
 import faqData from '@/config/faq.json';
 import type { FAQCategory } from '@/types/faq';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const FAQ = () => {
   const t = useTranslations('FAQ');
+  const sectionRef = useRef<HTMLElement>(null);
 
   const categories: FAQCategory[] = ['general', 'services', 'pricing', 'technical'];
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+      gsap.fromTo('.faq-header',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', once: true } }
+      );
+      gsap.fromTo('.faq-column',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.55, ease, stagger: 0.1,
+          scrollTrigger: { trigger: '.faq-grid', start: 'top 82%', once: true } }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="faq" className="section-spacing bg-muted/50 overflow-hidden">
+    <section id="faq" ref={sectionRef} className="section-spacing bg-muted/20 overflow-hidden">
       <div className="container-main">
-        <motion.div
-          className="text-center mb-16 space-y-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="numbered-section section-title justify-center" data-number="06">
-            {t('title')}
-          </h2>
-          <p className="subtitle max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
-        </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
+        <div className="faq-header mb-14 opacity-0">
+          <p className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase mb-4">
+            <span className="w-6 h-px bg-primary" />
+            06
+          </p>
+          <h2 className="section-title max-w-xl">{t('title')}</h2>
+          <p className="subtitle max-w-lg mt-3">{t('subtitle')}</p>
+        </div>
+
+        <div className="faq-grid grid md:grid-cols-2 gap-8 max-w-5xl">
           {categories.map((category) => (
-            <motion.div
-              key={category}
-              variants={item}
-              className="space-y-4"
-            >
-              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2 border-l-2 border-dotted border-primary/40 pl-4">
-                <span className="w-2 h-2 rounded-full bg-primary" />
+            <div key={category} className="faq-column opacity-0 space-y-3">
+              <h3 className="text-xs font-mono font-semibold text-muted-foreground uppercase tracking-[0.18em] mb-4">
                 {t(`categories.${category}`)}
               </h3>
 
-              <Accordion type="single" collapsible className="space-y-3">
+              <Accordion type="single" collapsible className="space-y-2">
                 {faqData[category].map((faqItem) => (
                   <AccordionItem
                     key={faqItem.id}
                     value={faqItem.id}
-                    className="border border-border/50 rounded-lg px-6 data-[state=open]:border-primary/50 transition-colors border-l-4 border-l-dotted border-l-primary/20"
+                    className="border border-border/50 rounded-lg px-5 data-[state=open]:border-foreground/30 transition-colors duration-200"
                   >
-                    <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                    <AccordionTrigger className="text-left text-sm font-medium hover:text-foreground transition-colors py-4">
                       {t(`questions.${faqItem.id}.question`)}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4">
                       {t(`questions.${faqItem.id}.answer`)}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

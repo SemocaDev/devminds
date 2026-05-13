@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { Menu, X } from 'lucide-react';
@@ -90,13 +89,11 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: isHidden ? -100 : 0 }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      style={{ transform: isHidden ? 'translateY(-100%)' : 'translateY(0)', transition: 'transform 280ms cubic-bezier(0.16, 1, 0.3, 1)' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         isScrolled
-          ? 'backdrop-blur-md bg-background/80 shadow-md'
+          ? 'backdrop-blur-md bg-background/85 border-b border-border/40'
           : 'bg-transparent'
       }`}
     >
@@ -266,7 +263,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
