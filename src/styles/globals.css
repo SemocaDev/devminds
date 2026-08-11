@@ -96,10 +96,18 @@
     font-size: clamp(3.5rem, 7vw + 1rem, 8rem);
     line-height: 1.06;
     padding-bottom: 0.08em;
+    color: hsl(var(--foreground));
+  }
+
+  /* El gradiente en el texto (background-clip: text) se re-rasteriza en cada
+     cambio de contenido — costoso en Safari iOS. Se aplica recién cuando el
+     typewriter termina de escribir, no en cada tick. */
+  .hero-title.hero-title--done {
     background: linear-gradient(125deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
   }
 
   .section-title {

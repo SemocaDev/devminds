@@ -26,19 +26,33 @@ const Hero = () => {
 
   // Typewriter — escribe directo al DOM (fuera de React state) para no
   // forzar un re-render de la sección completa en cada carácter.
+  // rAF con timestamp en vez de setInterval: si el hilo principal está
+  // ocupado (hidratación, GSAP) al arrancar, se auto-corrige en vez de
+  // acumular ticks atrasados como haría setInterval.
   useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      if (titleTextRef.current) {
+    let rafId: number;
+    let start: number | null = null;
+    const START_DELAY = 150; // deja que el gsap.set() inicial termine primero
+
+    const tick = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const elapsed = timestamp - start - START_DELAY;
+      const i = Math.max(0, Math.min(FULL_TEXT.length, Math.floor(elapsed / TYPING_SPEED) + 1));
+
+      if (elapsed >= 0 && titleTextRef.current) {
         titleTextRef.current.textContent = FULL_TEXT.slice(0, i);
       }
-      if (i >= FULL_TEXT.length) {
-        clearInterval(interval);
+
+      if (i >= FULL_TEXT.length && elapsed >= 0) {
         cursorRef.current?.remove();
+        titleRef.current?.classList.add('hero-title--done');
+        return;
       }
-    }, TYPING_SPEED);
-    return () => clearInterval(interval);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   // GSAP entrada para todo menos el título (que hace typewriter)

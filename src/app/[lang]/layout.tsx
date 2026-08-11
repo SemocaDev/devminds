@@ -20,7 +20,10 @@ const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-outfit",
-  display: "swap",
+  // "optional": si la fuente no está lista casi de inmediato, se queda con el
+  // fallback y no hace swap después — evita el salto de ancho de texto en el
+  // título del Hero justo mientras el typewriter está escribiendo.
+  display: "optional",
 });
 
 const doto = Doto({
