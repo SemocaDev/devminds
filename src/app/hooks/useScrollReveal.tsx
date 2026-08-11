@@ -4,14 +4,12 @@ import { useState, useEffect } from 'react';
 
 export const useScrollReveal = (threshold: number = 100) => {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    if (hasScrolled) return;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      
-      if (currentScrollY > threshold && !hasScrolled) {
+      if (window.scrollY > threshold) {
         setHasScrolled(true);
       }
     };
@@ -20,11 +18,11 @@ export const useScrollReveal = (threshold: number = 100) => {
     handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [threshold, hasScrolled]);
 
-  return { hasScrolled, scrollY };
+  return { hasScrolled };
 };

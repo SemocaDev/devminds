@@ -162,6 +162,11 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} overflow-x-hidden`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('devminds-theme');var d=t==='dark'||((!t||t==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.add(d?'dark':'light');}catch(e){}})();`,
+          }}
+        />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />

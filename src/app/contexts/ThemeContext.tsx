@@ -14,16 +14,19 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>('system');
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('light');
+  // El script inline en <head> ya aplicó la clase light/dark antes del primer paint.
+  // Leemos ese resultado aquí para arrancar sincronizados y evitar un segundo flash.
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'system';
+    return (localStorage.getItem('devminds-theme') as Theme) || 'system';
+  });
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(() => {
+    if (typeof document === 'undefined') return 'light';
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Verificar si hay un tema guardado en localStorage
-    const savedTheme = localStorage.getItem('devminds-theme') as Theme;
-    if (savedTheme) {
-      setThemeState(savedTheme);
-    }
     setMounted(true);
   }, []);
 
@@ -63,11 +66,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
   };
-
-  // Evitar hydration mismatch
-  if (!mounted) {
-    return <div style={{ visibility: 'hidden' }}>{children}</div>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>

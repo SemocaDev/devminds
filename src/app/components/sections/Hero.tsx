@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -15,23 +15,27 @@ const Hero = () => {
   const params = useParams();
   const lang = params.lang as string;
 
-  const [displayedText, setDisplayedText] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
+  const titleTextRef = useRef<HTMLSpanElement>(null);
+  const cursorRef = useRef<HTMLSpanElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  // Typewriter
+  // Typewriter — escribe directo al DOM (fuera de React state) para no
+  // forzar un re-render de la sección completa en cada carácter.
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
-      if (i <= FULL_TEXT.length) {
-        setDisplayedText(FULL_TEXT.slice(0, i));
-        i++;
-      } else {
+      i++;
+      if (titleTextRef.current) {
+        titleTextRef.current.textContent = FULL_TEXT.slice(0, i);
+      }
+      if (i >= FULL_TEXT.length) {
         clearInterval(interval);
+        cursorRef.current?.remove();
       }
     }, TYPING_SPEED);
     return () => clearInterval(interval);
@@ -74,9 +78,9 @@ const Hero = () => {
             backgroundSize: "64px 64px",
           }}
         />
-        {/* Glows sutiles — monocromático */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-foreground/5 blur-[120px] translate-x-1/4 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-foreground/4 blur-[100px] -translate-x-1/4 translate-y-1/4" />
+        {/* Glows sutiles — monocromático (blur moderado: blur-[120px]+ es muy costoso en Safari iOS) */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-foreground/5 blur-3xl translate-x-1/4 -translate-y-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-foreground/4 blur-3xl -translate-x-1/4 translate-y-1/4" />
         {/* Partículas CSS */}
         {[
           { top: "15%", left: "8%",  size: 3, dur: "18s", delay: "0s",   opacity: 0.5  },
@@ -120,10 +124,8 @@ const Hero = () => {
 
             {/* Título con typewriter — cursor visible mientras escribe */}
             <h1 ref={titleRef} className="hero-title">
-              {displayedText}
-              {displayedText.length < FULL_TEXT.length && (
-                <span className="cursor-blink ml-1" aria-hidden="true">|</span>
-              )}
+              <span ref={titleTextRef} />
+              <span ref={cursorRef} className="cursor-blink ml-1" aria-hidden="true">|</span>
             </h1>
 
             <p
