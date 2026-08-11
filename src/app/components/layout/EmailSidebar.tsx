@@ -1,15 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import contactConfig from '@/config/contact.json';
 
 const EmailSidebar = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 2, duration: 0.5 }}
-      className="fixed right-0 bottom-0 hidden md:flex flex-col items-center gap-6 w-10 z-50 pb-8"
+    <div
+      className="fixed right-0 bottom-0 hidden md:flex flex-col items-center gap-6 w-10 z-50 pb-8 animate-fade-in-delayed"
     >
       {/* Decorative Line */}
       <div className="w-px h-24 bg-muted-foreground/30" />
@@ -24,7 +20,7 @@ const EmailSidebar = () => {
       >
         {contactConfig.email}
       </a>
-    </motion.div>
+    </div>
   );
 };
 

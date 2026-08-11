@@ -1,7 +1,6 @@
 ﻿'use client';
 
 import { useTheme } from '@/app/contexts/ThemeContext';
-import { motion } from 'framer-motion';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -69,16 +68,14 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className = '' }) => {
       aria-label={`Tema actual: ${theme}. Click para cambiar`}
       title={`Tema: ${theme}`}
     >
-      <motion.div
-        initial={false}
-        animate={{
-          rotate: theme === 'light' ? 0 : theme === 'dark' ? 180 : 90,
-          scale: 1
+      <div
+        className="transition-transform duration-300 ease-in-out"
+        style={{
+          transform: `rotate(${theme === 'light' ? 0 : theme === 'dark' ? 180 : 90}deg)`,
         }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         {getIcon()}
-      </motion.div>
+      </div>
     </button>
   );
 };
