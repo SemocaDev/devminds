@@ -29,6 +29,9 @@ La landing actual se percibe "hacker": le habla a otros desarrolladores (stack, 
 | Idiomas | ES local (Neiva/Huila/Colombia); EN y JA globales (remoto/nearshore). Localización, no traducción | Nadie busca "web development Neiva" en inglés; `hreflang` separa mercados. JA es experimento sin expectativas |
 | Voz | "Estudio de software" con voz de marca ("trabajamos"), sin afirmar tamaño de equipo, sin "agencia"/"empresa"; "Quiénes somos" presenta al fundador | DevMinds es una persona y no está constituida legalmente; la honestidad es argumento de venta ("hablas directo con el ingeniero") |
 | Precio | Sin precio de referencia publicado | Decisión comercial del usuario, por ahora |
+| Fundador | Solo Sebastián, como `founder`; se elimina el cofundador (Juan David Gómez Pérez) de la DB, del JSON-LD y del seed | El cofundador no participa; DevMinds es de una persona |
+| Proyectos | Reescribir los 6 existentes en clave de resultado (3 idiomas) y renombrar categorías en lenguaje de cliente; SoftCount pasa a **RMConta**; no se agregan proyectos nuevos por ahora | La sección Trabajos debe hablarle al cliente, no al desarrollador |
+| Cambios de datos | Por SQL ejecutado por Claude, con respaldo JSON previo y textos aprobados por el usuario antes de ejecutar | Pedido explícito del usuario |
 | Pruebas | Vitest para lógica pura (enlaces, paridad de traducciones); verificación visual con Playwright | El proyecto no tiene test runner; Vitest es el estándar de los proyectos recientes |
 
 ## Sistema de diseño
@@ -137,6 +140,23 @@ Misma estructura, contenido localizado: H1 equivalente orientado a empresas de c
 - Preguntas: `src/config/faq.json` reducido a las 6 nuevas; textos en `messages/*.json`; `src/lib/schemas/faq-schema.ts` emite las mismas.
 - Sin cambios de esquema de base de datos.
 
+## Contenido en la base de datos (producción)
+
+Cambios solo de datos, ejecutados por SQL desde un script en el scratchpad (no se versiona el script con credenciales). Antes de cualquier escritura: respaldo JSON completo de `team_members`, `team_member_translations`, `projects`, `project_translations`, `category_translations`, guardado en `docs/superpowers/respaldos/2026-10-19-db.json` (sin datos sensibles; son textos públicos). Los textos nuevos se presentan al usuario y se ejecutan solo con su aprobación.
+
+**Equipo**
+- `team_members` `sebastian-morea`: `hierarchy` `co-founder` → `founder`.
+- Eliminar `juan-gomez` y sus 3 filas de `team_member_translations`.
+- Código: `src/lib/schemas/organization-schema.ts` declara un solo fundador (`jobTitle` "Founder & Software Engineer"); `src/db/seed.ts` igual. `/about` sigue funcionando con un fundador (el título "Fundadores" en plural se ajusta en fase 2).
+
+**Proyectos** (6 existentes; `id` y `slug` no cambian)
+- `title`, `description`, `full_description` reescritos en ES, EN y JA en clave de resultado ("qué le resolvió al cliente"), con la misma regla de localización (ES local, EN/JA global).
+- `softcount`: título visible **RMConta**; se describe por lo que hace, sin "(en construcción)".
+- `sabajon-portafolio`: etiquetado honestamente como ejemplo (negocio ficticio).
+- `client` corregido donde está mal (`empo-guzman` = "Empresas Públicas", `sabajon-portafolio` = "Devminds").
+- `category_translations`: nombres visibles en lenguaje de cliente (p. ej. "Aplicaciones Web" → "Sistema a medida" / "Página web" según el caso; "Wix/Plantillas" → "Página web"). Los `id` de categoría no cambian (los usa el filtro de `/portfolio`); si el mapeo requiere mover un proyecto de categoría, se cambia `projects.category`.
+- Sin proyectos nuevos por ahora (Dra. Nélida Tejada, Acreencia y SismAlert quedan como candidatos; hoy ningún proyecto respalda el escalón "Apps móviles").
+
 ## Eliminación del tema oscuro público
 
 Quitar: `ThemeSwitcher`, `ThemeContext`, `ClientThemeWrapper`, el script inline del `<head>` en `src/app/[lang]/layout.tsx`, la meta `theme-color` oscura y `useTheme` en `src/components/ui/sonner.tsx` (tema fijo claro). Conservar el bloque `.dark` de `globals.css` con un comentario que indique que existe solo para `/admin` (que fuerza `className="dark"`). Verificar que el admin se sigue viendo igual.
@@ -154,6 +174,7 @@ Quitar: `ThemeSwitcher`, `ThemeContext`, `ClientThemeWrapper`, el script inline 
 
 ## Fases de entrega
 
+0. Datos: respaldo, textos nuevos de proyectos y categorías para aprobación, SQL de equipo y proyectos, JSON-LD y seed con un solo fundador.
 1. Sistema base (tokens, `font-doto`, `Wordmark`, quitar tema oscuro público, Vitest).
 2. Retícula (`Reticula`, `DivisorSeccion`, `CampoPuntos`, `Rieles`).
 3. Navegación (Navbar con idioma, `BarraMovil`, Footer, `enlaces.ts`).
@@ -172,7 +193,7 @@ Cada fase: commit convencional sin `Co-Authored-By` (no-negociable de develop_ki
 
 ## Fuera de alcance (fase 2)
 
-Rediseño de `/about`, `/services`, `/portfolio`, `/contact` (en esta fase solo heredan tokens); panel admin; reescribir descripciones de proyectos en la DB en clave de resultado (tarea de contenido desde el admin); migración a Tailwind v4.
+Rediseño de `/about`, `/services`, `/portfolio`, `/contact` (en esta fase solo heredan tokens); panel admin; agregar proyectos nuevos (Dra. Nélida Tejada, Acreencia, SismAlert); migración a Tailwind v4.
 
 ## Cierre
 
@@ -180,5 +201,6 @@ Al terminar: correr `PROMPT_INGESTA.md` de develop_kit para exportar decisiones 
 
 ## Preguntas abiertas
 
-- Frase "Cuando un proyecto lo necesita, sumo colaboradores de confianza" en "Quiénes somos": fuera por defecto; incluir solo si es cierta.
-- Intensidad final del campo de puntos: se ajusta sobre la preview.
+- Intensidad del campo de puntos: pendiente de elegir entre sutil, media y marcada (maqueta `puntos-intensidad.html`); por defecto, media.
+
+Resuelta: "Quiénes somos" no menciona colaboradores (el cofundador se retira y no hay colaboradores fijos).
