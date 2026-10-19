@@ -53,7 +53,7 @@ Se mantienen los nombres de tokens de shadcn para no romper componentes; se agre
 | `--primary-hover` (nuevo) | `#9e4421` | `17 65% 37.5%` | hover del botón principal |
 | `--primary-foreground` | `#fafcfe` | `210 67% 98.8%` | texto sobre terracota |
 | `--accent-tint` (nuevo) | `#fbe9e0` | `20 77% 93.1%` | fondo de chips ("Respondemos en 24 h"); el texto del chip va en `--primary-hover` (terracota sobre este fondo no llega a 4.5:1) |
-| `--dots` (nuevo) | `--foreground` al ~25% | — | campo de puntos; un solo valor para ajustar intensidad |
+| `--dots` (nuevo) | `--foreground` al 26% | — | campo de puntos (intensidad media); un solo valor para ajustar |
 
 Reglas: sin `#fff` ni `#000`. Terracota ≤ 10% de la superficie. Botones secundarios con borde gris. `--ring` = terracota.
 
@@ -201,6 +201,6 @@ Al terminar: correr `PROMPT_INGESTA.md` de develop_kit para exportar decisiones 
 
 ## Preguntas abiertas
 
-- Intensidad del campo de puntos: pendiente de elegir entre sutil, media y marcada (maqueta `puntos-intensidad.html`); por defecto, media.
-
-Resuelta: "Quiénes somos" no menciona colaboradores (el cofundador se retira y no hay colaboradores fijos).
+Ninguna. Resueltas:
+- "Quiénes somos" no menciona colaboradores (el cofundador se retira y no hay colaboradores fijos).
+- Campo de puntos: intensidad **media** (puntos de 1.3px, `--foreground` al 26%, retícula de 18px), ajustable desde el token `--dots` si en la preview se ve distinto.
