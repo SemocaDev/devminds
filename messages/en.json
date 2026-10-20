@@ -26,16 +26,6 @@
       "keywords": "web development portfolio colombia, web projects neiva, website examples colombia, software projects huila"
     }
   },
-  "Hero": {
-    "title": "OPTIMIZED//<wbr>SYSTEMS",
-    "subtitle": "PROFESSIONAL WEB DEVELOPMENT IN COLOMBIA",
-    "aboutText": "DevMinds builds custom digital infrastructures from fundamental principles. Modular designs. Scalable architectures. No unnecessary complexity. Technology that works.",
-    "greeting": "Hello, we are",
-    "mainSubtitle": "Web Development & Custom Software",
-    "description": "Web development agency in Neiva, Colombia. We create modern web applications with Next.js, React and TypeScript. Custom software, technical consulting and digital solutions for businesses.",
-    "viewProjects": "View Projects",
-    "contactButton": "Contact"
-  },
   "Menu": {
     "projects": "PROJECTS",
     "services": "SERVICES",
@@ -48,7 +38,6 @@
     "portfolio": "Portfolio",
     "about": "About",
     "services": "Services",
-    "stack": "Stack",
     "projects": "Work",
     "process": "How we work",
     "faq": "FAQ",
@@ -56,80 +45,6 @@
     "startProject": "Let's talk",
     "menu": "Menu",
     "idioma": "Language"
-  },
-  "CTA": {
-    "terminalCommand": "init_project --with-excellence",
-    "title": "Ready for your web project?",
-    "description": "Professional web development in Colombia. Modern applications with Next.js, React and TypeScript. Free quote, no commitment.",
-    "buttonText": "REQUEST QUOTE",
-    "buttonHover": "execute_consultation",
-    "responseTime": "Response within 24 hours",
-    "feature1": "Optimized web development",
-    "feature2": "Clean and scalable code",
-    "feature3": "Continuous technical support",
-    "status": "Ready for deployment",
-    "statusLabel": "Status:",
-    "onlineReady": "Online and ready"
-  },
-  "AboutUs": {
-    "title": "About Us",
-    "description": "Web development agency in Neiva, Colombia. Software engineers specialized in modern web applications with Next.js, React and TypeScript. Professional digital solutions for businesses.",
-    "paragraph1": "We are DevMinds, a web development agency based in Neiva, Huila. Our team of Colombian software engineers specializes in building modern web applications, custom software and technical consulting for businesses in Neiva, Huila and across Colombia.",
-    "paragraph2": "We combine cutting-edge technologies with professional development practices. We understand your business needs to create scalable, efficient web solutions that are built to grow.",
-    "paragraph3": "We work with Next.js, React, TypeScript, Node.js and the most in-demand technologies. Your project will be built to professional standards and ready to scale.",
-    "technologiesLabel": "Technologies we master:",
-    "meetTheTeam": "Meet the Team",
-    "stats": {
-      "projects": "Projects",
-      "satisfaction": "Satisfaction",
-      "support": "Support"
-    },
-    "value1": {
-      "title": "Efficiency",
-      "description": "We optimize every line of code for maximum performance"
-    },
-    "value2": {
-      "title": "Scalability",
-      "description": "We build solutions that grow with your business"
-    },
-    "value3": {
-      "title": "Quality",
-      "description": "No technical debt, only clean and maintainable code"
-    },
-    "ctaButton": "Learn more about us"
-  },
-  "Services": {
-    "title": "Our Services",
-    "subtitle": "Comprehensive technology solutions to bring your digital ideas to life",
-    "webdev": {
-      "title": "Web Development",
-      "description": "Landing pages, corporate websites, and modern web applications with the latest technologies"
-    },
-    "custom": {
-      "title": "Custom Software",
-      "description": "Tailored applications that solve your business's specific problems"
-    },
-    "wordpress": {
-      "title": "WordPress & CMS",
-      "description": "Manageable websites with WordPress, optimized for SEO and performance"
-    },
-    "consulting": {
-      "title": "Technical Consulting",
-      "description": "Code audits, architecture, and optimization of existing systems"
-    },
-    "ctaButton": "View all services"
-  },
-  "Projects": {
-    "title": "Featured Projects",
-    "subtitle": "Some examples of our work and the technologies we use",
-    "ctaButton": "View full portfolio"
-  },
-  "ContactCTA": {
-    "title": "Have a project in mind?",
-    "subtitle": "We're ready to help you turn your ideas into reality. Contact us and let's start working together.",
-    "primaryButton": "Contact Us Now",
-    "secondaryButton": "Send Email",
-    "responseTime": "⚡ Response in less than 24 hours"
   },
   "Contact": {
     "title": "Let's Talk About Your Project",
@@ -159,7 +74,6 @@
     "copyright": "© {year} DevMinds. All rights reserved.",
     "tagline": "Software studio based in Colombia.",
     "navigation": "Navigation",
-    "resourcesTitle": "Resources",
     "social": "Social Media",
     "nav": {
       "home": "Home",
@@ -167,10 +81,6 @@
       "services": "Services",
       "portfolio": "Portfolio",
       "contact": "Contact"
-    },
-    "resources": {
-      "portfolio": "Projects",
-      "faq": "Frequently Asked Questions"
     }
   },
   "LoadingScreen": {
@@ -186,58 +96,6 @@
     "servicesLink": "Services",
     "projectsLink": "Projects",
     "contactLink": "Contact"
-  },
-  "FAQ": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about our services",
-    "categories": {
-      "general": "General",
-      "services": "Services",
-      "pricing": "Pricing",
-      "technical": "Technical"
-    },
-    "questions": {
-      "faq-general-1": {
-        "question": "What services does DevMinds offer?",
-        "answer": "We offer modern web development, custom software, technical consulting, and ongoing support. We work with the latest technologies to create scalable and efficient digital solutions."
-      },
-      "faq-general-2": {
-        "question": "What sets DevMinds apart from other development companies?",
-        "answer": "We focus on clean architectures, scalable code, and no technical debt. Each project is treated with personalized dedication, ensuring solutions that truly work and stand the test of time."
-      },
-      "faq-general-3": {
-        "question": "How can I start a project with DevMinds?",
-        "answer": "It's simple: contact us through the form, email, or WhatsApp. We'll schedule a free initial consultation to understand your needs and design a customized solution."
-      },
-      "faq-services-1": {
-        "question": "Do you handle complete web development projects?",
-        "answer": "Yes, we work with all types of projects: from simple sites with WordPress or Wix to complex custom-built web applications with Next.js, React, TypeScript, and all the modern technologies needed for a robust and scalable product."
-      },
-      "faq-services-2": {
-        "question": "Do you offer consulting services for existing projects?",
-        "answer": "Absolutely. We perform code audits, performance optimization, architecture improvements, and technical recommendations for projects in production."
-      },
-      "faq-services-3": {
-        "question": "Do you provide support after project delivery?",
-        "answer": "Yes, we offer ongoing support and maintenance plans to ensure your application stays updated, secure, and running optimally."
-      },
-      "faq-pricing-1": {
-        "question": "How do you handle budgets?",
-        "answer": "Each project is unique. After the initial consultation, we prepare a detailed proposal with scope, timeline, and fixed price. We also offer payment options in stages."
-      },
-      "faq-pricing-2": {
-        "question": "What is the estimated time to complete a project?",
-        "answer": "It depends on the scope. A landing page can be ready in 1-2 weeks, while complex applications can take 2-3 months. We always establish clear timelines from the start."
-      },
-      "faq-technical-1": {
-        "question": "What technologies do you use?",
-        "answer": "We work with React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS, and other modern web stack technologies. We choose tools based on the specific needs of each project."
-      },
-      "faq-technical-2": {
-        "question": "Do I own the source code?",
-        "answer": "Absolutely. Upon project completion, you receive all the source code, documentation, and necessary access. You are the complete owner of your product."
-      }
-    }
   },
   "Portfolio": {
     "pageLabel": "Portfolio",
@@ -365,34 +223,6 @@
         "title": "Post-Launch Support",
         "description": "We don't leave you alone. We offer ongoing support and maintenance after launch"
       }
-    }
-  },
-  "TechStack": {
-    "title": "Technologies we master",
-    "subtitle": "We work with the most modern and powerful tools on the market to build robust and scalable solutions"
-  },
-  "Process": {
-    "title": "Our Work Process",
-    "subtitle": "A structured and proven approach to take your project from idea to successful launch",
-    "step1": {
-      "title": "Initial Consultation",
-      "description": "We understand your project, needs, and goals to create a customized solution"
-    },
-    "step2": {
-      "title": "Planning",
-      "description": "We design the architecture and select the most suitable technologies"
-    },
-    "step3": {
-      "title": "Development",
-      "description": "We build your solution step by step with constant communication"
-    },
-    "step4": {
-      "title": "Testing & Deploy",
-      "description": "We ensure quality with thorough testing and launch your project"
-    },
-    "step5": {
-      "title": "Support",
-      "description": "Ongoing maintenance and improvements so your project evolves"
     }
   },
   "ContactPage": {

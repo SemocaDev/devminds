@@ -26,16 +26,6 @@
       "keywords": "proyectos web neiva, portafolio desarrollo web neiva, ejemplos paginas web huila, trabajos desarrollo web colombia, paginas web hechas en neiva"
     }
   },
-  "Hero": {
-    "title": "SISTEMAS//<wbr>OPTIMIZADOS",
-    "subtitle": "DESARROLLO WEB PROFESIONAL EN NEIVA, HUILA - COLOMBIA",
-    "aboutText": "DevMinds construye infraestructuras digitales a medida desde principios fundamentales. Diseños modulares. Arquitecturas escalables. Sin complejidad innecesaria. Tecnología que funciona.",
-    "greeting": "Hola, somos",
-    "mainSubtitle": "Desarrollo Web y Software Personalizado",
-    "description": "Agencia de desarrollo web en Neiva, Huila. Creamos aplicaciones web modernas con Next.js, React y TypeScript. Software a medida, consultoría técnica y soluciones digitales para empresas colombianas.",
-    "viewProjects": "Ver Proyectos",
-    "contactButton": "Contactar"
-  },
   "Menu": {
     "projects": "PROYECTOS",
     "services": "SERVICIOS",
@@ -48,7 +38,6 @@
     "portfolio": "Portafolio",
     "about": "Nosotros",
     "services": "Servicios",
-    "stack": "Stack",
     "projects": "Trabajos",
     "process": "Cómo trabajamos",
     "faq": "Preguntas",
@@ -56,80 +45,6 @@
     "startProject": "Hablemos",
     "menu": "Menú",
     "idioma": "Idioma"
-  },
-  "CTA": {
-    "terminalCommand": "init_project --with-excellence",
-    "title": "¿Listo para tu proyecto web en Neiva, Huila?",
-    "description": "Agencia de desarrollo web profesional en Neiva, Colombia. Aplicaciones modernas con Next.js, React y TypeScript. Cotización gratis y sin compromiso para empresas del Huila.",
-    "buttonText": "SOLICITAR COTIZACIÓN",
-    "buttonHover": "ejecutar_consulta",
-    "responseTime": "Respuesta en menos de 24 horas",
-    "feature1": "Desarrollo web optimizado",
-    "feature2": "Código limpio y escalable",
-    "feature3": "Soporte técnico continuo",
-    "status": "Listo para despliegue",
-    "statusLabel": "Estado:",
-    "onlineReady": "En línea y listo"
-  },
-  "AboutUs": {
-    "title": "Sobre Nosotros",
-    "description": "Agencia de desarrollo web en Neiva, Huila. Ingenieros de software especializados en aplicaciones web modernas con Next.js, React y TypeScript. Soluciones digitales profesionales para empresas.",
-    "paragraph1": "Somos DevMinds, agencia de desarrollo web con sede en Neiva, Huila. Nuestro equipo de ingenieros de software colombianos está especializado en crear aplicaciones web modernas, software personalizado y consultoría técnica para empresas en Neiva, el Huila y toda Colombia.",
-    "paragraph2": "Combinamos tecnologías de vanguardia con prácticas de desarrollo profesional. Entendemos las necesidades de tu negocio para crear soluciones web escalables, eficientes y listas para crecer.",
-    "paragraph3": "Trabajamos con Next.js, React, TypeScript, Node.js y las tecnologías más demandadas del mercado. Tu proyecto estará construido con estándares profesionales y preparado para escalar.",
-    "technologiesLabel": "Tecnologías que dominamos:",
-    "meetTheTeam": "Conocer al Equipo",
-    "stats": {
-      "projects": "Proyectos",
-      "satisfaction": "Satisfacción",
-      "support": "Soporte"
-    },
-    "value1": {
-      "title": "Eficiencia",
-      "description": "Optimizamos cada línea de código para máximo rendimiento"
-    },
-    "value2": {
-      "title": "Escalabilidad",
-      "description": "Construimos soluciones que crecen con tu negocio"
-    },
-    "value3": {
-      "title": "Calidad",
-      "description": "Sin deuda técnica, solo código limpio y mantenible"
-    },
-    "ctaButton": "Conoce más sobre nosotros"
-  },
-  "Services": {
-    "title": "Nuestros Servicios",
-    "subtitle": "Soluciones tecnológicas integrales para hacer realidad tus ideas digitales",
-    "webdev": {
-      "title": "Desarrollo Web",
-      "description": "Landing pages, sitios corporativos y aplicaciones web modernas con las últimas tecnologías"
-    },
-    "custom": {
-      "title": "Software Personalizado",
-      "description": "Aplicaciones a medida que resuelven problemas específicos de tu negocio"
-    },
-    "wordpress": {
-      "title": "WordPress & CMS",
-      "description": "Sitios web administrables con WordPress, optimizados para SEO y rendimiento"
-    },
-    "consulting": {
-      "title": "Consultoría Técnica",
-      "description": "Auditorías de código, arquitectura y optimización de sistemas existentes"
-    },
-    "ctaButton": "Ver todos los servicios"
-  },
-  "Projects": {
-    "title": "Proyectos Destacados",
-    "subtitle": "Algunos ejemplos de nuestro trabajo y las tecnologías que utilizamos",
-    "ctaButton": "Ver portfolio completo"
-  },
-  "ContactCTA": {
-    "title": "¿Tienes un proyecto en mente?",
-    "subtitle": "Estamos listos para ayudarte a convertir tus ideas en realidad. Contáctanos y comencemos a trabajar juntos.",
-    "primaryButton": "Contáctanos Ahora",
-    "secondaryButton": "Enviar Email",
-    "responseTime": "⚡ Respuesta en menos de 24 horas"
   },
   "Contact": {
     "title": "Hablemos de tu Proyecto",
@@ -159,7 +74,6 @@
     "copyright": "© {year} DevMinds. Todos los derechos reservados.",
     "tagline": "Estudio de software en Neiva, Huila.",
     "navigation": "Navegación",
-    "resourcesTitle": "Recursos",
     "social": "Redes Sociales",
     "nav": {
       "home": "Inicio",
@@ -167,10 +81,6 @@
       "services": "Servicios",
       "portfolio": "Portfolio",
       "contact": "Contacto"
-    },
-    "resources": {
-      "portfolio": "Proyectos",
-      "faq": "Preguntas Frecuentes"
     }
   },
   "LoadingScreen": {
@@ -186,58 +96,6 @@
     "servicesLink": "Servicios",
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
-  },
-  "FAQ": {
-    "title": "Preguntas Frecuentes",
-    "subtitle": "Todo lo que necesitas saber sobre nuestros servicios",
-    "categories": {
-      "general": "General",
-      "services": "Servicios",
-      "pricing": "Precios",
-      "technical": "Técnico"
-    },
-    "questions": {
-      "faq-general-1": {
-        "question": "¿Qué servicios ofrece DevMinds?",
-        "answer": "Ofrecemos desarrollo web moderno, software personalizado, consultoría técnica y soporte continuo. Trabajamos con las tecnologías más recientes para crear soluciones digitales escalables y eficientes."
-      },
-      "faq-general-2": {
-        "question": "¿En qué se diferencia DevMinds de otras empresas de desarrollo?",
-        "answer": "Nos enfocamos en arquitecturas limpias, código escalable y sin deuda técnica. Cada proyecto es tratado con dedicación personalizada, asegurando soluciones que realmente funcionen y perduren en el tiempo."
-      },
-      "faq-general-3": {
-        "question": "¿Cómo puedo comenzar un proyecto con DevMinds?",
-        "answer": "Es simple: contáctanos a través del formulario, email o WhatsApp. Agendaremos una consulta inicial gratuita para entender tus necesidades y diseñar una solución a tu medida."
-      },
-      "faq-services-1": {
-        "question": "¿Realizan proyectos de desarrollo web completos?",
-        "answer": "Sí, trabajamos con todo tipo de proyectos: desde sitios simples con WordPress o Wix hasta aplicaciones web complejas hechas a la medida con Next.js, React, TypeScript y todas las tecnologías modernas necesarias para un producto robusto y escalable."
-      },
-      "faq-services-2": {
-        "question": "¿Ofrecen servicios de consultoría para proyectos existentes?",
-        "answer": "Por supuesto. Realizamos auditorías de código, optimización de performance, mejoras de arquitectura y recomendaciones técnicas para proyectos en producción."
-      },
-      "faq-services-3": {
-        "question": "¿Dan soporte después de entregar el proyecto?",
-        "answer": "Sí, ofrecemos planes de soporte y mantenimiento continuo para asegurar que tu aplicación se mantenga actualizada, segura y funcionando óptimamente."
-      },
-      "faq-pricing-1": {
-        "question": "¿Cómo manejan los presupuestos?",
-        "answer": "Cada proyecto es único. Después de la consulta inicial, elaboramos una propuesta detallada con alcance, timeline y precio fijo. También ofrecemos opciones de pago por etapas."
-      },
-      "faq-pricing-2": {
-        "question": "¿Cuál es el tiempo estimado para completar un proyecto?",
-        "answer": "Depende del alcance. Un landing page puede estar listo en 1-2 semanas, mientras que aplicaciones complejas pueden tomar 2-3 meses. Siempre establecemos timelines claros desde el inicio."
-      },
-      "faq-technical-1": {
-        "question": "¿Qué tecnologías utilizan?",
-        "answer": "Trabajamos con React, Next.js, TypeScript, Node.js, TailwindCSS, PostgreSQL, MongoDB, AWS y otras tecnologías modernas del stack web. Elegimos las herramientas según las necesidades específicas de cada proyecto."
-      },
-      "faq-technical-2": {
-        "question": "¿El código fuente queda de mi propiedad?",
-        "answer": "Absolutamente. Al finalizar el proyecto, recibes todo el código fuente, documentación y accesos necesarios. Tú eres el dueño completo de tu producto."
-      }
-    }
   },
   "Portfolio": {
     "pageLabel": "Portafolio",
@@ -365,34 +223,6 @@
         "title": "Soporte Post-Lanzamiento",
         "description": "No te dejamos solo. Ofrecemos soporte continuo y mantenimiento después del lanzamiento"
       }
-    }
-  },
-  "TechStack": {
-    "title": "Tecnologías que dominamos",
-    "subtitle": "Trabajamos con las herramientas más modernas y potentes del mercado para construir soluciones robustas y escalables"
-  },
-  "Process": {
-    "title": "Nuestro Proceso de Trabajo",
-    "subtitle": "Un enfoque estructurado y probado para llevar tu proyecto desde la idea hasta el lanzamiento exitoso",
-    "step1": {
-      "title": "Consulta Inicial",
-      "description": "Entendemos tu proyecto, necesidades y objetivos para crear una solución a medida"
-    },
-    "step2": {
-      "title": "Planificación",
-      "description": "Diseñamos la arquitectura y seleccionamos las tecnologías más adecuadas"
-    },
-    "step3": {
-      "title": "Desarrollo",
-      "description": "Construimos tu solución paso a paso con comunicación constante"
-    },
-    "step4": {
-      "title": "Testing & Deploy",
-      "description": "Aseguramos la calidad con pruebas exhaustivas y lanzamos tu proyecto"
-    },
-    "step5": {
-      "title": "Soporte",
-      "description": "Mantenimiento continuo y mejoras para que tu proyecto evolucione"
     }
   },
   "ContactPage": {

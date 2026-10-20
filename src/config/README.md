@@ -9,10 +9,9 @@ Información de contacto y redes sociales.
 - **Usado en**: Rieles, enlaces.ts (WhatsApp, llamada, correo)
 - **Contiene**: URLs de GitHub, LinkedIn, email
 
-### `faq.json`
-Preguntas frecuentes organizadas por categorías.
-- **Usado en**: FAQ section (homepage)
-- **Estructura**: Categorías con preguntas y respuestas
+### `preguntas.ts`
+Ids de las preguntas frecuentes de la home, en orden. Los textos viven en `messages/*.json` → `Home.preguntas.items.<id>`.
+- **Usado en**: sección Preguntas y JSON-LD `FAQPage` de la home
 
 ### `i18n-config.ts`
 Configuración de internacionalización (idiomas).
