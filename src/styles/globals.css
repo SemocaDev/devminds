@@ -4,29 +4,35 @@
 
 @layer base {
   :root {
-    /* Light theme — blanco puro + negro */
-    --background: 0 0% 99%;
-    --foreground: 0 0% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-    --primary: 0 0% 4%;
-    --primary-foreground: 0 0% 99%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 99%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 0 0% 4%;
-    --radius: 0.625rem;
+    /* Modo claro único: blanco nieve fría, grafito y terracota (spec 2026-10-19) */
+    --background: 216 56% 98.2%;
+    --foreground: 218 18% 12%;
+    --card: 216 56% 98.2%;
+    --card-foreground: 218 18% 12%;
+    --popover: 216 56% 98.2%;
+    --popover-foreground: 218 18% 12%;
+    --primary: 16 60% 44.5%;
+    --primary-foreground: 210 67% 98.8%;
+    --primary-hover: 17 65% 37.5%;
+    --secondary: 207 36% 95.1%;
+    --secondary-foreground: 218 18% 12%;
+    --muted: 207 36% 95.1%;
+    --muted-foreground: 216 8% 36.3%;
+    --accent: 207 26% 91.6%;
+    --accent-foreground: 218 18% 12%;
+    --accent-tint: 20 77% 93.1%;
+    --surface-3: 207 26% 91.6%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 210 67% 98.8%;
+    --border: 203 13% 88.2%;
+    --input: 203 13% 88.2%;
+    --ring: 16 60% 44.5%;
+    --guide: 207 14% 84.9%;
+    --dots: 218 18% 12% / 0.26;
+    --radius: 0.75rem;
   }
 
+  /* Solo para /admin, que fuerza className="dark". El sitio público no tiene modo oscuro. */
   .dark {
     /* Dark theme — carbón + blanco puro, más contraste */
     --background: 0 0% 8%;
@@ -85,6 +91,20 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 }
 
@@ -516,5 +536,29 @@
 
   .animate-scroll-text-pulse {
     animation: scroll-text-pulse 3s ease-in-out infinite;
+  }
+
+  /* Entrada única del hero: CSS puro, sin flash de hidratación */
+  @keyframes entrada {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+  .entrada {
+    animation: entrada 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 80ms + 60ms);
+  }
+
+  /* Campo de puntos de la retícula (eco de Doto), intensidad media */
+  .campo-puntos {
+    background-image: radial-gradient(circle, hsl(var(--dots)) 1.3px, transparent 1.6px);
+    background-size: 18px 18px;
+    -webkit-mask-image: radial-gradient(ellipse 65% 80% at 85% 35%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse 65% 80% at 85% 35%, #000 30%, transparent 78%);
+  }
+  @media (max-width: 767px) {
+    .campo-puntos {
+      -webkit-mask-image: radial-gradient(ellipse 85% 45% at 80% 15%, #000 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse 85% 45% at 80% 15%, #000 20%, transparent 75%);
+    }
   }
 }

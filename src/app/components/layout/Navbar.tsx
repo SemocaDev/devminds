@@ -7,7 +7,6 @@ import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
-import ThemeSwitcher from '@/app/components/ui/ThemeSwitcher/ThemeSwitcher';
 
 type HomeNavItem = {
   number: string;
@@ -145,10 +144,8 @@ const Navbar = () => {
             )}
           </ul>
 
-          {/* Desktop: ThemeSwitcher + CTA Button */}
+          {/* Desktop: CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Theme Switcher */}
-            <ThemeSwitcher className="hover:bg-accent/20" />
 
             {/* CTA Button */}
             <Button
@@ -164,8 +161,6 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <div className="lg:hidden flex items-center gap-4">
-            {/* Theme Switcher en Mobile */}
-            <ThemeSwitcher className="hover:bg-accent/20" />
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>

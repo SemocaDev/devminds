@@ -6,7 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: ['class', 'class'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -17,8 +17,12 @@ const config: Config = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          foreground: 'hsl(var(--primary-foreground))',
+          hover: 'hsl(var(--primary-hover))'
         },
+        'accent-tint': 'hsl(var(--accent-tint))',
+        'surface-3': 'hsl(var(--surface-3))',
+        guide: 'hsl(var(--guide))',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
@@ -60,6 +64,7 @@ const config: Config = {
           'system-ui',
           'sans-serif'
         ],
+        doto: ['var(--font-doto)', 'monospace'],
         mono: [
           'var(--font-doto)',
           'monospace'

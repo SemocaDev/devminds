@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import ClientThemeWrapper from "@/app/components/ClientThemeWrapper";
 import { Toaster } from "@/components/ui/sonner";
 import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/schemas/organization-schema";
 import "@/styles/globals.css";
@@ -28,7 +27,7 @@ const outfit = Outfit({
 
 const doto = Doto({
   subsets: ["latin"],
-  weight: ["100", "400", "700"],
+  weight: ["900"],
   variable: "--font-doto",
   display: "swap",
 });
@@ -165,14 +164,8 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} overflow-x-hidden`}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('devminds-theme');var d=t==='dark'||((!t||t==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.add(d?'dark':'light');}catch(e){}})();`,
-          }}
-        />
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0A" />
-        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="theme-color" content="#f8fafd" />
+        <meta name="msapplication-TileColor" content="#f8fafd" />
         <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -214,7 +207,6 @@ export default async function RootLayout(props: Props) {
         )}
       </head>
       <body className="min-h-screen flex flex-col font-sans antialiased">
-        <ClientThemeWrapper>
           <NextIntlClientProvider locale={lang} messages={messages}>
             {props.children}
           </NextIntlClientProvider>
@@ -222,13 +214,12 @@ export default async function RootLayout(props: Props) {
             position="top-center"
             toastOptions={{
               classNames: {
-                toast: 'font-mono',
+                toast: 'font-sans',
                 title: 'font-semibold',
                 description: 'text-sm opacity-90',
               },
             }}
           />
-        </ClientThemeWrapper>
       </body>
     </html>
   );
