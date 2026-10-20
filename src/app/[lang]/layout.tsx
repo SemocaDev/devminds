@@ -1,5 +1,5 @@
 // src/app/[lang]/layout.tsx - Versión mejorada con SEO y Temas
-import { Geist, Outfit, Doto } from "next/font/google";
+import { Geist, Outfit, Doto, Geist_Mono, Instrument_Serif } from "next/font/google";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -31,6 +31,9 @@ const doto = Doto({
   variable: "--font-doto",
   display: "swap",
 });
+
+const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"], variable: "--font-geist-mono", display: "swap", preload: false });
+const instrument = Instrument_Serif({ subsets: ["latin"], weight: ["400"], style: ["italic"], variable: "--font-instrument", display: "swap", preload: false });
 
 import { locales, Locale } from '@/config/i18n-config';
 
@@ -162,7 +165,7 @@ export default async function RootLayout(props: Props) {
   }
 
   return (
-    <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} overflow-x-hidden`}>
+    <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} ${geistMono.variable} ${instrument.variable} overflow-x-hidden`}>
       <head>
         <meta name="theme-color" content="#f8fafd" />
         <meta name="msapplication-TileColor" content="#f8fafd" />
