@@ -1,257 +1,125 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { usePathname, useParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import Wordmark from '@/app/components/marca/Wordmark';
+import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
+import { enlaceWhatsApp } from '@/lib/enlaces';
+import { cn } from '@/lib/utils';
 
-type HomeNavItem = {
-  number: string;
-  label: string;
-  href: string;
-};
-
-type GlobalNavItem = {
-  label: string;
-  href: string;
-};
+type ItemNav = { label: string; href: string };
 
 const Navbar = () => {
   const t = useTranslations('Navbar');
+  const tHome = useTranslations('Home');
   const pathname = usePathname();
-  const params = useParams();
-  const lang = params.lang as string;
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  const throttleRef = useRef(false);
+  const { lang } = useParams<{ lang: string }>();
+  const [conFondo, setConFondo] = useState(false);
+  const [oculta, setOculta] = useState(false);
+  const [abierto, setAbierto] = useState(false);
+  const ultimoY = useRef(0);
 
-  const isHomepage = pathname === `/${lang}`;
-
-  // Homepage navigation items (scroll to sections)
-  const homeNavItems: HomeNavItem[] = [
-    { number: '01', label: t('about'), href: '#about' },
-    { number: '02', label: t('services'), href: '#services' },
-    { number: '03', label: t('stack'), href: '#techstack' },
-    { number: '04', label: t('projects'), href: '#projects' },
-    { number: '05', label: t('process'), href: '#process' },
-    { number: '06', label: t('faq'), href: '#faq' },
-    { number: '07', label: t('contact'), href: '#contact' }
-  ];
-
-  // Global navigation items (page links)
-  const globalNavItems: GlobalNavItem[] = [
-    { label: t('home'), href: `/${lang}` },
-    { label: t('about'), href: `/${lang}/about` },
-    { label: t('services'), href: `/${lang}/services` },
-    { label: t('portfolio'), href: `/${lang}/portfolio` },
-    { label: t('contact'), href: `/${lang}/contact` }
-  ];
+  const esHome = pathname === `/${lang}`;
+  const items: ItemNav[] = esHome
+    ? [
+        { label: t('services'), href: '#services' },
+        { label: t('projects'), href: '#projects' },
+        { label: t('process'), href: '#process' },
+        { label: t('faq'), href: '#faq' },
+      ]
+    : [
+        { label: t('home'), href: `/${lang}` },
+        { label: t('services'), href: `/${lang}/services` },
+        { label: t('portfolio'), href: `/${lang}/portfolio` },
+        { label: t('about'), href: `/${lang}/about` },
+        { label: t('contact'), href: `/${lang}/contact` },
+      ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (throttleRef.current) return;
-      throttleRef.current = true;
-
-      setTimeout(() => {
-        const currentScrollY = window.scrollY;
-
-        // Show shadow after scrolling
-        setIsScrolled(currentScrollY > 50);
-
-        // Hide navbar on scroll down, show on scroll up
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setIsHidden(true);
-        } else {
-          setIsHidden(false);
-        }
-
-        setLastScrollY(currentScrollY);
-        throttleRef.current = false;
-      }, 100);
+    let pendiente = false;
+    const alDesplazar = () => {
+      if (pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setConFondo(y > 24);
+        setOculta(y > ultimoY.current && y > 120);
+        ultimoY.current = y;
+        pendiente = false;
+      });
     };
+    window.addEventListener('scroll', alDesplazar, { passive: true });
+    return () => window.removeEventListener('scroll', alDesplazar);
+  }, []);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  const scrollToSection = (href: string) => {
-    setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const whatsapp = enlaceWhatsApp(tHome('whatsappMensaje'));
 
   return (
     <nav
-      style={{ transform: isHidden ? 'translateY(-100%)' : 'translateY(0)', transition: 'transform 280ms cubic-bezier(0.16, 1, 0.3, 1)' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled
-          ? 'backdrop-blur-md bg-background/85 border-b border-border/40'
-          : 'bg-transparent'
-      }`}
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b transition-[transform,background-color,border-color] duration-300 ease-out',
+        oculta && !abierto ? '-translate-y-full' : 'translate-y-0',
+        conFondo ? 'border-border bg-background/90 backdrop-blur-md' : 'border-transparent bg-transparent'
+      )}
     >
       <div className="container-main">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link
-            href={`/${lang}`}
-            className="text-xl md:text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
-          >
-            DevMinds
+        <div className="flex h-16 items-center justify-between gap-6 md:h-[72px] md:px-10">
+          <Link href={`/${lang}`} aria-label="DevMinds" className="text-[22px] text-foreground transition-opacity hover:opacity-75">
+            <Wordmark />
           </Link>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center gap-8">
-            {isHomepage ? (
-              homeNavItems.map((item) => (
-                <li key={item.href}>
-                  <button
-                    onClick={() => scrollToSection(item.href)}
-                    className="group flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                  >
-                    <span className="text-primary font-mono text-xs">
-                      {item.number}.
-                    </span>
-                    <span className="relative">
-                      {item.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-                    </span>
-                  </button>
-                </li>
-              ))
-            ) : (
-              globalNavItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`group text-sm hover:text-primary transition-colors ${
-                      pathname === item.href ? 'text-primary' : ''
-                    }`}
-                  >
-                    <span className="relative">
-                      {item.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-                    </span>
-                  </Link>
-                </li>
-              ))
-            )}
+          <ul className="hidden items-center gap-7 lg:flex">
+            {items.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
 
-          {/* Desktop: CTA Button */}
-          <div className="hidden lg:flex items-center gap-4">
-
-            {/* CTA Button */}
-            <Button
-              asChild
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              <Link href={`/${lang}/contact`}>
-                {t('startProject')}
-              </Link>
+          <div className="hidden items-center gap-3 lg:flex">
+            <SelectorIdioma />
+            <Button asChild className="bg-foreground text-background hover:bg-foreground/85">
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer">{t('startProject')}</a>
             </Button>
           </div>
 
-          {/* Mobile Menu */}
-          <div className="lg:hidden flex items-center gap-4">
-
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <div className="lg:hidden">
+            <Sheet open={abierto} onOpenChange={setAbierto}>
               <SheetTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  size="icon"
-                  className="h-10 w-10 border-border/50 hover:border-primary/50 hover:bg-accent/20"
-                >
-                  <Menu className="w-5 h-5" />
+                <Button variant="outline" size="icon" className="size-11" aria-label={t('menu')}>
+                  <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent 
-                side="right" 
-                className="w-[300px] p-0"
-                onInteractOutside={(e) => e.preventDefault()} // Previene cerrar al hacer clic fuera
-              >
-                {/* Header del Sheet con botón de cerrar */}
-                <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-border/50 bg-background/95 backdrop-blur-sm">
-                  <Link
-                    href={`/${lang}`}
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg font-bold text-primary"
-                  >
-                    DevMinds
-                  </Link>
-                  
-                  {/* Botón de cerrar - IDÉNTICO al de abrir */}
-                  <SheetClose asChild>
-                    <Button 
-                      variant="outline" 
-                      size="icon"
-                      className="h-10 w-10 border-border/50 hover:border-primary/50 hover:bg-accent/20"
-                    >
-                      <X className="w-5 h-5" />
-                    </Button>
-                  </SheetClose>
+              <SheetContent side="right" className="flex w-[300px] flex-col p-0">
+                <SheetTitle className="sr-only">{t('menu')}</SheetTitle>
+                <div className="flex h-16 items-center border-b border-border px-5">
+                  <Wordmark className="text-xl" />
                 </div>
-
-                {/* SheetTitle oculto para accesibilidad */}
-                <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
-                
-                {/* Contenido del menú */}
-                <div className="flex flex-col gap-4 p-6">
-                  {isHomepage ? (
-                    <>
-                      {homeNavItems.map((item) => (
-                        <button
-                          key={item.href}
-                          onClick={() => scrollToSection(item.href)}
-                          className="flex items-center gap-3 text-base hover:text-primary transition-colors text-left py-3 px-2 rounded-lg hover:bg-accent/10"
-                        >
-                          <span className="text-primary font-mono text-sm">
-                            {item.number}.
-                          </span>
-                          <span>{item.label}</span>
-                        </button>
-                      ))}
-                      <Button
-                        asChild
-                        className="mt-2"
+                <ul className="flex flex-col p-3">
+                  {items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setAbierto(false)}
+                        className="flex min-h-11 items-center rounded-md px-3 text-base text-foreground transition-colors hover:bg-secondary"
                       >
-                        <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)}>
-                          {t('startProject')}
-                        </Link>
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      {globalNavItems.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`flex items-center gap-3 text-base hover:text-primary transition-colors text-left py-3 px-2 rounded-lg hover:bg-accent/10 ${
-                            pathname === item.href ? 'text-primary bg-primary/5' : ''
-                          }`}
-                        >
-                          <span className="text-muted-foreground font-mono text-sm">•</span>
-                          <span>{item.label}</span>
-                        </Link>
-                      ))}
-                      <Button
-                        asChild
-                        className="mt-2 w-full"
-                      >
-                        <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)}>
-                          {t('startProject')}
-                        </Link>
-                      </Button>
-                    </>
-                  )}
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto space-y-3 border-t border-border p-5">
+                  <SelectorIdioma className="-ml-3" />
+                  <Button asChild size="lg" className="w-full">
+                    <a href={whatsapp} target="_blank" rel="noopener noreferrer">{t('startProject')}</a>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
