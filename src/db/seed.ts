@@ -5,6 +5,7 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 import * as schema from './schema';
+import contenido from './contenido/proyectos.json';
 
 const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql, { schema });
@@ -15,9 +16,7 @@ async function seed() {
   // ─── Project Categories ───
   const categories = [
     { id: 'all', sortOrder: 0 },
-    { id: 'web-app', sortOrder: 1 },
-    { id: 'wordpress', sortOrder: 2 },
-    { id: 'custom-code', sortOrder: 3 },
+    ...contenido.categorias.map(({ id, sortOrder }) => ({ id, sortOrder })),
   ];
 
   for (const cat of categories) {
@@ -28,15 +27,9 @@ async function seed() {
     { categoryId: 'all', locale: 'es', name: 'Todos' },
     { categoryId: 'all', locale: 'en', name: 'All' },
     { categoryId: 'all', locale: 'ja', name: 'すべて' },
-    { categoryId: 'web-app', locale: 'es', name: 'Aplicaciones Web' },
-    { categoryId: 'web-app', locale: 'en', name: 'Web Applications' },
-    { categoryId: 'web-app', locale: 'ja', name: 'ウェブアプリケーション' },
-    { categoryId: 'wordpress', locale: 'es', name: 'WordPress' },
-    { categoryId: 'wordpress', locale: 'en', name: 'WordPress' },
-    { categoryId: 'wordpress', locale: 'ja', name: 'WordPress' },
-    { categoryId: 'custom-code', locale: 'es', name: 'Wix/Plantillas' },
-    { categoryId: 'custom-code', locale: 'en', name: 'Wix/Templates' },
-    { categoryId: 'custom-code', locale: 'ja', name: 'Wix/テンプレート' },
+    ...contenido.categorias.flatMap((cat) =>
+      Object.entries(cat.nombres).map(([locale, name]) => ({ categoryId: cat.id, locale, name }))
+    ),
   ];
 
   for (const ct of categoryTranslationsData) {
@@ -49,7 +42,7 @@ async function seed() {
     {
       id: 'softcount',
       slug: 'softcount',
-      category: 'web-app',
+      category: 'custom-code',
       technologies: ['Next.js', 'TypeScript', 'PostgreSQL'],
       images: ['/projects/softcount/screenshot-1.png', '/projects/softcount/screenshot-2.png', '/projects/softcount/screenshot-3.png', '/projects/softcount/screenshot-4.png'],
       gradient: 'from-blue-600 to-cyan-600',
@@ -57,7 +50,7 @@ async function seed() {
       github: null,
       demo: null,
       year: 2024,
-      client: 'Proyecto Propio',
+      client: null,
       sortOrder: 0,
     },
     {
@@ -71,13 +64,13 @@ async function seed() {
       github: null,
       demo: 'https://wilsonisaza.com/',
       year: 2024,
-      client: 'Wilson Isaza - Político',
+      client: 'Wilson Isaza',
       sortOrder: 1,
     },
     {
       id: 'empo-guzman',
       slug: 'empo-guzman',
-      category: 'custom-code',
+      category: 'wordpress',
       technologies: ['Wix'],
       images: ['/projects/empo-guzman/screenshot-1.png', '/projects/empo-guzman/screenshot-2.png', '/projects/empo-guzman/screenshot-3.png'],
       gradient: 'from-indigo-600 to-purple-600',
@@ -85,13 +78,13 @@ async function seed() {
       github: null,
       demo: 'https://www.empoguzman.com.co/',
       year: 2024,
-      client: 'Empresas Públicas',
+      client: 'Empo Guzmán',
       sortOrder: 2,
     },
     {
       id: 'devminds-portfolio',
       slug: 'devminds-portfolio',
-      category: 'web-app',
+      category: 'wordpress',
       technologies: ['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
       images: ['/projects/devminds-portfolio/screenshot-1.png'],
       gradient: 'from-purple-600 to-pink-600',
@@ -99,7 +92,7 @@ async function seed() {
       github: null,
       demo: 'https://devminds.online',
       year: 2024,
-      client: 'DevMinds',
+      client: null,
       sortOrder: 3,
     },
   ];
@@ -108,24 +101,11 @@ async function seed() {
     await db.insert(schema.projects).values(p).onConflictDoNothing();
   }
 
-  const projectTranslationsData = [
-    // SoftCount
-    { projectId: 'softcount', locale: 'es', title: 'SoftCount - Software de Contabilidad', description: 'Software de contabilidad profesional (En construcción)', fullDescription: 'SoftCount es un software de contabilidad desarrollado con Next.js, TypeScript y PostgreSQL. Proyecto propio en construcción diseñado para ofrecer una solución completa de gestión contable y financiera.' },
-    { projectId: 'softcount', locale: 'en', title: 'SoftCount - Accounting Software', description: 'Professional accounting software (Under construction)', fullDescription: 'SoftCount is accounting software developed with Next.js, TypeScript, and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution.' },
-    { projectId: 'softcount', locale: 'ja', title: 'SoftCount - 会計ソフトウェア', description: 'プロフェッショナル会計ソフトウェア(開発中)', fullDescription: 'SoftCountは、Next.js、TypeScript、PostgreSQLで開発された会計ソフトウェアです。完全な会計および財務管理ソリューションを提供するために設計された開発中の自社プロジェクトです。' },
-    // Wilson Isaza
-    { projectId: 'wilson-isaza', locale: 'es', title: 'Wilson Isaza - Sitio Político', description: 'Sitio web en WordPress para político', fullDescription: 'Sitio web desarrollado en WordPress para el político Wilson Isaza. Plataforma informativa profesional para su campaña política.' },
-    { projectId: 'wilson-isaza', locale: 'en', title: 'Wilson Isaza - Political Website', description: 'WordPress website for politician', fullDescription: 'Website developed in WordPress for politician Wilson Isaza. Professional informational platform for his political campaign.' },
-    { projectId: 'wilson-isaza', locale: 'ja', title: 'Wilson Isaza - 政治サイト', description: '政治家向けWordPressウェブサイト', fullDescription: '政治家Wilson Isaza向けにWordPressで開発されたウェブサイト。政治キャンペーン用のプロフェッショナルな情報プラットフォーム。' },
-    // Empo Guzmán
-    { projectId: 'empo-guzman', locale: 'es', title: 'Empo Guzmán - Sitio Empresas Públicas', description: 'Sitio web para empresas públicas en Wix', fullDescription: 'Sitio web desarrollado en Wix para Empo Guzmán, enfocado en empresas públicas. Diseño con plantillas personalizadas.' },
-    { projectId: 'empo-guzman', locale: 'en', title: 'Empo Guzmán - Public Companies Website', description: 'Website for public companies in Wix', fullDescription: 'Website developed in Wix for Empo Guzmán, focused on public companies. Design with custom templates.' },
-    { projectId: 'empo-guzman', locale: 'ja', title: 'Empo Guzmán - 公共企業サイト', description: 'Wixで作成された公共企業向けウェブサイト', fullDescription: '公共企業に焦点を当てたEmpo Guzmán向けにWixで開発されたウェブサイト。カスタマイズされたテンプレートを使用したデザイン。' },
-    // DevMinds Portfolio
-    { projectId: 'devminds-portfolio', locale: 'es', title: 'DevMinds - Portfolio Profesional', description: 'Este mismo sitio web que estás viendo', fullDescription: 'Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno.' },
-    { projectId: 'devminds-portfolio', locale: 'en', title: 'DevMinds - Professional Portfolio', description: 'This very website you\'re viewing', fullDescription: 'Professional portfolio developed with Next.js 16, TypeScript, TailwindCSS, and Framer Motion. Includes multi-language i18n system (ES, EN, JA), smooth animations, and modern responsive design.' },
-    { projectId: 'devminds-portfolio', locale: 'ja', title: 'DevMinds - プロフェッショナルポートフォリオ', description: 'ご覧いただいているこのウェブサイト', fullDescription: 'Next.js 16、TypeScript、TailwindCSS、Framer Motionで開発されたプロフェッショナルポートフォリオ。多言語i18nシステム(ES、EN、JA)、スムーズなアニメーション、モダンなレスポンシブデザインを含みます。' },
-  ];
+  // Solo se siembran traducciones de los proyectos que este seed crea (llave foránea).
+  const idsSembrados = new Set(projectsData.map((p) => p.id));
+  const projectTranslationsData = contenido.proyectos
+    .filter((p) => idsSembrados.has(p.id))
+    .flatMap((p) => Object.entries(p.textos).map(([locale, tx]) => ({ projectId: p.id, locale, ...tx })));
 
   for (const pt of projectTranslationsData) {
     await db.insert(schema.projectTranslations).values(pt).onConflictDoNothing();

@@ -10,9 +10,9 @@ const LOCALES = ['es', 'en', 'ja'] as const;
 const LOCALE_LABELS = { es: 'Español', en: 'English', ja: '日本語' };
 
 const CATEGORY_OPTIONS = [
-  { value: 'web-app', label: 'Aplicación Web' },
-  { value: 'wordpress', label: 'WordPress / CMS' },
-  { value: 'custom-code', label: 'Software a Medida' },
+  { value: 'wordpress', label: 'Página web' },
+  { value: 'custom-code', label: 'Sistema a medida' },
+  { value: 'web-app', label: 'Aplicación web' },
 ];
 
 const GRADIENT_OPTIONS = [

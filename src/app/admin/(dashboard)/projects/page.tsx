@@ -22,9 +22,9 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 
 const CATEGORY_LABELS: Record<string, string> = {
-  'web-app': 'Aplicación Web',
-  'wordpress': 'WordPress / CMS',
-  'custom-code': 'Software a Medida',
+  'web-app': 'Aplicación web',
+  'wordpress': 'Página web',
+  'custom-code': 'Sistema a medida',
 };
 
 type ProjectRow = {
