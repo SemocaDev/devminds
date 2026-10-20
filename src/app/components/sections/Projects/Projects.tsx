@@ -1,130 +1,62 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, ExternalLink, Code2 } from 'lucide-react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { ArrowRight } from 'lucide-react';
+import { lineaMeta } from '@/lib/proyectos';
+import { cn } from '@/lib/utils';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
 
-gsap.registerPlugin(ScrollTrigger);
+type Props = { projects?: ProjectWithTranslation[] };
 
-type Props = {
-  projects?: ProjectWithTranslation[];
-};
-
-const Projects = ({ projects }: Props) => {
-  const t = useTranslations('Projects');
-  const params = useParams();
-  const lang = params.lang as string;
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const featuredProjects = projects || [];
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
-      gsap.fromTo('.projects-header',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease,
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', once: true } }
-      );
-      gsap.fromTo('.project-card',
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.6, ease, stagger: 0.12,
-          scrollTrigger: { trigger: '.projects-grid', start: 'top 82%', once: true } }
-      );
-      gsap.fromTo('.projects-cta',
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.45, ease,
-          scrollTrigger: { trigger: '.projects-cta', start: 'top 90%', once: true } }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+/** Proyectos destacados sobre la retícula: el primero ocupa dos columnas, los otros una cada uno. */
+export default function Projects({ projects = [] }: Props) {
+  const t = useTranslations('Home.trabajos');
+  const { lang } = useParams<{ lang: string }>();
 
   return (
-    <section id="projects" ref={sectionRef} className="section-spacing bg-muted/20">
-      <div className="container-main">
-
-        <div className="projects-header mb-14 opacity-0">
-          <p className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary tracking-[0.2em] uppercase mb-4">
-            <span className="w-6 h-px bg-primary" />
-            04
-          </p>
-          <h2 className="section-title max-w-xl">{t('title')}</h2>
-          <p className="subtitle max-w-lg mt-3">{t('subtitle')}</p>
+    <section id="projects" className="py-16 md:py-24">
+      <div className="container-main relative z-[2]">
+        <div className="grid gap-y-4 md:grid-cols-4 md:items-end">
+          <h2 className="max-w-[20ch] px-4 font-display text-3xl font-bold tracking-[-0.02em] md:col-span-3 md:px-6 md:text-[2.5rem]">{t('titulo')}</h2>
+          <Link
+            href={`/${lang}/portfolio`}
+            className="inline-flex min-h-11 items-center gap-2 px-4 text-[15px] font-semibold text-primary transition-colors hover:text-primary-hover md:justify-self-end md:px-6"
+          >
+            {t('verTodos')}<ArrowRight className="size-4" />
+          </Link>
         </div>
-
-        <div className="projects-grid grid md:grid-cols-3 gap-6 mb-12">
-          {featuredProjects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/${lang}/portfolio`}
-              className="project-card group block opacity-0"
-            >
-              <article className="h-full flex flex-col border border-border/50 rounded-2xl overflow-hidden hover:border-foreground/30 transition-colors duration-300">
-                {/* Imagen */}
-                <div className="relative w-full h-52 overflow-hidden bg-muted">
-                  {project.images?.[0] ? (
-                    <Image
-                      src={project.images[0]}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-103 transition-transform duration-500"
-                      priority={false}
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-muted">
-                      <Code2 className="w-12 h-12 text-muted-foreground/30" />
+        {projects.length > 0 && (
+          <ul className="mt-10 grid gap-y-10 md:mt-12 md:grid-cols-4 md:gap-y-12">
+            {projects.map((p, i) => {
+              const tipo = t.has(`tipos.${p.category}`) ? t(`tipos.${p.category}`) : null;
+              const destacado = i === 0;
+              return (
+                <li key={p.id} className={cn('px-4 md:px-6', destacado && 'md:col-span-2')}>
+                  <Link href={`/${lang}/portfolio`} className="group block">
+                    <div className={cn('relative overflow-hidden rounded-xl border border-border bg-secondary', destacado ? 'aspect-[16/10]' : 'aspect-[4/3]')}>
+                      {p.images?.[0] && (
+                        <Image
+                          src={p.images[0]}
+                          alt={p.title}
+                          fill
+                          sizes={destacado ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 25vw'}
+                          className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                        />
+                      )}
                     </div>
-                  )}
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                  <ExternalLink className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                {/* Contenido */}
-                <div className="flex-1 flex flex-col p-6">
-                  <h3 className="font-display font-semibold text-lg mb-2 group-hover:text-foreground transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-
-                  {project.technologies?.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-border/40">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-xs px-2 py-0.5 border-border/50">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
-
-        <div className="projects-cta opacity-0">
-          <Button asChild size="lg" variant="outline" className="group gap-2 border-foreground/20 hover:border-foreground font-semibold">
-            <Link href={`/${lang}/portfolio`}>
-              {t('ctaButton')}
-              <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
-
+                    <p className="mt-4 text-[13px] font-medium text-muted-foreground">{lineaMeta([tipo, p.client, p.year])}</p>
+                    <h3 className={cn('mt-1 font-display font-bold tracking-[-0.015em] text-foreground', destacado ? 'text-2xl' : 'text-xl')}>{p.title}</h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{p.description}</p>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </section>
   );
-};
-
-export default Projects;
+}
