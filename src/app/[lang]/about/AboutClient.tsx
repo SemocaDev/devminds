@@ -189,7 +189,7 @@ export default function AboutClient({ members }: Props) {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
       <Navbar />
-      <Rieles />
+      <Rieles modo="fijo" />
 
       <main ref={mainRef} className="flex-1">
 

@@ -260,7 +260,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <Rieles />
+      <Rieles modo="fijo" />
 
       <div className="min-h-screen flex flex-col">
         {/* Hero */}

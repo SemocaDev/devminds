@@ -23,6 +23,7 @@ const config: Config = {
         'accent-tint': 'hsl(var(--accent-tint))',
         'surface-3': 'hsl(var(--surface-3))',
         guide: 'hsl(var(--guide))',
+        'guide-soft': 'hsl(var(--guide-soft))',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'

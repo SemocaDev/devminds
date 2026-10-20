@@ -96,7 +96,7 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <Rieles />
+      <Rieles modo="fijo" />
 
       <div ref={mainRef} className="min-h-screen flex flex-col">
 

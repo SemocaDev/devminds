@@ -28,6 +28,7 @@
     --input: 203 13% 88.2%;
     --ring: 16 60% 44.5%;
     --guide: 207 14% 84.9%;
+    --guide-soft: 207 20% 91.4%;
     --dots: 218 18% 12% / 0.26;
     --radius: 0.75rem;
   }
@@ -548,17 +549,16 @@
     animation-delay: calc(var(--i, 0) * 80ms + 60ms);
   }
 
-  /* Campo de puntos de la retícula (eco de Doto), intensidad media */
+  /* Puntos de la retícula: rellenan exactamente su celda, sin desvanecido */
   .campo-puntos {
     background-image: radial-gradient(circle, hsl(var(--dots)) 1.3px, transparent 1.6px);
     background-size: 18px 18px;
-    -webkit-mask-image: radial-gradient(ellipse 65% 80% at 85% 35%, #000 30%, transparent 78%);
-    mask-image: radial-gradient(ellipse 65% 80% at 85% 35%, #000 30%, transparent 78%);
+    background-position: 9px 9px;
   }
-  @media (max-width: 767px) {
-    .campo-puntos {
-      -webkit-mask-image: radial-gradient(ellipse 85% 45% at 80% 15%, #000 20%, transparent 75%);
-      mask-image: radial-gradient(ellipse 85% 45% at 80% 15%, #000 20%, transparent 75%);
-    }
-  }
+
+  /* Wordmark animado: tamaños relativos para que todas las fuentes ocupen lo mismo */
+  .wm-doto { font-family: var(--font-doto); font-weight: 900; font-size: 1.14em; letter-spacing: -0.03em; }
+  .wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
+  .wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
+  .wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }
 }
