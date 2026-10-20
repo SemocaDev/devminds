@@ -68,12 +68,12 @@ const Navbar = () => {
       )}
     >
       <div className="container-main">
-        <div className="flex h-16 items-center justify-between gap-6 md:h-[72px] md:px-10">
-          <Link href={`/${lang}`} aria-label="DevMinds" className="text-[22px] text-foreground transition-opacity hover:opacity-75">
+        <div className="grid h-16 grid-cols-[1fr_auto] items-center gap-6 px-4 md:h-[72px] md:px-10 xl:grid-cols-[1fr_auto_1fr]">
+          <Link href={`/${lang}`} aria-label="DevMinds" className="justify-self-start text-[22px] text-foreground transition-opacity hover:opacity-75">
             <Wordmark />
           </Link>
 
-          <ul className="hidden items-center gap-7 lg:flex">
+          <ul className="hidden items-center gap-7 xl:flex">
             {items.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
@@ -83,14 +83,14 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 justify-self-end xl:flex">
             <SelectorIdioma />
             <Button asChild className="bg-foreground text-background hover:bg-foreground/85">
               <a href={whatsapp} target="_blank" rel="noopener noreferrer">{t('startProject')}</a>
             </Button>
           </div>
 
-          <div className="lg:hidden">
+          <div className="justify-self-end xl:hidden">
             <Sheet open={abierto} onOpenChange={setAbierto}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="size-11" aria-label={t('menu')}>
