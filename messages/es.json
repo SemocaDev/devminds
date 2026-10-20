@@ -1,9 +1,9 @@
 {
   "Metadata": {
     "home": {
-      "title": "Crear Página Web en Neiva, Huila | Desarrollo Web y Software - DevMinds",
-      "description": "¿Necesitas una página web en Neiva? En DevMinds creamos sitios web profesionales, software a medida y tiendas online para empresas en Huila y Colombia. Cotización gratis.",
-      "keywords": "crear pagina web neiva, desarrollo web neiva, hacer pagina web neiva, diseño paginas web neiva, paginas web para empresas neiva, empresa de software neiva, programador neiva, desarrollo de software huila, aplicaciones web neiva, agencia web neiva colombia, cuanto cuesta una pagina web neiva, tienda online neiva"
+      "title": "Desarrollo de Software y Páginas Web en Neiva, Huila | DevMinds",
+      "description": "Páginas web, sistemas a medida y apps para negocios en Neiva, Huila y toda Colombia. Te explicamos todo sin tecnicismos. Primera consulta gratis.",
+      "keywords": "desarrollo de software neiva, crear pagina web neiva, paginas web para negocios neiva, desarrollo web huila, software a medida neiva, programador neiva, aplicaciones moviles neiva, seo local neiva, google maps negocio neiva"
     },
     "services": {
       "title": "Crear Páginas Web y Software en Neiva | Servicios DevMinds",
@@ -49,11 +49,13 @@
     "about": "Nosotros",
     "services": "Servicios",
     "stack": "Stack",
-    "projects": "Proyectos",
-    "process": "Proceso",
-    "faq": "FAQ",
+    "projects": "Trabajos",
+    "process": "Cómo trabajamos",
+    "faq": "Preguntas",
     "contact": "Contacto",
-    "startProject": "Comenzar Proyecto"
+    "startProject": "Hablemos",
+    "menu": "Menú",
+    "idioma": "Idioma"
   },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
@@ -155,7 +157,7 @@
   },
   "Footer": {
     "copyright": "© {year} DevMinds. Todos los derechos reservados.",
-    "tagline": "Soluciones digitales profesionales",
+    "tagline": "Estudio de software en Neiva, Huila.",
     "navigation": "Navegación",
     "resourcesTitle": "Recursos",
     "social": "Redes Sociales",
@@ -622,8 +624,121 @@
     }
   },
   "Home": {
+    "whatsappMensaje": "Hola DevMinds, quiero hablar de un proyecto.",
     "rieles": {
       "ubicacion": "Neiva, Huila · Colombia"
+    },
+    "hero": {
+      "chip": "Respondemos en 24 h",
+      "titulo": "crea el software que tu negocio <acento>necesita</acento>.",
+      "texto": "Ingeniería de software desde Neiva, Huila. Empezamos por lo que más te urge y crecemos contigo, explicándote todo sin tecnicismos.",
+      "whatsapp": "Escríbenos por WhatsApp",
+      "verTrabajos": "Ver trabajos"
+    },
+    "escalera": {
+      "titulo": "Crecemos contigo, paso a paso",
+      "subtitulo": "La mayoría empieza por el primer escalón.",
+      "pasos": {
+        "web": {
+          "etiqueta": "Que te encuentren",
+          "titulo": "Página web + Google",
+          "texto": "Aparece en Google y Maps y recibe clientes por WhatsApp.",
+          "tiempo": "1–2 sem."
+        },
+        "sistemas": {
+          "etiqueta": "Organiza tu negocio",
+          "titulo": "Sistemas a medida",
+          "texto": "Facturación, cobranza, inventarios: lo que hoy haces en Excel.",
+          "tiempo": "1–3 meses"
+        },
+        "apps": {
+          "etiqueta": "Llega a tus clientes",
+          "titulo": "Apps móviles",
+          "texto": "Tu servicio en el celular de tus clientes."
+        },
+        "soporte": {
+          "etiqueta": "Ya tienes software",
+          "titulo": "Consultoría y soporte",
+          "texto": "Lo revisamos, lo mejoramos y lo mantenemos."
+        }
+      }
+    },
+    "trabajos": {
+      "titulo": "Proyectos reales para negocios reales.",
+      "verTodos": "Ver todos los trabajos",
+      "tipos": {
+        "wordpress": "Página web",
+        "custom-code": "Sistema a medida",
+        "web-app": "Aplicación web"
+      }
+    },
+    "proceso": {
+      "titulo": "Sin sorpresas, de principio a fin.",
+      "pasos": {
+        "conversamos": {
+          "titulo": "Conversamos",
+          "texto": "Nos cuentas tu negocio y lo que necesitas. La primera consulta es gratis."
+        },
+        "proponemos": {
+          "titulo": "Te proponemos",
+          "texto": "Alcance, tiempos y un precio fijo por escrito. Puedes pagar por etapas."
+        },
+        "construimos": {
+          "titulo": "Construimos contigo",
+          "texto": "Ves avances reales cada semana, no solo al final."
+        },
+        "lanzamos": {
+          "titulo": "Lanzamos y te acompañamos",
+          "texto": "Publicamos, te enseñamos a usarlo y seguimos ahí."
+        }
+      }
+    },
+    "quienes": {
+      "titulo": "Personas, no una fábrica de código.",
+      "texto": "Detrás de DevMinds está {nombre}, ingeniero de software en Neiva. Hablas directo con quien diseña y construye tu proyecto, sin intermediarios.",
+      "tecnologias": "Trabajamos con Next.js, React, Flutter, PostgreSQL y lo que tu proyecto necesite.",
+      "enlace": "Conoce más"
+    },
+    "preguntas": {
+      "titulo": "Preguntas frecuentes",
+      "subtitulo": "Lo que casi todos nos preguntan antes de empezar.",
+      "items": {
+        "costo": {
+          "pregunta": "¿Cuánto cuesta y cómo se paga?",
+          "respuesta": "Cada proyecto es distinto. Después de una primera consulta gratis te enviamos una propuesta por escrito con alcance, tiempos y precio fijo. Puedes pagar por etapas a medida que avanza el proyecto."
+        },
+        "tiempo": {
+          "pregunta": "¿Cuánto tiempo toma?",
+          "respuesta": "Una página web suele estar lista en 1 a 2 semanas. Un sistema a medida toma de 1 a 3 meses, según el alcance. Acordamos los tiempos antes de empezar."
+        },
+        "propiedad": {
+          "pregunta": "¿La página y el código son míos?",
+          "respuesta": "Sí. Al terminar recibes todo el código, la documentación y los accesos. Es tuyo por completo."
+        },
+        "google": {
+          "pregunta": "¿Me ayudan a aparecer en Google Maps?",
+          "respuesta": "Sí. Creamos o mejoramos tu ficha de Google Business, la conectamos con tu página y te damos un enlace para que tus clientes te dejen reseñas, que es lo que más pesa para salir arriba."
+        },
+        "soporte": {
+          "pregunta": "¿Qué pasa después de la entrega?",
+          "respuesta": "Te enseñamos a usar lo que construimos y ofrecemos planes de soporte y mantenimiento para que todo siga funcionando a medida que tu negocio crece."
+        },
+        "alcance": {
+          "pregunta": "¿Solo trabajan en Neiva?",
+          "respuesta": "No. Estamos en Neiva, Huila, y trabajamos con negocios de toda Colombia y de otros países por videollamada."
+        }
+      }
+    },
+    "cierre": {
+      "titulo": "¿Hablamos de tu proyecto?",
+      "texto": "Cuéntanos qué necesitas y te respondemos en menos de 24 horas, sin compromiso.",
+      "whatsapp": "Escríbenos por WhatsApp",
+      "correo": "Enviar un correo",
+      "asunto": "Quiero hablar de un proyecto"
+    },
+    "barra": {
+      "whatsapp": "WhatsApp",
+      "llamar": "Llamar"
     }
   }
 }

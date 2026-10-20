@@ -1,9 +1,9 @@
 {
   "Metadata": {
     "home": {
-      "title": "Web Development & Custom Software in Colombia | DevMinds - Neiva, Huila",
-      "description": "Professional web development agency in Neiva, Colombia. We build websites, custom software, online stores and web applications with Next.js and React. Free quote.",
-      "keywords": "web development colombia, web developer neiva, custom software colombia, website design neiva huila, web agency colombia, react developer colombia, next.js developer, software company neiva, web applications colombia"
+      "title": "Custom Software Development from Colombia | DevMinds",
+      "description": "Websites, custom systems and mobile apps built by a software engineer in Colombia. English communication, US-friendly hours, and code you own.",
+      "keywords": "custom software development colombia, nearshore software development, software engineer colombia, hire developer latin america, web development colombia, next.js developer colombia, remote software developer"
     },
     "services": {
       "title": "Web Development Services | Websites, Software & Apps - DevMinds Colombia",
@@ -49,11 +49,13 @@
     "about": "About",
     "services": "Services",
     "stack": "Stack",
-    "projects": "Projects",
-    "process": "Process",
+    "projects": "Work",
+    "process": "How we work",
     "faq": "FAQ",
     "contact": "Contact",
-    "startProject": "Start Project"
+    "startProject": "Let's talk",
+    "menu": "Menu",
+    "idioma": "Language"
   },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
@@ -155,7 +157,7 @@
   },
   "Footer": {
     "copyright": "© {year} DevMinds. All rights reserved.",
-    "tagline": "Professional digital solutions",
+    "tagline": "Software studio based in Colombia.",
     "navigation": "Navigation",
     "resourcesTitle": "Resources",
     "social": "Social Media",
@@ -622,8 +624,121 @@
     }
   },
   "Home": {
+    "whatsappMensaje": "Hi DevMinds, I'd like to talk about a project.",
     "rieles": {
       "ubicacion": "Neiva, Huila · Colombia"
+    },
+    "hero": {
+      "chip": "We reply within 24 h",
+      "titulo": "builds the software your business <acento>needs</acento>.",
+      "texto": "Software engineering from Colombia for companies anywhere. Clear communication in English, US-friendly hours, and code that belongs to you.",
+      "whatsapp": "Message us on WhatsApp",
+      "verTrabajos": "See our work"
+    },
+    "escalera": {
+      "titulo": "We grow with you, step by step",
+      "subtitulo": "Most clients start with the first step.",
+      "pasos": {
+        "web": {
+          "etiqueta": "Get found",
+          "titulo": "Websites & landing pages",
+          "texto": "Fast, search-ready sites that turn visitors into clients.",
+          "tiempo": "1–2 wks"
+        },
+        "sistemas": {
+          "etiqueta": "Run your business",
+          "titulo": "Custom systems",
+          "texto": "Invoicing, collections, inventory: the work you still do in spreadsheets.",
+          "tiempo": "1–3 months"
+        },
+        "apps": {
+          "etiqueta": "Reach your customers",
+          "titulo": "Mobile apps",
+          "texto": "Your service in your customers' pockets."
+        },
+        "soporte": {
+          "etiqueta": "Already have software",
+          "titulo": "Consulting & support",
+          "texto": "We review it, improve it and keep it running."
+        }
+      }
+    },
+    "trabajos": {
+      "titulo": "Real projects for real businesses.",
+      "verTodos": "See all work",
+      "tipos": {
+        "wordpress": "Website",
+        "custom-code": "Custom system",
+        "web-app": "Web app"
+      }
+    },
+    "proceso": {
+      "titulo": "No surprises, start to finish.",
+      "pasos": {
+        "conversamos": {
+          "titulo": "We talk",
+          "texto": "Tell us about your business and what you need. The first call is free."
+        },
+        "proponemos": {
+          "titulo": "We send a proposal",
+          "texto": "Scope, timeline and a fixed price in writing. You can pay in stages."
+        },
+        "construimos": {
+          "titulo": "We build it with you",
+          "texto": "You see real progress every week, not just at the end."
+        },
+        "lanzamos": {
+          "titulo": "We launch and stay around",
+          "texto": "We go live, show you how to use it and keep supporting you."
+        }
+      }
+    },
+    "quienes": {
+      "titulo": "People, not a code factory.",
+      "texto": "Behind DevMinds is {nombre}, a software engineer based in Colombia. You talk directly to the person who designs and builds your project, no middlemen.",
+      "tecnologias": "We work with Next.js, React, Flutter, PostgreSQL and whatever your project needs.",
+      "enlace": "Learn more"
+    },
+    "preguntas": {
+      "titulo": "Frequently asked questions",
+      "subtitulo": "What almost everyone asks before we start.",
+      "items": {
+        "costo": {
+          "pregunta": "How much does it cost and how do I pay?",
+          "respuesta": "Every project is different. After a free first call we send a written proposal with scope, timeline and a fixed price. You can pay in stages as the project moves forward."
+        },
+        "tiempo": {
+          "pregunta": "How long does it take?",
+          "respuesta": "A website or landing page usually takes 1 to 2 weeks. Custom systems take 1 to 3 months depending on scope. We agree on a clear timeline before starting."
+        },
+        "propiedad": {
+          "pregunta": "Do I own the code?",
+          "respuesta": "Yes. When the project is done you get the full source code, documentation and every access. It is yours."
+        },
+        "google": {
+          "pregunta": "Will my website show up on Google?",
+          "respuesta": "Yes. Sites are built search-ready: fast, well structured and with proper metadata. If you have a physical location, we also help you set up your Google Business Profile."
+        },
+        "soporte": {
+          "pregunta": "What happens after launch?",
+          "respuesta": "We show you how to use what we built and offer support and maintenance plans so everything keeps working as your business grows."
+        },
+        "alcance": {
+          "pregunta": "Do you work with clients outside Colombia?",
+          "respuesta": "Yes. We work remotely by video call with clients anywhere. Colombia shares business hours with the US, so meetings are easy to schedule."
+        }
+      }
+    },
+    "cierre": {
+      "titulo": "Let's talk about your project",
+      "texto": "Tell us what you need and we will reply within 24 hours, no strings attached.",
+      "whatsapp": "Message us on WhatsApp",
+      "correo": "Send an email",
+      "asunto": "Project inquiry"
+    },
+    "barra": {
+      "whatsapp": "WhatsApp",
+      "llamar": "Call"
     }
   }
 }

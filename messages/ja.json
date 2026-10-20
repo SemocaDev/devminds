@@ -1,9 +1,9 @@
 {
   "Metadata": {
     "home": {
-      "title": "DevMinds - コロンビアのウェブ開発・カスタムソフトウェア会社",
-      "description": "コロンビア、ネイバのウェブ開発会社。Next.jsとReactでプロフェッショナルなウェブサイト、カスタムソフトウェア、ECサイト、ウェブアプリを開発します。無料見積もり。",
-      "keywords": "ウェブ開発 コロンビア, カスタムソフトウェア開発, Next.js開発会社, React開発者, ウェブサイト制作, ウェブアプリ開発, ソフトウェア会社 コロンビア"
+      "title": "コロンビア発のソフトウェア開発 | DevMinds",
+      "description": "ウェブサイト、カスタムシステム、モバイルアプリをコロンビアのソフトウェアエンジニアが開発します。英語対応、コードはお客様のものです。",
+      "keywords": "ソフトウェア開発 コロンビア, ニアショア開発, ウェブ制作, カスタムシステム開発, モバイルアプリ開発"
     },
     "services": {
       "title": "ウェブ開発サービス | ウェブサイト・ソフトウェア・アプリ - DevMinds",
@@ -46,14 +46,16 @@
   "Navbar": {
     "home": "ホーム",
     "portfolio": "ポートフォリオ",
-    "about": "会社概要",
+    "about": "私たちについて",
     "services": "サービス",
     "stack": "技術スタック",
-    "projects": "プロジェクト",
-    "process": "開発プロセス",
+    "projects": "実績",
+    "process": "進め方",
     "faq": "よくある質問",
     "contact": "お問い合わせ",
-    "startProject": "プロジェクトを開始"
+    "startProject": "相談する",
+    "menu": "メニュー",
+    "idioma": "言語"
   },
   "CTA": {
     "terminalCommand": "init_project --with-excellence",
@@ -155,7 +157,7 @@
   },
   "Footer": {
     "copyright": "© {year} DevMinds. 無断転載を禁じます。",
-    "tagline": "プロフェッショナルなデジタルソリューション",
+    "tagline": "コロンビアのソフトウェアスタジオ。",
     "navigation": "ナビゲーション",
     "resourcesTitle": "リソース",
     "social": "ソーシャルメディア",
@@ -622,8 +624,121 @@
     }
   },
   "Home": {
+    "whatsappMensaje": "こんにちは、DevMinds。プロジェクトについて相談したいです。",
     "rieles": {
       "ubicacion": "Neiva, Huila · Colombia"
+    },
+    "hero": {
+      "chip": "24時間以内に返信します",
+      "titulo": "は、あなたのビジネスに<acento>必要な</acento>ソフトウェアをつくります。",
+      "texto": "コロンビアから世界中の企業へ、ソフトウェアエンジニアリングを。英語でのやり取りに対応し、コードはすべてお客様のものです。",
+      "whatsapp": "WhatsAppで相談する",
+      "verTrabajos": "実績を見る"
+    },
+    "escalera": {
+      "titulo": "一歩ずつ、ともに成長します",
+      "subtitulo": "多くのお客様は最初の一歩から始めます。",
+      "pasos": {
+        "web": {
+          "etiqueta": "見つけてもらう",
+          "titulo": "ウェブサイト・LP",
+          "texto": "検索に強く、訪問者をお客様に変える高速なサイト。",
+          "tiempo": "1〜2週間"
+        },
+        "sistemas": {
+          "etiqueta": "業務を整える",
+          "titulo": "カスタムシステム",
+          "texto": "請求、回収、在庫管理など、表計算で行っている業務を。",
+          "tiempo": "1〜3か月"
+        },
+        "apps": {
+          "etiqueta": "お客様に届ける",
+          "titulo": "モバイルアプリ",
+          "texto": "あなたのサービスを、お客様のスマートフォンに。"
+        },
+        "soporte": {
+          "etiqueta": "既存のソフトウェアがある",
+          "titulo": "コンサルティング・サポート",
+          "texto": "診断し、改善し、安定して動かし続けます。"
+        }
+      }
+    },
+    "trabajos": {
+      "titulo": "実際のビジネスのための、実際のプロジェクト。",
+      "verTodos": "すべての実績を見る",
+      "tipos": {
+        "wordpress": "ウェブサイト",
+        "custom-code": "カスタムシステム",
+        "web-app": "ウェブアプリ"
+      }
+    },
+    "proceso": {
+      "titulo": "最初から最後まで、明確に。",
+      "pasos": {
+        "conversamos": {
+          "titulo": "相談",
+          "texto": "ビジネスと必要なことをお聞かせください。初回相談は無料です。"
+        },
+        "proponemos": {
+          "titulo": "提案",
+          "texto": "範囲、スケジュール、固定価格を書面でご提案します。段階的なお支払いも可能です。"
+        },
+        "construimos": {
+          "titulo": "一緒につくる",
+          "texto": "毎週、実際の進捗をご確認いただけます。"
+        },
+        "lanzamos": {
+          "titulo": "公開とサポート",
+          "texto": "公開後は使い方をご案内し、その後もサポートします。"
+        }
+      }
+    },
+    "quienes": {
+      "titulo": "コード工場ではなく、人がつくります。",
+      "texto": "DevMindsを率いるのは、コロンビアのソフトウェアエンジニア、{nombre}です。設計し、開発する本人と直接やり取りできます。",
+      "tecnologias": "Next.js、React、Flutter、PostgreSQLなど、プロジェクトに必要な技術で開発します。",
+      "enlace": "詳しく見る"
+    },
+    "preguntas": {
+      "titulo": "よくある質問",
+      "subtitulo": "始める前によくいただく質問です。",
+      "items": {
+        "costo": {
+          "pregunta": "費用と支払い方法は?",
+          "respuesta": "プロジェクトごとに異なります。無料の初回相談のあと、範囲・スケジュール・固定価格を記載した提案書をお送りします。進行に合わせた段階的なお支払いが可能です。"
+        },
+        "tiempo": {
+          "pregunta": "期間はどのくらいですか?",
+          "respuesta": "ウェブサイトは通常1〜2週間、カスタムシステムは範囲に応じて1〜3か月です。開始前にスケジュールを合意します。"
+        },
+        "propiedad": {
+          "pregunta": "コードは自分のものになりますか?",
+          "respuesta": "はい。完了時にソースコード、ドキュメント、すべてのアクセス権をお渡しします。"
+        },
+        "google": {
+          "pregunta": "Googleで見つけてもらえますか?",
+          "respuesta": "はい。高速で構造化された、検索に強いサイトとして構築します。店舗がある場合はGoogleビジネスプロフィールの設定もお手伝いします。"
+        },
+        "soporte": {
+          "pregunta": "公開後はどうなりますか?",
+          "respuesta": "使い方をご案内し、更新・修正・改善を含むサポートと保守のプランをご用意しています。"
+        },
+        "alcance": {
+          "pregunta": "コロンビア国外のお客様にも対応していますか?",
+          "respuesta": "はい。ビデオ通話を使い、世界中のお客様とリモートで仕事をしています。"
+        }
+      }
+    },
+    "cierre": {
+      "titulo": "プロジェクトについて話しましょう",
+      "texto": "必要なことをお聞かせください。24時間以内に返信します。",
+      "whatsapp": "WhatsAppで相談する",
+      "correo": "メールを送る",
+      "asunto": "プロジェクトのご相談"
+    },
+    "barra": {
+      "whatsapp": "WhatsApp",
+      "llamar": "電話"
     }
   }
 }
