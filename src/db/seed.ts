@@ -138,7 +138,7 @@ async function seed() {
       id: 'sebastian-morea',
       name: 'Sebastian Morea Cañón',
       nickname: 'ItsEnder',
-      hierarchy: 'co-founder',
+      hierarchy: 'founder',
       location: 'Neiva, Huila, Colombia',
       education: 'Universidad Surcolombiana (2020-2025)',
       skills: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'PostgreSQL', 'Node.js'],
@@ -156,26 +156,6 @@ async function seed() {
       startDate: '2024-11-01',
       sortOrder: 0,
     },
-    {
-      id: 'juan-gomez',
-      name: 'Juan David Gomez Perez',
-      nickname: null,
-      hierarchy: 'co-founder',
-      location: 'Neiva, Huila, Colombia',
-      education: 'Universidad Surcolombiana (2020-2025)',
-      skills: ['Node.js', 'PostgreSQL', 'TypeScript', 'Express', 'API Design', 'Database Design'],
-      tools: ['Git', 'GitHub', 'Jira'],
-      email: null,
-      linkedin: null,
-      github: null,
-      photo: null,
-      interests: [
-        { icon: 'Code2', labelKey: 'systemDesign' },
-        { icon: 'Database', labelKey: 'databases' },
-      ],
-      startDate: null,
-      sortOrder: 1,
-    },
   ];
 
   for (const tm of teamMembersData) {
@@ -187,10 +167,6 @@ async function seed() {
     { memberId: 'sebastian-morea', locale: 'es', role: 'Ingeniero de Software', specialization: 'Especialista en Frontend y UX', bio: 'Ingeniero de Software apasionado por crear experiencias de usuario excepcionales. Especializado en desarrollo frontend con Next.js, React y TypeScript. Me enfoco en construir aplicaciones web modernas, eficientes y escalables que resuelvan problemas reales.' },
     { memberId: 'sebastian-morea', locale: 'en', role: 'Software Engineer', specialization: 'Frontend and UX Specialist', bio: 'Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React, and TypeScript. I focus on building modern, efficient, and scalable web applications that solve real problems.' },
     { memberId: 'sebastian-morea', locale: 'ja', role: 'ソフトウェアエンジニア', specialization: 'フロントエンドおよびUXスペシャリスト', bio: '優れたユーザーエクスペリエンスを作成することに情熱を注ぐソフトウェアエンジニア。Next.js、React、TypeScriptを使用したフロントエンド開発を専門としています。実際の問題を解決する現代的で効率的でスケーラブルなウェブアプリケーションの構築に注力しています。' },
-    // Juan
-    { memberId: 'juan-gomez', locale: 'es', role: 'Ingeniero de Software', specialization: 'Especialista en Backend', bio: 'Ingeniero de Software enfocado en el desarrollo backend y arquitectura de sistemas. Experto en diseño de APIs, bases de datos y soluciones escalables que dan soporte a aplicaciones robustas.' },
-    { memberId: 'juan-gomez', locale: 'en', role: 'Software Engineer', specialization: 'Backend Specialist', bio: 'Software Engineer focused on backend development and system architecture. Expert in API design, databases, and scalable solutions that support robust applications.' },
-    { memberId: 'juan-gomez', locale: 'ja', role: 'ソフトウェアエンジニア', specialization: 'バックエンドスペシャリスト', bio: 'バックエンド開発とシステムアーキテクチャに焦点を当てたソフトウェアエンジニア。API設計、データベース、堅牢なアプリケーションをサポートするスケーラブルなソリューションの専門家。' },
   ];
 
   for (const tt of teamTranslationsData) {
