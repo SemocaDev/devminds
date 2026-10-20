@@ -620,5 +620,10 @@
       "subtitle": "お問い合わせいただき、一緒にアイデアを実現させましょう",
       "button": "今すぐお問い合わせ"
     }
+  },
+  "Home": {
+    "rieles": {
+      "ubicacion": "Neiva, Huila · Colombia"
+    }
   }
 }

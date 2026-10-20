@@ -620,5 +620,10 @@
       "subtitle": "Contact us and let's work together to make your idea a reality",
       "button": "Contact Now"
     }
+  },
+  "Home": {
+    "rieles": {
+      "ubicacion": "Neiva, Huila · Colombia"
+    }
   }
 }

@@ -3,8 +3,7 @@
 import dynamic from "next/dynamic";
 import Hero from "@/app/components/sections/Hero";
 import Navbar from "@/app/components/layout/Navbar";
-import SocialSidebar from "@/app/components/layout/SocialSidebar";
-import EmailSidebar from "@/app/components/layout/EmailSidebar";
+import Rieles from "@/app/components/reticula/Rieles";
 import Footer from "@/app/components/layout/Footer/Footer";
 import ScrollIndicator from "@/app/components/ui/ScrollIndicator/ScrollIndicator";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
@@ -33,8 +32,7 @@ export default function HomeClient({ featuredProjects }: Props) {
         <div className="min-h-screen flex flex-col w-full">
           {/* New Navigation */}
           <Navbar />
-          <SocialSidebar />
-          <EmailSidebar />
+          <Rieles />
 
           {/* Main Content */}
           <main className="flex-1">

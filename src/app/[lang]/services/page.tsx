@@ -18,8 +18,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
-import SocialSidebar from '@/app/components/layout/SocialSidebar';
-import EmailSidebar from '@/app/components/layout/EmailSidebar';
+import Rieles from '@/app/components/reticula/Rieles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,8 +96,7 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+      <Rieles />
 
       <div ref={mainRef} className="min-h-screen flex flex-col">
 

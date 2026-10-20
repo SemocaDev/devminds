@@ -6,7 +6,7 @@ Este directorio contiene archivos de configuración estática en formato JSON.
 
 ### `contact.json`
 Información de contacto y redes sociales.
-- **Usado en**: SocialSidebar, EmailSidebar
+- **Usado en**: Rieles, enlaces.ts (WhatsApp, llamada, correo)
 - **Contiene**: URLs de GitHub, LinkedIn, email
 
 ### `faq.json`

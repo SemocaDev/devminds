@@ -34,8 +34,7 @@ import {
 
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer/Footer";
-import SocialSidebar from "@/app/components/layout/SocialSidebar";
-import EmailSidebar from "@/app/components/layout/EmailSidebar";
+import Rieles from "@/app/components/reticula/Rieles";
 
 import { contactMessageSchema, type ContactFormData } from "@/core/domain/contact/schemas/contactMessageSchema";
 import contactConfig from "@/config/contact.json";
@@ -261,8 +260,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+      <Rieles />
 
       <div className="min-h-screen flex flex-col">
         {/* Hero */}
