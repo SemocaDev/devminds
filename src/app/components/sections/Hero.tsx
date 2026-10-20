@@ -3,45 +3,60 @@
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Wordmark from '@/app/components/marca/Wordmark';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import WordmarkAnimado from '@/app/components/marca/WordmarkAnimado';
 import CampoPuntos from '@/app/components/reticula/CampoPuntos';
+import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
+import Rieles from '@/app/components/reticula/Rieles';
 import { enlaceWhatsApp } from '@/lib/enlaces';
+import { cn } from '@/lib/utils';
 
 const paso = (i: number) => ({ '--i': i }) as CSSProperties;
+const boton = 'flex h-12 w-full items-center justify-between rounded-lg px-4 text-[15px] font-semibold transition-colors';
 
-/** Paraguas de la home: qué hace DevMinds, para quién y cómo contactarlo. */
+/** Hero en dos bandas sobre la retícula: titular (cols 1–3) y puntos (col 4); párrafo (cols 1–2) y botones (col 3). */
 export default function Hero() {
   const t = useTranslations('Home');
   return (
-    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden">
-      <CampoPuntos />
-      <div className="container-main relative w-full">
-        <div className="px-4 pb-16 pt-28 md:px-10 md:pb-20 md:pt-32">
-          <p className="entrada inline-flex rounded-full bg-accent-tint px-3 py-1 text-[13px] font-semibold text-primary-hover" style={paso(0)}>
-            {t('hero.chip')}
-          </p>
-          <h1
-            className="entrada mt-6 max-w-[22ch] font-display text-[2.125rem] font-bold leading-[1.06] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[4rem] xl:text-[4.5rem]"
-            style={paso(1)}
-          >
-            {/* leading < 1 en el wordmark para que Doto no agrande la primera línea */}
-            <Wordmark className="block text-[1.55em] leading-[0.95] sm:inline sm:text-[1.14em] sm:leading-[0.85]" />{' '}
-            {t.rich('hero.titulo', { acento: (c) => <span className="text-primary">{c}</span> })}
-          </h1>
-          <p className="entrada mt-6 max-w-[52ch] text-[17px] leading-relaxed text-muted-foreground md:text-lg" style={paso(2)}>
-            {t('hero.texto')}
-          </p>
-          <div className="entrada mt-9 flex flex-col gap-3 sm:flex-row" style={paso(3)}>
-            <Button asChild size="lg">
-              <a href={enlaceWhatsApp(t('whatsappMensaje'))} target="_blank" rel="noopener noreferrer">
-                <MessageCircle />{t('hero.whatsapp')}
+    <section className="relative">
+      <Rieles />
+      <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
+      <div className="container-main relative z-[2] pt-16 md:pt-[72px]">
+        <div className="grid md:grid-cols-4">
+          <div className="relative order-first h-[88px] border-b border-guide md:order-none md:col-start-4 md:row-span-2 md:row-start-1 md:h-auto md:border-0">
+            <CampoPuntos />
+          </div>
+
+          <div className="px-4 pb-8 pt-10 md:col-span-3 md:col-start-1 md:row-start-1 md:flex md:min-h-[300px] md:items-end md:px-6 md:pb-10 md:pt-16">
+            <h1
+              className="entrada font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[3.25rem] xl:text-[3.625rem]"
+              style={paso(0)}
+            >
+              <WordmarkAnimado className="block text-[1.36em] leading-[0.95] sm:inline sm:text-[1em] sm:leading-[0.85]" />{' '}
+              {t('hero.titulo')}
+            </h1>
+          </div>
+
+          <div className="relative border-t border-guide-soft px-4 pb-8 pt-6 md:col-span-2 md:col-start-1 md:row-start-2 md:px-6 md:pb-12">
+            <Cruz className="left-0 top-0" />
+            <Cruz className="left-1/2 top-0 hidden md:block" />
+            <Cruz className="left-full top-0 md:hidden" />
+            <p className="entrada max-w-[52ch] text-[17px] leading-relaxed text-muted-foreground" style={paso(1)}>
+              {t('hero.texto')}
+            </p>
+          </div>
+
+          <div className="relative px-4 pb-12 md:col-start-3 md:row-start-2 md:border-t md:border-guide-soft md:px-6 md:pt-6">
+            <Cruz className="left-0 top-0 hidden md:block" />
+            <Cruz className="left-full top-0 hidden md:block" />
+            <div className="entrada flex flex-col gap-2" style={paso(2)}>
+              <a href={enlaceWhatsApp(t('whatsappMensaje'))} target="_blank" rel="noopener noreferrer" className={cn(boton, 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
+                {t('hero.whatsapp')}<ArrowUpRight className="size-4" />
               </a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#projects">{t('hero.verTrabajos')}<ArrowRight /></Link>
-            </Button>
+              <Link href="#projects" className={cn(boton, 'border border-border bg-background text-foreground hover:bg-secondary')}>
+                {t('hero.verTrabajos')}<ArrowDown className="size-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
