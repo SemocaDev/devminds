@@ -1,0 +1,532 @@
+{
+  "fecha": "2026-10-20T14:27:22.864Z",
+  "team_members": [
+    {
+      "id": "sebastian-morea",
+      "name": "Sebastian Morea Cañon",
+      "nickname": "ItsEnder",
+      "hierarchy": "co-founder",
+      "location": "Neiva, Huila, Colombia",
+      "education": "Universidad Surcolombiana (2020-2025)",
+      "skills": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "PostgreSQL",
+        "Node.js"
+      ],
+      "tools": [
+        "Git",
+        "GitHub",
+        "Jira"
+      ],
+      "email": "semoca00@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/sebastian-morea-ca%C3%B1on-5ba97729a/",
+      "github": "https://github.com/SemocaDev",
+      "photo": "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771518779/devminds/team/ugactq88muq2wsbjtimt.jpg",
+      "interests": [
+        {
+          "icon": "Gamepad2",
+          "labelKey": "gaming"
+        }
+      ],
+      "start_date": "2024-11-01T05:00:00.000Z",
+      "sort_order": 0,
+      "created_at": "2026-02-18T16:41:10.922Z",
+      "updated_at": "2026-02-19T16:33:11.048Z"
+    },
+    {
+      "id": "juan-gomez",
+      "name": "Juan David Gomez Perez",
+      "nickname": null,
+      "hierarchy": "co-founder",
+      "location": "Neiva, Huila, Colombia",
+      "education": "Universidad Surcolombiana (2020-2025)",
+      "skills": [
+        "Node.js",
+        "PostgreSQL",
+        "TypeScript",
+        "Express",
+        "API Design",
+        "Database Design"
+      ],
+      "tools": [
+        "Git",
+        "GitHub",
+        "Jira"
+      ],
+      "email": null,
+      "linkedin": null,
+      "github": null,
+      "photo": null,
+      "interests": [
+        {
+          "icon": "Code2",
+          "labelKey": "systemDesign"
+        },
+        {
+          "icon": "Database",
+          "labelKey": "databases"
+        }
+      ],
+      "start_date": null,
+      "sort_order": 1,
+      "created_at": "2026-02-18T16:41:11.074Z",
+      "updated_at": "2026-02-18T20:32:57.523Z"
+    }
+  ],
+  "team_member_translations": [
+    {
+      "id": 5,
+      "member_id": "juan-gomez",
+      "locale": "en",
+      "role": "Software Engineer",
+      "specialization": "Backend Specialist",
+      "bio": "Software Engineer focused on backend development and system architecture. Expert in API design, databases, and scalable solutions that support robust applications."
+    },
+    {
+      "id": 4,
+      "member_id": "juan-gomez",
+      "locale": "es",
+      "role": "Ingeniero de Software",
+      "specialization": "Especialista en Backend",
+      "bio": "Ingeniero de Software enfocado en el desarrollo backend y arquitectura de sistemas. Experto en diseño de APIs, bases de datos y soluciones escalables que dan soporte a aplicaciones robustas."
+    },
+    {
+      "id": 6,
+      "member_id": "juan-gomez",
+      "locale": "ja",
+      "role": "ソフトウェアエンジニア",
+      "specialization": "バックエンドスペシャリスト",
+      "bio": "バックエンド開発とシステムアーキテクチャに焦点を当てたソフトウェアエンジニア。API設計、データベース、堅牢なアプリケーションをサポートするスケーラブルなソリューションの専門家。"
+    },
+    {
+      "id": 2,
+      "member_id": "sebastian-morea",
+      "locale": "en",
+      "role": "Software Engineer",
+      "specialization": "Frontend and UX Specialist",
+      "bio": "Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React, and TypeScript. I focus on building modern, efficient, and scalable web applications that solve real problems."
+    },
+    {
+      "id": 1,
+      "member_id": "sebastian-morea",
+      "locale": "es",
+      "role": "Ingeniero de Software",
+      "specialization": "Especialista en Frontend y UX",
+      "bio": "Ingeniero de Software apasionado por crear experiencias de usuario excepcionales. Especializado en desarrollo frontend con Next.js, React y TypeScript. Me enfoco en construir aplicaciones web modernas, eficientes y escalables que resuelvan problemas reales."
+    },
+    {
+      "id": 3,
+      "member_id": "sebastian-morea",
+      "locale": "ja",
+      "role": "ソフトウェアエンジニア",
+      "specialization": "フロントエンドおよびUXスペシャリスト",
+      "bio": "優れたユーザーエクスペリエンスを作成することに情熱を注ぐソフトウェアエンジニア。Next.js、React、TypeScriptを使用したフロントエンド開発を専門としています。実際の問題を解決する現代的で効率的でスケーラブルなウェブアプリケーションの構築に注力しています。"
+    }
+  ],
+  "projects": [
+    {
+      "id": "ldevminds",
+      "slug": "ldevminds",
+      "category": "web-app",
+      "technologies": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "Drizzle ORM",
+        "PostgreSQL (Neon)",
+        "NextAuth.js v5",
+        "Framer Motion",
+        "Zod",
+        "next-intl"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774966897/devminds/projects/vtyy60ck4ggfx2pnzoof.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774966915/devminds/projects/igmeaojpnodz0tv6l2ji.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774966930/devminds/projects/zhr79avxvdmmgbgpcbgu.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774967138/devminds/projects/u3b1j3ehcjxjbvxns4dz.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774967162/devminds/projects/wrsak3fbp1dnq7ioj3dh.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1774967194/devminds/projects/tmioeb1imnvht9efmthx.png"
+      ],
+      "gradient": "from-red-600 to-rose-400",
+      "featured": true,
+      "github": "https://github.com/SemocaDev/proyectL",
+      "demo": "https://l.devminds.online/",
+      "year": 2026,
+      "client": null,
+      "duration": "1 mes",
+      "sort_order": 0,
+      "created_at": "2026-03-31T14:30:19.808Z",
+      "updated_at": "2026-03-31T16:02:11.287Z"
+    },
+    {
+      "id": "softcount",
+      "slug": "softcount",
+      "category": "web-app",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508855/devminds/projects/p9j70zljhb5vesh92qra.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508915/devminds/projects/gwxjisz4rnc5lryq4klp.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508988/devminds/projects/eq7tshyg3d7oxbshxzki.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771509011/devminds/projects/xltevrct4m3qbcsbsyy3.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771509029/devminds/projects/ylzqctxstilnjq8m2b28.png"
+      ],
+      "gradient": "from-blue-600 to-cyan-600",
+      "featured": true,
+      "github": null,
+      "demo": null,
+      "year": 2026,
+      "client": "Proyecto Propio",
+      "duration": null,
+      "sort_order": 1,
+      "created_at": "2026-02-18T16:41:08.474Z",
+      "updated_at": "2026-02-19T13:50:42.795Z"
+    },
+    {
+      "id": "wilson-isaza",
+      "slug": "wilson-isaza",
+      "category": "wordpress",
+      "technologies": [
+        "WordPress"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508189/devminds/projects/twm5j5mbeg5hmxs6zena.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508388/devminds/projects/h7ecgxntdwd85fwpuw4p.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508424/devminds/projects/mqkyhzjtqkzhdcwuxf2y.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508446/devminds/projects/lligfqtcwdzokawppdgs.png"
+      ],
+      "gradient": "from-red-600 to-orange-600",
+      "featured": true,
+      "github": null,
+      "demo": "https://wilsonisaza.com/",
+      "year": 2026,
+      "client": "Wilson Isaza - Político",
+      "duration": null,
+      "sort_order": 2,
+      "created_at": "2026-02-18T16:41:08.589Z",
+      "updated_at": "2026-02-19T13:40:51.636Z"
+    },
+    {
+      "id": "empo-guzman",
+      "slug": "empo-guzman",
+      "category": "custom-code",
+      "technologies": [
+        "Wix"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508538/devminds/projects/oklth0xodbyxpji144zs.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508568/devminds/projects/wdatlirkzqzhiqs49cjg.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508591/devminds/projects/l314b2ixq23adkyn8you.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508627/devminds/projects/xewctk6lvtdoppj8snsy.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508643/devminds/projects/nwhep0fblfpwvji6is7v.jpg"
+      ],
+      "gradient": "from-indigo-600 to-purple-600",
+      "featured": true,
+      "github": null,
+      "demo": "https://www.empoguzman.com.co/",
+      "year": 2025,
+      "client": "Empresas Públicas",
+      "duration": null,
+      "sort_order": 3,
+      "created_at": "2026-02-18T16:41:08.708Z",
+      "updated_at": "2026-02-19T13:44:06.014Z"
+    },
+    {
+      "id": "sabajon-portafolio",
+      "slug": "sabajon-portafolio",
+      "category": "web-app",
+      "technologies": [
+        "Next.js",
+        "Typescript"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771603175/devminds/projects/hwrnl0q7ukinaabvhxgz.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771603294/devminds/projects/ukybazvnu8sro3judgmf.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771603236/devminds/projects/hhpezk2zagxzojkbganw.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771603250/devminds/projects/ekfxxaol4wusgpzg31l9.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771603273/devminds/projects/nmy0bxgnqoka0qugynyt.png"
+      ],
+      "gradient": "from-blue-600 to-cyan-600",
+      "featured": true,
+      "github": null,
+      "demo": "https://sabajon.devminds.online",
+      "year": 2026,
+      "client": "Devminds",
+      "duration": null,
+      "sort_order": 4,
+      "created_at": "2026-02-20T01:20:16.237Z",
+      "updated_at": "2026-02-20T16:02:02.386Z"
+    },
+    {
+      "id": "devminds-portfolio",
+      "slug": "devminds-portfolio",
+      "category": "web-app",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion"
+      ],
+      "images": [
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508684/devminds/projects/adauveo5zxchmnfhcjnb.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508717/devminds/projects/yepzvqvxe3yj4za5fqty.jpg",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508737/devminds/projects/bfxwb4gokjvvt9j33k7u.png",
+        "https://res.cloudinary.com/dtu06zl9h/image/upload/v1771508807/devminds/projects/s3fmllgpilhmap1zvhhg.jpg"
+      ],
+      "gradient": "from-purple-600 to-pink-600",
+      "featured": false,
+      "github": null,
+      "demo": "https://www.devminds.online/",
+      "year": 2026,
+      "client": "DevMinds",
+      "duration": null,
+      "sort_order": 5,
+      "created_at": "2026-02-18T16:41:08.836Z",
+      "updated_at": "2026-02-20T16:02:08.985Z"
+    }
+  ],
+  "project_translations": [
+    {
+      "id": 11,
+      "project_id": "devminds-portfolio",
+      "locale": "en",
+      "title": "DevMinds - Professional Portfolio",
+      "description": "This very website you're viewing",
+      "full_description": "Professional portfolio developed with Next.js 16, TypeScript, TailwindCSS, and Framer Motion. Includes multi-language i18n system (ES, EN, JA), smooth animations, and modern responsive design."
+    },
+    {
+      "id": 10,
+      "project_id": "devminds-portfolio",
+      "locale": "es",
+      "title": "DevMinds - Portfolio Profesional",
+      "description": "Este mismo sitio web que estás viendo",
+      "full_description": "Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno."
+    },
+    {
+      "id": 12,
+      "project_id": "devminds-portfolio",
+      "locale": "ja",
+      "title": "DevMinds - プロフェッショナルポートフォリオ",
+      "description": "ご覧いただいているこのウェブサイト",
+      "full_description": "Next.js 16、TypeScript、TailwindCSS、Framer Motionで開発されたプロフェッショナルポートフォリオ。多言語i18nシステム(ES、EN、JA)、スムーズなアニメーション、モダンなレスポンシブデザインを含みます。"
+    },
+    {
+      "id": 8,
+      "project_id": "empo-guzman",
+      "locale": "en",
+      "title": "Empo Guzmán - Public Companies Website",
+      "description": "Website for public companies in Wix",
+      "full_description": "Website developed in Wix for Empo Guzmán, focused on public companies. Design with custom templates."
+    },
+    {
+      "id": 7,
+      "project_id": "empo-guzman",
+      "locale": "es",
+      "title": "Empo Guzmán - Sitio Empresas Públicas",
+      "description": "Sitio web para empresas públicas en Wix",
+      "full_description": "Sitio web desarrollado en Wix para Empo Guzmán, enfocado en empresas públicas. Diseño con plantillas personalizadas."
+    },
+    {
+      "id": 9,
+      "project_id": "empo-guzman",
+      "locale": "ja",
+      "title": "Empo Guzmán - 公共企業サイト",
+      "description": "Wixで作成された公共企業向けウェブサイト",
+      "full_description": "公共企業に焦点を当てたEmpo Guzmán向けにWixで開発されたウェブサイト。カスタマイズされたテンプレートを使用したデザイン。"
+    },
+    {
+      "id": 17,
+      "project_id": "ldevminds",
+      "locale": "en",
+      "title": "DevMinds Links",
+      "description": "URL shortener and link-in-bio pages with Japanese-inspired design",
+      "full_description": "DevMinds Links is a web platform to shorten URLs with instant or animated countdown redirects, and create fully customizable link-in-bio pages. Features a visual tab editor with animated wagara patterns (seigaiha, asanoha, karakusa and more), color controls, button styles, and a content card. Includes detailed per-click analytics, role-based access control, multilingual support (Spanish, English, Japanese), and Google OAuth login."
+    },
+    {
+      "id": 16,
+      "project_id": "ldevminds",
+      "locale": "es",
+      "title": "DevMinds Links",
+      "description": "Acortador de URLs y páginas link-in-bio con diseño",
+      "full_description": "DevMinds Links es una plataforma web que permite acortar URLs con redirección instantánea o con contador animado, y crear páginas link-in-bio completamente personalizables. Incluye un editor visual con pestañas, patrones wagara animados (seigaiha, asanoha, karakusa y más), control de colores, estilos de botones y tarjeta de contenido. Cuenta con analíticas detalladas por click, sistema de roles y permisos, soporte multiidioma (español, inglés, japonés) e inicio de sesión con Google."
+    },
+    {
+      "id": 18,
+      "project_id": "ldevminds",
+      "locale": "ja",
+      "title": "DevMinds Links",
+      "description": "和風デザインのURL短縮・リンクインバイオサービス",
+      "full_description": "DevMinds Linksは、URLを短縮してシンプルにリダイレクトしたり、アニメーション付きカウントダウンで転送したりできるWebプラットフォームです。また、完全カスタマイズ可能なリンクインバイオページも作成できます。青海波・麻の葉・唐草などの和風パターンアニメーション、カラーコントロール、ボタンスタイル、コンテンツカードを備えたビジュアルエディターを搭載。クリック別の詳細アナリティクス、ロールベースのアクセス制御、多言語対応（スペイン語・英語・日本語）、GoogleOAuthログインも含みます。"
+    },
+    {
+      "id": 14,
+      "project_id": "sabajon-portafolio",
+      "locale": "en",
+      "title": "Sabajón – Local Business Landing Page",
+      "description": "Portfolio landing page for a fictional artisanal sabajón business in Neiva, focused on local SEO, fast performance, and clear messaging.",
+      "full_description": "Sabajón is a portfolio landing page designed as an example for a local beverage business in Neiva. Built with Next.js, TypeScript, Tailwind CSS, and modern UI components, it showcases strong local SEO, fast-loading pages, and a content structure optimized to attract customers and demonstrate the type of marketing sites we can build for small businesses."
+    },
+    {
+      "id": 13,
+      "project_id": "sabajon-portafolio",
+      "locale": "es",
+      "title": "Sabajón - Landing para negocio local",
+      "description": "Landing page de ejemplo para un negocio local de sabajón artesanal en Neiva, optimizada para SEO local y conversión.",
+      "full_description": "Sabajón es una landing page de portafolio para un negocio local ficticio de sabajón artesanal en Neiva. Está desarrollada con Next.js, TypeScript, Tailwind CSS y componentes UI modernos, y se centra en SEO local, tiempos de carga rápidos y una estructura de contenido pensada para atraer clientes y mostrar lo que podemos hacer para pequeños negocios."
+    },
+    {
+      "id": 15,
+      "project_id": "sabajon-portafolio",
+      "locale": "ja",
+      "title": "Sabajón（サバホン）– ローカルビジネス向けランディングページ",
+      "description": "ネイバのサバホン（卵酒）ローカルビジネスを想定したポートフォリオ用ランディングページ。ローカルSEOと高速表示、分かりやすいメッセージ設計にフォーカスしています。",
+      "full_description": "Sabajón は、コロンビア・ネイバの小さなサバホン（卵酒）店舗を想定したローカルビジネス向けランディングページのポートフォリオ作品です。Next.js・TypeScript・Tailwind CSS などのモダンなフロントエンド技術で実装されており、ローカル検索に強いSEO設計、高速なパフォーマンス、そして小規模ビジネス向けに最適化されたコンテンツ構成で、「DevMinds がどのようなサイトを作れるか」を具体的に示す事例になっています。"
+    },
+    {
+      "id": 2,
+      "project_id": "softcount",
+      "locale": "en",
+      "title": "SoftCount - Accounting Software",
+      "description": "Professional accounting software (Under construction)",
+      "full_description": "SoftCount is accounting software developed with Next.js, TypeScript, and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution."
+    },
+    {
+      "id": 1,
+      "project_id": "softcount",
+      "locale": "es",
+      "title": "SoftCount - Software de Contabilidad",
+      "description": "Software de contabilidad profesional (En construcción)",
+      "full_description": "SoftCount es un software de contabilidad desarrollado con Next.js, TypeScript y PostgreSQL. Proyecto propio en construcción diseñado para ofrecer una solución completa de gestión contable y financiera."
+    },
+    {
+      "id": 3,
+      "project_id": "softcount",
+      "locale": "ja",
+      "title": "SoftCount - 会計ソフトウェア",
+      "description": "プロフェッショナル会計ソフトウェア(開発中)",
+      "full_description": "SoftCountは、Next.js、TypeScript、PostgreSQLで開発された会計ソフトウェアです。完全な会計および財務管理ソリューションを提供するために設計された開発中の自社プロジェクトです。"
+    },
+    {
+      "id": 5,
+      "project_id": "wilson-isaza",
+      "locale": "en",
+      "title": "Wilson Isaza - Political Website",
+      "description": "WordPress website for politician",
+      "full_description": "Website developed in WordPress for politician Wilson Isaza. Professional informational platform for his political campaign."
+    },
+    {
+      "id": 4,
+      "project_id": "wilson-isaza",
+      "locale": "es",
+      "title": "Wilson Isaza - Sitio Político",
+      "description": "Sitio web en WordPress para político",
+      "full_description": "Sitio web desarrollado en WordPress para el político Wilson Isaza. Plataforma informativa profesional para su campaña política."
+    },
+    {
+      "id": 6,
+      "project_id": "wilson-isaza",
+      "locale": "ja",
+      "title": "Wilson Isaza - 政治サイト",
+      "description": "政治家向けWordPressウェブサイト",
+      "full_description": "政治家Wilson Isaza向けにWordPressで開発されたウェブサイト。政治キャンペーン用のプロフェッショナルな情報プラットフォーム。"
+    }
+  ],
+  "project_categories": [
+    {
+      "id": "all",
+      "sort_order": 0
+    },
+    {
+      "id": "web-app",
+      "sort_order": 1
+    },
+    {
+      "id": "wordpress",
+      "sort_order": 2
+    },
+    {
+      "id": "custom-code",
+      "sort_order": 3
+    }
+  ],
+  "category_translations": [
+    {
+      "id": 2,
+      "category_id": "all",
+      "locale": "en",
+      "name": "All"
+    },
+    {
+      "id": 1,
+      "category_id": "all",
+      "locale": "es",
+      "name": "Todos"
+    },
+    {
+      "id": 3,
+      "category_id": "all",
+      "locale": "ja",
+      "name": "すべて"
+    },
+    {
+      "id": 11,
+      "category_id": "custom-code",
+      "locale": "en",
+      "name": "Wix/Templates"
+    },
+    {
+      "id": 10,
+      "category_id": "custom-code",
+      "locale": "es",
+      "name": "Wix/Plantillas"
+    },
+    {
+      "id": 12,
+      "category_id": "custom-code",
+      "locale": "ja",
+      "name": "Wix/テンプレート"
+    },
+    {
+      "id": 5,
+      "category_id": "web-app",
+      "locale": "en",
+      "name": "Web Applications"
+    },
+    {
+      "id": 4,
+      "category_id": "web-app",
+      "locale": "es",
+      "name": "Aplicaciones Web"
+    },
+    {
+      "id": 6,
+      "category_id": "web-app",
+      "locale": "ja",
+      "name": "ウェブアプリケーション"
+    },
+    {
+      "id": 8,
+      "category_id": "wordpress",
+      "locale": "en",
+      "name": "WordPress"
+    },
+    {
+      "id": 7,
+      "category_id": "wordpress",
+      "locale": "es",
+      "name": "WordPress"
+    },
+    {
+      "id": 9,
+      "category_id": "wordpress",
+      "locale": "ja",
+      "name": "WordPress"
+    }
+  ]
+}
