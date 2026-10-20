@@ -556,9 +556,11 @@
     background-position: 9px 9px;
   }
 
-  /* Wordmark animado: tamaños relativos para que todas las fuentes ocupen lo mismo */
-  .wm-doto { font-family: var(--font-doto); font-weight: 900; font-size: 1.14em; letter-spacing: -0.03em; }
-  .wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
-  .wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
-  .wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }
 }
+
+/* Wordmark animado. Fuera de @layer a propósito: Tailwind purga de @layer components las clases
+   que no encuentra en su content, y estas se asignan desde src/lib/wordmark.ts (fuera del escaneo). */
+.wm-doto { font-family: var(--font-doto); font-weight: 900; font-size: 1.14em; letter-spacing: -0.03em; }
+.wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
+.wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
+.wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }

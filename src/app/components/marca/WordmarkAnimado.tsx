@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const TEXTO = 'DevMinds';
 
 /**
- * "DevMinds" que alterna fuentes y descansa en Doto. Cada letra fija el ancho que tiene en Doto,
+ * "DevMinds" que alterna fuentes y descansa en Doto. La palabra fija el ancho que tiene en Doto,
  * así el resto del titular no se mueve. Se pausa fuera de pantalla, con la pestaña oculta,
  * con el cursor o el foco sobre el titular, y no anima con prefers-reduced-motion.
  */
@@ -17,14 +17,16 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
   useEffect(() => {
     const raiz = ref.current;
     if (!raiz) return;
-    const letras = [...raiz.querySelectorAll<HTMLSpanElement>('[data-letra]')];
+    const palabra = raiz.querySelector<HTMLSpanElement>('[data-palabra]');
+    if (!palabra) return;
     const titular = raiz.closest('h1') ?? raiz;
     const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const poner = (clase: string) => letras.forEach((l) => { l.className = `inline-block text-center ${clase}`; });
+    const poner = (clase: string) => { palabra.className = `inline-block text-left ${clase}`; };
+    // El ancho de la palabra en Doto queda fijo: las otras fuentes son más angostas y el titular no se mueve.
     const medir = () => {
       poner('wm-doto');
-      letras.forEach((l) => { l.style.width = ''; });
-      letras.forEach((l) => { l.style.width = `${l.getBoundingClientRect().width}px`; });
+      palabra.style.width = '';
+      palabra.style.width = `${palabra.getBoundingClientRect().width}px`;
     };
 
     let visible = true;
@@ -59,7 +61,14 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
     const alRedimensionar = () => { cancelAnimationFrame(marco); marco = requestAnimationFrame(medir); };
     window.addEventListener('resize', alRedimensionar);
 
-    document.fonts.ready.then(() => { if (!vivo) return; medir(); temporizador = window.setTimeout(tic, 1200); });
+    // Geist Mono e Instrument Serif no se precargan: se piden aquí para que el primer ciclo no muestre la fuente de respaldo.
+    const raizCss = getComputedStyle(document.documentElement);
+    const precargas = [
+      `700 1em ${raizCss.getPropertyValue('--font-outfit')}`,
+      `600 1em ${raizCss.getPropertyValue('--font-geist-mono')}`,
+      `italic 400 1em ${raizCss.getPropertyValue('--font-instrument')}`,
+    ].map((fuente) => document.fonts.load(fuente).catch(() => []));
+    Promise.all([document.fonts.ready, ...precargas]).then(() => { if (!vivo) return; medir(); temporizador = window.setTimeout(tic, 1200); });
 
     return () => {
       vivo = false;
@@ -77,11 +86,7 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
   return (
     <span ref={ref} className={cn('whitespace-nowrap', className)}>
       <span className="sr-only">{TEXTO}</span>
-      <span aria-hidden>
-        {[...TEXTO].map((letra, i) => (
-          <span key={i} data-letra className="wm-doto inline-block text-center">{letra}</span>
-        ))}
-      </span>
+      <span aria-hidden data-palabra className="wm-doto inline-block text-left">{TEXTO}</span>
     </span>
   );
 }
