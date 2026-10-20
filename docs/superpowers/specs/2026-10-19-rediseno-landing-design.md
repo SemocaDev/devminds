@@ -24,7 +24,8 @@ La landing actual se percibe "hacker": le habla a otros desarrolladores (stack, 
 | Acento | Terracota `#b6522d`, uso ≤ 10% de la superficie | Cálido y cercano sin parecer error; contraste 4.8:1 |
 | Doto | Wordmark, dentro del H1 ("**DevMinds** crea…") y cifras destacadas; nunca en texto pequeño | Variante C3 elegida en maquetas |
 | Oferta | Paraguas + escalera de 4 escalones (elemento firma) | El usuario es ingeniero de software, no solo hace webs; la web es la entrada fácil |
-| Lenguaje visual | "Retícula de estudio": guías verticales, divisores con cruces `+`, campo de puntos en el hero, rieles en los bordes (desktop) | Estética de estudio de diseño que el usuario quiere conservar, sin el ruido "hacker" |
+| Lenguaje visual | "Retícula de estudio" como plano de 4 columnas: líneas de columna, divisores con cruces `+` en cada intersección, puntos dentro de celdas exactas, rieles anclados al hero (revisión 2026-10-20) | Estética de estudio de diseño que el usuario quiere conservar; la primera versión decoraba en vez de organizar |
+| Wordmark | "DevMinds" del titular alterna fuentes (Doto, Outfit, Geist Mono, Instrument Serif) y descansa en Doto | Pedido del usuario: el toque final de la marca |
 | Modo oscuro | Se elimina del sitio público; el bloque `.dark` queda solo para `/admin` | Prioridad modo claro; el admin fuerza `dark` y usa esos tokens |
 | Idiomas | ES local (Neiva/Huila/Colombia); EN y JA globales (remoto/nearshore). Localización, no traducción | Nadie busca "web development Neiva" en inglés; `hreflang` separa mercados. JA es experimento sin expectativas |
 | Voz | "Estudio de software" con voz de marca ("trabajamos"), sin afirmar tamaño de equipo, sin "agencia"/"empresa"; "Quiénes somos" presenta al fundador | DevMinds es una persona y no está constituida legalmente; la honestidad es argumento de venta ("hablas directo con el ingeniero") |
@@ -65,18 +66,36 @@ Reglas: sin `#fff` ni `#000`. Terracota ≤ 10% de la superficie. Botones secund
 - Escala con saltos ≥ 1.25×. Sin etiquetas en mayúsculas espaciadas sobre cada título; sin numeración `01.` salvo en "Cómo trabajamos" (secuencia real).
 - Sin texto con degradado; sin cursor de máquina de escribir.
 
-### Retícula de estudio
+### Retícula de estudio: plano de 4 columnas (revisión 2026-10-20)
 
-- **Guías verticales**: dos líneas de 1px (`--guide`) de arriba a abajo en los bordes de la columna de contenido (`container-main`). En móvil, sobre el margen de 16px.
-- **Divisores de sección**: línea horizontal de borde a borde con una cruz `+` en cada intersección con las guías.
-- **Campo de puntos**: `radial-gradient` con máscara que lo desvanece; solo en el hero (esquina superior derecha), un poco más visible que en la maqueta.
-- **Rieles** (solo ≥ `md`): en el margen fuera de las guías. Izquierda: GitHub y LinkedIn con texto vertical. Derecha: "Neiva, Huila · Colombia" vertical y `2.93°N` en Doto. Reemplazan `SocialSidebar` y `EmailSidebar` (el correo personal deja de mostrarse en el riel).
-- La escalera se apoya sobre la línea base y sus escalones se separan con líneas de la retícula.
+La retícula organiza el contenido, no lo decora (opción "A · Plano de columnas", maqueta `reticula-A-estructurada.html`). La primera versión (guías solo en los bordes, puntos desvanecidos por toda la sección, rieles fijos a la ventana) se descartó: las cruces solo aparecían tras hacer scroll, los puntos se salían de las líneas y los rieles no se relacionaban con nada.
+
+- **Columnas**: `container-main` dividido en 4 columnas iguales (≥ `md`). Marco exterior en `--guide`; las 3 líneas interiores en `--guide-soft` (`207 20% 91.4%`, ≈ `#e3e8ec`). Todas a todo lo alto de la página. En móvil solo se dibuja el marco.
+- **Todo el contenido se apoya en columnas**: cada bloque ocupa columnas completas (`md:col-span-*`) con el mismo margen interior (`px-4 md:px-6`) medido desde la línea de su columna. Nada flota entre columnas.
+- **Divisores de sección**: línea horizontal de borde a borde con una cruz `+` en cada intersección con las 5 líneas verticales (2 en móvil).
+- **Puntos**: solo dentro de una celda exacta de la retícula, con bordes limpios (sin máscara de desvanecido). En el hero: la columna 4 completa. En móvil: una franja de ~88px arriba del titular, de marco a marco.
+- **Rieles** (≥ 1360px, donde hay margen fuera del marco): anclados al hero, no a la ventana. Arrancan en la cruz bajo la navbar; `2.93°N` en Doto queda a la altura de la cruz del pie del hero.
+- La escalera usa las mismas 4 columnas (un escalón por columna) y se apoya en la línea del pie del hero.
+
+### Composición del hero (revisión 2026-10-20)
+
+- **No ocupa toda la pantalla**: navbar (con su línea y cruces) + banda superior + banda inferior; a 1440×900 la escalera asoma bajo el pie del hero, así que las cruces se ven sin hacer scroll.
+- **Banda superior**: titular en columnas 1–3, apoyado sobre la línea de la banda. Puntos en la columna 4 (ocupa ambas bandas).
+- **Banda inferior** (tras una línea suave con cruces en las columnas 1–4): párrafo en columnas 1–2; los dos botones apilados en la columna 3, del ancho de la columna, con el ícono a la derecha.
+- **Navbar alineada a columnas**: logo en la columna 1, enlaces desde la columna 2, acciones al final de la columna 4 (menú hamburguesa por debajo de `lg`).
+- Sin chip "Respondemos en 24 h" (genérico). El titular va todo en grafito: sin palabra acentuada en terracota.
+
+### Wordmark animado (revisión 2026-10-20)
+
+- "DevMinds" del titular cambia de fuente como un tipógrafo probando tipos: Doto → Outfit → Geist Mono → Instrument Serif (cursiva) → Doto, 0,35 s por fuente, y descansa 4 s en Doto. Ciclo continuo.
+- Cada letra tiene el ancho fijo que mide en Doto: el resto del titular nunca se mueve.
+- Accesibilidad (WCAG 2.2.2): con `prefers-reduced-motion` queda fijo en Doto; se pausa cuando el hero sale de pantalla, cuando la pestaña está oculta y mientras el cursor o el foco están sobre el titular. Lectores de pantalla leen "DevMinds" (letras `aria-hidden`).
+- Fuentes nuevas: Geist Mono (600) e Instrument Serif (400 cursiva) vía `next/font`, sin precarga.
 
 ### Forma, espacio y movimiento
 
 - Radios 10–12px; sin sombras pesadas; espaciado vertical variable por sección (no el mismo `py` en todas).
-- **Un solo momento orquestado**: entrada del hero y de la escalera (GSAP). El resto de secciones aparece sin fade-in.
+- **Movimiento acotado**: la entrada del hero (CSS), la de la escalera (GSAP) y el wordmark animado. El resto de secciones aparece sin fade-in.
 - Se eliminan: partículas, glows, cuadrícula milimetrada del hero, texto con degradado, typewriter.
 - `prefers-reduced-motion` respetado.
 
@@ -116,7 +135,7 @@ Se eliminan de la home: `TechStack` (marquee), `ScrollIndicator`, `CallToAction`
 ### Español (borrador aprobado)
 
 - **Navbar**: Servicios · Trabajos · Cómo trabajamos · Preguntas · [Hablemos]
-- **Hero**: chip *Respondemos en 24 h*. H1: **DevMinds** crea el software que tu negocio *necesita*. Texto: *Ingeniería de software desde Neiva, Huila. Empezamos por lo que más te urge y crecemos contigo, explicándote todo sin tecnicismos.* Botones: **Escríbenos por WhatsApp** · Ver trabajos.
+- **Hero**: (sin chip; revisión 2026-10-20). H1: **DevMinds** crea el software que tu negocio necesita. Texto: *Ingeniería de software desde Neiva, Huila. Empezamos por lo que más te urge y crecemos contigo, explicándote todo sin tecnicismos.* Botones: **Escríbenos por WhatsApp** · Ver trabajos.
 - **Escalera**: *Crecemos contigo, paso a paso* / *La mayoría empieza por el primer escalón.*
   1. *Que te encuentren* · **Página web + Google** · Aparece en Google y Maps y recibe clientes por WhatsApp · `1–2 sem.`
   2. *Organiza tu negocio* · **Sistemas a medida** · Facturación, cobranza, inventarios: lo que hoy haces en Excel · `1–3 meses`

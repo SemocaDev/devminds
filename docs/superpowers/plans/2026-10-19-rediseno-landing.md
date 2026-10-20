@@ -2382,3 +2382,488 @@ Con el visto bueno del usuario sobre la preview, ofrecer las opciones de integra
 - [ ] **Step 8: Cierre en develop_kit**
 
 Correr `PROMPT_INGESTA.md` de `SemocaDev/develop_kit` (vía `gh api`) para exportar el spec, el plan y la decisión "retícula de estudio" a `usuarios/sebastian/proyectos/devminds/raw/`, y agregar a `patrones/lecciones-aprendidas.md` → `## devminds`: "la DB local y la de producción eran la misma; todo cambio de datos necesitó respaldo y confirmación".
+
+---
+
+## Enmienda 2026-10-20 · Retícula de 4 columnas y wordmark animado
+
+**Motivo:** al revisar el hero de la Tarea 10, el usuario señaló que las cruces solo aparecían tras hacer scroll, que los puntos se salían de las líneas y que los rieles no se integraban. Se rediseñó en el companion visual y se aprobó la opción "A · Plano de columnas" con el texto estructurado en bandas, más un wordmark que alterna fuentes. El spec se actualizó (secciones "Retícula de estudio: plano de 4 columnas", "Composición del hero", "Wordmark animado").
+
+**Orden de ejecución desde aquí:** 18 → 19 → 20 → 21 (reemplaza a la Tarea 11; su `Escalera.tsx` sin commit se sobrescribe) → 12 → 13 → 14 → 15 aplicando el mapa de columnas de la Tarea 22 → 16 → 17.
+
+**Regla de layout (todas las tareas desde aquí):** cada sección usa `container-main relative z-[2]` y dentro `grid md:grid-cols-4`; cada bloque ocupa columnas completas con `px-4 md:px-6` como margen interior. La `Reticula` (z-[1]) dibuja las columnas detrás del contenido y por encima de los fondos de sección. Ningún `md:px-10`.
+
+**Turbopack:** si las clases de un archivo nuevo no aparecen en el CSS servido, reiniciar `pnpm dev` (comprobado el 2026-10-20: Tailwind 3 con Turbopack no escanea archivos creados por scripts externos hasta reiniciar).
+
+### Task 18: Retícula de 4 columnas, cruces, puntos en celda y rieles anclados
+
+**Files:**
+- Modify: `src/styles/globals.css` (token `--guide-soft`, `.campo-puntos` sin máscara, clases `wm-*`)
+- Modify: `tailwind.config.ts` (color `guide-soft`)
+- Modify (reescritura): `src/app/components/reticula/Reticula.tsx`, `DivisorSeccion.tsx`, `CampoPuntos.tsx`, `Rieles.tsx`
+- Modify: `src/app/[lang]/about/AboutClient.tsx`, `contact/page.tsx`, `portfolio/PortfolioClient.tsx`, `services/page.tsx` (`<Rieles modo="fijo" />`)
+
+**Interfaces:**
+- Produces: `<Reticula />`; `<DivisorSeccion className?: string />`; `export function Cruz({ className }: { className?: string })` (centrada en su punto con `-translate-x-1/2 -translate-y-1/2`); `<CampoPuntos className?: string />` (rellena su celda, padre `relative`); `<Rieles modo?: 'fijo' | 'hero' />` (por defecto `'hero'`: absoluto dentro de la sección `relative` que lo contiene).
+
+- [ ] **Step 1: Tokens y clases**
+
+En `globals.css`, dentro de `:root`, después de `--guide`, agregar `--guide-soft: 207 20% 91.4%;`. Reemplazar las reglas `.campo-puntos` (la base y la del `@media (max-width: 767px)`) por:
+
+```css
+  /* Puntos de la retícula: rellenan exactamente su celda, sin desvanecido */
+  .campo-puntos {
+    background-image: radial-gradient(circle, hsl(var(--dots)) 1.3px, transparent 1.6px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+  }
+
+  /* Wordmark animado: tamaños relativos para que todas las fuentes ocupen lo mismo */
+  .wm-doto { font-family: var(--font-doto); font-weight: 900; font-size: 1.14em; letter-spacing: -0.03em; }
+  .wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
+  .wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
+  .wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }
+```
+
+En `tailwind.config.ts`, junto a `guide`, agregar `'guide-soft': 'hsl(var(--guide-soft))',`.
+
+- [ ] **Step 2: Componentes**
+
+`Reticula.tsx`:
+
+```tsx
+/** Plano de 4 columnas: marco en --guide y líneas interiores en --guide-soft, a todo lo alto del padre (`relative`). */
+export default function Reticula() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
+      <div className="container-main h-full">
+        <div className="grid h-full grid-cols-1 border-x border-guide md:grid-cols-4">
+          <div className="hidden border-r border-guide-soft md:block" />
+          <div className="hidden border-r border-guide-soft md:block" />
+          <div className="hidden border-r border-guide-soft md:block" />
+          <div className="hidden md:block" />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+`DivisorSeccion.tsx`:
+
+```tsx
+import { cn } from '@/lib/utils';
+
+/** Cruz "+" centrada en su punto; el padre debe ser `relative`. */
+export function Cruz({ className }: { className?: string }) {
+  return (
+    <span aria-hidden className={cn('pointer-events-none absolute z-10 size-[13px] -translate-x-1/2 -translate-y-1/2', className)}>
+      <span className="absolute left-[6px] top-0 h-full w-px bg-foreground/55" />
+      <span className="absolute left-0 top-[6px] h-px w-full bg-foreground/55" />
+    </span>
+  );
+}
+
+/** Línea de borde a borde con una cruz en cada línea de columna (5 en desktop, 2 en móvil). */
+export default function DivisorSeccion({ className }: { className?: string }) {
+  return (
+    <div aria-hidden className={cn('relative z-10 h-px bg-guide', className)}>
+      <div className="container-main h-px">
+        <div className="relative h-px">
+          <Cruz className="left-0 top-0" />
+          <Cruz className="left-1/4 top-0 hidden md:block" />
+          <Cruz className="left-1/2 top-0 hidden md:block" />
+          <Cruz className="left-3/4 top-0 hidden md:block" />
+          <Cruz className="left-full top-0" />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+`CampoPuntos.tsx`:
+
+```tsx
+import { cn } from '@/lib/utils';
+
+/** Puntos que rellenan exactamente su celda de la retícula (eco de Doto). El padre debe ser `relative`. */
+export default function CampoPuntos({ className }: { className?: string }) {
+  return <div aria-hidden className={cn('campo-puntos pointer-events-none absolute inset-0', className)} />;
+}
+```
+
+`Rieles.tsx`:
+
+```tsx
+'use client';
+
+import { Github, Linkedin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import contactConfig from '@/config/contact.json';
+import { cn } from '@/lib/utils';
+
+const enlace = 'text-muted-foreground transition-colors hover:text-primary';
+
+/**
+ * Rieles en los márgenes fuera del marco (≥ 1360px).
+ * `hero`: anclados a la sección que los contiene (arrancan en la cruz bajo la navbar).
+ * `fijo`: pegados a la ventana, para las páginas que aún no usan la retícula.
+ */
+export default function Rieles({ modo = 'hero' }: { modo?: 'fijo' | 'hero' }) {
+  const t = useTranslations('Home.rieles');
+  const lado = cn(
+    'z-[2] hidden w-[calc((100%-80rem)/2)] min-w-10 flex-col items-center gap-5 min-[1360px]:flex',
+    modo === 'hero' ? 'absolute top-[88px]' : 'fixed bottom-8'
+  );
+  return (
+    <>
+      <div className={cn(lado, 'left-0')}>
+        <a href={contactConfig.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={enlace}>
+          <Github className="size-[18px]" />
+        </a>
+        <a href={contactConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={enlace}>
+          <Linkedin className="size-[18px]" />
+        </a>
+        <span className="text-xs tracking-[0.08em] text-muted-foreground [writing-mode:vertical-rl]">GitHub · LinkedIn</span>
+      </div>
+      <div className={cn(lado, 'right-0')}>
+        <span className="text-xs tracking-[0.08em] text-muted-foreground [writing-mode:vertical-rl]">{t('ubicacion')}</span>
+      </div>
+      {modo === 'hero' && (
+        <span className="absolute bottom-3 right-0 z-[2] hidden w-[calc((100%-80rem)/2)] text-center font-doto text-xs font-black text-foreground min-[1360px]:block">
+          2.93°N
+        </span>
+      )}
+    </>
+  );
+}
+```
+
+En `AboutClient.tsx`, `contact/page.tsx`, `PortfolioClient.tsx` y `services/page.tsx`: `<Rieles />` → `<Rieles modo="fijo" />`. En `HomeClient.tsx`: quitar `<Rieles />` y su import (pasa al hero en la Tarea 20).
+
+- [ ] **Step 3: Verificar**
+
+Run: `pnpm exec tsc --noEmit && pnpm exec eslint src/app/components/reticula && pnpm test`
+Expected: sin errores.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add src/styles/globals.css tailwind.config.ts src/app/components/reticula "src/app/[lang]"
+git commit -m "feat(diseño): retícula de 4 columnas con cruces en cada intersección"
+```
+
+### Task 19: Wordmark animado
+
+**Files:**
+- Create: `src/lib/wordmark.ts`, `src/lib/wordmark.test.ts`
+- Create: `src/app/components/marca/WordmarkAnimado.tsx`
+- Modify: `src/app/[lang]/layout.tsx` (fuentes Geist Mono e Instrument Serif)
+
+**Interfaces:**
+- Produces: `FASES_WORDMARK` (tuplas `[clase, ms]`, empieza en `['wm-doto', 4000]`); `<WordmarkAnimado className?: string />` (lee "DevMinds" a lectores de pantalla, letras `aria-hidden`).
+
+- [ ] **Step 1: Test que falla**
+
+`src/lib/wordmark.test.ts`:
+
+```ts
+import { describe, expect, it } from 'vitest';
+import { FASES_WORDMARK } from './wordmark';
+
+describe('FASES_WORDMARK', () => {
+  it('empieza en Doto con el descanso largo', () => {
+    expect(FASES_WORDMARK[0]).toEqual(['wm-doto', 4000]);
+  });
+  it('pasa por Outfit, Geist Mono e Instrument Serif a 350 ms cada una', () => {
+    expect(FASES_WORDMARK.slice(1)).toEqual([['wm-outfit', 350], ['wm-mono', 350], ['wm-serif', 350]]);
+  });
+  it('Doto ocupa la mayor parte del ciclo', () => {
+    const total = FASES_WORDMARK.reduce((s, [, ms]) => s + ms, 0);
+    expect(FASES_WORDMARK[0][1] / total).toBeGreaterThan(0.75);
+  });
+});
+```
+
+Run: `pnpm test src/lib/wordmark.test.ts` → Expected: FAIL ("Cannot find module './wordmark'").
+
+- [ ] **Step 2: Implementación**
+
+`src/lib/wordmark.ts`:
+
+```ts
+/** Ciclo del wordmark animado: [clase CSS de la fuente, milisegundos que se muestra]. Vuelve a empezar al final. */
+export const FASES_WORDMARK = [
+  ['wm-doto', 4000],
+  ['wm-outfit', 350],
+  ['wm-mono', 350],
+  ['wm-serif', 350],
+] as const;
+```
+
+Run: `pnpm test src/lib/wordmark.test.ts` → Expected: PASS (3).
+
+`src/app/components/marca/WordmarkAnimado.tsx`:
+
+```tsx
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { FASES_WORDMARK } from '@/lib/wordmark';
+import { cn } from '@/lib/utils';
+
+const TEXTO = 'DevMinds';
+
+/**
+ * "DevMinds" que alterna fuentes y descansa en Doto. Cada letra fija el ancho que tiene en Doto,
+ * así el resto del titular no se mueve. Se pausa fuera de pantalla, con la pestaña oculta,
+ * con el cursor o el foco sobre el titular, y no anima con prefers-reduced-motion.
+ */
+export default function WordmarkAnimado({ className }: { className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const raiz = ref.current;
+    if (!raiz) return;
+    const letras = [...raiz.querySelectorAll<HTMLSpanElement>('[data-letra]')];
+    const titular = raiz.closest('h1') ?? raiz;
+    const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const poner = (clase: string) => letras.forEach((l) => { l.className = `inline-block text-center ${clase}`; });
+    const medir = () => {
+      poner('wm-doto');
+      letras.forEach((l) => { l.style.width = ''; });
+      letras.forEach((l) => { l.style.width = `${l.getBoundingClientRect().width}px`; });
+    };
+
+    let visible = true;
+    let encima = false;
+    let vivo = true;
+    let fase = 0;
+    let temporizador: number | undefined;
+
+    const tic = () => {
+      if (!vivo) return;
+      if (reducido.matches || !visible || encima || document.hidden) {
+        fase = 0;
+        poner('wm-doto');
+        temporizador = window.setTimeout(tic, 1000);
+        return;
+      }
+      const [clase, ms] = FASES_WORDMARK[fase];
+      poner(clase);
+      fase = (fase + 1) % FASES_WORDMARK.length;
+      temporizador = window.setTimeout(tic, ms);
+    };
+
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
+    io.observe(titular);
+    const entrar = () => { encima = true; };
+    const salir = () => { encima = false; };
+    titular.addEventListener('mouseenter', entrar);
+    titular.addEventListener('mouseleave', salir);
+    titular.addEventListener('focusin', entrar);
+    titular.addEventListener('focusout', salir);
+    let marco = 0;
+    const alRedimensionar = () => { cancelAnimationFrame(marco); marco = requestAnimationFrame(medir); };
+    window.addEventListener('resize', alRedimensionar);
+
+    document.fonts.ready.then(() => { if (!vivo) return; medir(); temporizador = window.setTimeout(tic, 1200); });
+
+    return () => {
+      vivo = false;
+      window.clearTimeout(temporizador);
+      cancelAnimationFrame(marco);
+      io.disconnect();
+      titular.removeEventListener('mouseenter', entrar);
+      titular.removeEventListener('mouseleave', salir);
+      titular.removeEventListener('focusin', entrar);
+      titular.removeEventListener('focusout', salir);
+      window.removeEventListener('resize', alRedimensionar);
+    };
+  }, []);
+
+  return (
+    <span ref={ref} className={cn('whitespace-nowrap', className)}>
+      <span className="sr-only">{TEXTO}</span>
+      <span aria-hidden>
+        {[...TEXTO].map((letra, i) => (
+          <span key={i} data-letra className="wm-doto inline-block text-center">{letra}</span>
+        ))}
+      </span>
+    </span>
+  );
+}
+```
+
+En `src/app/[lang]/layout.tsx`: importar `Geist_Mono` e `Instrument_Serif` desde `next/font/google`, declarar
+
+```ts
+const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"], variable: "--font-geist-mono", display: "swap", preload: false });
+const instrument = Instrument_Serif({ subsets: ["latin"], weight: ["400"], style: ["italic"], variable: "--font-instrument", display: "swap", preload: false });
+```
+
+y agregar `${geistMono.variable} ${instrument.variable}` al `className` del `<html>`.
+
+- [ ] **Step 3: Verificar y commit**
+
+Run: `pnpm exec tsc --noEmit && pnpm exec eslint src/app/components/marca src/lib/wordmark.ts "src/app/[lang]/layout.tsx" && pnpm test` → sin errores.
+
+```bash
+git add src/lib/wordmark.ts src/lib/wordmark.test.ts src/app/components/marca/WordmarkAnimado.tsx "src/app/[lang]/layout.tsx"
+git commit -m "feat(marca): wordmark que alterna fuentes y descansa en Doto"
+```
+
+### Task 20: Navbar en columnas y hero en bandas
+
+**Files:**
+- Modify: `src/app/components/layout/Navbar.tsx` (bloque del contenedor)
+- Modify (reescritura): `src/app/components/sections/Hero.tsx`
+- Modify: `messages/*.json` (`Home.hero.titulo` sin `<acento>`; borrar `Home.hero.chip`)
+
+**Interfaces:**
+- Consumes: `Cruz`, `DivisorSeccion`, `CampoPuntos`, `Rieles` (modo `hero`), `WordmarkAnimado`, `enlaceWhatsApp`.
+
+- [ ] **Step 1: Navbar**
+
+Reemplazar el `div` interno (`grid h-16 grid-cols-[1fr_auto] … xl:grid-cols-[1fr_auto_1fr]`) por esta estructura, conservando los `items` y el `Sheet`:
+
+```tsx
+        <div className="grid h-16 grid-cols-[1fr_auto] items-center md:h-[72px] lg:grid-cols-4">
+          <Link href={`/${lang}`} aria-label="DevMinds" className="justify-self-start px-4 text-[22px] text-foreground transition-opacity hover:opacity-75 md:px-6">
+            <Wordmark />
+          </Link>
+          <ul className="hidden items-center gap-7 px-6 lg:col-span-2 lg:flex">{/* items igual que antes */}</ul>
+          <div className="hidden items-center gap-1 justify-self-end px-6 lg:flex">
+            <SelectorIdioma className="hidden xl:flex" />
+            <Button asChild className="bg-foreground text-background hover:bg-foreground/85">
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer">{t('startProject')}</a>
+            </Button>
+          </div>
+          <div className="justify-self-end px-4 md:px-6 lg:hidden">{/* Sheet igual que antes */}</div>
+        </div>
+```
+
+- [ ] **Step 2: Hero**
+
+```tsx
+'use client';
+
+import type { CSSProperties } from 'react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import WordmarkAnimado from '@/app/components/marca/WordmarkAnimado';
+import CampoPuntos from '@/app/components/reticula/CampoPuntos';
+import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
+import Rieles from '@/app/components/reticula/Rieles';
+import { enlaceWhatsApp } from '@/lib/enlaces';
+import { cn } from '@/lib/utils';
+
+const paso = (i: number) => ({ '--i': i }) as CSSProperties;
+const boton = 'flex h-12 w-full items-center justify-between rounded-lg px-4 text-[15px] font-semibold transition-colors';
+
+/** Hero en dos bandas sobre la retícula: titular (cols 1–3) y puntos (col 4); párrafo (cols 1–2) y botones (col 3). */
+export default function Hero() {
+  const t = useTranslations('Home');
+  return (
+    <section className="relative">
+      <Rieles />
+      <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
+      <div className="container-main relative z-[2] pt-16 md:pt-[72px]">
+        <div className="grid md:grid-cols-4">
+          <div className="relative order-first h-[88px] border-b border-guide md:order-none md:col-start-4 md:row-span-2 md:row-start-1 md:h-auto md:border-0">
+            <CampoPuntos />
+          </div>
+
+          <div className="px-4 pb-8 pt-10 md:col-span-3 md:col-start-1 md:row-start-1 md:flex md:min-h-[300px] md:items-end md:px-6 md:pb-10 md:pt-16">
+            <h1
+              className="entrada font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[3.25rem] xl:text-[3.625rem]"
+              style={paso(0)}
+            >
+              <WordmarkAnimado className="block text-[1.36em] leading-[0.95] sm:inline sm:text-[1em] sm:leading-[0.85]" />{' '}
+              {t('hero.titulo')}
+            </h1>
+          </div>
+
+          <div className="relative border-t border-guide-soft px-4 pb-8 pt-6 md:col-span-2 md:col-start-1 md:row-start-2 md:px-6 md:pb-12">
+            <Cruz className="left-0 top-0" />
+            <Cruz className="left-1/2 top-0 hidden md:block" />
+            <Cruz className="left-full top-0 md:hidden" />
+            <p className="entrada max-w-[52ch] text-[17px] leading-relaxed text-muted-foreground" style={paso(1)}>
+              {t('hero.texto')}
+            </p>
+          </div>
+
+          <div className="relative px-4 pb-12 md:col-start-3 md:row-start-2 md:border-t md:border-guide-soft md:px-6 md:pt-6">
+            <Cruz className="left-0 top-0 hidden md:block" />
+            <Cruz className="left-full top-0 hidden md:block" />
+            <div className="entrada flex flex-col gap-2" style={paso(2)}>
+              <a href={enlaceWhatsApp(t('whatsappMensaje'))} target="_blank" rel="noopener noreferrer" className={cn(boton, 'bg-primary text-primary-foreground hover:bg-primary-hover')}>
+                {t('hero.whatsapp')}<ArrowUpRight className="size-4" />
+              </a>
+              <Link href="#projects" className={cn(boton, 'border border-border bg-background text-foreground hover:bg-secondary')}>
+                {t('hero.verTrabajos')}<ArrowDown className="size-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+`messages/*.json`: `Home.hero.titulo` → es `"crea el software que tu negocio necesita."`, en `"builds the software your business needs."`, ja `"は、あなたのビジネスに必要なソフトウェアをつくります。"`; borrar `Home.hero.chip` en los tres.
+
+- [ ] **Step 3: Verificar, CV (con pausa) y commit**
+
+Run: `pnpm exec tsc --noEmit && pnpm exec eslint src/app/components/sections/Hero.tsx src/app/components/layout/Navbar.tsx && pnpm test` → sin errores.
+
+CV a 390, 768, 1024, 1440 y 1920 en `/es`, `/en`, `/ja`, midiendo: titular en 2 líneas a ≥ 1280; borde izquierdo del titular, del párrafo y del logo = línea de columna 1 + 24px; botones del ancho de la columna 3 menos 48px; puntos con bordes en las líneas de la columna 4; cruces visibles sin scroll a 1440×900; escalera asomando bajo el pie del hero; posición de "crea…" constante durante 6 s de animación; 0px de desborde.
+
+```bash
+git add src/app/components/sections/Hero.tsx src/app/components/layout/Navbar.tsx messages
+git commit -m "feat(home): hero en bandas sobre la retícula y navbar alineada a columnas"
+```
+
+### Task 21: Escalera sobre las columnas (reemplaza la Tarea 11)
+
+**Files:**
+- Create: `src/app/components/sections/Escalera/Escalera.tsx` (sobrescribe el archivo sin commit de la Tarea 11)
+- Modify: `src/app/[lang]/HomeClient.tsx` (ya montada; verificar)
+
+- [ ] **Step 1: Componente**
+
+Partir del código de la Tarea 11 con estos cambios:
+- `<div className="container-main">` → `<div className="container-main relative z-[2]">`.
+- Encabezado como fila de la retícula, en lugar del bloque `<div className="px-4 md:px-10">…</div>`:
+
+```tsx
+        <div className="grid border-b border-guide-soft md:grid-cols-4">
+          <h2 className="px-4 pb-2 font-display text-3xl font-bold tracking-[-0.02em] md:col-span-2 md:px-6 md:pb-6 md:text-[2.25rem]">{t('titulo')}</h2>
+          <p className="px-4 pb-6 text-[17px] text-muted-foreground md:col-span-2 md:self-end md:px-6">{t('subtitulo')}</p>
+        </div>
+```
+
+- La sección pasa a `className="relative pt-12 md:pt-16"` y la lista a `className="flex flex-col gap-2 pb-14 pt-6 md:grid md:grid-cols-4 md:items-end md:gap-0 md:pb-0 md:pt-0"`.
+
+- [ ] **Step 2: Verificar, CV (con pausa) y commit**
+
+Run: `pnpm exec tsc --noEmit && pnpm exec eslint src/app/components/sections/Escalera && pnpm test` → sin errores. Reiniciar `pnpm dev` si las alturas `md:h-[260px]…md:h-[380px]` no se aplican. CV: alturas 260/300/340/380 en desktop; cada escalón entre dos líneas de columna; base apoyada en el divisor siguiente.
+
+```bash
+git add src/app/components/sections/Escalera "src/app/[lang]/HomeClient.tsx"
+git commit -m "feat(home): escalera de servicios sobre las 4 columnas de la retícula"
+```
+
+### Task 22: Mapa de columnas para las Tareas 12 a 15 y el Footer
+
+Al ejecutar cada tarea, aplicar sobre su código:
+
+- **Todas**: `container-main` → `container-main relative z-[2]`; `px-4 md:px-10` → `px-4 md:px-6` dentro de celdas de `grid md:grid-cols-4`.
+- **Tarea 12 · Trabajos**: encabezado en `grid md:grid-cols-4` con el `h2` en `md:col-span-3` y el enlace "Ver todos" en la columna 4 (`md:justify-self-end`). Tarjetas en `grid md:grid-cols-4`: la primera `md:col-span-2` (imagen `aspect-[16/10]`), las otras dos `md:col-span-1` (imagen `aspect-[4/3]`); cada `li` con `px-4 md:px-6`. La grilla deja de ser de 3 tarjetas iguales.
+- **Tarea 13 · Cómo trabajamos**: `h2` en `md:col-span-2`; los 4 pasos uno por columna (`md:grid-cols-4`, sin `gap`, cada `li` con `px-4 md:px-6`). La línea superior de cada paso es `border-t border-guide-soft` con `<Cruz className="left-0 top-0" />` (más `left-full` en el último).
+- **Tarea 14 · Quiénes somos**: foto en la columna 1, texto en las columnas 2–3, línea de tecnologías en la columna 4 (`md:self-end`, texto pequeño). Sin foto, el texto ocupa las columnas 1–3.
+- **Tarea 15 · Preguntas**: título y subtítulo en la columna 1; acordeón en las columnas 2–4. **Cierre**: título en las columnas 1–3; los dos botones apilados en la columna 4 (`md:self-end`), con el mismo estilo `boton` del hero.
+- **Footer**: `container-main` con `grid md:grid-cols-4`: marca e idioma en la columna 1, navegación en la 2, redes en la 3, la columna 4 vacía; celdas con `px-4 md:px-6`. El copyright ocupa las 4 columnas.
