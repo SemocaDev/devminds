@@ -15,7 +15,7 @@ import type { TeamMemberWithTranslation } from '@/db/queries/team';
 const Escalera = dynamic(() => import('@/app/components/sections/Escalera/Escalera'));
 const Projects = dynamic(() => import('@/app/components/sections/Projects/Projects'));
 const Process = dynamic(() => import('@/app/components/sections/Process/Process'));
-const AboutUs = dynamic(() => import('@/app/components/sections/AboutUs/AboutUs'));
+const QuienesSomos = dynamic(() => import('@/app/components/sections/QuienesSomos/QuienesSomos'));
 const FAQ = dynamic(() => import('@/app/components/sections/FAQ/FAQ'));
 const ContactCTA = dynamic(() => import('@/app/components/sections/ContactCTA/ContactCTA'));
 
@@ -25,7 +25,6 @@ type Props = {
 };
 
 export default function HomeClient({ featuredProjects, fundador }: Props) {
-  void fundador; // se usa en la Tarea 14
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Navbar />
@@ -39,7 +38,7 @@ export default function HomeClient({ featuredProjects, fundador }: Props) {
         <DivisorSeccion />
         <Process />
         <DivisorSeccion />
-        <AboutUs />
+        <QuienesSomos fundador={fundador} />
         <DivisorSeccion />
         <FAQ />
         <DivisorSeccion />
