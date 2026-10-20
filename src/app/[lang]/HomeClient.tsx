@@ -8,7 +8,6 @@ import Hero from '@/app/components/sections/Hero';
 import Reticula from '@/app/components/reticula/Reticula';
 import DivisorSeccion from '@/app/components/reticula/DivisorSeccion';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
-import type { TeamMemberWithTranslation } from '@/db/queries/team';
 
 // Secciones bajo el fold: su JS (y sus ScrollTrigger) se cargan después del hero.
 const Escalera = dynamic(() => import('@/app/components/sections/Escalera/Escalera'));
@@ -21,10 +20,9 @@ const Cierre = dynamic(() => import('@/app/components/sections/Cierre/Cierre'));
 
 type Props = {
   featuredProjects: ProjectWithTranslation[];
-  fundador: TeamMemberWithTranslation | null;
 };
 
-export default function HomeClient({ featuredProjects, fundador }: Props) {
+export default function HomeClient({ featuredProjects }: Props) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Navbar />
@@ -38,7 +36,7 @@ export default function HomeClient({ featuredProjects, fundador }: Props) {
         <DivisorSeccion />
         <Process />
         <DivisorSeccion />
-        <QuienesSomos fundador={fundador} />
+        <QuienesSomos />
         <DivisorSeccion />
         <FAQ />
         <DivisorSeccion />

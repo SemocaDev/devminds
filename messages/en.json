@@ -694,7 +694,7 @@
     },
     "quienes": {
       "titulo": "People, not a code factory.",
-      "texto": "Behind DevMinds is {nombre}, a software engineer based in Colombia. You talk directly to the person who designs and builds your project, no middlemen.",
+      "texto": "DevMinds is a software studio based in Colombia. You talk directly to the person who designs and builds your project, no middlemen.",
       "tecnologias": "We work with Next.js, React, Flutter, PostgreSQL and whatever your project needs.",
       "enlace": "Learn more"
     },

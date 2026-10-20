@@ -694,7 +694,7 @@
     },
     "quienes": {
       "titulo": "コード工場ではなく、人がつくります。",
-      "texto": "DevMindsを率いるのは、コロンビアのソフトウェアエンジニア、{nombre}です。設計し、開発する本人と直接やり取りできます。",
+      "texto": "DevMindsはコロンビアのソフトウェアスタジオです。設計し、開発する本人と直接やり取りできます。",
       "tecnologias": "Next.js、React、Flutter、PostgreSQLなど、プロジェクトに必要な技術で開発します。",
       "enlace": "詳しく見る"
     },

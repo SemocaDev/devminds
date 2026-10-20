@@ -694,7 +694,7 @@
     },
     "quienes": {
       "titulo": "Personas, no una fábrica de código.",
-      "texto": "Detrás de DevMinds está {nombre}, ingeniero de software en Neiva. Hablas directo con quien diseña y construye tu proyecto, sin intermediarios.",
+      "texto": "DevMinds es un estudio de software en Neiva, Huila. Hablas directo con quien diseña y construye tu proyecto, sin intermediarios.",
       "tecnologias": "Trabajamos con Next.js, React, Flutter, PostgreSQL y lo que tu proyecto necesite.",
       "enlace": "Conoce más"
     },

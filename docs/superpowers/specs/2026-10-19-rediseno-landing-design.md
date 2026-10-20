@@ -115,7 +115,7 @@ La retícula organiza el contenido, no lo decora (opción "A · Plano de columna
 | 2 | Escalera | Services + CallToAction | 4 escalones enlazados a anclas de `/services` |
 | 3 | Trabajos | Projects | Proyectos destacados (DB): screenshot, tipo (`category`), cliente y año, título, descripción; sin muro de badges |
 | 4 | Cómo trabajamos | Process | 4 pasos con números en Doto; sin la animación de 5 s |
-| 5 | Quiénes somos | AboutUs + TechStack | Fundador (foto y datos de la tabla `team`, el de menor `sortOrder`), una línea discreta de tecnologías, enlace a `/about` |
+| 5 | Quiénes somos | AboutUs + TechStack | ~~Fundador con foto y datos~~ **Revisión 2026-10-20:** sin foto ni datos personales del fundador (pedido del usuario); col 1 = celda de puntos con "DevMinds" en Doto, cols 2–3 = texto del estudio sin nombre propio, col 4 = tecnologías. |
 | 6 | Preguntas | FAQ | 6 preguntas en una columna; `FAQPage` JSON-LD actualizado |
 | 7 | Cierre | ContactCTA | Un solo CTA final; sin el "07" |
 | — | Footer | Footer | Wordmark Doto real, enlaces, redes, idioma |
