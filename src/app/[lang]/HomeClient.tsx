@@ -7,14 +7,12 @@ import BarraMovil from '@/app/components/layout/BarraMovil';
 import Hero from '@/app/components/sections/Hero';
 import Reticula from '@/app/components/reticula/Reticula';
 import DivisorSeccion from '@/app/components/reticula/DivisorSeccion';
-import Rieles from '@/app/components/reticula/Rieles';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
 import type { TeamMemberWithTranslation } from '@/db/queries/team';
 
 // Secciones bajo el fold: su JS (y sus ScrollTrigger) se cargan después del hero.
 // Temporal: las secciones viejas siguen hasta que su reemplazo exista (Tareas 11-15).
-const CallToAction = dynamic(() => import('@/app/components/sections/CallToAction'));
-const Services = dynamic(() => import('@/app/components/sections/Services/Services'));
+const Escalera = dynamic(() => import('@/app/components/sections/Escalera/Escalera'));
 const Projects = dynamic(() => import('@/app/components/sections/Projects/Projects'));
 const Process = dynamic(() => import('@/app/components/sections/Process/Process'));
 const AboutUs = dynamic(() => import('@/app/components/sections/AboutUs/AboutUs'));
@@ -31,13 +29,11 @@ export default function HomeClient({ featuredProjects, fundador }: Props) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Navbar />
-      <Rieles />
       <main className="relative flex-1">
         <Reticula />
         <Hero />
         <DivisorSeccion />
-        <CallToAction />
-        <Services />
+        <Escalera />
         <DivisorSeccion />
         <Projects projects={featuredProjects} />
         <DivisorSeccion />
