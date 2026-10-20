@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { projects, projectTranslations, projectCategories, categoryTranslations } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 
 export type ProjectWithTranslation = {

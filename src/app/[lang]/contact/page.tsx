@@ -64,7 +64,7 @@ export default function ContactPage() {
           const error = result.errors[key as keyof typeof result.errors];
           if (error && error.message) {
             // Traducir el código de error
-            const translationKey = `validation.${error.message}` as any;
+            const translationKey = `validation.${error.message}`;
             const translated = t(translationKey);
 
             // Actualizar el mensaje con la traducción

@@ -36,7 +36,7 @@ type Interest = { icon: string; labelKey: string };
 type Props = {
   onSubmit: (data: Record<string, unknown>) => Promise<void>;
   saving: boolean;
-  initialData?: any;
+  initialData?: MiembroInicial | null;
   isEdit?: boolean;
 };
 
@@ -45,6 +45,28 @@ type FieldErrors = Record<string, string>;
 function getNestedError(errors: FieldErrors, path: string): string | undefined {
   return errors[path];
 }
+
+type Traducciones = Record<'es' | 'en' | 'ja', string>;
+
+/** Miembro existente tal como lo arma la página de edición, para precargar el formulario. */
+type MiembroInicial = {
+  id?: string;
+  name?: string;
+  nickname?: string | null;
+  hierarchy?: string;
+  location?: string;
+  education?: string;
+  skills?: string[];
+  tools?: string[] | null;
+  email?: string | null;
+  linkedin?: string | null;
+  github?: string | null;
+  photo?: string | null;
+  interests?: unknown;
+  startDate?: string | null;
+  sortOrder?: number | null;
+  translations?: { role: Traducciones; specialization: Traducciones; bio: Traducciones };
+};
 
 function parseInterests(raw: unknown): Interest[] {
   if (Array.isArray(raw)) {

@@ -1,4 +1,3 @@
-import { LucideIcon } from 'lucide-react';
 
 export type TeamHierarchy = 'founder' | 'co-founder' | 'developer' | 'designer' | 'marketing';
 

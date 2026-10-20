@@ -3,6 +3,9 @@ import { ContactMessage } from '@/core/domain/contact/entities/ContactMessage';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+/** Textos del correo de contacto: misma forma que `EmailTemplate` en messages/es.json. */
+type TextosCorreo = (typeof import('../../../../messages/es.json'))['EmailTemplate'];
+
 /**
  * Adaptador de Resend para el servicio de email
  * Implementa IEmailService usando la API de Resend con soporte multiidioma
@@ -63,21 +66,21 @@ export class ResendEmailAdapter implements IEmailService {
   /**
    * Carga las traducciones del idioma especificado
    */
-  private loadTranslations(locale: string): any {
+  private loadTranslations(locale: string): TextosCorreo {
     try {
       // Leer archivo JSON usando fs (solo funciona en servidor)
       const filePath = join(process.cwd(), 'messages', `${locale}.json`);
       const fileContent = readFileSync(filePath, 'utf-8');
       const messages = JSON.parse(fileContent);
       return messages.EmailTemplate;
-    } catch (error) {
+    } catch {
       // Fallback a español si el idioma no existe
       try {
         const filePath = join(process.cwd(), 'messages', 'es.json');
         const fileContent = readFileSync(filePath, 'utf-8');
         const messages = JSON.parse(fileContent);
         return messages.EmailTemplate;
-      } catch (fallbackError) {
+      } catch {
         // Si tampoco existe español, retornar traducciones por defecto
         return {
           subject: 'Nuevo Mensaje de Contacto - DevMinds',
@@ -115,7 +118,7 @@ export class ResendEmailAdapter implements IEmailService {
   /**
    * Construye el HTML del email con diseño moderno DevMinds
    */
-  private buildEmailHtml(message: ContactMessage, t: any, metadata?: EmailMetadata): string {
+  private buildEmailHtml(message: ContactMessage, t: TextosCorreo, metadata?: EmailMetadata): string {
     const currentYear = new Date().getFullYear();
     const escapedName = this.escapeHtml(message.name);
     const escapedEmail = this.escapeHtml(message.email);
@@ -312,7 +315,7 @@ export class ResendEmailAdapter implements IEmailService {
   /**
    * Construye la versión texto plano del email
    */
-  private buildEmailText(message: ContactMessage, t: any, metadata?: EmailMetadata): string {
+  private buildEmailText(message: ContactMessage, t: TextosCorreo, metadata?: EmailMetadata): string {
     const parts = [
       `${t.header.title} - DevMinds Portfolio`,
       '',
