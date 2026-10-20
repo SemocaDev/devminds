@@ -14,13 +14,13 @@ export function Cruz({ className }: { className?: string }) {
 export default function DivisorSeccion({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn('relative z-10 h-px bg-guide', className)}>
-      <div className="container-main h-px">
+      <div className="contenedor-reticula h-px">
         <div className="relative h-px">
           <Cruz className="left-0 top-0" />
           <Cruz className="left-1/4 top-0 hidden md:block" />
           <Cruz className="left-1/2 top-0 hidden md:block" />
           <Cruz className="left-3/4 top-0 hidden md:block" />
-          <Cruz className="left-full top-0" />
+          <Cruz className="left-full top-0 min-[1360px]:hidden" />
         </div>
       </div>
     </div>

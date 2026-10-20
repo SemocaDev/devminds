@@ -143,6 +143,12 @@
     @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
+  /* Contenedor de la retícula de la home: ocupa todo el ancho. Desde 1360px es asimétrico, como el
+     prototipo: 64px a la izquierda (carril de los rieles) y la columna 4 llega hasta el borde derecho. */
+  .contenedor-reticula {
+    @apply mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 min-[1360px]:pl-16 min-[1360px]:pr-0;
+  }
+
   .section-spacing {
     @apply py-20 md:py-28 lg:py-36;
   }

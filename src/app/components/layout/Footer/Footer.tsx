@@ -28,7 +28,7 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
 
   return (
     <footer className={cn('mt-auto bg-foreground text-background', conBarraMovil && 'pb-[76px] md:pb-0')}>
-      <div className="container-main py-14 md:px-10">
+      <div className="contenedor-reticula py-14 md:px-10">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Wordmark className="text-3xl" />

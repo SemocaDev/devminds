@@ -18,7 +18,7 @@ export default function Projects({ projects = [] }: Props) {
 
   return (
     <section id="projects" className="py-16 md:py-24">
-      <div className="container-main relative z-[2]">
+      <div className="contenedor-reticula relative z-[2]">
         <div className="grid gap-y-4 md:grid-cols-4 md:items-end">
           <h2 className="max-w-[20ch] px-4 font-display text-3xl font-bold tracking-[-0.02em] md:col-span-3 md:px-6 md:text-[2.5rem]">{t('titulo')}</h2>
           <Link

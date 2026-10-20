@@ -67,7 +67,7 @@ const Navbar = () => {
         conFondo ? 'border-border bg-background/90 backdrop-blur-md' : 'border-transparent bg-transparent'
       )}
     >
-      <div className="container-main">
+      <div className="contenedor-reticula">
         <div className="grid h-16 grid-cols-[1fr_auto] items-center md:h-[72px] lg:grid-cols-4">
           <Link href={`/${lang}`} aria-label="DevMinds" className="justify-self-start px-4 text-[22px] text-foreground transition-opacity hover:opacity-75 md:px-6">
             <Wordmark />

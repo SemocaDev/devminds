@@ -15,7 +15,7 @@ const enlace = 'text-muted-foreground transition-colors hover:text-primary';
 export default function Rieles({ modo = 'hero' }: { modo?: 'fijo' | 'hero' }) {
   const t = useTranslations('Home.rieles');
   const lado = cn(
-    'z-[2] hidden w-[calc((100%-80rem)/2)] min-w-10 flex-col items-center gap-5 min-[1360px]:flex',
+    'z-[2] hidden w-16 flex-col items-center gap-5 min-[1360px]:flex',
     modo === 'hero' ? 'absolute top-[88px]' : 'fixed bottom-8'
   );
   return (
@@ -33,7 +33,7 @@ export default function Rieles({ modo = 'hero' }: { modo?: 'fijo' | 'hero' }) {
         <span className="text-xs tracking-[0.08em] text-muted-foreground [writing-mode:vertical-rl]">{t('ubicacion')}</span>
       </div>
       {modo === 'hero' && (
-        <span className="absolute bottom-3 right-0 z-[2] hidden w-[calc((100%-80rem)/2)] text-center font-doto text-xs font-black text-foreground min-[1360px]:block">
+        <span className="absolute bottom-3 right-0 z-[2] hidden w-16 text-center font-doto text-xs font-black text-foreground min-[1360px]:block">
           2.93°N
         </span>
       )}

@@ -21,7 +21,7 @@ export default function Hero() {
     <section className="relative">
       <Rieles />
       <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
-      <div className="container-main relative z-[2] pt-16 md:pt-[72px]">
+      <div className="contenedor-reticula relative z-[2] pt-16 md:pt-[72px]">
         <div className="grid md:grid-cols-4">
           <div className="relative order-first h-[88px] border-b border-guide md:order-none md:col-start-4 md:row-span-2 md:row-start-1 md:h-auto md:border-0">
             <CampoPuntos />
@@ -29,7 +29,7 @@ export default function Hero() {
 
           <div className="px-4 pb-8 pt-10 md:col-span-3 md:col-start-1 md:row-start-1 md:flex md:min-h-[300px] md:items-end md:px-6 md:pb-10 md:pt-16">
             <h1
-              className="entrada font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[3.25rem] xl:text-[3.625rem]"
+              className="entrada font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[3.25rem] xl:text-[3.625rem] min-[1600px]:text-[4.5rem]"
               style={paso(0)}
             >
               <WordmarkAnimado className="block text-[1.36em] leading-[0.95] sm:inline sm:text-[1em] sm:leading-[0.85]" />{' '}

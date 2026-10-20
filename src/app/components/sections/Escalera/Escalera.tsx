@@ -44,7 +44,7 @@ export default function Escalera() {
 
   return (
     <section id="services" ref={ref} className="relative">
-      <div className="container-main relative z-[2]">
+      <div className="contenedor-reticula relative z-[2]">
         {/* Como en el prototipo, los escalones cuelgan del pie del hero; el título queda para lectores de pantalla y SEO */}
         <h2 className="sr-only">{t('titulo')}. {t('subtitulo')}</h2>
         <ol className="flex flex-col gap-2 py-6 md:grid md:grid-cols-4 md:gap-0 md:py-0">
