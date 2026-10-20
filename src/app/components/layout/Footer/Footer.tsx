@@ -1,120 +1,59 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import Wordmark from '@/app/components/marca/Wordmark';
+import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
+import contactConfig from '@/config/contact.json';
+import { enlaceCorreo } from '@/lib/enlaces';
+import { cn } from '@/lib/utils';
 
-const Footer = () => {
+const enlace = 'inline-flex min-h-11 items-center gap-2 text-sm text-background/70 transition-colors hover:text-background';
+
+/** Pie de página en carbón con wordmark, navegación, redes e idioma. */
+export default function Footer({ conBarraMovil = false }: { conBarraMovil?: boolean }) {
   const t = useTranslations('Footer');
-  const params = useParams();
-  const lang = params.lang as string;
-  const year = new Date().getFullYear();
+  const { lang } = useParams<{ lang: string }>();
+  const anio = new Date().getFullYear();
 
-  const navigation = [
+  const navegacion = [
     { label: t('nav.home'), href: `/${lang}` },
-    { label: t('nav.about'), href: `/${lang}/about` },
     { label: t('nav.services'), href: `/${lang}/services` },
     { label: t('nav.portfolio'), href: `/${lang}/portfolio` },
+    { label: t('nav.about'), href: `/${lang}/about` },
     { label: t('nav.contact'), href: `/${lang}/contact` },
   ];
 
-  const resources = [
-    { label: t('resources.portfolio'), href: `/${lang}/portfolio` },
-    { label: t('resources.faq'), href: `/${lang}/#faq` },
-  ];
-
-  const social = [
-    { label: 'GitHub', href: 'https://github.com/SemocaDev', icon: Github },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-morea-cañon-5ba97729a/', icon: Linkedin },
-    { label: 'Email', href: 'mailto:semoca00@gmail.com', icon: Mail },
-  ];
-
   return (
-    <footer className="bg-card border-t border-border mt-auto relative overflow-hidden">
-      {/* Decorative pattern elements */}
-      <div className="absolute top-8 right-8 w-32 h-32 pattern-dots-sparse opacity-95 pointer-events-none" />
-
-      <div className="container-main relative z-10">
-        <div className="py-12">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            {/* Brand Column */}
-            <div>
-              <h3 className="text-xl font-bold text-primary mb-4 font-doto">DevMinds</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {t('tagline')}
-              </p>
-            </div>
-
-            {/* Navigation Column */}
-            <div>
-              <h4 className="font-semibold mb-4">{t('navigation')}</h4>
-              <ul className="space-y-2">
-                {navigation.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources Column */}
-            <div>
-              <h4 className="font-semibold mb-4">{t('resourcesTitle')}</h4>
-              <ul className="space-y-2">
-                {resources.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Social Column */}
-            <div>
-              <h4 className="font-semibold mb-4">{t('social')}</h4>
-              <ul className="space-y-3">
-                {social.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Icon className="w-4 h-4" />
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+    <footer className={cn('mt-auto bg-foreground text-background', conBarraMovil && 'pb-[76px] md:pb-0')}>
+      <div className="contenedor-reticula py-14">
+        <div className="grid gap-y-10 md:grid-cols-4">
+          <div className="px-4 md:px-6">
+            <Wordmark className="text-3xl" />
+            <p className="mt-3 max-w-xs text-sm text-background/70">{t('tagline')}</p>
+            <SelectorIdioma tono="oscuro" className="-ml-3 mt-5" />
           </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-dotted border-t-primary/20">
-            <p className="text-center text-sm text-muted-foreground font-mono">
-              {t('copyright', { year })}
-            </p>
+          <div className="px-4 md:px-6">
+            <h2 className="text-sm font-semibold">{t('navigation')}</h2>
+            <ul className="mt-2">
+              {navegacion.map((item) => (
+                <li key={item.href}><Link href={item.href} className={enlace}>{item.label}</Link></li>
+              ))}
+            </ul>
+          </div>
+          <div className="px-4 md:px-6">
+            <h2 className="text-sm font-semibold">{t('social')}</h2>
+            <ul className="mt-2">
+              <li><a href={contactConfig.socials.github} target="_blank" rel="noopener noreferrer" className={enlace}><Github className="size-4" />GitHub</a></li>
+              <li><a href={contactConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" className={enlace}><Linkedin className="size-4" />LinkedIn</a></li>
+              <li><a href={enlaceCorreo()} className={enlace}><Mail className="size-4" />{contactConfig.email}</a></li>
+            </ul>
           </div>
         </div>
+        <p className="mx-4 mt-12 border-t border-background/15 pt-6 text-sm text-background/60 md:mx-6">{t('copyright', { year: anio })}</p>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

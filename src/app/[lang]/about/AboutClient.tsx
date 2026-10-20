@@ -15,8 +15,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
-import SocialSidebar from '@/app/components/layout/SocialSidebar';
-import EmailSidebar from '@/app/components/layout/EmailSidebar';
+import Rieles from '@/app/components/reticula/Rieles';
 import {
   Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious,
   type CarouselApi,
@@ -190,8 +189,7 @@ export default function AboutClient({ members }: Props) {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
       <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+      <Rieles modo="fijo" />
 
       <main ref={mainRef} className="flex-1">
 

@@ -1,5 +1,7 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getFeaturedProjects } from '@/db/queries/projects';
+import { PREGUNTAS } from '@/config/preguntas';
+import { generateFAQSchema } from '@/lib/schemas/faq-schema';
 import HomeClient from './HomeClient';
 
 type Props = {
@@ -12,7 +14,22 @@ export default async function Home({ params }: Props) {
   const { lang } = await params;
   setRequestLocale(lang);
 
-  const featuredProjects = await getFeaturedProjects(lang);
+  const [featuredProjects, t] = await Promise.all([
+    getFeaturedProjects(lang),
+    getTranslations({ locale: lang, namespace: 'Home.preguntas' }),
+  ]);
 
-  return <HomeClient featuredProjects={featuredProjects} />;
+  const faqSchema = generateFAQSchema(
+    PREGUNTAS.map((id) => ({ question: t(`items.${id}.pregunta`), answer: t(`items.${id}.respuesta`) }))
+  );
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
+      />
+      <HomeClient featuredProjects={featuredProjects} />
+    </>
+  );
 }

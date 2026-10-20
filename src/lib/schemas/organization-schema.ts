@@ -11,27 +11,18 @@ export function generateOrganizationSchema(lang: string) {
     "@type": "Organization",
     "@id": `${baseUrl}/#organization`,
     "name": "DevMinds",
-    "legalName": "DevMinds - Desarrollo Web y Software",
     "url": baseUrl,
     "logo": `${baseUrl}/icon-512x512.svg`,
     "description": lang === 'es'
-      ? "Agencia de desarrollo web en Neiva, Colombia. Especialistas en Next.js, React, WordPress y software personalizado. Ingenieros de software con experiencia en aplicaciones web modernas y consultoría técnica."
-      : "Web development agency in Neiva, Colombia. Specialists in Next.js, React, WordPress and custom software. Software engineers with experience in modern web applications and technical consulting.",
+      ? "Estudio de software en Neiva, Huila. Páginas web, sistemas a medida y apps para negocios en Neiva, el Huila y toda Colombia."
+      : "Software studio based in Colombia. Websites, custom systems and mobile apps for businesses anywhere.",
     "foundingDate": "2024",
-    "founders": [
-      {
-        "@type": "Person",
-        "name": "Sebastian Morea Cañon",
-        "jobTitle": "Co-founder & Software Engineer",
-        "alumniOf": "Universidad Surcolombiana"
-      },
-      {
-        "@type": "Person",
-        "name": "Juan David Gomez Perez",
-        "jobTitle": "Co-founder & Software Engineer",
-        "alumniOf": "Universidad Surcolombiana"
-      }
-    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Sebastián Morea Cañón",
+      "jobTitle": "Founder & Software Engineer",
+      "alumniOf": "Universidad Surcolombiana"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Neiva",
@@ -76,14 +67,14 @@ export function generateLocalBusinessSchema(lang: string) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": "https://www.devminds.online/#localbusiness",
-    "name": "DevMinds - Desarrollo Web Neiva",
+    "name": "DevMinds",
     "alternateName": "DevMinds",
     "image": "https://www.devminds.online/icon-512x512.svg",
     "email": "semoca00@gmail.com",
     "url": "https://www.devminds.online",
     "description": lang === 'es'
-      ? "Agencia de desarrollo web profesional en Neiva, Huila. Diseño de páginas web, software personalizado, tiendas online y aplicaciones modernas con Next.js y React. Programadores en Colombia."
-      : "Professional web development agency in Neiva, Huila. Website design, custom software, online stores and modern applications with Next.js and React. Programmers in Colombia.",
+      ? "Estudio de software en Neiva, Huila: páginas web con SEO local, sistemas a medida, apps móviles y soporte para negocios de Neiva, el Huila y toda Colombia."
+      : "Software studio in Neiva, Colombia: websites, custom systems, mobile apps and support for businesses in Colombia and abroad.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Neiva",

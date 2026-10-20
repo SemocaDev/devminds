@@ -34,8 +34,7 @@ import {
 
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer/Footer";
-import SocialSidebar from "@/app/components/layout/SocialSidebar";
-import EmailSidebar from "@/app/components/layout/EmailSidebar";
+import Rieles from "@/app/components/reticula/Rieles";
 
 import { contactMessageSchema, type ContactFormData } from "@/core/domain/contact/schemas/contactMessageSchema";
 import contactConfig from "@/config/contact.json";
@@ -65,7 +64,7 @@ export default function ContactPage() {
           const error = result.errors[key as keyof typeof result.errors];
           if (error && error.message) {
             // Traducir el código de error
-            const translationKey = `validation.${error.message}` as any;
+            const translationKey = `validation.${error.message}`;
             const translated = t(translationKey);
 
             // Actualizar el mensaje con la traducción
@@ -261,8 +260,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+      <Rieles modo="fijo" />
 
       <div className="min-h-screen flex flex-col">
         {/* Hero */}

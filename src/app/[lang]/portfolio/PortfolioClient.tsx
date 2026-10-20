@@ -14,8 +14,7 @@ import { ExternalLink, Github, Code2 } from 'lucide-react';
 import Image from 'next/image';
 import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
-import SocialSidebar from '@/app/components/layout/SocialSidebar';
-import EmailSidebar from '@/app/components/layout/EmailSidebar';
+import Rieles from '@/app/components/reticula/Rieles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,8 +56,7 @@ export default function PortfolioClient({ projects, categories }: Props) {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
       <Navbar />
-      <SocialSidebar />
-      <EmailSidebar />
+      <Rieles modo="fijo" />
 
       <main ref={mainRef} className="flex-1">
         <section className="section-spacing bg-background">

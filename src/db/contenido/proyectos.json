@@ -1,0 +1,57 @@
+{
+  "categorias": [
+    { "id": "wordpress", "sortOrder": 1, "nombres": { "es": "Páginas web", "en": "Websites", "ja": "ウェブサイト" } },
+    { "id": "custom-code", "sortOrder": 2, "nombres": { "es": "Sistemas a medida", "en": "Custom systems", "ja": "カスタムシステム" } },
+    { "id": "web-app", "sortOrder": 3, "nombres": { "es": "Aplicaciones web", "en": "Web apps", "ja": "ウェブアプリ" } }
+  ],
+  "proyectos": [
+    {
+      "id": "ldevminds", "category": "web-app", "client": null,
+      "textos": {
+        "es": { "title": "DevMinds Links", "description": "Acortador de enlaces y páginas link-in-bio con analíticas, para compartir todo desde un solo enlace.", "fullDescription": "Plataforma propia para acortar enlaces y crear páginas link-in-bio personalizables. Mide cada clic, permite elegir colores y estilos sin tocar código y gestiona usuarios con roles. Disponible en español, inglés y japonés." },
+        "en": { "title": "DevMinds Links", "description": "Link shortener and link-in-bio pages with analytics, so you can share everything from a single link.", "fullDescription": "Our own platform to shorten links and build customizable link-in-bio pages. It tracks every click, lets you pick colors and styles without code, and manages users with roles. Available in Spanish, English and Japanese." },
+        "ja": { "title": "DevMinds Links", "description": "アナリティクス付きのURL短縮とリンクインバイオページ。ひとつのリンクですべてを共有できます。", "fullDescription": "リンクの短縮と、カスタマイズ可能なリンクインバイオページを作成できる自社プラットフォーム。クリックごとの計測、コード不要の色・スタイル設定、ロールによるユーザー管理に対応。スペイン語・英語・日本語で利用できます。" }
+      }
+    },
+    {
+      "id": "softcount", "category": "custom-code", "client": null,
+      "textos": {
+        "es": { "title": "RMConta - Software contable", "description": "Contabilidad y facturación electrónica para pymes colombianas, conectada con la DIAN.", "fullDescription": "Software contable propio para pequeñas y medianas empresas en Colombia. Reúne la contabilidad y la facturación electrónica validada ante la DIAN para dejar atrás las hojas de cálculo y los procesos manuales." },
+        "en": { "title": "RMConta - Accounting software", "description": "Accounting and electronic invoicing for small businesses in Colombia, connected to the national tax authority (DIAN).", "fullDescription": "Our own accounting software for small and medium businesses in Colombia. It brings bookkeeping and DIAN-validated electronic invoicing together, replacing spreadsheets and manual work." },
+        "ja": { "title": "RMConta - 会計ソフトウェア", "description": "コロンビアの中小企業向け会計・電子請求ソフト。税務当局(DIAN)と連携。", "fullDescription": "コロンビアの中小企業向けに開発した自社会計ソフトウェア。会計と、DIANで検証される電子請求をひとつにまとめ、表計算や手作業から解放します。" }
+      }
+    },
+    {
+      "id": "wilson-isaza", "category": "wordpress", "client": "Wilson Isaza",
+      "textos": {
+        "es": { "title": "Wilson Isaza - Sitio de campaña", "description": "Sitio de campaña para que los votantes conozcan sus propuestas y su trayectoria.", "fullDescription": "Sitio web en WordPress para la campaña de Wilson Isaza. Reúne sus propuestas, su trayectoria y las noticias de la campaña en un solo lugar fácil de actualizar, pensado para leerse bien en el celular." },
+        "en": { "title": "Wilson Isaza - Campaign website", "description": "Campaign website so voters can get to know his proposals and track record.", "fullDescription": "WordPress website for Wilson Isaza's campaign. It brings his proposals, background and campaign news together in one place that is easy to update and reads well on phones." },
+        "ja": { "title": "Wilson Isaza - 選挙キャンペーンサイト", "description": "有権者が政策と経歴を知るためのキャンペーンサイト。", "fullDescription": "Wilson Isaza氏の選挙キャンペーン用WordPressサイト。政策、経歴、ニュースを更新しやすい形でひとつにまとめ、スマートフォンでも読みやすく設計しました。" }
+      }
+    },
+    {
+      "id": "empo-guzman", "category": "wordpress", "client": "Empo Guzmán",
+      "textos": {
+        "es": { "title": "Empo Guzmán - Sitio institucional", "description": "Sitio institucional para que los usuarios encuentren fácil la información de la empresa de servicios públicos.", "fullDescription": "Sitio web institucional hecho en Wix para Empo Guzmán, empresa de servicios públicos. Organiza la información para los usuarios en un sitio sencillo que el equipo puede actualizar sin ayuda técnica." },
+        "en": { "title": "Empo Guzmán - Institutional website", "description": "Institutional website so residents can easily find the utility company's information.", "fullDescription": "Institutional website built on Wix for Empo Guzmán, a public utility company. It organizes information for residents in a simple site the team can update without technical help." },
+        "ja": { "title": "Empo Guzmán - 公式サイト", "description": "公共サービス企業の情報を住民が見つけやすい公式サイト。", "fullDescription": "公共サービス企業Empo GuzmánのためにWixで制作した公式サイト。住民向けの情報をわかりやすく整理し、チームが専門知識なしで更新できます。" }
+      }
+    },
+    {
+      "id": "sabajon-portafolio", "category": "wordpress", "client": null,
+      "textos": {
+        "es": { "title": "Sabajón - Landing de ejemplo", "description": "Ejemplo de landing para un negocio local, pensada para aparecer en Google y convertir visitas en clientes.", "fullDescription": "Proyecto de ejemplo para un negocio ficticio de sabajón artesanal en Neiva. Muestra cómo trabajamos una landing para negocios locales: carga rápida, optimizada para búsquedas locales en Google y con una estructura pensada para convertir visitas en clientes." },
+        "en": { "title": "Sabajón - Sample landing page", "description": "Sample landing page for a local business, built to show up on Google and turn visits into customers.", "fullDescription": "Sample project for a fictional craft sabajón shop in Neiva, Colombia. It shows how we approach landing pages for local businesses: fast loading, optimized for local search, and structured to turn visitors into customers." },
+        "ja": { "title": "Sabajón - LPサンプル", "description": "地域ビジネス向けLPのサンプル。Google検索に強く、訪問者をお客様に変える設計。", "fullDescription": "コロンビア・ネイバの架空の手作りサバホン店のためのサンプルプロジェクト。高速表示、地域検索への最適化、訪問者をお客様に変える構成など、地域ビジネス向けLPの作り方を示しています。" }
+      }
+    },
+    {
+      "id": "devminds-portfolio", "category": "wordpress", "client": null,
+      "textos": {
+        "es": { "title": "DevMinds - Este sitio", "description": "El sitio que estás viendo: en tres idiomas, rápido y pensado primero para el celular.", "fullDescription": "Sitio de DevMinds en español, inglés y japonés. Muestra los servicios y proyectos del estudio, carga rápido y está diseñado primero para el celular." },
+        "en": { "title": "DevMinds - This website", "description": "The site you are looking at: three languages, fast, and designed mobile-first.", "fullDescription": "DevMinds website in Spanish, English and Japanese. It presents the studio's services and projects, loads fast and is designed mobile-first." },
+        "ja": { "title": "DevMinds - このサイト", "description": "ご覧のサイト。3言語対応、高速、モバイルファースト設計。", "fullDescription": "スペイン語・英語・日本語に対応したDevMindsのサイト。スタジオのサービスと実績を紹介し、高速表示とモバイルファーストで設計しています。" }
+      }
+    }
+  ]
+}

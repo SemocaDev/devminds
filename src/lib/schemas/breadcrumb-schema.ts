@@ -27,7 +27,7 @@ export function generateBreadcrumbSchema(pathname: string, lang: string) {
 
   // Construir el path acumulativo
   let currentPath = '';
-  segments.forEach((segment, index) => {
+  segments.forEach((segment) => {
     // Saltar el segmento de idioma
     if (segment === lang || segment === 'es' || segment === 'en' || segment === 'ja') {
       return;

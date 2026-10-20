@@ -9,10 +9,30 @@ import SortableImageGrid from './SortableImageGrid';
 const LOCALES = ['es', 'en', 'ja'] as const;
 const LOCALE_LABELS = { es: 'Español', en: 'English', ja: '日本語' };
 
+type Traducciones = Record<'es' | 'en' | 'ja', string>;
+
+/** Proyecto existente tal como lo arma la página de edición, para precargar el formulario. */
+type ProyectoInicial = {
+  id?: string;
+  slug?: string;
+  category?: string;
+  technologies?: string[];
+  images?: string[];
+  gradient?: string;
+  featured?: boolean | null;
+  github?: string | null;
+  demo?: string | null;
+  year?: number;
+  client?: string | null;
+  duration?: string | null;
+  sortOrder?: number | null;
+  translations?: { title: Traducciones; description: Traducciones; fullDescription: Traducciones };
+};
+
 const CATEGORY_OPTIONS = [
-  { value: 'web-app', label: 'Aplicación Web' },
-  { value: 'wordpress', label: 'WordPress / CMS' },
-  { value: 'custom-code', label: 'Software a Medida' },
+  { value: 'wordpress', label: 'Página web' },
+  { value: 'custom-code', label: 'Sistema a medida' },
+  { value: 'web-app', label: 'Aplicación web' },
 ];
 
 const GRADIENT_OPTIONS = [
@@ -29,7 +49,7 @@ const GRADIENT_OPTIONS = [
 type Props = {
   onSubmit: (data: Record<string, unknown>) => Promise<void>;
   saving: boolean;
-  initialData?: any;
+  initialData?: ProyectoInicial | null;
   isEdit?: boolean;
 };
 
@@ -332,7 +352,7 @@ export default function ProjectForm({ onSubmit, saving, initialData, isEdit }: P
             <input className={fieldInput('github')} value={form.github}
               onChange={e => updateField('github', e.target.value)} placeholder="https://github.com/..." />
             {errors.github && <p className={errorClass}>{errors.github}</p>}
-            <p className="text-xs text-gray-500 mt-1">Vacío = "Proyecto Privado"</p>
+            <p className="text-xs text-gray-500 mt-1">Vacío = “Proyecto Privado”</p>
           </div>
           <div>
             <label className={labelClass}>Demo <span className="text-gray-500 font-normal">(opcional)</span></label>
