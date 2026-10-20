@@ -11,13 +11,13 @@ import type { ProjectWithTranslation } from '@/db/queries/projects';
 import type { TeamMemberWithTranslation } from '@/db/queries/team';
 
 // Secciones bajo el fold: su JS (y sus ScrollTrigger) se cargan después del hero.
-// Temporal: las secciones viejas siguen hasta que su reemplazo exista (Tareas 11-15).
 const Escalera = dynamic(() => import('@/app/components/sections/Escalera/Escalera'));
 const Projects = dynamic(() => import('@/app/components/sections/Projects/Projects'));
 const Process = dynamic(() => import('@/app/components/sections/Process/Process'));
 const QuienesSomos = dynamic(() => import('@/app/components/sections/QuienesSomos/QuienesSomos'));
-const FAQ = dynamic(() => import('@/app/components/sections/FAQ/FAQ'));
-const ContactCTA = dynamic(() => import('@/app/components/sections/ContactCTA/ContactCTA'));
+// Import estático a propósito: con next/dynamic, los ids de useId del acordeón (Radix) difieren entre servidor y cliente.
+import FAQ from '@/app/components/sections/FAQ/FAQ';
+const Cierre = dynamic(() => import('@/app/components/sections/Cierre/Cierre'));
 
 type Props = {
   featuredProjects: ProjectWithTranslation[];
@@ -42,7 +42,7 @@ export default function HomeClient({ featuredProjects, fundador }: Props) {
         <DivisorSeccion />
         <FAQ />
         <DivisorSeccion />
-        <ContactCTA />
+        <Cierre />
       </main>
       <Footer conBarraMovil />
       <BarraMovil />

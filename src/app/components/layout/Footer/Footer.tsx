@@ -28,14 +28,14 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
 
   return (
     <footer className={cn('mt-auto bg-foreground text-background', conBarraMovil && 'pb-[76px] md:pb-0')}>
-      <div className="contenedor-reticula py-14 md:px-10">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
+      <div className="contenedor-reticula py-14">
+        <div className="grid gap-y-10 md:grid-cols-4">
+          <div className="px-4 md:px-6">
             <Wordmark className="text-3xl" />
             <p className="mt-3 max-w-xs text-sm text-background/70">{t('tagline')}</p>
             <SelectorIdioma tono="oscuro" className="-ml-3 mt-5" />
           </div>
-          <div>
+          <div className="px-4 md:px-6">
             <h2 className="text-sm font-semibold">{t('navigation')}</h2>
             <ul className="mt-2">
               {navegacion.map((item) => (
@@ -43,7 +43,7 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
               ))}
             </ul>
           </div>
-          <div>
+          <div className="px-4 md:px-6">
             <h2 className="text-sm font-semibold">{t('social')}</h2>
             <ul className="mt-2">
               <li><a href={contactConfig.socials.github} target="_blank" rel="noopener noreferrer" className={enlace}><Github className="size-4" />GitHub</a></li>
@@ -52,7 +52,7 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
             </ul>
           </div>
         </div>
-        <p className="mt-12 border-t border-background/15 pt-6 text-sm text-background/60">{t('copyright', { year: anio })}</p>
+        <p className="mx-4 mt-12 border-t border-background/15 pt-6 text-sm text-background/60 md:mx-6">{t('copyright', { year: anio })}</p>
       </div>
     </footer>
   );
