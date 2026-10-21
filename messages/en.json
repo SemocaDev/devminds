@@ -22,13 +22,6 @@
       "description": "Real projects by DevMinds: accounting systems, websites and apps for businesses. See what was built in each one and why."
     }
   },
-  "Menu": {
-    "projects": "PROJECTS",
-    "services": "SERVICES",
-    "about": "ABOUT",
-    "contact": "CONTACT",
-    "soon": "COMING SOON"
-  },
   "Navbar": {
     "about": "About",
     "services": "Services",
@@ -47,12 +40,9 @@
       "home": "Home",
       "about": "About",
       "services": "Services",
-      "portfolio": "Portfolio",
+      "portfolio": "Work",
       "contact": "Contact"
     }
-  },
-  "LoadingScreen": {
-    "loading": "Loading experience..."
   },
   "NotFound": {
     "titulo": "This sheet isn't on the plan.",

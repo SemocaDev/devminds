@@ -11,14 +11,10 @@ const enlace = 'text-muted-foreground transition-colors hover:text-primary';
  * Rieles en los márgenes fuera del marco (≥ 1360px).
  * `hero`: anclados a la sección que los contiene (arrancan en la cruz bajo la navbar).
  * `pagina`: como `hero` pero solo el riel izquierdo; a la derecha está la cartela de las páginas internas.
- * `fijo`: pegados a la ventana, para las páginas que aún no usan la retícula.
  */
-export default function Rieles({ modo = 'hero' }: { modo?: 'fijo' | 'hero' | 'pagina' }) {
+export default function Rieles({ modo = 'hero' }: { modo?: 'hero' | 'pagina' }) {
   const t = useTranslations('Home.rieles');
-  const lado = cn(
-    'z-[2] hidden w-16 flex-col items-center gap-5 min-[1360px]:flex',
-    modo === 'fijo' ? 'fixed bottom-8' : 'absolute top-[88px]'
-  );
+  const lado = 'absolute top-[88px] z-[2] hidden w-16 flex-col items-center gap-5 min-[1360px]:flex';
   return (
     <>
       <div className={cn(lado, 'left-0')}>

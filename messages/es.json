@@ -22,13 +22,6 @@
       "description": "Proyectos reales de DevMinds: sistemas contables, páginas web y apps para negocios de Neiva, el Huila y Colombia. Mira qué se hizo en cada uno."
     }
   },
-  "Menu": {
-    "projects": "PROYECTOS",
-    "services": "SERVICIOS",
-    "about": "NOSOTROS",
-    "contact": "CONTACTO",
-    "soon": "PRÓXIMAMENTE"
-  },
   "Navbar": {
     "about": "Nosotros",
     "services": "Servicios",
@@ -47,12 +40,9 @@
       "home": "Inicio",
       "about": "Nosotros",
       "services": "Servicios",
-      "portfolio": "Portfolio",
+      "portfolio": "Trabajos",
       "contact": "Contacto"
     }
-  },
-  "LoadingScreen": {
-    "loading": "Cargando experiencia..."
   },
   "NotFound": {
     "titulo": "Esta hoja no está en el plano.",
