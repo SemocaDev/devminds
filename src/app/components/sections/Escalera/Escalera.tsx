@@ -7,20 +7,28 @@ import { useTranslations } from 'next-intl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
+import CampoPuntos from '@/app/components/reticula/CampoPuntos';
 import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// `orden`: posición en el mosaico móvil de 2 columnas, [web · puntos] [sistemas · apps] [puntos · soporte].
 const PASOS = [
-  { clave: 'web', ancla: 'webdev', alto: 'md:h-[260px]', margen: 'mr-9', fondo: 'bg-primary text-primary-foreground', tenue: 'text-primary-foreground' },
-  { clave: 'sistemas', ancla: 'custom', alto: 'md:h-[260px]', margen: 'mr-6', fondo: 'bg-secondary text-foreground', tenue: 'text-muted-foreground' },
-  { clave: 'apps', ancla: 'custom', alto: 'md:h-[260px]', margen: 'mr-3', fondo: 'bg-surface-3 text-foreground', tenue: 'text-muted-foreground' },
-  { clave: 'soporte', ancla: 'consulting', alto: 'md:h-[260px]', margen: 'mr-0', fondo: 'bg-foreground text-background', tenue: 'text-background/70' },
+  { clave: 'web', ancla: 'webdev', orden: 'order-1', fondo: 'bg-primary text-primary-foreground', tenue: 'text-primary-foreground' },
+  { clave: 'sistemas', ancla: 'custom', orden: 'order-3', fondo: 'bg-secondary text-foreground', tenue: 'text-muted-foreground' },
+  { clave: 'apps', ancla: 'custom', orden: 'order-4', fondo: 'bg-surface-3 text-foreground', tenue: 'text-muted-foreground' },
+  { clave: 'soporte', ancla: 'consulting', orden: 'order-6', fondo: 'bg-foreground text-background', tenue: 'text-background/70' },
 ] as const;
 
-/** La oferta como camino que crece con el negocio. Es el elemento firma de la home. */
+const celdaPuntos = 'relative bg-background md:hidden';
+
+/**
+ * La oferta como camino que crece con el negocio. Es el elemento firma de la home.
+ * Escritorio: cuatro escalones colgando del hero. Móvil: mosaico con celdas de puntos y, debajo, el párrafo del hero.
+ */
 export default function Escalera() {
   const t = useTranslations('Home.escalera');
+  const tHome = useTranslations('Home');
   const { lang } = useParams<{ lang: string }>();
   const ref = useRef<HTMLElement>(null);
 
@@ -47,26 +55,29 @@ export default function Escalera() {
       <div className="contenedor-reticula relative z-[2]">
         {/* Como en el prototipo, los escalones cuelgan del pie del hero; el título queda para lectores de pantalla y SEO */}
         <h2 className="sr-only">{t('titulo')}. {t('subtitulo')}</h2>
-        <ol className="flex flex-col gap-2 py-6 md:grid md:grid-cols-4 md:gap-0 md:py-0">
+        <ol className="grid grid-cols-2 gap-px border-b border-guide bg-guide md:grid-cols-4 md:gap-0 md:border-0 md:bg-transparent">
           {PASOS.map((p) => (
-            <li key={p.clave} data-escalon className={cn(p.margen, 'md:mr-0')}>
+            <li key={p.clave} data-escalon className={cn(p.orden, 'md:order-none')}>
               <Link
                 href={`/${lang}/services#${p.ancla}`}
-                className={cn('group flex h-full flex-col rounded-xl p-5 md:rounded-none md:p-6', p.fondo, p.alto)}
+                className={cn('group flex h-full min-h-[156px] flex-col p-4 md:min-h-[260px] md:p-6', p.fondo)}
               >
                 <span className={cn('flex items-start justify-between gap-3 text-[13px] font-medium', p.tenue)}>
                   {t(`pasos.${p.clave}.etiqueta`)}
                   <ArrowUpRight className="size-4 shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
-                <span className="mt-1 font-display text-xl font-bold tracking-[-0.015em] md:text-[1.375rem]">{t(`pasos.${p.clave}.titulo`)}</span>
-                <span className={cn('mt-2 text-[15px] leading-snug', p.tenue)}>{t(`pasos.${p.clave}.texto`)}</span>
+                <span className="mt-1 font-display text-lg font-bold leading-tight tracking-[-0.015em] md:text-[1.375rem] md:leading-normal">{t(`pasos.${p.clave}.titulo`)}</span>
+                <span className={cn('mt-2 hidden text-[15px] leading-snug sm:block', p.tenue)}>{t(`pasos.${p.clave}.texto`)}</span>
                 {t.has(`pasos.${p.clave}.tiempo`) && (
-                  <span className="mt-auto pt-4 font-doto text-xl font-black tracking-[-0.03em]">{t(`pasos.${p.clave}.tiempo`)}</span>
+                  <span className="mt-auto pt-4 font-doto text-lg font-black tracking-[-0.03em] md:text-xl">{t(`pasos.${p.clave}.tiempo`)}</span>
                 )}
               </Link>
             </li>
           ))}
+          <li aria-hidden className={cn(celdaPuntos, 'order-2')}><CampoPuntos /></li>
+          <li aria-hidden className={cn(celdaPuntos, 'order-5')}><CampoPuntos /></li>
         </ol>
+        <p className="px-4 py-8 text-[17px] leading-relaxed text-muted-foreground md:hidden">{tHome('hero.texto')}</p>
       </div>
     </section>
   );
