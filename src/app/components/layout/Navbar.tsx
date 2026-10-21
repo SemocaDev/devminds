@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import Wordmark from '@/app/components/marca/Wordmark';
+import LogoHorizontal from '@/app/components/marca/LogoHorizontal';
 import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
 import { enlaceWhatsApp } from '@/lib/enlaces';
 import { cn } from '@/lib/utils';
@@ -69,8 +69,8 @@ const Navbar = () => {
     >
       <div className="contenedor-reticula">
         <div className="grid h-16 grid-cols-[1fr_auto] items-center md:h-[72px] lg:grid-cols-4">
-          <Link href={`/${lang}`} aria-label="DevMinds" className="justify-self-start px-4 text-[22px] text-foreground transition-opacity hover:opacity-75 md:px-6">
-            <Wordmark />
+          <Link href={`/${lang}`} className="justify-self-start px-4 transition-opacity hover:opacity-75 md:px-6">
+            <LogoHorizontal alto={24} prioridad />
           </Link>
 
           <ul className="hidden items-center gap-7 px-6 lg:col-span-2 lg:flex">
@@ -100,7 +100,7 @@ const Navbar = () => {
               <SheetContent side="right" className="flex w-[300px] flex-col p-0">
                 <SheetTitle className="sr-only">{t('menu')}</SheetTitle>
                 <div className="flex h-16 items-center border-b border-border px-5">
-                  <Wordmark className="text-xl" />
+                  <LogoHorizontal alto={20} />
                 </div>
                 <ul className="flex flex-col p-3">
                   {items.map((item) => (

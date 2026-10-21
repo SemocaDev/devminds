@@ -30,6 +30,9 @@
     --guide: 207 14% 84.9%;
     --guide-soft: 207 20% 91.4%;
     --dots: 218 18% 12% / 0.26;
+    /* Fijos: no cambian dentro de las bandas de color */
+    --carbon: 218 18% 12%;
+    --nieve: 216 56% 98.2%;
     --radius: 0.75rem;
   }
 
@@ -496,3 +499,31 @@
 .wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
 .wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
 .wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }
+
+/* Bandas de color de la home: redefinen los tokens dentro de la sección, así Reticula, Cruz, CampoPuntos
+   y el texto se adaptan sin variantes. Fuera de @layer por la misma razón que el wordmark. */
+.banda-carbon {
+  --background: 218 18% 12%;
+  --foreground: 216 56% 98.2%;
+  --muted-foreground: 213 12% 72%;
+  --primary: 16 68% 62%;
+  --border: 216 14% 24%;
+  --guide: 216 14% 23%;
+  --guide-soft: 216 15% 18%;
+  --dots: 216 56% 98.2% / 0.2;
+  --ring: 16 68% 62%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+.banda-acento {
+  --background: 16 60% 44.5%;
+  --foreground: 210 67% 98.8%;
+  --muted-foreground: 210 67% 98.8%;
+  --border: 16 46% 54%;
+  --guide: 16 46% 54%;
+  --guide-soft: 16 50% 50%;
+  --dots: 210 67% 98.8% / 0.3;
+  --ring: 210 67% 98.8%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}

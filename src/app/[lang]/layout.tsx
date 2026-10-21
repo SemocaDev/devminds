@@ -36,6 +36,7 @@ const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["600"], variable: "-
 const instrument = Instrument_Serif({ subsets: ["latin"], weight: ["400"], style: ["italic"], variable: "--font-instrument", display: "swap", preload: false });
 
 import { locales, Locale } from '@/config/i18n-config';
+import { imagenOg } from '@/lib/og';
 
 type Props = {
   children: React.ReactNode;
@@ -56,6 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = t('home.description');
   const keywords = t('home.keywords');
 
+  const og = imagenOg(lang);
+
   return {
     title,
     description,
@@ -65,6 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
         { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
         { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
         { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
@@ -88,14 +92,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: 'DevMinds',
-      images: [
-        {
-          url: 'https://www.devminds.online/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'DevMinds - Desarrollo Web Profesional en Neiva, Colombia',
-        }
-      ],
+      images: [og],
     },
 
     // Twitter Card
@@ -104,7 +101,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       creator: '@devminds',
-      images: ['https://www.devminds.online/og-image.jpg'],
+      images: [og.url],
     },
 
     // Robots y indexación

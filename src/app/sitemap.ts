@@ -4,18 +4,23 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.devminds.online'
 
-  const routes = ['', '/about', '/services', '/portfolio', '/contact']
+  // Fecha del último cambio real de contenido de cada ruta. Actualízala al cambiar esa página:
+  // con new Date() cada build decía "modificado hoy" y Google deja de confiar en el dato.
+  const routes: Record<string, string> = {
+    '': '2026-10-21',
+    '/about': '2026-10-21',
+    '/services': '2026-10-21',
+    '/portfolio': '2026-10-21',
+    '/contact': '2026-10-21',
+  }
   const languages = ['es', 'en', 'ja']
-
-  // Usar fecha dinámica para que Google detecte cambios en cada build
-  const now = new Date()
 
   const urls: MetadataRoute.Sitemap = []
 
   // No incluir baseUrl sin idioma — redirige a /es y genera duplicado
 
   languages.forEach(lang => {
-    routes.forEach(route => {
+    Object.entries(routes).forEach(([route, fecha]) => {
       let priority = 0.8
       let changeFrequency: 'weekly' | 'monthly' = 'weekly'
 
@@ -37,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       urls.push({
         url: `${baseUrl}/${lang}${route}`,
-        lastModified: now,
+        lastModified: new Date(fecha),
         changeFrequency,
         priority,
         alternates: {
