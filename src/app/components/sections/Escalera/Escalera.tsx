@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 gsap.registerPlugin(ScrollTrigger);
 
 const PASOS = [
-  { clave: 'web', ancla: 'webdev', alto: 'md:h-[260px]', margen: 'mr-9', fondo: 'bg-primary text-primary-foreground', tenue: 'text-primary-foreground/80' },
+  { clave: 'web', ancla: 'webdev', alto: 'md:h-[260px]', margen: 'mr-9', fondo: 'bg-primary text-primary-foreground', tenue: 'text-primary-foreground' },
   { clave: 'sistemas', ancla: 'custom', alto: 'md:h-[260px]', margen: 'mr-6', fondo: 'bg-secondary text-foreground', tenue: 'text-muted-foreground' },
   { clave: 'apps', ancla: 'custom', alto: 'md:h-[260px]', margen: 'mr-3', fondo: 'bg-surface-3 text-foreground', tenue: 'text-muted-foreground' },
   { clave: 'soporte', ancla: 'consulting', alto: 'md:h-[260px]', margen: 'mr-0', fondo: 'bg-foreground text-background', tenue: 'text-background/70' },
