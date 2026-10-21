@@ -7,7 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/pattern-test', '/tech-stack-test'],
+        // /_next/ no se bloquea: Google necesita sus JS y CSS para renderizar la página.
+        disallow: ['/api/', '/admin'],
       },
     ],
     sitemap: 'https://www.devminds.online/sitemap.xml',
