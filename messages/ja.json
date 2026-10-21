@@ -6,24 +6,24 @@
       "keywords": "ソフトウェア開発 コロンビア, ニアショア開発, ウェブ制作, カスタムシステム開発, モバイルアプリ開発"
     },
     "services": {
-      "title": "ウェブ開発サービス | ウェブサイト・ソフトウェア・アプリ - DevMinds",
-      "description": "プロフェッショナルなウェブ開発サービス。カスタムウェブサイト、ソフトウェアソリューション、ECサイト、WordPress、Next.jsアプリ。無料見積もり。",
-      "keywords": "ウェブ開発サービス, ウェブサイト制作, カスタムソフトウェア開発, ECサイト構築, WordPress開発, ウェブアプリ開発"
+      "title": "ウェブサイト・カスタムシステム・モバイルアプリ | DevMinds",
+      "description": "各サービスの内容、期間、進め方。検索に強いウェブサイト、業務システム、モバイルアプリ、運用サポートまで。"
     },
     "about": {
-      "title": "会社概要 - DevMinds | コロンビアのソフトウェアエンジニア",
-      "description": "DevMindsはコロンビア・ネイバのソフトウェア開発会社です。Next.js、React、TypeScriptを専門とするエンジニアチーム。",
-      "keywords": "ソフトウェア会社 コロンビア, ウェブ開発チーム, ソフトウェアエンジニア, 開発会社"
+      "title": "DevMindsについて:コロンビアのソフトウェアスタジオ",
+      "description": "DevMindsはソフトウェアエンジニアのセバスティアン・モレアが立ち上げたスタジオです。設計し、開発する本人と直接やり取りできます。"
     },
     "contact": {
-      "title": "無料見積もり | お問い合わせ - DevMinds",
-      "description": "ウェブプロジェクトの無料見積もり。ウェブサイト、カスタムソフトウェア、ECサイトの開発。24時間以内に返信します。",
-      "keywords": "ウェブ開発 見積もり, お問い合わせ, ウェブサイト費用, 開発依頼"
+      "title": "お問い合わせ:プロジェクトについて話しましょう | DevMinds",
+      "description": "WhatsApp、メール、電話でご連絡ください。24時間以内に返信します。初回相談は無料です。"
     },
     "portfolio": {
-      "title": "開発実績・ポートフォリオ | DevMinds",
-      "description": "ウェブ開発プロジェクトの実績。ウェブサイト、ウェブアプリ、カスタムソフトウェアの開発事例をご覧ください。",
-      "keywords": "開発実績, ポートフォリオ, ウェブプロジェクト事例, ウェブサイト制作例"
+      "title": "制作実績:ウェブサイトとソフトウェア | DevMinds",
+      "description": "DevMindsの実際のプロジェクト。会計システム、ウェブサイト、アプリなど、それぞれで何をつくったかをご覧ください。"
+    },
+    "notFound": {
+      "title": "ページが見つかりません | DevMinds",
+      "description": "お探しのページは存在しないか、移動しました。"
     }
   },
   "Menu": {
@@ -34,41 +34,13 @@
     "soon": "近日公開"
   },
   "Navbar": {
-    "home": "ホーム",
-    "portfolio": "ポートフォリオ",
     "about": "私たちについて",
     "services": "サービス",
     "projects": "実績",
-    "process": "進め方",
-    "faq": "よくある質問",
     "contact": "お問い合わせ",
     "startProject": "相談する",
     "menu": "メニュー",
     "idioma": "言語"
-  },
-  "Contact": {
-    "title": "プロジェクトについてお話しましょう",
-    "subtitle": "アイデアはありますか? お聞かせください。一緒に実現させましょう",
-    "form": {
-      "name": "お名前",
-      "namePlaceholder": "お名前をフルネームで",
-      "email": "メールアドレス",
-      "emailPlaceholder": "your@email.com",
-      "message": "メッセージ",
-      "messagePlaceholder": "プロジェクトについてお聞かせください...",
-      "submit": "メッセージを送信"
-    },
-    "info": {
-      "responseTime": {
-        "title": "迅速な対応",
-        "description": "24時間以内にすべてのメッセージに返信します"
-      },
-      "email": {
-        "title": "直接お問い合わせ",
-        "description": "semoca00@gmail.com"
-      }
-    },
-    "detailedContact": "その他のお問い合わせ方法"
   },
   "Footer": {
     "copyright": "© {year} DevMinds. 無断転載を禁じます。",
@@ -96,180 +68,6 @@
     "servicesLink": "サービス",
     "projectsLink": "プロジェクト",
     "contactLink": "お問い合わせ"
-  },
-  "Portfolio": {
-    "pageLabel": "ポートフォリオ",
-    "label": "ポートフォリオ",
-    "title": "ポートフォリオ",
-    "subtitle": "完成したプロジェクトとクライアントのために行った作業をご覧ください",
-    "description": "説明",
-    "technologies": "使用技術",
-    "viewDemo": "デモを見る",
-    "viewCode": "コードを見る",
-    "noDemo": "非公開プロジェクト",
-    "categories": {
-      "all": "すべて",
-      "web-app": "ウェブアプリケーション",
-      "wordpress": "WordPress",
-      "custom-code": "Wix/テンプレート"
-    },
-    "projects": {
-      "softcount": {
-        "title": "SoftCount - 会計ソフトウェア",
-        "description": "プロフェッショナル会計ソフトウェア(開発中)",
-        "fullDescription": "SoftCountは、Next.js、TypeScript、PostgreSQLで開発された会計ソフトウェアです。完全な会計および財務管理ソリューションを提供するために設計された開発中の自社プロジェクトです。"
-      },
-      "wilson-isaza": {
-        "title": "Wilson Isaza - 政治サイト",
-        "description": "政治家向けWordPressウェブサイト",
-        "fullDescription": "政治家Wilson Isaza向けにWordPressで開発されたウェブサイト。政治キャンペーン用のプロフェッショナルな情報プラットフォーム。"
-      },
-      "empo-guzman": {
-        "title": "Empo Guzmán - 公共企業サイト",
-        "description": "Wixで作成された公共企業向けウェブサイト",
-        "fullDescription": "公共企業に焦点を当てたEmpo Guzmán向けにWixで開発されたウェブサイト。カスタマイズされたテンプレートを使用したデザイン。"
-      },
-      "devminds-portfolio": {
-        "title": "DevMinds - プロフェッショナルポートフォリオ",
-        "description": "ご覧いただいているこのウェブサイト",
-        "fullDescription": "Next.js 16、TypeScript、TailwindCSS、Framer Motionで開発されたプロフェッショナルポートフォリオ。多言語i18nシステム(ES、EN、JA)、スムーズなアニメーション、モダンなレスポンシブデザインを含みます。"
-      }
-    }
-  },
-  "About": {
-    "pageLabel": "会社概要",
-    "title": "チーム",
-    "subtitle": "アイデアを実現する人々をご紹介します",
-    "foundersTitle": "創業者",
-    "teamTitle": "チーム",
-    "contact": "お問い合わせ",
-    "hierarchy": {
-      "founder": "創業者",
-      "co-founder": "共同創業者",
-      "developer": "開発者",
-      "designer": "デザイナー",
-      "marketing": "マーケティング"
-    },
-    "roles": {
-      "softwareEngineer": "ソフトウェアエンジニア",
-      "psychologist": "心理学者"
-    },
-    "specializations": {
-      "frontendUX": "フロントエンドおよびUXスペシャリスト",
-      "backend": "バックエンドスペシャリスト",
-      "fullstack": "フルスタック開発者",
-      "uxResearch": "UXリサーチおよびマーケティング"
-    },
-    "bios": {
-      "sebastianBio": "優れたユーザーエクスペリエンスを作成することに情熱を注ぐソフトウェアエンジニア。Next.js、React、TypeScriptを使用したフロントエンド開発を専門としています。実際の問題を解決する現代的で効率的でスケーラブルなウェブアプリケーションの構築に注力しています。",
-      "juanBio": "バックエンド開発とシステムアーキテクチャに焦点を当てたソフトウェアエンジニア。API設計、データベース、堅牢なアプリケーションをサポートするスケーラブルなソリューションの専門家。",
-      "mariaBio": "ユーザーリサーチとコンテンツ戦略を専門とする心理学者。ユーザー行動を理解し、感情的につながるデジタルエクスペリエンスを作成することに情熱を注いでいます。",
-      "carlosBio": "完全なウェブアプリケーションを作成する経験を持つフルスタック開発者。フロントエンドとバックエンドの両方で現代的な技術とスケーラブルなアーキテクチャを専門としています。"
-    },
-    "skills": {
-      "title": "技術スキル"
-    },
-    "interests": {
-      "title": "興味",
-      "gaming": "ビデオゲーム",
-      "anime": "アニメ",
-      "manga": "マンガ",
-      "cooking": "料理",
-      "systemDesign": "システム設計",
-      "databases": "データベース",
-      "reading": "読書",
-      "coding": "プログラミング"
-    },
-    "history": {
-      "title": "私たちの歴史",
-      "paragraph1": "DevMindsは、本当に違いを生むデジタルソリューションを作成する情熱から生まれました。ソフトウェアエンジニアリングを卒業したばかりの私たちは、明確な機会を特定しました。多くの企業や起業家は質の高い技術を必要としていますが、一般的な、または高価すぎるソリューションに直面しています。",
-      "paragraph2": "明確なビジョンを持ってDevMindsを設立することを決定しました。市場で最も現代的な技術を使用して、最高品質基準のウェブ開発とカスタムソフトウェアを提供すること。各クライアントの実際のニーズを理解し、機能するだけでなく、スケールし長期的に持続するソリューションを構築することに焦点を当てています。",
-      "paragraph3": "今日、DevMindsは開発会社以上のものです。技術的卓越性、透明なコミュニケーション、顧客満足にコミットしたプロフェッショナルのチームです。実施するすべてのプロジェクトは、適切に行われた技術がビジネスを変革できることを示す機会です。"
-    },
-    "values": {
-      "title": "価値観",
-      "innovation": {
-        "title": "革新",
-        "description": "現代的で効率的なソリューションを提供するために、最新の技術とベストプラクティスを採用しています"
-      },
-      "quality": {
-        "title": "品質",
-        "description": "クリーンなコード、堅固なアーキテクチャ、書くすべての行への細部への注意"
-      },
-      "commitment": {
-        "title": "コミットメント",
-        "description": "お客様のプロジェクトは私たちの優先事項です。期限、品質、結果にコミットします"
-      },
-      "transparency": {
-        "title": "透明性",
-        "description": "プロジェクトのすべての段階で明確で誠実なコミュニケーション、サプライズや隠れたコストはありません"
-      }
-    },
-    "whyChooseUs": {
-      "title": "なぜ私たちを選ぶのか?",
-      "cleanCode": {
-        "title": "クリーンなコード",
-        "description": "将来の更新を容易にする、よく構造化され、文書化され、保守可能なコード"
-      },
-      "communication": {
-        "title": "継続的なコミュニケーション",
-        "description": "定期的な更新とすべての段階で疑問を解決するための可用性"
-      },
-      "onTime": {
-        "title": "期限通りの納品",
-        "description": "製品の品質を損なうことなく、設定された期限を守ります"
-      },
-      "support": {
-        "title": "リリース後のサポート",
-        "description": "お客様を一人にしません。リリース後も継続的なサポートとメンテナンスを提供します"
-      }
-    }
-  },
-  "ContactPage": {
-    "hero": {
-      "title": "お問い合わせ",
-      "subtitle": "お手伝いさせていただきます。プロジェクトについてお聞かせください。一緒に実現させましょう。"
-    },
-    "form": {
-      "title": "メッセージを送信",
-      "subtitle": "フォームにご記入ください。できるだけ早くご連絡いたします。",
-      "name": "お名前",
-      "namePlaceholder": "山田太郎",
-      "email": "メールアドレス",
-      "emailPlaceholder": "your@email.com",
-      "subject": "件名",
-      "subjectPlaceholder": "どのようなご用件でしょうか?",
-      "message": "メッセージ",
-      "messagePlaceholder": "プロジェクト、ニーズ、またはご質問についてお聞かせください...",
-      "submit": "メッセージを送信",
-      "privacy": "このフォームを送信することにより、連絡先情報の処理に同意したものとみなされます。"
-    },
-    "contactInfo": {
-      "title": "連絡先情報",
-      "subtitle": "お問い合わせいただくその他の方法。",
-      "email": {
-        "title": "直接メール"
-      },
-      "whatsapp": {
-        "title": "WhatsApp",
-        "defaultMessage": "こんにちは! サービスについて詳しく知りたいです。"
-      },
-      "responseTime": {
-        "title": "返信時間",
-        "description": "営業日24時間以内"
-      },
-      "github": {
-        "title": "GitHub"
-      },
-      "linkedin": {
-        "title": "LinkedIn"
-      }
-    },
-    "quickContact": {
-      "title": "直接メールをご希望ですか?",
-      "description": "メールを送信していただければ、できるだけ早く返信いたします。",
-      "button": "直接メールを送信"
-    }
   },
   "EmailTemplate": {
     "subject": "新しいお問い合わせメッセージ - DevMinds",
@@ -364,93 +162,6 @@
           "description": "サーバーに問題が発生しました。後でもう一度お試しください。"
         }
       }
-    }
-  },
-  "ServicesPage": {
-    "hero": {
-      "pageLabel": "サービス",
-      "title": "サービス",
-      "subtitle": "アイデアを成功したデジタル製品に変換する完全な技術ソリューション"
-    },
-    "services": {
-      "title": "提供内容",
-      "technologies": "技術",
-      "idealFor": "最適な用途",
-      "features": "特徴",
-      "items": {
-        "webdev": {
-          "title": "モダンウェブ開発",
-          "shortDescription": "最先端のウェブサイトとウェブアプリケーション",
-          "description": "市場で最も先進的な技術を使用して、現代的なウェブサイトとウェブアプリケーションを作成します。インパクトのあるランディングページからカスタマイズされた機能を持つ複雑なウェブアプリケーションまで。",
-          "technologies": "React、Next.js、TypeScript、Tailwind CSS、Framer Motion",
-          "idealFor": "ランディングページ、企業サイト、ポートフォリオ、インタラクティブなウェブアプリケーション",
-          "features": [
-            "レスポンシブでモバイルファーストのデザイン",
-            "高度なSEO最適化",
-            "超高速パフォーマンス",
-            "スムーズでモダンなアニメーション",
-            "APIおよび外部サービスとの統合"
-          ]
-        },
-        "custom": {
-          "title": "カスタムソフトウェア",
-          "shortDescription": "ビジネス向けのカスタマイズされたアプリケーション",
-          "description": "特定のニーズに完璧に適応するカスタムソフトウェアを開発します。内部システムから複雑なプラットフォームまで、スケーラブルで保守可能なソリューションを作成します。",
-          "technologies": "Node.js、Express、PostgreSQL、MongoDB、TypeScript、Docker",
-          "idealFor": "管理システム、CRM、ERP、SaaSプラットフォーム、管理ダッシュボード",
-          "features": [
-            "スケーラブルでモジュラーなアーキテクチャ",
-            "最適化されたデータベース",
-            "安全なRESTful API",
-            "カスタマイズされた管理パネル",
-            "既存システムとの統合"
-          ]
-        },
-        "wordpress": {
-          "title": "WordPressサイト",
-          "shortDescription": "WordPressでのプロフェッショナルなサイト",
-          "description": "世界で最も人気のあるCMSであるWordPressでプロフェッショナルなウェブサイトを作成します。カスタムテーマ、カスタムメイドのプラグイン、目立つサイトのための完全な最適化。",
-          "technologies": "WordPress、PHP、WooCommerce、カスタムテーマ、Elementor",
-          "idealFor": "ブログ、企業サイト、eコマース、コンテンツポータル",
-          "features": [
-            "カスタマイズされたユニークなテーマ",
-            "カスタムメイドで開発されたプラグイン",
-            "速度最適化",
-            "完全なSEO設定",
-            "オンラインストア向けWooCommerceとの統合"
-          ]
-        },
-        "consulting": {
-          "title": "技術コンサルティング",
-          "shortDescription": "プロジェクトのための専門的なアドバイス",
-          "description": "既存のプロジェクトを最適化するための技術コンサルティングサービスを提供します。コード監査、アーキテクチャの改善、パフォーマンスの最適化、ベストプラクティスの推奨事項。",
-          "technologies": "ソフトウェアアーキテクチャ、コードレビュー、パフォーマンス、DevOps、Git",
-          "idealFor": "既存プロジェクト、開発チーム、技術系スタートアップ",
-          "features": [
-            "完全なコード監査",
-            "アーキテクチャとスケーラビリティの分析",
-            "パフォーマンス最適化",
-            "ベストプラクティスの推奨事項",
-            "移行と更新の戦略"
-          ]
-        }
-      }
-    },
-    "techStack": {
-      "title": "完全な技術スタック",
-      "subtitle": "市場で最も現代的で実証済みの技術を使用しています",
-      "categories": {
-        "frontend": "フロントエンド",
-        "backend": "バックエンド",
-        "cms": "CMSおよびテンプレート",
-        "devops": "DevOpsおよびホスティング",
-        "tools": "ツール"
-      }
-    },
-    "cta": {
-      "title": "プロジェクトを開始する準備はできていますか?",
-      "subtitle": "お問い合わせいただき、一緒にアイデアを実現させましょう",
-      "button": "今すぐお問い合わせ"
     }
   },
   "Home": {
@@ -569,5 +280,135 @@
       "whatsapp": "WhatsApp",
       "llamar": "電話"
     }
+  },
+  "Cartela": {
+    "hoja": "シート",
+    "inicio": "ホーム",
+    "volverA": "{pagina}に戻る",
+    "ruta": "現在地"
+  },
+  "Servicios": {
+    "titulo": "最初の一歩から、本格的なソフトウェアまで。",
+    "bajada": "各サービスの内容、対象、期間をまとめました。多くのお客様は最初のステップから始め、事業とともに広げていきます。",
+    "paraQuien": "こんな方に",
+    "incluye": "含まれるもの",
+    "quieroEsto": "相談する",
+    "pasos": {
+      "web": {
+        "paraQuien": "まだGoogleに表示されていない、または今のサイトから集客できていない事業者の方に。",
+        "incluye": [
+          "スマートフォン優先で設計した高速なサイト",
+          "サイトと連携したGoogleビジネスプロフィール",
+          "お客様が直接連絡できるWhatsAppボタン",
+          "コード・アクセス権・ドキュメントはすべてお客様名義"
+        ],
+        "whatsapp": "こんにちは、DevMindsさん。事業のウェブサイトについて相談したいです。"
+      },
+      "sistemas": {
+        "paraQuien": "請求、回収、在庫管理を表計算や紙で行っていて、限界を感じている事業者の方に。",
+        "incluye": [
+          "業務の進め方に合わせて設計",
+          "役割に応じた権限を持つユーザー管理",
+          "毎週試せる進捗",
+          "納品前の使い方レクチャー"
+        ],
+        "whatsapp": "こんにちは、DevMindsさん。業務システムについて相談したいです。"
+      },
+      "apps": {
+        "paraQuien": "お客様がスマートフォンで予約、注文、サービスの確認をする事業者の方に。",
+        "incluye": [
+          "片手で使えるデザイン",
+          "既存のシステムやサイトと連携",
+          "公開までのサポート"
+        ],
+        "whatsapp": "こんにちは、DevMindsさん。アプリについて相談したいです。"
+      },
+      "soporte": {
+        "paraQuien": "すでにサイトやシステムをお持ちで、見直し、改善、保守を任せたい方に。",
+        "incluye": [
+          "現状の診断と改善すべき点の整理",
+          "段階的な修正と改善",
+          "サポート・保守プラン"
+        ],
+        "whatsapp": "こんにちは、DevMindsさん。既存のソフトウェアについて相談したいです。"
+      }
+    }
+  },
+  "Portafolio": {
+    "titulo": "実在するビジネスのための、実際のプロジェクト。",
+    "bajada": "コロンビア内外の事業者のためにつくったウェブサイト、システム、アプリ。それぞれの詳細をご覧ください。",
+    "todos": "すべて",
+    "filtrar": "種類で絞り込む",
+    "vacio": "この種類のプロジェクトはまだありません。"
+  },
+  "Proyecto": {
+    "queHicimos": "制作内容",
+    "verSitio": "サイトを見る",
+    "siguiente": "次のプロジェクト",
+    "galeria": "その他の画面",
+    "ficha": {
+      "cliente": "クライアント",
+      "anio": "年",
+      "duracion": "期間",
+      "tecnologia": "技術"
+    }
+  },
+  "Nosotros": {
+    "titulo": "DevMindsの背景。",
+    "bajada": "プロジェクトを設計し、開発するのは誰か。そして、どう進めるのか。",
+    "rol": "創業者・ソフトウェアエンジニア",
+    "historia": [
+      "DevMindsは大学時代に生まれました。同級生が自分の名前でポートフォリオをつくるなか、セバスティアンはもっと作り込んだものを目指し、独自のブランドとして立ち上げました。最初のバージョンはいかにも「テック」な見た目でしたが、スタジオは少しずつ成熟し、今はビジネスにとって大切なことに集中しています。",
+      "現在DevMindsは、ある企業が毎月使っている会計システムRMContaを保守し、地元の商店向けの債権管理ツール、歯科医院のウェブサイト、WordPressやWixのサイトを手がけてきました。",
+      "強みは、コードをたくさん書くことではなく、つくる前にビジネスを理解することです。何が問題で、誰が使い、どうすれば最もシンプルに解決できるのか。プロジェクトと学びを毎回記録する独自の進め方で、次をより良くしていきます。そして気になったことは試してみる。最近では、インターネットなしで動く.NETのデスクトップアプリに取り組んでいます。"
+    ],
+    "datos": {
+      "base": "拠点",
+      "baseValor": "コロンビア・ネイバ",
+      "formacion": "学歴",
+      "formacionValor": "スルコロンビアナ大学 ソフトウェア工学",
+      "enlaces": "リンク"
+    },
+    "principios": {
+      "titulo": "私たちの進め方",
+      "directo": {
+        "titulo": "つくる本人と直接話せる",
+        "texto": "仲介もメールの往復もなし。話を聞く人が、そのまま設計し開発します。"
+      },
+      "precio": {
+        "titulo": "固定価格を書面で",
+        "texto": "範囲、期間、価格を着手前に合意します。分割でのお支払いも可能です。"
+      },
+      "avances": {
+        "titulo": "毎週の進捗",
+        "texto": "完成を待たずに、つくりながら確認し、意見を伝えられます。"
+      },
+      "codigo": {
+        "titulo": "コードはお客様のもの",
+        "texto": "完了時に、コード、ドキュメント、すべてのアクセス権をお渡しします。"
+      }
+    },
+    "tecnologias": {
+      "titulo": "使用技術",
+      "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
+    },
+    "cargo": "ソフトウェアエンジニア"
+  },
+  "Contacto": {
+    "titulo": "プロジェクトについて話しましょう。",
+    "bajada": "ご都合のよい方法でご連絡ください。24時間以内に返信します。初回相談は無料です。",
+    "whatsapp": {
+      "rotulo": "いちばん早い方法",
+      "titulo": "WhatsAppで連絡する",
+      "texto": "24時間以内に返信します。"
+    },
+    "correo": "メール",
+    "llamada": "電話",
+    "formulario": {
+      "titulo": "またはフォームから",
+      "texto": "ご要望をお書きください。メールで返信します。",
+      "privacidad": "送信いただいた情報は、返信のためだけに使用します。"
+    },
+    "ubicacion": "拠点はコロンビア・ネイバ。ビデオ通話で、どの国のお客様とも英語でやり取りできます。"
   }
 }

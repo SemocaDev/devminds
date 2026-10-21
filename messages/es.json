@@ -6,24 +6,24 @@
       "keywords": "desarrollo de software neiva, crear pagina web neiva, paginas web para negocios neiva, desarrollo web huila, software a medida neiva, programador neiva, aplicaciones moviles neiva, seo local neiva, google maps negocio neiva"
     },
     "services": {
-      "title": "Crear Páginas Web y Software en Neiva | Servicios DevMinds",
-      "description": "Creamos páginas web profesionales, software a medida, tiendas online y aplicaciones para empresas en Neiva, Huila. WordPress, Next.js, React. Cotización gratis.",
-      "keywords": "crear pagina web neiva, hacer sitio web neiva, diseño web neiva, software a medida neiva, paginas web para negocios huila, tienda online neiva, wordpress neiva, aplicaciones web colombia, desarrollo web profesional neiva"
+      "title": "Páginas web, sistemas a medida y apps en Neiva | DevMinds",
+      "description": "Qué incluye cada servicio, cuánto tarda y cómo empezamos: páginas web con Google, sistemas a medida, apps móviles y soporte para negocios de Neiva y el Huila."
     },
     "about": {
-      "title": "Quiénes Somos - DevMinds | Empresa de Software en Neiva, Huila",
-      "description": "Somos DevMinds, empresa de desarrollo web y software en Neiva, Huila. Ingenieros de software especializados en crear páginas web modernas con Next.js, React y TypeScript.",
-      "keywords": "empresa desarrollo web neiva, empresa de software neiva, programadores neiva huila, ingenieros de software neiva, desarrolladores web colombia, agencia digital neiva"
+      "title": "Detrás de DevMinds: estudio de software en Neiva, Huila",
+      "description": "DevMinds es un estudio de software en Neiva fundado por Sebastián Morea, ingeniero de software. Hablas directo con quien diseña y construye tu proyecto."
     },
     "contact": {
-      "title": "Cotización Página Web Neiva | Contacto - DevMinds",
-      "description": "¿Cuánto cuesta una página web en Neiva? Cotización gratis para tu proyecto web. Páginas web, software y tiendas online para empresas en Huila. Respuesta en 24h.",
-      "keywords": "cotizacion pagina web neiva, cuanto cuesta pagina web neiva, precio pagina web neiva, presupuesto desarrollo web huila, contacto programador neiva"
+      "title": "Contacto: hablemos de tu proyecto en Neiva | DevMinds",
+      "description": "Escríbenos por WhatsApp, correo o teléfono. Respondemos en menos de 24 horas y la primera consulta es gratis. Estudio de software en Neiva, Huila."
     },
     "portfolio": {
-      "title": "Proyectos Web Realizados en Neiva | Portafolio - DevMinds",
-      "description": "Mira nuestros proyectos: páginas web, aplicaciones y software desarrollados en Neiva, Huila. Ejemplos reales de nuestro trabajo para empresas en Colombia.",
-      "keywords": "proyectos web neiva, portafolio desarrollo web neiva, ejemplos paginas web huila, trabajos desarrollo web colombia, paginas web hechas en neiva"
+      "title": "Trabajos: páginas web y software hechos en Neiva | DevMinds",
+      "description": "Proyectos reales de DevMinds: sistemas contables, páginas web y apps para negocios de Neiva, el Huila y Colombia. Mira qué se hizo en cada uno."
+    },
+    "notFound": {
+      "title": "Hoja no encontrada | DevMinds",
+      "description": "La página que buscas no existe o cambió de lugar."
     }
   },
   "Menu": {
@@ -34,41 +34,13 @@
     "soon": "PRÓXIMAMENTE"
   },
   "Navbar": {
-    "home": "Inicio",
-    "portfolio": "Portafolio",
     "about": "Nosotros",
     "services": "Servicios",
     "projects": "Trabajos",
-    "process": "Cómo trabajamos",
-    "faq": "Preguntas",
     "contact": "Contacto",
     "startProject": "Hablemos",
     "menu": "Menú",
     "idioma": "Idioma"
-  },
-  "Contact": {
-    "title": "Hablemos de tu Proyecto",
-    "subtitle": "¿Tienes una idea? Cuéntanos y trabajemos juntos para hacerla realidad",
-    "form": {
-      "name": "Nombre",
-      "namePlaceholder": "Tu nombre completo",
-      "email": "Email",
-      "emailPlaceholder": "tu@email.com",
-      "message": "Mensaje",
-      "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
-      "submit": "Enviar mensaje"
-    },
-    "info": {
-      "responseTime": {
-        "title": "Respuesta Rápida",
-        "description": "Respondemos todos los mensajes en menos de 24 horas"
-      },
-      "email": {
-        "title": "Contacto Directo",
-        "description": "semoca00@gmail.com"
-      }
-    },
-    "detailedContact": "Más opciones de contacto"
   },
   "Footer": {
     "copyright": "© {year} DevMinds. Todos los derechos reservados.",
@@ -96,180 +68,6 @@
     "servicesLink": "Servicios",
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
-  },
-  "Portfolio": {
-    "pageLabel": "Portafolio",
-    "label": "Portafolio",
-    "title": "Nuestro Portfolio",
-    "subtitle": "Explora nuestros proyectos completados y el trabajo que hemos realizado para nuestros clientes",
-    "description": "Descripción",
-    "technologies": "Tecnologías Utilizadas",
-    "viewDemo": "Ver Demo",
-    "viewCode": "Ver Código",
-    "noDemo": "Proyecto Privado",
-    "categories": {
-      "all": "Todos",
-      "web-app": "Aplicaciones Web",
-      "wordpress": "WordPress",
-      "custom-code": "Wix/Plantillas"
-    },
-    "projects": {
-      "softcount": {
-        "title": "SoftCount - Software de Contabilidad",
-        "description": "Software de contabilidad profesional (En construcción)",
-        "fullDescription": "SoftCount es un software de contabilidad desarrollado con Next.js, TypeScript y PostgreSQL. Proyecto propio en construcción diseñado para ofrecer una solución completa de gestión contable y financiera."
-      },
-      "wilson-isaza": {
-        "title": "Wilson Isaza - Sitio Político",
-        "description": "Sitio web en WordPress para político",
-        "fullDescription": "Sitio web desarrollado en WordPress para el político Wilson Isaza. Plataforma informativa profesional para su campaña política."
-      },
-      "empo-guzman": {
-        "title": "Empo Guzmán - Sitio Empresas Públicas",
-        "description": "Sitio web para empresas públicas en Wix",
-        "fullDescription": "Sitio web desarrollado en Wix para Empo Guzmán, enfocado en empresas públicas. Diseño con plantillas personalizadas."
-      },
-      "devminds-portfolio": {
-        "title": "DevMinds - Portfolio Profesional",
-        "description": "Este mismo sitio web que estás viendo",
-        "fullDescription": "Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno."
-      }
-    }
-  },
-  "About": {
-    "pageLabel": "Nosotros",
-    "title": "Nuestro Equipo",
-    "subtitle": "Conoce a las personas que hacen realidad las ideas",
-    "foundersTitle": "Fundadores",
-    "teamTitle": "Nuestro Equipo",
-    "contact": "Contactar",
-    "hierarchy": {
-      "founder": "Fundador",
-      "co-founder": "Co-fundador",
-      "developer": "Desarrollador",
-      "designer": "Diseñador",
-      "marketing": "Marketing"
-    },
-    "roles": {
-      "softwareEngineer": "Ingeniero de Software",
-      "psychologist": "Psicóloga"
-    },
-    "specializations": {
-      "frontendUX": "Especialista en Frontend y UX",
-      "backend": "Especialista en Backend",
-      "fullstack": "Desarrollador Full Stack",
-      "uxResearch": "Investigación UX y Marketing"
-    },
-    "bios": {
-      "sebastianBio": "Ingeniero de Software apasionado por crear experiencias de usuario excepcionales. Especializado en desarrollo frontend con Next.js, React y TypeScript. Me enfoco en construir aplicaciones web modernas, eficientes y escalables que resuelvan problemas reales.",
-      "juanBio": "Ingeniero de Software enfocado en el desarrollo backend y arquitectura de sistemas. Experto en diseño de APIs, bases de datos y soluciones escalables que dan soporte a aplicaciones robustas.",
-      "mariaBio": "Psicóloga especializada en investigación de usuarios y estrategia de contenido. Apasionada por entender el comportamiento del usuario y crear experiencias digitales que conecten emocionalmente.",
-      "carlosBio": "Desarrollador Full Stack con experiencia en crear aplicaciones web completas. Especializado en tecnologías modernas y arquitecturas escalables tanto en frontend como backend."
-    },
-    "skills": {
-      "title": "Habilidades Técnicas"
-    },
-    "interests": {
-      "title": "Intereses",
-      "gaming": "Videojuegos",
-      "anime": "Anime",
-      "manga": "Manga",
-      "cooking": "Cocinar",
-      "systemDesign": "Diseño de Sistemas",
-      "databases": "Bases de Datos",
-      "reading": "Lectura",
-      "coding": "Programación"
-    },
-    "history": {
-      "title": "Nuestra Historia",
-      "paragraph1": "DevMinds nació de la pasión por crear soluciones digitales que realmente marcan la diferencia. Como recién graduados en ingeniería de software, identificamos una oportunidad clara: muchas empresas y emprendedores necesitan tecnología de calidad, pero se encuentran con soluciones genéricas o demasiado costosas.",
-      "paragraph2": "Decidimos crear DevMinds con una visión clara: ofrecer desarrollo web y software personalizado con los más altos estándares de calidad, utilizando las tecnologías más modernas del mercado. Nuestro enfoque se centra en entender las necesidades reales de cada cliente y construir soluciones que no solo funcionen, sino que escalen y perduren en el tiempo.",
-      "paragraph3": "Hoy, DevMinds es más que una empresa de desarrollo. Somos un equipo de profesionales comprometidos con la excelencia técnica, la comunicación transparente y la satisfacción del cliente. Cada proyecto que realizamos es una oportunidad para demostrar que la tecnología bien hecha puede transformar negocios."
-    },
-    "values": {
-      "title": "Nuestros Valores",
-      "innovation": {
-        "title": "Innovación",
-        "description": "Adoptamos las últimas tecnologías y mejores prácticas para ofrecer soluciones modernas y eficientes"
-      },
-      "quality": {
-        "title": "Calidad",
-        "description": "Código limpio, arquitectura sólida y atención al detalle en cada línea que escribimos"
-      },
-      "commitment": {
-        "title": "Compromiso",
-        "description": "Tu proyecto es nuestra prioridad. Nos comprometemos con plazos, calidad y resultados"
-      },
-      "transparency": {
-        "title": "Transparencia",
-        "description": "Comunicación clara y honesta en cada etapa del proyecto, sin sorpresas ni costos ocultos"
-      }
-    },
-    "whyChooseUs": {
-      "title": "¿Por qué elegirnos?",
-      "cleanCode": {
-        "title": "Código Limpio",
-        "description": "Código bien estructurado, documentado y mantenible que facilita futuras actualizaciones"
-      },
-      "communication": {
-        "title": "Comunicación Constante",
-        "description": "Actualizaciones regulares y disponibilidad para resolver dudas en cada etapa"
-      },
-      "onTime": {
-        "title": "Entrega a Tiempo",
-        "description": "Cumplimos con los plazos establecidos sin comprometer la calidad del producto"
-      },
-      "support": {
-        "title": "Soporte Post-Lanzamiento",
-        "description": "No te dejamos solo. Ofrecemos soporte continuo y mantenimiento después del lanzamiento"
-      }
-    }
-  },
-  "ContactPage": {
-    "hero": {
-      "title": "Contacto",
-      "subtitle": "Estamos aquí para ayudarte. Cuéntanos sobre tu proyecto y trabajemos juntos para hacerlo realidad."
-    },
-    "form": {
-      "title": "Envíanos un Mensaje",
-      "subtitle": "Completa el formulario y nos pondremos en contacto contigo lo antes posible.",
-      "name": "Nombre completo",
-      "namePlaceholder": "Juan Pérez",
-      "email": "Email",
-      "emailPlaceholder": "tu@email.com",
-      "subject": "Asunto",
-      "subjectPlaceholder": "¿En qué podemos ayudarte?",
-      "message": "Mensaje",
-      "messagePlaceholder": "Cuéntanos sobre tu proyecto, tus necesidades o cualquier pregunta que tengas...",
-      "submit": "Enviar Mensaje",
-      "privacy": "Al enviar este formulario, aceptas que procesemos tu información de contacto."
-    },
-    "contactInfo": {
-      "title": "Información de Contacto",
-      "subtitle": "Otras formas de ponerte en contacto con nosotros.",
-      "email": {
-        "title": "Email Directo"
-      },
-      "whatsapp": {
-        "title": "WhatsApp",
-        "defaultMessage": "Hola! Me gustaría saber más sobre sus servicios."
-      },
-      "responseTime": {
-        "title": "Tiempo de Respuesta",
-        "description": "Menos de 24 horas hábiles"
-      },
-      "github": {
-        "title": "GitHub"
-      },
-      "linkedin": {
-        "title": "LinkedIn"
-      }
-    },
-    "quickContact": {
-      "title": "¿Prefieres un email directo?",
-      "description": "Envíanos un email y te responderemos lo antes posible.",
-      "button": "Enviar Email Directo"
-    }
   },
   "EmailTemplate": {
     "subject": "Nuevo Mensaje de Contacto - DevMinds",
@@ -364,93 +162,6 @@
           "description": "Hubo un problema en nuestro servidor. Por favor inténtalo más tarde."
         }
       }
-    }
-  },
-  "ServicesPage": {
-    "hero": {
-      "pageLabel": "Servicios",
-      "title": "Nuestros Servicios",
-      "subtitle": "Soluciones tecnológicas completas para transformar tus ideas en productos digitales exitosos"
-    },
-    "services": {
-      "title": "¿Qué Ofrecemos?",
-      "technologies": "Tecnologías",
-      "idealFor": "Ideal para",
-      "features": "Características",
-      "items": {
-        "webdev": {
-          "title": "Desarrollo Web Moderno",
-          "shortDescription": "Sitios web y aplicaciones web de última generación",
-          "description": "Creamos sitios web y aplicaciones web modernas utilizando las tecnologías más avanzadas del mercado. Desde landing pages impactantes hasta aplicaciones web complejas con funcionalidades personalizadas.",
-          "technologies": "React, Next.js, TypeScript, Tailwind CSS, Framer Motion",
-          "idealFor": "Landing pages, sitios corporativos, portafolios, aplicaciones web interactivas",
-          "features": [
-            "Diseño responsive y mobile-first",
-            "Optimización SEO avanzada",
-            "Performance ultra-rápido",
-            "Animaciones fluidas y modernas",
-            "Integración con APIs y servicios externos"
-          ]
-        },
-        "custom": {
-          "title": "Software a Medida",
-          "shortDescription": "Aplicaciones personalizadas para tu negocio",
-          "description": "Desarrollamos software personalizado que se adapta perfectamente a tus necesidades específicas. Desde sistemas internos hasta plataformas complejas, creamos soluciones escalables y mantenibles.",
-          "technologies": "Node.js, Express, PostgreSQL, MongoDB, TypeScript, Docker",
-          "idealFor": "Sistemas de gestión, CRM, ERP, plataformas SaaS, dashboards administrativos",
-          "features": [
-            "Arquitectura escalable y modular",
-            "Base de datos optimizada",
-            "APIs RESTful seguras",
-            "Panel de administración personalizado",
-            "Integración con sistemas existentes"
-          ]
-        },
-        "wordpress": {
-          "title": "Sitios WordPress",
-          "shortDescription": "Sitios profesionales con WordPress",
-          "description": "Creamos sitios web profesionales con WordPress, el CMS más popular del mundo. Temas personalizados, plugins a medida y optimización completa para un sitio que destaque.",
-          "technologies": "WordPress, PHP, WooCommerce, Custom Themes, Elementor",
-          "idealFor": "Blogs, sitios corporativos, e-commerce, portales de contenido",
-          "features": [
-            "Temas personalizados y únicos",
-            "Plugins desarrollados a medida",
-            "Optimización de velocidad",
-            "Configuración SEO completa",
-            "Integración con WooCommerce para tiendas online"
-          ]
-        },
-        "consulting": {
-          "title": "Consultoría Técnica",
-          "shortDescription": "Asesoría experta para tus proyectos",
-          "description": "Ofrecemos servicios de consultoría técnica para optimizar tus proyectos existentes. Auditorías de código, mejoras de arquitectura, optimización de performance y recomendaciones de mejores prácticas.",
-          "technologies": "Arquitectura de Software, Code Review, Performance, DevOps, Git",
-          "idealFor": "Proyectos existentes, equipos de desarrollo, startups tecnológicas",
-          "features": [
-            "Auditoría completa de código",
-            "Análisis de arquitectura y escalabilidad",
-            "Optimización de performance",
-            "Recomendaciones de mejores prácticas",
-            "Estrategia de migración y actualización"
-          ]
-        }
-      }
-    },
-    "techStack": {
-      "title": "Stack Tecnológico Completo",
-      "subtitle": "Trabajamos con las tecnologías más modernas y probadas del mercado",
-      "categories": {
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "cms": "CMS & Plantillas",
-        "devops": "DevOps & Hosting",
-        "tools": "Herramientas"
-      }
-    },
-    "cta": {
-      "title": "¿Listo para comenzar tu proyecto?",
-      "subtitle": "Contáctanos y trabajemos juntos para hacer realidad tu idea",
-      "button": "Contactar Ahora"
     }
   },
   "Home": {
@@ -569,5 +280,135 @@
       "whatsapp": "WhatsApp",
       "llamar": "Llamar"
     }
+  },
+  "Cartela": {
+    "hoja": "Hoja",
+    "inicio": "Inicio",
+    "volverA": "Volver a {pagina}",
+    "ruta": "Estás en"
+  },
+  "Servicios": {
+    "titulo": "Del primer escalón al software completo.",
+    "bajada": "Qué incluye cada servicio, para quién es y cuánto tarda. La mayoría empieza por el primero y crece desde ahí.",
+    "paraQuien": "Para quién",
+    "incluye": "Qué incluye",
+    "quieroEsto": "Quiero esto",
+    "pasos": {
+      "web": {
+        "paraQuien": "Para negocios que todavía no aparecen en Google o tienen una página que no les trae clientes.",
+        "incluye": [
+          "Página rápida, pensada primero para el celular",
+          "Ficha de Google Business conectada con tu página",
+          "Botón de WhatsApp para que te escriban directo",
+          "Código, accesos y documentación a tu nombre"
+        ],
+        "whatsapp": "Hola DevMinds, quiero una página web para mi negocio."
+      },
+      "sistemas": {
+        "paraQuien": "Para negocios que llevan facturación, cobranza o inventario en Excel o en papel, y ya se les quedó pequeño.",
+        "incluye": [
+          "Hecho a la medida de cómo trabaja tu negocio",
+          "Usuarios con permisos según su rol",
+          "Avances que puedes probar cada semana",
+          "Te enseñamos a usarlo antes de entregarlo"
+        ],
+        "whatsapp": "Hola DevMinds, quiero un sistema a medida para mi negocio."
+      },
+      "apps": {
+        "paraQuien": "Para negocios cuyos clientes los buscan desde el celular: reservas, pedidos o seguimiento de un servicio.",
+        "incluye": [
+          "Diseño pensado para usarse con una mano",
+          "Conectada con tu sistema o tu página",
+          "Acompañamiento para publicarla"
+        ],
+        "whatsapp": "Hola DevMinds, quiero una app para mi negocio."
+      },
+      "soporte": {
+        "paraQuien": "Para quien ya tiene una página o un sistema y necesita que alguien lo revise, lo mejore o lo mantenga funcionando.",
+        "incluye": [
+          "Revisión de lo que tienes y de qué conviene mejorar",
+          "Correcciones y mejoras por etapas",
+          "Planes de soporte y mantenimiento"
+        ],
+        "whatsapp": "Hola DevMinds, necesito ayuda con un software que ya tengo."
+      }
+    }
+  },
+  "Portafolio": {
+    "titulo": "Proyectos reales para negocios reales.",
+    "bajada": "Páginas, sistemas y apps hechos para negocios de Neiva y de otros lugares. Entra a cada uno para ver qué se hizo.",
+    "todos": "Todos",
+    "filtrar": "Filtrar por tipo de proyecto",
+    "vacio": "Todavía no hay proyectos de este tipo."
+  },
+  "Proyecto": {
+    "queHicimos": "Qué hicimos",
+    "verSitio": "Ver el sitio",
+    "siguiente": "Siguiente proyecto",
+    "galeria": "Más capturas",
+    "ficha": {
+      "cliente": "Cliente",
+      "anio": "Año",
+      "duracion": "Duración",
+      "tecnologia": "Tecnología"
+    }
+  },
+  "Nosotros": {
+    "titulo": "Detrás de DevMinds.",
+    "bajada": "Quién diseña y construye tu proyecto, y cómo trabaja.",
+    "rol": "Fundador e ingeniero de software",
+    "historia": [
+      "DevMinds nació en la universidad. Mientras sus compañeros armaban portafolios con su nombre, Sebastián quiso hacer algo más trabajado y lo construyó bajo una marca propia. La primera versión era muy \"tech\"; con el tiempo el estudio maduró y hoy se enfoca en lo que le importa a un negocio.",
+      "Hoy DevMinds mantiene RMConta, un sistema contable que una empresa usa todos los meses, y ha construido un registro de cartera para un comerciante de Neiva, la web de un consultorio odontológico y varias páginas en WordPress y Wix.",
+      "Lo que lo distingue no es escribir más código, sino entender el negocio antes de construir: qué problema hay, quién lo va a usar y cuál es la forma más simple de resolverlo. Trabaja con un método propio que documenta cada proyecto y cada lección para hacerlo mejor la próxima vez. Y cuando algo le da curiosidad, lo prueba: lo más reciente, aplicaciones de escritorio en .NET que funcionan sin internet."
+    ],
+    "datos": {
+      "base": "Base",
+      "baseValor": "Neiva, Huila · Colombia",
+      "formacion": "Formación",
+      "formacionValor": "Ingeniería de Software · Universidad Surcolombiana",
+      "enlaces": "En la red"
+    },
+    "principios": {
+      "titulo": "Cómo trabajamos",
+      "directo": {
+        "titulo": "Hablas con quien construye",
+        "texto": "Sin intermediarios ni cadenas de correos: quien te escucha es quien diseña y programa."
+      },
+      "precio": {
+        "titulo": "Precio fijo por escrito",
+        "texto": "Alcance, tiempos y precio acordados antes de empezar. Puedes pagar por etapas."
+      },
+      "avances": {
+        "titulo": "Avances cada semana",
+        "texto": "Ves el proyecto crecer y opinas mientras se construye, no solo al final."
+      },
+      "codigo": {
+        "titulo": "El código es tuyo",
+        "texto": "Al terminar recibes el código, la documentación y los accesos."
+      }
+    },
+    "tecnologias": {
+      "titulo": "Con qué trabajamos",
+      "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
+    },
+    "cargo": "Ingeniero de software"
+  },
+  "Contacto": {
+    "titulo": "Hablemos de tu proyecto.",
+    "bajada": "Escríbenos por donde te quede más cómodo. Respondemos en menos de 24 horas y la primera consulta es gratis.",
+    "whatsapp": {
+      "rotulo": "La forma más rápida",
+      "titulo": "Escríbenos por WhatsApp",
+      "texto": "Respondemos en menos de 24 horas."
+    },
+    "correo": "Correo",
+    "llamada": "Llamada",
+    "formulario": {
+      "titulo": "O escríbenos con calma",
+      "texto": "Cuéntanos qué necesitas y te respondemos al correo.",
+      "privacidad": "Al enviar este formulario, aceptas que usemos tus datos solo para responderte."
+    },
+    "ubicacion": "Neiva, Huila · Colombia. Trabajamos con negocios de todo el país y de otros lugares por videollamada."
   }
 }

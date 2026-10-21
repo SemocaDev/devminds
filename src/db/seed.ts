@@ -41,7 +41,7 @@ async function seed() {
   const projectsData = [
     {
       id: 'softcount',
-      slug: 'softcount',
+      slug: 'rmconta',
       category: 'custom-code',
       technologies: ['Next.js', 'TypeScript', 'PostgreSQL'],
       images: ['/projects/softcount/screenshot-1.png', '/projects/softcount/screenshot-2.png', '/projects/softcount/screenshot-3.png', '/projects/softcount/screenshot-4.png'],

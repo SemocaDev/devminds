@@ -12,7 +12,7 @@ import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
 import { enlaceWhatsApp } from '@/lib/enlaces';
 import { cn } from '@/lib/utils';
 
-type ItemNav = { label: string; href: string };
+type ItemNav = { label: string; href: string; activo: boolean };
 
 const Navbar = () => {
   const t = useTranslations('Navbar');
@@ -24,21 +24,11 @@ const Navbar = () => {
   const [abierto, setAbierto] = useState(false);
   const ultimoY = useRef(0);
 
-  const esHome = pathname === `/${lang}`;
-  const items: ItemNav[] = esHome
-    ? [
-        { label: t('services'), href: '#services' },
-        { label: t('projects'), href: '#projects' },
-        { label: t('process'), href: '#process' },
-        { label: t('faq'), href: '#faq' },
-      ]
-    : [
-        { label: t('home'), href: `/${lang}` },
-        { label: t('services'), href: `/${lang}/services` },
-        { label: t('portfolio'), href: `/${lang}/portfolio` },
-        { label: t('about'), href: `/${lang}/about` },
-        { label: t('contact'), href: `/${lang}/contact` },
-      ];
+  // Mismo menú en todo el sitio; marca la sección en la que estás (la home no marca ninguna).
+  const items: ItemNav[] = (['services', 'projects', 'about', 'contact'] as const).map((clave) => {
+    const href = `/${lang}/${clave === 'projects' ? 'portfolio' : clave}`;
+    return { label: t(clave), href, activo: pathname === href || pathname.startsWith(`${href}/`) };
+  });
 
   useEffect(() => {
     let pendiente = false;
@@ -76,7 +66,11 @@ const Navbar = () => {
           <ul className="hidden items-center gap-7 px-6 lg:col-span-2 lg:flex">
             {items.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                <Link
+                  href={item.href}
+                  aria-current={item.activo ? 'page' : undefined}
+                  className={cn('text-sm transition-colors hover:text-foreground', item.activo ? 'font-medium text-foreground' : 'text-muted-foreground')}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -108,7 +102,8 @@ const Navbar = () => {
                       <Link
                         href={item.href}
                         onClick={() => setAbierto(false)}
-                        className="flex min-h-11 items-center rounded-md px-3 text-base text-foreground transition-colors hover:bg-secondary"
+                        aria-current={item.activo ? 'page' : undefined}
+                        className={cn('flex min-h-11 items-center rounded-md px-3 text-base text-foreground transition-colors hover:bg-secondary', item.activo && 'bg-secondary font-medium')}
                       >
                         {item.label}
                       </Link>
