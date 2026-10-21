@@ -34,13 +34,9 @@
     "soon": "近日公開"
   },
   "Navbar": {
-    "home": "ホーム",
-    "portfolio": "ポートフォリオ",
     "about": "私たちについて",
     "services": "サービス",
     "projects": "実績",
-    "process": "進め方",
-    "faq": "よくある質問",
     "contact": "お問い合わせ",
     "startProject": "相談する",
     "menu": "メニュー",

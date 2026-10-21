@@ -34,13 +34,9 @@
     "soon": "COMING SOON"
   },
   "Navbar": {
-    "home": "Home",
-    "portfolio": "Portfolio",
     "about": "About",
     "services": "Services",
     "projects": "Work",
-    "process": "How we work",
-    "faq": "FAQ",
     "contact": "Contact",
     "startProject": "Let's talk",
     "menu": "Menu",

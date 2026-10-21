@@ -34,13 +34,9 @@
     "soon": "PRÓXIMAMENTE"
   },
   "Navbar": {
-    "home": "Inicio",
-    "portfolio": "Portafolio",
     "about": "Nosotros",
     "services": "Servicios",
     "projects": "Trabajos",
-    "process": "Cómo trabajamos",
-    "faq": "Preguntas",
     "contact": "Contacto",
     "startProject": "Hablemos",
     "menu": "Menú",
