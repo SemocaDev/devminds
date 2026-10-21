@@ -475,14 +475,6 @@
 
 
   /* Entrada única del hero: CSS puro, sin flash de hidratación */
-  @keyframes entrada {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: none; }
-  }
-  .entrada {
-    animation: entrada 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(var(--i, 0) * 80ms + 60ms);
-  }
 
   /* Puntos de la retícula: rellenan exactamente su celda, sin desvanecido */
   .campo-puntos {
@@ -495,10 +487,12 @@
 
 /* Wordmark animado. Fuera de @layer a propósito: Tailwind purga de @layer components las clases
    que no encuentra en su content, y estas se asignan desde src/lib/wordmark.ts (fuera del escaneo). */
+/* Todas a 1,14 em: el tamaño visual se iguala con una escala (transform), que no mueve el diseño (CLS 0). */
 .wm-doto { font-family: var(--font-doto); font-weight: 900; font-size: 1.14em; letter-spacing: -0.03em; }
-.wm-outfit { font-family: var(--font-outfit); font-weight: 700; }
-.wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 0.98em; }
-.wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.12em; }
+.wm-outfit { font-family: var(--font-outfit); font-weight: 700; font-size: 1.14em; transform: scale(0.877); transform-origin: 0 75%; }
+.wm-mono { font-family: var(--font-geist-mono); font-weight: 600; font-size: 1.14em; transform: scale(0.86); transform-origin: 0 75%; }
+.wm-serif { font-family: var(--font-instrument); font-style: italic; font-weight: 400; font-size: 1.14em; transform: scale(0.982); transform-origin: 0 75%; }
+.wm-geist { font-family: var(--font-geist); font-weight: 600; font-size: 1.14em; transform: scale(0.84); transform-origin: 0 75%; }
 
 /* Bandas de color de la home: redefinen los tokens dentro de la sección, así Reticula, Cruz, CampoPuntos
    y el texto se adaptan sin variantes. Fuera de @layer por la misma razón que el wordmark. */

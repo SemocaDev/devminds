@@ -19,10 +19,11 @@
 @keyframes mov-brazo { from { transform: scale(0); } to { transform: none; } }
 /* Arranca invisible: durante el retraso (fill-mode both) no debe asomar antes de que el trazo llegue. */
 @keyframes mov-destello { 0% { opacity: 0; transform: scale(0.2); } 1% { opacity: 0.7; transform: scale(0.2); } 100% { opacity: 0; transform: scale(1.8); } }
-@keyframes mov-encender { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+/* Los recortes terminan en `none`: así no cortan lo que sobresale de la celda (cruces en el borde). */
+@keyframes mov-encender { 0% { clip-path: inset(0 0 100% 0); } 99.9% { clip-path: inset(0 0 0 0); } 100% { clip-path: none; } }
 @keyframes mov-subir { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes mov-aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes mov-descubrir { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes mov-descubrir { 0% { clip-path: inset(100% 0 0 0); } 99.9% { clip-path: inset(0 0 0 0); } 100% { clip-path: none; } }
 @keyframes mov-zoom { from { transform: scale(1.08); } to { transform: none; } }
 @keyframes mov-subir-barra { from { transform: translateY(100%); } to { transform: none; } }
 
@@ -87,3 +88,32 @@ html.mov [data-mov='subir-barra']:not(.mov-activo):not([data-mov-entrada]) { tra
 .bd-outfit { font-family: var(--font-outfit); }
 .bd-mono { font-family: var(--font-geist-mono); }
 .bd-serif { font-family: var(--font-instrument); font-style: italic; }
+
+/* "DevMinds": ranura de ancho fijo (el de Doto, 5,2 em; ninguna otra fuente lo supera) para que el titular
+   no se mueva al cambiar de fuente. En línea con el titular, line-height 0: el cambio de tamaño entre fuentes
+   no altera la altura de la línea. En móvil va en su propia banda, con alto fijo. */
+.wm-ranura { display: inline-block; width: 5.2em; line-height: 0; white-space: nowrap; }
+@media (max-width: 767px) {
+  .wm-ranura { display: block; height: 0.95em; line-height: 0.95; }
+}
+
+/* Primer barrido desde el primer pintado, sin JS. Son capas superpuestas (Outfit y Geist, ya cargadas por la
+   página) que se alternan solo con opacidad: lo anima la GPU aunque el hilo principal esté ocupado hidratando.
+   Después, el ciclo de WordmarkAnimado cambia la fuente real y suma Geist Mono e Instrument Serif.
+   Las capas son pseudo-elementos (no están en el DOM: el H1 sigue diciendo "DevMinds" una vez) con texto
+   alternativo vacío para que los lectores de pantalla no las lean. */
+.wm-ranura { position: relative; }
+.wm-ranura::before,
+.wm-ranura::after {
+  content: 'DevMinds' / '';
+  position: absolute; left: 0; display: inline-block; opacity: 0; pointer-events: none;
+  font-size: 1.14em; transform-origin: 0 75%;
+}
+.wm-ranura::before { font-family: var(--font-outfit); font-weight: 700; transform: scale(0.877); }
+.wm-ranura::after { font-family: var(--font-geist); font-weight: 600; transform: scale(0.84); }
+@keyframes wm-barrido-doto { 0% { opacity: 1; } 33.3% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes wm-barrido-outfit { 0% { opacity: 0; } 33.3% { opacity: 1; } 66.6% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes wm-barrido-geist { 0% { opacity: 0; } 66.6% { opacity: 1; } 100% { opacity: 1; } }
+html.mov.mov-entrada [data-palabra] { animation: wm-barrido-doto 330ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::before { animation: wm-barrido-outfit 330ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::after { animation: wm-barrido-geist 330ms steps(1, end) 300ms; }
