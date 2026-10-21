@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
+import { imagenOg } from '@/lib/og';
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -26,11 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'DevMinds',
       locale: lang === 'es' ? 'es_CO' : lang === 'en' ? 'en_US' : 'ja_JP',
       type: 'website',
+      images: [imagenOg(lang)],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [imagenOg(lang).url],
     },
     alternates: {
       canonical: `https://www.devminds.online/${lang}/about`,
