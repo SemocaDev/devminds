@@ -93,45 +93,6 @@
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
   },
-  "Portfolio": {
-    "pageLabel": "Portafolio",
-    "label": "Portafolio",
-    "title": "Nuestro Portfolio",
-    "subtitle": "Explora nuestros proyectos completados y el trabajo que hemos realizado para nuestros clientes",
-    "description": "Descripción",
-    "technologies": "Tecnologías Utilizadas",
-    "viewDemo": "Ver Demo",
-    "viewCode": "Ver Código",
-    "noDemo": "Proyecto Privado",
-    "categories": {
-      "all": "Todos",
-      "web-app": "Aplicaciones Web",
-      "wordpress": "WordPress",
-      "custom-code": "Wix/Plantillas"
-    },
-    "projects": {
-      "softcount": {
-        "title": "SoftCount - Software de Contabilidad",
-        "description": "Software de contabilidad profesional (En construcción)",
-        "fullDescription": "SoftCount es un software de contabilidad desarrollado con Next.js, TypeScript y PostgreSQL. Proyecto propio en construcción diseñado para ofrecer una solución completa de gestión contable y financiera."
-      },
-      "wilson-isaza": {
-        "title": "Wilson Isaza - Sitio Político",
-        "description": "Sitio web en WordPress para político",
-        "fullDescription": "Sitio web desarrollado en WordPress para el político Wilson Isaza. Plataforma informativa profesional para su campaña política."
-      },
-      "empo-guzman": {
-        "title": "Empo Guzmán - Sitio Empresas Públicas",
-        "description": "Sitio web para empresas públicas en Wix",
-        "fullDescription": "Sitio web desarrollado en Wix para Empo Guzmán, enfocado en empresas públicas. Diseño con plantillas personalizadas."
-      },
-      "devminds-portfolio": {
-        "title": "DevMinds - Portfolio Profesional",
-        "description": "Este mismo sitio web que estás viendo",
-        "fullDescription": "Portfolio profesional desarrollado con Next.js 16, TypeScript, TailwindCSS y Framer Motion. Incluye sistema de i18n multi-idioma (ES, EN, JA), animaciones fluidas y diseño responsive moderno."
-      }
-    }
-  },
   "About": {
     "pageLabel": "Nosotros",
     "title": "Nuestro Equipo",
@@ -531,5 +492,12 @@
         "whatsapp": "Hola DevMinds, necesito ayuda con un software que ya tengo."
       }
     }
+  },
+  "Portafolio": {
+    "titulo": "Proyectos reales para negocios reales.",
+    "bajada": "Páginas, sistemas y apps hechos para negocios de Neiva y de otros lugares. Entra a cada uno para ver qué se hizo.",
+    "todos": "Todos",
+    "filtrar": "Filtrar por tipo de proyecto",
+    "vacio": "Todavía no hay proyectos de este tipo."
   }
 }

@@ -93,45 +93,6 @@
     "projectsLink": "Projects",
     "contactLink": "Contact"
   },
-  "Portfolio": {
-    "pageLabel": "Portfolio",
-    "label": "Portfolio",
-    "title": "Our Portfolio",
-    "subtitle": "Explore our completed projects and the work we've done for our clients",
-    "description": "Description",
-    "technologies": "Technologies Used",
-    "viewDemo": "View Demo",
-    "viewCode": "View Code",
-    "noDemo": "Private Project",
-    "categories": {
-      "all": "All",
-      "web-app": "Web Applications",
-      "wordpress": "WordPress",
-      "custom-code": "Wix/Templates"
-    },
-    "projects": {
-      "softcount": {
-        "title": "SoftCount - Accounting Software",
-        "description": "Professional accounting software (Under construction)",
-        "fullDescription": "SoftCount is accounting software developed with Next.js, TypeScript, and PostgreSQL. Own project under construction designed to offer a complete accounting and financial management solution."
-      },
-      "wilson-isaza": {
-        "title": "Wilson Isaza - Political Website",
-        "description": "WordPress website for politician",
-        "fullDescription": "Website developed in WordPress for politician Wilson Isaza. Professional informational platform for his political campaign."
-      },
-      "empo-guzman": {
-        "title": "Empo Guzmán - Public Companies Website",
-        "description": "Website for public companies in Wix",
-        "fullDescription": "Website developed in Wix for Empo Guzmán, focused on public companies. Design with custom templates."
-      },
-      "devminds-portfolio": {
-        "title": "DevMinds - Professional Portfolio",
-        "description": "This very website you're viewing",
-        "fullDescription": "Professional portfolio developed with Next.js 16, TypeScript, TailwindCSS, and Framer Motion. Includes multi-language i18n system (ES, EN, JA), smooth animations, and modern responsive design."
-      }
-    }
-  },
   "About": {
     "pageLabel": "About Us",
     "title": "Our Team",
@@ -531,5 +492,12 @@
         "whatsapp": "Hi DevMinds, I need help with software I already have."
       }
     }
+  },
+  "Portafolio": {
+    "titulo": "Real projects for real businesses.",
+    "bajada": "Websites, systems and apps built for businesses in Colombia and beyond. Open each one to see what was built.",
+    "todos": "All",
+    "filtrar": "Filter by project type",
+    "vacio": "No projects of this type yet."
   }
 }

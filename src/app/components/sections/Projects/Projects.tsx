@@ -1,11 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ArrowRight } from 'lucide-react';
-import { lineaMeta } from '@/lib/proyectos';
+import TarjetaProyecto from '@/app/components/proyectos/TarjetaProyecto';
 import { cn } from '@/lib/utils';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
 
@@ -35,22 +34,7 @@ export default function Projects({ projects = [] }: Props) {
               const destacado = i === 0;
               return (
                 <li key={p.id} className={cn('px-4 md:px-6', destacado && 'md:col-span-2')}>
-                  <Link href={`/${lang}/portfolio`} className="group block">
-                    <div className={cn('relative overflow-hidden rounded-xl border border-border bg-secondary', destacado ? 'aspect-[16/10]' : 'aspect-[4/3]')}>
-                      {p.images?.[0] && (
-                        <Image
-                          src={p.images[0]}
-                          alt={p.title}
-                          fill
-                          sizes={destacado ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 25vw'}
-                          className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                        />
-                      )}
-                    </div>
-                    <p className="mt-4 text-[13px] font-medium text-muted-foreground">{lineaMeta([tipo, p.client, p.year])}</p>
-                    <h3 className={cn('mt-1 font-display font-bold tracking-[-0.015em] text-foreground', destacado ? 'text-2xl' : 'text-xl')}>{p.title}</h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{p.description}</p>
-                  </Link>
+                  <TarjetaProyecto proyecto={p} href={`/${lang}/portfolio/${p.slug}`} tipo={tipo} destacado={destacado} />
                 </li>
               );
             })}

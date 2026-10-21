@@ -93,45 +93,6 @@
     "projectsLink": "プロジェクト",
     "contactLink": "お問い合わせ"
   },
-  "Portfolio": {
-    "pageLabel": "ポートフォリオ",
-    "label": "ポートフォリオ",
-    "title": "ポートフォリオ",
-    "subtitle": "完成したプロジェクトとクライアントのために行った作業をご覧ください",
-    "description": "説明",
-    "technologies": "使用技術",
-    "viewDemo": "デモを見る",
-    "viewCode": "コードを見る",
-    "noDemo": "非公開プロジェクト",
-    "categories": {
-      "all": "すべて",
-      "web-app": "ウェブアプリケーション",
-      "wordpress": "WordPress",
-      "custom-code": "Wix/テンプレート"
-    },
-    "projects": {
-      "softcount": {
-        "title": "SoftCount - 会計ソフトウェア",
-        "description": "プロフェッショナル会計ソフトウェア(開発中)",
-        "fullDescription": "SoftCountは、Next.js、TypeScript、PostgreSQLで開発された会計ソフトウェアです。完全な会計および財務管理ソリューションを提供するために設計された開発中の自社プロジェクトです。"
-      },
-      "wilson-isaza": {
-        "title": "Wilson Isaza - 政治サイト",
-        "description": "政治家向けWordPressウェブサイト",
-        "fullDescription": "政治家Wilson Isaza向けにWordPressで開発されたウェブサイト。政治キャンペーン用のプロフェッショナルな情報プラットフォーム。"
-      },
-      "empo-guzman": {
-        "title": "Empo Guzmán - 公共企業サイト",
-        "description": "Wixで作成された公共企業向けウェブサイト",
-        "fullDescription": "公共企業に焦点を当てたEmpo Guzmán向けにWixで開発されたウェブサイト。カスタマイズされたテンプレートを使用したデザイン。"
-      },
-      "devminds-portfolio": {
-        "title": "DevMinds - プロフェッショナルポートフォリオ",
-        "description": "ご覧いただいているこのウェブサイト",
-        "fullDescription": "Next.js 16、TypeScript、TailwindCSS、Framer Motionで開発されたプロフェッショナルポートフォリオ。多言語i18nシステム(ES、EN、JA)、スムーズなアニメーション、モダンなレスポンシブデザインを含みます。"
-      }
-    }
-  },
   "About": {
     "pageLabel": "会社概要",
     "title": "チーム",
@@ -531,5 +492,12 @@
         "whatsapp": "こんにちは、DevMindsさん。既存のソフトウェアについて相談したいです。"
       }
     }
+  },
+  "Portafolio": {
+    "titulo": "実在するビジネスのための、実際のプロジェクト。",
+    "bajada": "コロンビア内外の事業者のためにつくったウェブサイト、システム、アプリ。それぞれの詳細をご覧ください。",
+    "todos": "すべて",
+    "filtrar": "種類で絞り込む",
+    "vacio": "この種類のプロジェクトはまだありません。"
   }
 }
