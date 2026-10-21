@@ -43,3 +43,14 @@ next-env.d.ts
 # brainstorming visual companion / impeccable
 .superpowers/
 .impeccable/
+
+# herramientas locales
+.playwright-mcp/
+logs/
+
+# skills instaladas (se reinstalan desde skills-lock.json)
+.agents/
+.claude/skills/
+
+# respaldos locales de la DB de producción
+docs/superpowers/respaldos/2026-10-21-proyectos.json

@@ -20,18 +20,7 @@
     "portfolio": {
       "title": "制作実績:ウェブサイトとソフトウェア | DevMinds",
       "description": "DevMindsの実際のプロジェクト。会計システム、ウェブサイト、アプリなど、それぞれで何をつくったかをご覧ください。"
-    },
-    "notFound": {
-      "title": "ページが見つかりません | DevMinds",
-      "description": "お探しのページは存在しないか、移動しました。"
     }
-  },
-  "Menu": {
-    "projects": "プロジェクト",
-    "services": "サービス",
-    "about": "会社概要",
-    "contact": "お問い合わせ",
-    "soon": "近日公開"
   },
   "Navbar": {
     "about": "私たちについて",
@@ -51,23 +40,15 @@
       "home": "ホーム",
       "about": "会社概要",
       "services": "サービス",
-      "portfolio": "ポートフォリオ",
+      "portfolio": "実績",
       "contact": "お問い合わせ"
     }
   },
-  "LoadingScreen": {
-    "loading": "読み込み中..."
-  },
   "NotFound": {
-    "title": "ページが見つかりません",
-    "description": "申し訳ございません。お探しのページは存在しないか、移動されました。",
-    "backHome": "ホームに戻る",
-    "goBack": "戻る",
-    "usefulPages": "便利なページ:",
-    "aboutLink": "会社概要",
-    "servicesLink": "サービス",
-    "projectsLink": "プロジェクト",
-    "contactLink": "お問い合わせ"
+    "titulo": "このシートは図面にありません。",
+    "bajada": "お探しのページは存在しないか、移動しました。こちらのシートをご覧ください:",
+    "seccion": "該当なし",
+    "desconocida": "?"
   },
   "EmailTemplate": {
     "subject": "新しいお問い合わせメッセージ - DevMinds",
