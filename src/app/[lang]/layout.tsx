@@ -56,6 +56,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = t('home.description');
   const keywords = t('home.keywords');
 
+  // Imagen para compartir por idioma (public/og-image*.jpg); el alt repite su titular.
+  const og = {
+    es: { url: 'https://www.devminds.online/og-image.jpg', alt: 'DevMinds crea el software que tu negocio necesita.' },
+    en: { url: 'https://www.devminds.online/og-image-en.jpg', alt: 'DevMinds builds the software your business needs.' },
+    ja: { url: 'https://www.devminds.online/og-image-ja.jpg', alt: 'DevMindsは、あなたのビジネスに必要なソフトウェアをつくります。' },
+  }[lang] ?? { url: 'https://www.devminds.online/og-image.jpg', alt: 'DevMinds crea el software que tu negocio necesita.' };
+
   return {
     title,
     description,
@@ -65,6 +72,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
         { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
         { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
         { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
@@ -90,10 +98,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'DevMinds',
       images: [
         {
-          url: 'https://www.devminds.online/og-image.jpg',
+          url: og.url,
           width: 1200,
           height: 630,
-          alt: 'DevMinds - Desarrollo Web Profesional en Neiva, Colombia',
+          alt: og.alt,
         }
       ],
     },
@@ -104,7 +112,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       creator: '@devminds',
-      images: ['https://www.devminds.online/og-image.jpg'],
+      images: [og.url],
     },
 
     // Robots y indexación
