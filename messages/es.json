@@ -93,95 +93,6 @@
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
   },
-  "About": {
-    "pageLabel": "Nosotros",
-    "title": "Nuestro Equipo",
-    "subtitle": "Conoce a las personas que hacen realidad las ideas",
-    "foundersTitle": "Fundadores",
-    "teamTitle": "Nuestro Equipo",
-    "contact": "Contactar",
-    "hierarchy": {
-      "founder": "Fundador",
-      "co-founder": "Co-fundador",
-      "developer": "Desarrollador",
-      "designer": "Diseñador",
-      "marketing": "Marketing"
-    },
-    "roles": {
-      "softwareEngineer": "Ingeniero de Software",
-      "psychologist": "Psicóloga"
-    },
-    "specializations": {
-      "frontendUX": "Especialista en Frontend y UX",
-      "backend": "Especialista en Backend",
-      "fullstack": "Desarrollador Full Stack",
-      "uxResearch": "Investigación UX y Marketing"
-    },
-    "bios": {
-      "sebastianBio": "Ingeniero de Software apasionado por crear experiencias de usuario excepcionales. Especializado en desarrollo frontend con Next.js, React y TypeScript. Me enfoco en construir aplicaciones web modernas, eficientes y escalables que resuelvan problemas reales.",
-      "juanBio": "Ingeniero de Software enfocado en el desarrollo backend y arquitectura de sistemas. Experto en diseño de APIs, bases de datos y soluciones escalables que dan soporte a aplicaciones robustas.",
-      "mariaBio": "Psicóloga especializada en investigación de usuarios y estrategia de contenido. Apasionada por entender el comportamiento del usuario y crear experiencias digitales que conecten emocionalmente.",
-      "carlosBio": "Desarrollador Full Stack con experiencia en crear aplicaciones web completas. Especializado en tecnologías modernas y arquitecturas escalables tanto en frontend como backend."
-    },
-    "skills": {
-      "title": "Habilidades Técnicas"
-    },
-    "interests": {
-      "title": "Intereses",
-      "gaming": "Videojuegos",
-      "anime": "Anime",
-      "manga": "Manga",
-      "cooking": "Cocinar",
-      "systemDesign": "Diseño de Sistemas",
-      "databases": "Bases de Datos",
-      "reading": "Lectura",
-      "coding": "Programación"
-    },
-    "history": {
-      "title": "Nuestra Historia",
-      "paragraph1": "DevMinds nació de la pasión por crear soluciones digitales que realmente marcan la diferencia. Como recién graduados en ingeniería de software, identificamos una oportunidad clara: muchas empresas y emprendedores necesitan tecnología de calidad, pero se encuentran con soluciones genéricas o demasiado costosas.",
-      "paragraph2": "Decidimos crear DevMinds con una visión clara: ofrecer desarrollo web y software personalizado con los más altos estándares de calidad, utilizando las tecnologías más modernas del mercado. Nuestro enfoque se centra en entender las necesidades reales de cada cliente y construir soluciones que no solo funcionen, sino que escalen y perduren en el tiempo.",
-      "paragraph3": "Hoy, DevMinds es más que una empresa de desarrollo. Somos un equipo de profesionales comprometidos con la excelencia técnica, la comunicación transparente y la satisfacción del cliente. Cada proyecto que realizamos es una oportunidad para demostrar que la tecnología bien hecha puede transformar negocios."
-    },
-    "values": {
-      "title": "Nuestros Valores",
-      "innovation": {
-        "title": "Innovación",
-        "description": "Adoptamos las últimas tecnologías y mejores prácticas para ofrecer soluciones modernas y eficientes"
-      },
-      "quality": {
-        "title": "Calidad",
-        "description": "Código limpio, arquitectura sólida y atención al detalle en cada línea que escribimos"
-      },
-      "commitment": {
-        "title": "Compromiso",
-        "description": "Tu proyecto es nuestra prioridad. Nos comprometemos con plazos, calidad y resultados"
-      },
-      "transparency": {
-        "title": "Transparencia",
-        "description": "Comunicación clara y honesta en cada etapa del proyecto, sin sorpresas ni costos ocultos"
-      }
-    },
-    "whyChooseUs": {
-      "title": "¿Por qué elegirnos?",
-      "cleanCode": {
-        "title": "Código Limpio",
-        "description": "Código bien estructurado, documentado y mantenible que facilita futuras actualizaciones"
-      },
-      "communication": {
-        "title": "Comunicación Constante",
-        "description": "Actualizaciones regulares y disponibilidad para resolver dudas en cada etapa"
-      },
-      "onTime": {
-        "title": "Entrega a Tiempo",
-        "description": "Cumplimos con los plazos establecidos sin comprometer la calidad del producto"
-      },
-      "support": {
-        "title": "Soporte Post-Lanzamiento",
-        "description": "No te dejamos solo. Ofrecemos soporte continuo y mantenimiento después del lanzamiento"
-      }
-    }
-  },
   "ContactPage": {
     "hero": {
       "title": "Contacto",
@@ -511,5 +422,46 @@
       "duracion": "Duración",
       "tecnologia": "Tecnología"
     }
+  },
+  "Nosotros": {
+    "titulo": "Detrás de DevMinds.",
+    "bajada": "Quién diseña y construye tu proyecto, y cómo trabaja.",
+    "rol": "Fundador e ingeniero de software",
+    "historia": [
+      "DevMinds nació en la universidad. Mientras sus compañeros armaban portafolios con su nombre, Sebastián quiso hacer algo más trabajado y lo construyó bajo una marca propia. La primera versión era muy \"tech\"; con el tiempo el estudio maduró y hoy se enfoca en lo que le importa a un negocio.",
+      "Hoy DevMinds mantiene RMConta, un sistema contable que una empresa usa todos los meses, y ha construido un registro de cartera para un comerciante de Neiva, la web de un consultorio odontológico y varias páginas en WordPress y Wix.",
+      "Lo que lo distingue no es escribir más código, sino entender el negocio antes de construir: qué problema hay, quién lo va a usar y cuál es la forma más simple de resolverlo. Trabaja con un método propio que documenta cada proyecto y cada lección para hacerlo mejor la próxima vez. Y cuando algo le da curiosidad, lo prueba: lo más reciente, aplicaciones de escritorio en .NET que funcionan sin internet."
+    ],
+    "datos": {
+      "base": "Base",
+      "baseValor": "Neiva, Huila · Colombia",
+      "formacion": "Formación",
+      "formacionValor": "Ingeniería de Software · Universidad Surcolombiana",
+      "enlaces": "En la red"
+    },
+    "principios": {
+      "titulo": "Cómo trabajamos",
+      "directo": {
+        "titulo": "Hablas con quien construye",
+        "texto": "Sin intermediarios ni cadenas de correos: quien te escucha es quien diseña y programa."
+      },
+      "precio": {
+        "titulo": "Precio fijo por escrito",
+        "texto": "Alcance, tiempos y precio acordados antes de empezar. Puedes pagar por etapas."
+      },
+      "avances": {
+        "titulo": "Avances cada semana",
+        "texto": "Ves el proyecto crecer y opinas mientras se construye, no solo al final."
+      },
+      "codigo": {
+        "titulo": "El código es tuyo",
+        "texto": "Al terminar recibes el código, la documentación y los accesos."
+      }
+    },
+    "tecnologias": {
+      "titulo": "Con qué trabajamos",
+      "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
+    },
+    "cargo": "Ingeniero de software"
   }
 }

@@ -93,95 +93,6 @@
     "projectsLink": "Projects",
     "contactLink": "Contact"
   },
-  "About": {
-    "pageLabel": "About Us",
-    "title": "Our Team",
-    "subtitle": "Meet the people who bring ideas to life",
-    "foundersTitle": "Founders",
-    "teamTitle": "Our Team",
-    "contact": "Contact",
-    "hierarchy": {
-      "founder": "Founder",
-      "co-founder": "Co-founder",
-      "developer": "Developer",
-      "designer": "Designer",
-      "marketing": "Marketing"
-    },
-    "roles": {
-      "softwareEngineer": "Software Engineer",
-      "psychologist": "Psychologist"
-    },
-    "specializations": {
-      "frontendUX": "Frontend and UX Specialist",
-      "backend": "Backend Specialist",
-      "fullstack": "Full Stack Developer",
-      "uxResearch": "UX Research and Marketing"
-    },
-    "bios": {
-      "sebastianBio": "Software Engineer passionate about creating exceptional user experiences. Specialized in frontend development with Next.js, React, and TypeScript. I focus on building modern, efficient, and scalable web applications that solve real problems.",
-      "juanBio": "Software Engineer focused on backend development and system architecture. Expert in API design, databases, and scalable solutions that support robust applications.",
-      "mariaBio": "Psychologist specialized in user research and content strategy. Passionate about understanding user behavior and creating digital experiences that connect emotionally.",
-      "carlosBio": "Full Stack Developer with experience creating complete web applications. Specialized in modern technologies and scalable architectures for both frontend and backend."
-    },
-    "skills": {
-      "title": "Technical Skills"
-    },
-    "interests": {
-      "title": "Interests",
-      "gaming": "Video Games",
-      "anime": "Anime",
-      "manga": "Manga",
-      "cooking": "Cooking",
-      "systemDesign": "System Design",
-      "databases": "Databases",
-      "reading": "Reading",
-      "coding": "Programming"
-    },
-    "history": {
-      "title": "Our History",
-      "paragraph1": "DevMinds was born from the passion to create digital solutions that truly make a difference. As recent software engineering graduates, we identified a clear opportunity: many businesses and entrepreneurs need quality technology but encounter generic or overly expensive solutions.",
-      "paragraph2": "We decided to create DevMinds with a clear vision: to offer web development and custom software with the highest quality standards, using the most modern technologies on the market. Our focus centers on understanding each client's real needs and building solutions that not only work but scale and stand the test of time.",
-      "paragraph3": "Today, DevMinds is more than a development company. We are a team of professionals committed to technical excellence, transparent communication, and client satisfaction. Every project we undertake is an opportunity to demonstrate that well-crafted technology can transform businesses."
-    },
-    "values": {
-      "title": "Our Values",
-      "innovation": {
-        "title": "Innovation",
-        "description": "We adopt the latest technologies and best practices to deliver modern and efficient solutions"
-      },
-      "quality": {
-        "title": "Quality",
-        "description": "Clean code, solid architecture, and attention to detail in every line we write"
-      },
-      "commitment": {
-        "title": "Commitment",
-        "description": "Your project is our priority. We commit to deadlines, quality, and results"
-      },
-      "transparency": {
-        "title": "Transparency",
-        "description": "Clear and honest communication at every stage of the project, no surprises or hidden costs"
-      }
-    },
-    "whyChooseUs": {
-      "title": "Why choose us?",
-      "cleanCode": {
-        "title": "Clean Code",
-        "description": "Well-structured, documented, and maintainable code that facilitates future updates"
-      },
-      "communication": {
-        "title": "Constant Communication",
-        "description": "Regular updates and availability to answer questions at every stage"
-      },
-      "onTime": {
-        "title": "On-Time Delivery",
-        "description": "We meet established deadlines without compromising product quality"
-      },
-      "support": {
-        "title": "Post-Launch Support",
-        "description": "We don't leave you alone. We offer ongoing support and maintenance after launch"
-      }
-    }
-  },
   "ContactPage": {
     "hero": {
       "title": "Contact",
@@ -511,5 +422,46 @@
       "duracion": "Duration",
       "tecnologia": "Technology"
     }
+  },
+  "Nosotros": {
+    "titulo": "Behind DevMinds.",
+    "bajada": "Who designs and builds your project, and how the work gets done.",
+    "rol": "Founder and software engineer",
+    "historia": [
+      "DevMinds started at university. While his classmates were putting together portfolios under their own names, Sebastián wanted something more crafted, and he built it under a brand of its own. The first version was very \"techy\"; over time the studio matured, and today it focuses on what matters to a business.",
+      "Today DevMinds maintains RMConta, an accounting system a company relies on every month, and has built a receivables tracker for a local merchant, the website of a dental practice and several WordPress and Wix sites.",
+      "What sets it apart isn't writing more code, but understanding the business before building: what the problem is, who will use the solution and what the simplest way to solve it is. He works with his own method, documenting every project and every lesson to do better the next time. And when something sparks his curiosity, he tries it: most recently, .NET desktop apps that work without an internet connection."
+    ],
+    "datos": {
+      "base": "Based in",
+      "baseValor": "Neiva, Colombia",
+      "formacion": "Education",
+      "formacionValor": "Software Engineering · Universidad Surcolombiana",
+      "enlaces": "Online"
+    },
+    "principios": {
+      "titulo": "How we work",
+      "directo": {
+        "titulo": "You talk to the builder",
+        "texto": "No middlemen or email chains: the person who listens to you is the one who designs and codes."
+      },
+      "precio": {
+        "titulo": "Fixed price in writing",
+        "texto": "Scope, timeline and price agreed before we start. You can pay in stages."
+      },
+      "avances": {
+        "titulo": "Progress every week",
+        "texto": "You see the project grow and give feedback while it's built, not only at the end."
+      },
+      "codigo": {
+        "titulo": "The code is yours",
+        "texto": "When we finish you get the code, the documentation and every access."
+      }
+    },
+    "tecnologias": {
+      "titulo": "What we work with",
+      "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
+    },
+    "cargo": "Software engineer"
   }
 }
