@@ -6,24 +6,24 @@
       "keywords": "desarrollo de software neiva, crear pagina web neiva, paginas web para negocios neiva, desarrollo web huila, software a medida neiva, programador neiva, aplicaciones moviles neiva, seo local neiva, google maps negocio neiva"
     },
     "services": {
-      "title": "Crear Páginas Web y Software en Neiva | Servicios DevMinds",
-      "description": "Creamos páginas web profesionales, software a medida, tiendas online y aplicaciones para empresas en Neiva, Huila. WordPress, Next.js, React. Cotización gratis.",
-      "keywords": "crear pagina web neiva, hacer sitio web neiva, diseño web neiva, software a medida neiva, paginas web para negocios huila, tienda online neiva, wordpress neiva, aplicaciones web colombia, desarrollo web profesional neiva"
+      "title": "Páginas web, sistemas a medida y apps en Neiva | DevMinds",
+      "description": "Qué incluye cada servicio, cuánto tarda y cómo empezamos: páginas web con Google, sistemas a medida, apps móviles y soporte para negocios de Neiva y el Huila."
     },
     "about": {
-      "title": "Quiénes Somos - DevMinds | Empresa de Software en Neiva, Huila",
-      "description": "Somos DevMinds, empresa de desarrollo web y software en Neiva, Huila. Ingenieros de software especializados en crear páginas web modernas con Next.js, React y TypeScript.",
-      "keywords": "empresa desarrollo web neiva, empresa de software neiva, programadores neiva huila, ingenieros de software neiva, desarrolladores web colombia, agencia digital neiva"
+      "title": "Detrás de DevMinds: estudio de software en Neiva, Huila",
+      "description": "DevMinds es un estudio de software en Neiva fundado por Sebastián Morea, ingeniero de software. Hablas directo con quien diseña y construye tu proyecto."
     },
     "contact": {
-      "title": "Cotización Página Web Neiva | Contacto - DevMinds",
-      "description": "¿Cuánto cuesta una página web en Neiva? Cotización gratis para tu proyecto web. Páginas web, software y tiendas online para empresas en Huila. Respuesta en 24h.",
-      "keywords": "cotizacion pagina web neiva, cuanto cuesta pagina web neiva, precio pagina web neiva, presupuesto desarrollo web huila, contacto programador neiva"
+      "title": "Contacto: hablemos de tu proyecto en Neiva | DevMinds",
+      "description": "Escríbenos por WhatsApp, correo o teléfono. Respondemos en menos de 24 horas y la primera consulta es gratis. Estudio de software en Neiva, Huila."
     },
     "portfolio": {
-      "title": "Proyectos Web Realizados en Neiva | Portafolio - DevMinds",
-      "description": "Mira nuestros proyectos: páginas web, aplicaciones y software desarrollados en Neiva, Huila. Ejemplos reales de nuestro trabajo para empresas en Colombia.",
-      "keywords": "proyectos web neiva, portafolio desarrollo web neiva, ejemplos paginas web huila, trabajos desarrollo web colombia, paginas web hechas en neiva"
+      "title": "Trabajos: páginas web y software hechos en Neiva | DevMinds",
+      "description": "Proyectos reales de DevMinds: sistemas contables, páginas web y apps para negocios de Neiva, el Huila y Colombia. Mira qué se hizo en cada uno."
+    },
+    "notFound": {
+      "title": "Hoja no encontrada | DevMinds",
+      "description": "La página que buscas no existe o cambió de lugar."
     }
   },
   "Menu": {

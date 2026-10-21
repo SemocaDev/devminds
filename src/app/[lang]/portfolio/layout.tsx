@@ -1,6 +1,6 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { imagenOg } from '@/lib/og';
+import { metadataDePagina } from '@/lib/metadata';
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -10,49 +10,11 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const t = await getTranslations({ locale: lang, namespace: 'Metadata' });
-
-  const title = t('portfolio.title');
-  const description = t('portfolio.description');
-  const keywords = t('portfolio.keywords');
-
-  return {
-    title,
-    description,
-    keywords,
-    openGraph: {
-      title,
-      description,
-      url: `https://www.devminds.online/${lang}/portfolio`,
-      siteName: 'DevMinds',
-      locale: lang === 'es' ? 'es_CO' : lang === 'en' ? 'en_US' : 'ja_JP',
-      type: 'website',
-      images: [imagenOg(lang)],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [imagenOg(lang).url],
-    },
-    alternates: {
-      canonical: `https://www.devminds.online/${lang}/portfolio`,
-      languages: {
-        'x-default': 'https://www.devminds.online/es/portfolio',
-        'es': 'https://www.devminds.online/es/portfolio',
-        'en': 'https://www.devminds.online/en/portfolio',
-        'ja': 'https://www.devminds.online/ja/portfolio',
-      },
-    },
-  };
+  return metadataDePagina({ lang, ruta: '/portfolio', title: t('portfolio.title'), description: t('portfolio.description') });
 }
 
 export default async function PortfolioLayout({ params, children }: Props) {
   const { lang } = await params;
   setRequestLocale(lang);
-
-  return (
-    <>
-      {children}
-    </>
-  );
+  return children;
 }

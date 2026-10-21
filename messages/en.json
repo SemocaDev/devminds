@@ -6,24 +6,24 @@
       "keywords": "custom software development colombia, nearshore software development, software engineer colombia, hire developer latin america, web development colombia, next.js developer colombia, remote software developer"
     },
     "services": {
-      "title": "Web Development Services | Websites, Software & Apps - DevMinds Colombia",
-      "description": "Professional web development services in Colombia. Custom websites, software solutions, e-commerce stores, WordPress and modern web apps with Next.js and React. Free quote.",
-      "keywords": "web development services colombia, website design neiva, custom software development, e-commerce colombia, wordpress developer colombia, web application development, hire web developer colombia"
+      "title": "Websites, Custom Systems and Mobile Apps | DevMinds",
+      "description": "What each service includes, how long it takes and how we start: search-ready websites, custom business systems, mobile apps and ongoing support."
     },
     "about": {
-      "title": "About Us - DevMinds | Software Engineers in Neiva, Colombia",
-      "description": "Meet DevMinds, a software development company in Neiva, Colombia. Our engineers specialize in modern web development with Next.js, React and TypeScript.",
-      "keywords": "software company colombia, web developers neiva, software engineers colombia, development team neiva huila, tech agency colombia"
+      "title": "Behind DevMinds: a Software Studio from Colombia",
+      "description": "DevMinds is a software studio founded by Sebastián Morea, a software engineer in Colombia. You talk directly to the person who designs and builds your project."
     },
     "contact": {
-      "title": "Get a Free Quote | Contact DevMinds - Web Development Colombia",
-      "description": "Get a free quote for your web project. We build websites, custom software and online stores for businesses in Colombia. Response within 24 hours.",
-      "keywords": "web development quote colombia, hire developer neiva, website cost colombia, contact web agency colombia"
+      "title": "Contact: Let's Talk About Your Project | DevMinds",
+      "description": "Message us on WhatsApp, by email or phone. We reply within 24 hours and the first consultation is free. English communication, code you own."
     },
     "portfolio": {
-      "title": "Our Work - Web Projects Portfolio | DevMinds Colombia",
-      "description": "See our web development projects: websites, web applications and custom software built for businesses in Colombia. Real examples of our work.",
-      "keywords": "web development portfolio colombia, web projects neiva, website examples colombia, software projects huila"
+      "title": "Work: Websites and Software We Have Built | DevMinds",
+      "description": "Real projects by DevMinds: accounting systems, websites and apps for businesses. See what was built in each one and why."
+    },
+    "notFound": {
+      "title": "Sheet not found | DevMinds",
+      "description": "The page you are looking for does not exist or has moved."
     }
   },
   "Menu": {
