@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import Wordmark from '@/app/components/marca/Wordmark';
+import LogoHorizontal from '@/app/components/marca/LogoHorizontal';
 import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
 import contactConfig from '@/config/contact.json';
 import { enlaceCorreo } from '@/lib/enlaces';
@@ -31,7 +31,7 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
       <div className="contenedor-reticula py-14">
         <div className="grid gap-y-10 md:grid-cols-4">
           <div className="px-4 md:px-6">
-            <Wordmark className="text-3xl" />
+            <LogoHorizontal tono="oscuro" alto={36} />
             <p className="mt-3 max-w-xs text-sm text-background/70">{t('tagline')}</p>
             <SelectorIdioma tono="oscuro" className="-ml-3 mt-5" />
           </div>
