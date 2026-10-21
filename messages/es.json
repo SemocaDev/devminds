@@ -42,30 +42,6 @@
     "menu": "Menú",
     "idioma": "Idioma"
   },
-  "Contact": {
-    "title": "Hablemos de tu Proyecto",
-    "subtitle": "¿Tienes una idea? Cuéntanos y trabajemos juntos para hacerla realidad",
-    "form": {
-      "name": "Nombre",
-      "namePlaceholder": "Tu nombre completo",
-      "email": "Email",
-      "emailPlaceholder": "tu@email.com",
-      "message": "Mensaje",
-      "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
-      "submit": "Enviar mensaje"
-    },
-    "info": {
-      "responseTime": {
-        "title": "Respuesta Rápida",
-        "description": "Respondemos todos los mensajes en menos de 24 horas"
-      },
-      "email": {
-        "title": "Contacto Directo",
-        "description": "semoca00@gmail.com"
-      }
-    },
-    "detailedContact": "Más opciones de contacto"
-  },
   "Footer": {
     "copyright": "© {year} DevMinds. Todos los derechos reservados.",
     "tagline": "Estudio de software en Neiva, Huila.",
@@ -92,52 +68,6 @@
     "servicesLink": "Servicios",
     "projectsLink": "Proyectos",
     "contactLink": "Contacto"
-  },
-  "ContactPage": {
-    "hero": {
-      "title": "Contacto",
-      "subtitle": "Estamos aquí para ayudarte. Cuéntanos sobre tu proyecto y trabajemos juntos para hacerlo realidad."
-    },
-    "form": {
-      "title": "Envíanos un Mensaje",
-      "subtitle": "Completa el formulario y nos pondremos en contacto contigo lo antes posible.",
-      "name": "Nombre completo",
-      "namePlaceholder": "Juan Pérez",
-      "email": "Email",
-      "emailPlaceholder": "tu@email.com",
-      "subject": "Asunto",
-      "subjectPlaceholder": "¿En qué podemos ayudarte?",
-      "message": "Mensaje",
-      "messagePlaceholder": "Cuéntanos sobre tu proyecto, tus necesidades o cualquier pregunta que tengas...",
-      "submit": "Enviar Mensaje",
-      "privacy": "Al enviar este formulario, aceptas que procesemos tu información de contacto."
-    },
-    "contactInfo": {
-      "title": "Información de Contacto",
-      "subtitle": "Otras formas de ponerte en contacto con nosotros.",
-      "email": {
-        "title": "Email Directo"
-      },
-      "whatsapp": {
-        "title": "WhatsApp",
-        "defaultMessage": "Hola! Me gustaría saber más sobre sus servicios."
-      },
-      "responseTime": {
-        "title": "Tiempo de Respuesta",
-        "description": "Menos de 24 horas hábiles"
-      },
-      "github": {
-        "title": "GitHub"
-      },
-      "linkedin": {
-        "title": "LinkedIn"
-      }
-    },
-    "quickContact": {
-      "title": "¿Prefieres un email directo?",
-      "description": "Envíanos un email y te responderemos lo antes posible.",
-      "button": "Enviar Email Directo"
-    }
   },
   "EmailTemplate": {
     "subject": "Nuevo Mensaje de Contacto - DevMinds",
@@ -463,5 +393,22 @@
       "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
     },
     "cargo": "Ingeniero de software"
+  },
+  "Contacto": {
+    "titulo": "Hablemos de tu proyecto.",
+    "bajada": "Escríbenos por donde te quede más cómodo. Respondemos en menos de 24 horas y la primera consulta es gratis.",
+    "whatsapp": {
+      "rotulo": "La forma más rápida",
+      "titulo": "Escríbenos por WhatsApp",
+      "texto": "Respondemos en menos de 24 horas."
+    },
+    "correo": "Correo",
+    "llamada": "Llamada",
+    "formulario": {
+      "titulo": "O escríbenos con calma",
+      "texto": "Cuéntanos qué necesitas y te respondemos al correo.",
+      "privacidad": "Al enviar este formulario, aceptas que usemos tus datos solo para responderte."
+    },
+    "ubicacion": "Neiva, Huila · Colombia. Trabajamos con negocios de todo el país y de otros lugares por videollamada."
   }
 }

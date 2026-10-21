@@ -42,30 +42,6 @@
     "menu": "メニュー",
     "idioma": "言語"
   },
-  "Contact": {
-    "title": "プロジェクトについてお話しましょう",
-    "subtitle": "アイデアはありますか? お聞かせください。一緒に実現させましょう",
-    "form": {
-      "name": "お名前",
-      "namePlaceholder": "お名前をフルネームで",
-      "email": "メールアドレス",
-      "emailPlaceholder": "your@email.com",
-      "message": "メッセージ",
-      "messagePlaceholder": "プロジェクトについてお聞かせください...",
-      "submit": "メッセージを送信"
-    },
-    "info": {
-      "responseTime": {
-        "title": "迅速な対応",
-        "description": "24時間以内にすべてのメッセージに返信します"
-      },
-      "email": {
-        "title": "直接お問い合わせ",
-        "description": "semoca00@gmail.com"
-      }
-    },
-    "detailedContact": "その他のお問い合わせ方法"
-  },
   "Footer": {
     "copyright": "© {year} DevMinds. 無断転載を禁じます。",
     "tagline": "コロンビアのソフトウェアスタジオ。",
@@ -92,52 +68,6 @@
     "servicesLink": "サービス",
     "projectsLink": "プロジェクト",
     "contactLink": "お問い合わせ"
-  },
-  "ContactPage": {
-    "hero": {
-      "title": "お問い合わせ",
-      "subtitle": "お手伝いさせていただきます。プロジェクトについてお聞かせください。一緒に実現させましょう。"
-    },
-    "form": {
-      "title": "メッセージを送信",
-      "subtitle": "フォームにご記入ください。できるだけ早くご連絡いたします。",
-      "name": "お名前",
-      "namePlaceholder": "山田太郎",
-      "email": "メールアドレス",
-      "emailPlaceholder": "your@email.com",
-      "subject": "件名",
-      "subjectPlaceholder": "どのようなご用件でしょうか?",
-      "message": "メッセージ",
-      "messagePlaceholder": "プロジェクト、ニーズ、またはご質問についてお聞かせください...",
-      "submit": "メッセージを送信",
-      "privacy": "このフォームを送信することにより、連絡先情報の処理に同意したものとみなされます。"
-    },
-    "contactInfo": {
-      "title": "連絡先情報",
-      "subtitle": "お問い合わせいただくその他の方法。",
-      "email": {
-        "title": "直接メール"
-      },
-      "whatsapp": {
-        "title": "WhatsApp",
-        "defaultMessage": "こんにちは! サービスについて詳しく知りたいです。"
-      },
-      "responseTime": {
-        "title": "返信時間",
-        "description": "営業日24時間以内"
-      },
-      "github": {
-        "title": "GitHub"
-      },
-      "linkedin": {
-        "title": "LinkedIn"
-      }
-    },
-    "quickContact": {
-      "title": "直接メールをご希望ですか?",
-      "description": "メールを送信していただければ、できるだけ早く返信いたします。",
-      "button": "直接メールを送信"
-    }
   },
   "EmailTemplate": {
     "subject": "新しいお問い合わせメッセージ - DevMinds",
@@ -463,5 +393,22 @@
       "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
     },
     "cargo": "ソフトウェアエンジニア"
+  },
+  "Contacto": {
+    "titulo": "プロジェクトについて話しましょう。",
+    "bajada": "ご都合のよい方法でご連絡ください。24時間以内に返信します。初回相談は無料です。",
+    "whatsapp": {
+      "rotulo": "いちばん早い方法",
+      "titulo": "WhatsAppで連絡する",
+      "texto": "24時間以内に返信します。"
+    },
+    "correo": "メール",
+    "llamada": "電話",
+    "formulario": {
+      "titulo": "またはフォームから",
+      "texto": "ご要望をお書きください。メールで返信します。",
+      "privacidad": "送信いただいた情報は、返信のためだけに使用します。"
+    },
+    "ubicacion": "拠点はコロンビア・ネイバ。ビデオ通話で、どの国のお客様とも英語でやり取りできます。"
   }
 }

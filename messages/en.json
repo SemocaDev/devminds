@@ -42,30 +42,6 @@
     "menu": "Menu",
     "idioma": "Language"
   },
-  "Contact": {
-    "title": "Let's Talk About Your Project",
-    "subtitle": "Have an idea? Tell us about it and let's work together to make it happen",
-    "form": {
-      "name": "Name",
-      "namePlaceholder": "Your full name",
-      "email": "Email",
-      "emailPlaceholder": "your@email.com",
-      "message": "Message",
-      "messagePlaceholder": "Tell us about your project...",
-      "submit": "Send message"
-    },
-    "info": {
-      "responseTime": {
-        "title": "Quick Response",
-        "description": "We respond to all messages in less than 24 hours"
-      },
-      "email": {
-        "title": "Direct Contact",
-        "description": "semoca00@gmail.com"
-      }
-    },
-    "detailedContact": "More contact options"
-  },
   "Footer": {
     "copyright": "© {year} DevMinds. All rights reserved.",
     "tagline": "Software studio based in Colombia.",
@@ -92,52 +68,6 @@
     "servicesLink": "Services",
     "projectsLink": "Projects",
     "contactLink": "Contact"
-  },
-  "ContactPage": {
-    "hero": {
-      "title": "Contact",
-      "subtitle": "We're here to help you. Tell us about your project and let's work together to make it happen."
-    },
-    "form": {
-      "title": "Send Us a Message",
-      "subtitle": "Fill out the form and we'll get in touch with you as soon as possible.",
-      "name": "Full name",
-      "namePlaceholder": "John Doe",
-      "email": "Email",
-      "emailPlaceholder": "your@email.com",
-      "subject": "Subject",
-      "subjectPlaceholder": "How can we help you?",
-      "message": "Message",
-      "messagePlaceholder": "Tell us about your project, needs, or any questions you have...",
-      "submit": "Send Message",
-      "privacy": "By submitting this form, you agree that we process your contact information."
-    },
-    "contactInfo": {
-      "title": "Contact Information",
-      "subtitle": "Other ways to get in touch with us.",
-      "email": {
-        "title": "Direct Email"
-      },
-      "whatsapp": {
-        "title": "WhatsApp",
-        "defaultMessage": "Hello! I would like to know more about your services."
-      },
-      "responseTime": {
-        "title": "Response Time",
-        "description": "Less than 24 business hours"
-      },
-      "github": {
-        "title": "GitHub"
-      },
-      "linkedin": {
-        "title": "LinkedIn"
-      }
-    },
-    "quickContact": {
-      "title": "Prefer a direct email?",
-      "description": "Send us an email and we'll respond as soon as possible.",
-      "button": "Send Direct Email"
-    }
   },
   "EmailTemplate": {
     "subject": "New Contact Message - DevMinds",
@@ -463,5 +393,22 @@
       "lista": "Next.js · React · TypeScript · Flutter · .NET · Node.js · PostgreSQL · WordPress"
     },
     "cargo": "Software engineer"
+  },
+  "Contacto": {
+    "titulo": "Let's talk about your project.",
+    "bajada": "Reach us wherever is easiest for you. We reply within 24 hours and the first consultation is free.",
+    "whatsapp": {
+      "rotulo": "The fastest way",
+      "titulo": "Message us on WhatsApp",
+      "texto": "We reply within 24 hours."
+    },
+    "correo": "Email",
+    "llamada": "Phone",
+    "formulario": {
+      "titulo": "Or write to us at your own pace",
+      "texto": "Tell us what you need and we'll reply by email.",
+      "privacidad": "By sending this form, you agree that we use your details only to reply to you."
+    },
+    "ubicacion": "Based in Neiva, Colombia. We work with clients anywhere over video calls, in English."
   }
 }
