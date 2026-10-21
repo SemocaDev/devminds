@@ -5,14 +5,13 @@ export const locales = ['es', 'en', 'ja'] as const;
 export type Locale = typeof locales[number];
 export const defaultLocale: Locale = 'es';
 
-export default getRequestConfig(async ({ locale }) => {
-  // Ensure locale is one of our supported locales, or use default
-  const safeLocale = locales.includes(locale as Locale) 
-    ? locale as Locale 
-    : defaultLocale;
-  
+// next-intl 4: el idioma llega en `requestLocale` (de setRequestLocale o del proxy). `locale` solo existe
+// cuando se pide uno explícito, así que leerlo dejaba todas las páginas de servidor en español.
+export default getRequestConfig(async ({ requestLocale, locale: explicito }) => {
+  const pedido = explicito ?? (await requestLocale);
+  const locale: Locale = locales.includes(pedido as Locale) ? (pedido as Locale) : defaultLocale;
   return {
-    messages: (await import(`../messages/${safeLocale}.json`)).default,
-    locale: safeLocale // This is now guaranteed to be a string from our locales
+    messages: (await import(`../messages/${locale}.json`)).default,
+    locale,
   };
 });
