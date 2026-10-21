@@ -8,17 +8,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
 import CampoPuntos from '@/app/components/reticula/CampoPuntos';
+import { ESCALONES, type ClaveEscalon } from '@/config/escalones';
 import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// `orden`: posición en el mosaico móvil de 2 columnas, [web · puntos] [sistemas · apps] [puntos · soporte].
-const PASOS = [
-  { clave: 'web', ancla: 'webdev', orden: 'order-1', fondo: 'bg-primary text-primary-foreground', tenue: 'text-primary-foreground' },
-  { clave: 'sistemas', ancla: 'custom', orden: 'order-3', fondo: 'bg-secondary text-foreground', tenue: 'text-muted-foreground' },
-  { clave: 'apps', ancla: 'custom', orden: 'order-4', fondo: 'bg-surface-3 text-foreground', tenue: 'text-muted-foreground' },
-  { clave: 'soporte', ancla: 'consulting', orden: 'order-6', fondo: 'bg-foreground text-background', tenue: 'text-background/70' },
-] as const;
+// Posición en el mosaico móvil de 2 columnas: [web · puntos] [sistemas · apps] [puntos · soporte].
+const ORDEN: Record<ClaveEscalon, string> = { web: 'order-1', sistemas: 'order-3', apps: 'order-4', soporte: 'order-6' };
+const PASOS = ESCALONES.map((e) => ({ ...e, orden: ORDEN[e.clave] }));
 
 const celdaPuntos = 'relative bg-background md:hidden';
 
@@ -59,7 +56,7 @@ export default function Escalera() {
           {PASOS.map((p) => (
             <li key={p.clave} data-escalon className={cn(p.orden, 'md:order-none')}>
               <Link
-                href={`/${lang}/services#${p.ancla}`}
+                href={`/${lang}/services#${p.clave}`}
                 className={cn('group flex h-full min-h-[156px] flex-col p-4 md:min-h-[260px] md:p-6', p.fondo)}
               >
                 <span className={cn('flex items-start justify-between gap-3 text-[13px] font-medium', p.tenue)}>

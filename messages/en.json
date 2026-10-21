@@ -362,93 +362,6 @@
       }
     }
   },
-  "ServicesPage": {
-    "hero": {
-      "pageLabel": "Services",
-      "title": "Our Services",
-      "subtitle": "Complete technology solutions to transform your ideas into successful digital products"
-    },
-    "services": {
-      "title": "What We Offer?",
-      "technologies": "Technologies",
-      "idealFor": "Ideal for",
-      "features": "Features",
-      "items": {
-        "webdev": {
-          "title": "Modern Web Development",
-          "shortDescription": "Cutting-edge websites and web applications",
-          "description": "We create modern websites and web applications using the most advanced technologies on the market. From impactful landing pages to complex web applications with custom functionalities.",
-          "technologies": "React, Next.js, TypeScript, Tailwind CSS, Framer Motion",
-          "idealFor": "Landing pages, corporate websites, portfolios, interactive web applications",
-          "features": [
-            "Responsive and mobile-first design",
-            "Advanced SEO optimization",
-            "Ultra-fast performance",
-            "Smooth and modern animations",
-            "Integration with APIs and external services"
-          ]
-        },
-        "custom": {
-          "title": "Custom Software",
-          "shortDescription": "Personalized applications for your business",
-          "description": "We develop custom software that perfectly adapts to your specific needs. From internal systems to complex platforms, we create scalable and maintainable solutions.",
-          "technologies": "Node.js, Express, PostgreSQL, MongoDB, TypeScript, Docker",
-          "idealFor": "Management systems, CRM, ERP, SaaS platforms, administrative dashboards",
-          "features": [
-            "Scalable and modular architecture",
-            "Optimized database",
-            "Secure RESTful APIs",
-            "Custom administration panel",
-            "Integration with existing systems"
-          ]
-        },
-        "wordpress": {
-          "title": "WordPress Sites",
-          "shortDescription": "Professional websites with WordPress",
-          "description": "We create professional websites with WordPress, the world's most popular CMS. Custom themes, tailored plugins, and complete optimization for a standout site.",
-          "technologies": "WordPress, PHP, WooCommerce, Custom Themes, Elementor",
-          "idealFor": "Blogs, corporate websites, e-commerce, content portals",
-          "features": [
-            "Custom and unique themes",
-            "Custom-developed plugins",
-            "Speed optimization",
-            "Complete SEO setup",
-            "WooCommerce integration for online stores"
-          ]
-        },
-        "consulting": {
-          "title": "Technical Consulting",
-          "shortDescription": "Expert advice for your projects",
-          "description": "We offer technical consulting services to optimize your existing projects. Code audits, architecture improvements, performance optimization, and best practice recommendations.",
-          "technologies": "Software Architecture, Code Review, Performance, DevOps, Git",
-          "idealFor": "Existing projects, development teams, technology startups",
-          "features": [
-            "Complete code audit",
-            "Architecture and scalability analysis",
-            "Performance optimization",
-            "Best practice recommendations",
-            "Migration and update strategy"
-          ]
-        }
-      }
-    },
-    "techStack": {
-      "title": "Complete Technology Stack",
-      "subtitle": "We work with the most modern and proven technologies on the market",
-      "categories": {
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "cms": "CMS & Templates",
-        "devops": "DevOps & Hosting",
-        "tools": "Tools"
-      }
-    },
-    "cta": {
-      "title": "Ready to start your project?",
-      "subtitle": "Contact us and let's work together to make your idea a reality",
-      "button": "Contact Now"
-    }
-  },
   "Home": {
     "whatsappMensaje": "Hi DevMinds, I'd like to talk about a project.",
     "rieles": {
@@ -571,5 +484,52 @@
     "inicio": "Home",
     "volverA": "Back to {pagina}",
     "ruta": "You are here"
+  },
+  "Servicios": {
+    "titulo": "From the first step to complete software.",
+    "bajada": "What each service includes, who it is for and how long it takes. Most clients start with the first one and grow from there.",
+    "paraQuien": "Who it is for",
+    "incluye": "What's included",
+    "quieroEsto": "I want this",
+    "pasos": {
+      "web": {
+        "paraQuien": "For businesses that don't show up on Google yet, or whose current site doesn't bring in clients.",
+        "incluye": [
+          "A fast site, designed for phones first",
+          "Google Business profile connected to your site",
+          "A WhatsApp button so clients reach you directly",
+          "Code, access and documentation in your name"
+        ],
+        "whatsapp": "Hi DevMinds, I'd like a website for my business."
+      },
+      "sistemas": {
+        "paraQuien": "For businesses running invoicing, collections or inventory on spreadsheets or paper that have outgrown them.",
+        "incluye": [
+          "Built around the way your business works",
+          "Users with permissions by role",
+          "Progress you can try every week",
+          "Training before we hand it over"
+        ],
+        "whatsapp": "Hi DevMinds, I'd like a custom system for my business."
+      },
+      "apps": {
+        "paraQuien": "For businesses whose clients look for them on their phones: bookings, orders or tracking a service.",
+        "incluye": [
+          "Designed to be used with one hand",
+          "Connected to your system or your website",
+          "Guidance to get it published"
+        ],
+        "whatsapp": "Hi DevMinds, I'd like an app for my business."
+      },
+      "soporte": {
+        "paraQuien": "For anyone who already has a website or a system and needs someone to review it, improve it or keep it running.",
+        "incluye": [
+          "A review of what you have and what's worth improving",
+          "Fixes and improvements in stages",
+          "Support and maintenance plans"
+        ],
+        "whatsapp": "Hi DevMinds, I need help with software I already have."
+      }
+    }
   }
 }
