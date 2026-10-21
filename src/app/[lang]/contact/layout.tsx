@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 import { imagenOg } from '@/lib/og';
 
 type Props = {
@@ -53,12 +52,6 @@ export default async function ContactLayout({ params, children }: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBreadcrumbSchema('/contact', lang))
-        }}
-      />
       {children}
     </>
   );

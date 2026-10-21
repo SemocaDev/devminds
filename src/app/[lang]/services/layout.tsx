@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateServiceSchema } from '@/lib/schemas/service-schema';
-import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 import { imagenOg } from '@/lib/og';
 
 type Props = {
@@ -59,12 +58,6 @@ export default async function ServicesLayout({ params, children }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateServiceSchema(lang))
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBreadcrumbSchema('/services', lang))
         }}
       />
       {children}
