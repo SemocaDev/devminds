@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Movimiento (frente 4). Gestos del plano activados por atributos:
+   - data-mov="<gesto>"        qué gesto hace el elemento.
+   - data-mov-entrada          corre en la carga inicial (html.mov-entrada), con --retraso.
+   - .mov-activo               lo añade RevelarAlScroll al entrar en pantalla.
+   Los estados ocultos solo existen con html.mov, que el script del <head> pone si no se pidió
+   reducir movimiento; si el JS no llega, el propio script lo quita: el contenido siempre se ve.
+   Solo se animan transform, opacity y clip-path.
+   ========================================================================== */
+
+:root {
+  --mov-curva: cubic-bezier(0.16, 1, 0.3, 1);
+  --mov-curva-trazo: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes mov-trazo-v { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes mov-trazo-h { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes mov-brazo { from { transform: scale(0); } to { transform: none; } }
+@keyframes mov-destello { from { opacity: 0.7; transform: scale(0.2); } to { opacity: 0; transform: scale(1.8); } }
+@keyframes mov-encender { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes mov-subir { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes mov-aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes mov-descubrir { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes mov-zoom { from { transform: scale(1.08); } to { transform: none; } }
+@keyframes mov-subir-barra { from { transform: translateY(100%); } to { transform: none; } }
+
+[data-mov='trazo-v'] { transform-origin: top; }
+[data-mov='trazo-h'] .mov-linea { transform-origin: left; }
+
+/* Máscara de cada palabra que sube */
+.mov-palabra { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.mov-palabra > [data-mov='subir'] { display: inline-block; }
+
+/* --- Estado inicial oculto (solo elementos que esperan el scroll) --- */
+html.mov [data-mov='trazo-v']:not(.mov-activo):not([data-mov-entrada]) { transform: scaleY(0); }
+html.mov [data-mov='trazo-h']:not(.mov-activo):not([data-mov-entrada]) .mov-linea { transform: scaleX(0); }
+html.mov [data-mov='trazo-h']:not(.mov-activo):not([data-mov-entrada]) :is(.mov-brazo-h, .mov-brazo-v) { transform: scale(0); }
+html.mov :is([data-mov='encender'], [data-mov='desplegar'], [data-mov='colgar']):not(.mov-activo):not([data-mov-entrada]) { clip-path: inset(0 0 100% 0); }
+html.mov [data-mov='subir']:not(.mov-activo):not([data-mov-entrada]) { transform: translateY(105%); }
+html.mov [data-mov='aparecer']:not(.mov-activo):not([data-mov-entrada]) { opacity: 0; }
+html.mov [data-mov='descubrir']:not(.mov-activo):not([data-mov-entrada]) { clip-path: inset(100% 0 0 0); }
+html.mov [data-mov='subir-barra']:not(.mov-activo):not([data-mov-entrada]) { transform: translateY(100%); }
+
+/* --- Animación: en la entrada inicial o al activarse --- */
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='trazo-v'] {
+  animation: mov-trazo-v 700ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='trazo-h'] .mov-linea {
+  animation: mov-trazo-h 750ms var(--mov-curva-trazo) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='trazo-h'] .mov-brazo-h {
+  animation: mov-brazo 350ms var(--mov-curva) var(--retraso-cruz, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='trazo-h'] .mov-brazo-v {
+  animation: mov-brazo 450ms var(--mov-curva) calc(var(--retraso-cruz, 0ms) + 40ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='trazo-h'] .mov-destello {
+  animation: mov-destello 500ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso-cruz, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='encender'] {
+  animation: mov-encender 1000ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='desplegar'] {
+  animation: mov-encender 900ms cubic-bezier(0.65, 0, 0.35, 1) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='colgar'] {
+  animation: mov-encender 800ms var(--mov-curva) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='subir'] {
+  animation: mov-subir 800ms var(--mov-curva) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='aparecer'] {
+  animation: mov-aparecer 600ms var(--mov-curva) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='descubrir'] {
+  animation: mov-descubrir 900ms cubic-bezier(0.65, 0, 0.35, 1) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='descubrir'] > * {
+  animation: mov-zoom 1200ms var(--mov-curva) var(--retraso, 0ms) both;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov .mov-activo)[data-mov='subir-barra'] {
+  animation: mov-subir-barra 600ms var(--mov-curva) var(--retraso, 0ms) both;
+}
+
+/* Barridos de números en Doto: solo cambia la familia, no el tamaño */
+.bd-outfit { font-family: var(--font-outfit); }
+.bd-mono { font-family: var(--font-geist-mono); }
+.bd-serif { font-family: var(--font-instrument); font-style: italic; }

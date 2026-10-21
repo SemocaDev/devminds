@@ -7,6 +7,8 @@ import { notFound } from "next/navigation";
 import { Toaster } from "@/components/ui/sonner";
 import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/schemas/organization-schema";
 import "@/styles/globals.css";
+import "@/styles/movimiento.css";
+import RevelarAlScroll from "@/app/components/movimiento/RevelarAlScroll";
 
 // Font configurations
 const geist = Geist({
@@ -144,6 +146,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// Habilita los estados ocultos del movimiento (html.mov) y la entrada inicial (html.mov-entrada), salvo con
+// "reducir movimiento". Si RevelarAlScroll no monta en 3 s, quita html.mov para que todo se vea.
+const SCRIPT_MOVIMIENTO = `(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var d=document.documentElement;d.classList.add('mov','mov-entrada');setTimeout(function(){if(!window.__movListo)d.classList.remove('mov','mov-entrada')},3000)}catch(e){}})();`;
+
 export default async function RootLayout(props: Props) {
   const { lang } = await props.params;
 
@@ -162,8 +168,10 @@ export default async function RootLayout(props: Props) {
   }
 
   return (
-    <html lang={lang} className={`${geist.variable} ${outfit.variable} ${doto.variable} ${geistMono.variable} ${instrument.variable} overflow-x-hidden`}>
+    // suppressHydrationWarning: el script de movimiento añade clases a <html> antes de hidratar.
+    <html lang={lang} suppressHydrationWarning className={`${geist.variable} ${outfit.variable} ${doto.variable} ${geistMono.variable} ${instrument.variable} overflow-x-hidden`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_MOVIMIENTO }} />
         <meta name="theme-color" content="#f8fafd" />
         <meta name="msapplication-TileColor" content="#f8fafd" />
         <meta name="geo.region" content="CO" />
@@ -208,6 +216,7 @@ export default async function RootLayout(props: Props) {
       </head>
       <body className="min-h-screen flex flex-col font-sans antialiased">
           <NextIntlClientProvider locale={lang} messages={messages}>
+            <RevelarAlScroll />
             {props.children}
           </NextIntlClientProvider>
           <Toaster
