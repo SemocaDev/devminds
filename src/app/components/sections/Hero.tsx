@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section className="relative">
       <Rieles />
-      <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
+      <DivisorSeccion entrada={350} className="absolute inset-x-0 top-16 md:top-[72px]" />
       <div className="contenedor-reticula relative z-[2] pt-16 md:pt-[72px]">
         <div className="grid md:grid-cols-4">
           <div className="relative order-first h-[88px] border-b border-guide md:order-none md:col-start-4 md:row-span-2 md:row-start-1 md:h-auto md:border-0">

@@ -10,7 +10,7 @@ export default function MarcoPagina({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen w-full flex-col">
       <Navbar />
       <main className="relative flex-1">
-        <Reticula />
+        <Reticula entrada />
         {children}
       </main>
       <Footer conBarraMovil />

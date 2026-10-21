@@ -13,10 +13,12 @@
   --mov-curva-trazo: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
-@keyframes mov-trazo-v { from { transform: scaleY(0); } to { transform: none; } }
+/* La retícula mide todo el alto de la página: el trazo crece hasta la altura de la ventana y después se libera. */
+@keyframes mov-trazo-v { 0% { clip-path: inset(0 0 100% 0); } 99% { clip-path: inset(0 0 calc(100% - 100vh) 0); } 100% { clip-path: none; } }
 @keyframes mov-trazo-h { from { transform: scaleX(0); } to { transform: none; } }
 @keyframes mov-brazo { from { transform: scale(0); } to { transform: none; } }
-@keyframes mov-destello { from { opacity: 0.7; transform: scale(0.2); } to { opacity: 0; transform: scale(1.8); } }
+/* Arranca invisible: durante el retraso (fill-mode both) no debe asomar antes de que el trazo llegue. */
+@keyframes mov-destello { 0% { opacity: 0; transform: scale(0.2); } 1% { opacity: 0.7; transform: scale(0.2); } 100% { opacity: 0; transform: scale(1.8); } }
 @keyframes mov-encender { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes mov-subir { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes mov-aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
@@ -24,7 +26,6 @@
 @keyframes mov-zoom { from { transform: scale(1.08); } to { transform: none; } }
 @keyframes mov-subir-barra { from { transform: translateY(100%); } to { transform: none; } }
 
-[data-mov='trazo-v'] { transform-origin: top; }
 [data-mov='trazo-h'] .mov-linea { transform-origin: left; }
 
 /* Máscara de cada palabra que sube */
@@ -32,7 +33,7 @@
 .mov-palabra > [data-mov='subir'] { display: inline-block; }
 
 /* --- Estado inicial oculto (solo elementos que esperan el scroll) --- */
-html.mov [data-mov='trazo-v']:not(.mov-activo):not([data-mov-entrada]) { transform: scaleY(0); }
+html.mov [data-mov='trazo-v']:not(.mov-activo):not([data-mov-entrada]) { clip-path: inset(0 0 100% 0); }
 html.mov [data-mov='trazo-h']:not(.mov-activo):not([data-mov-entrada]) .mov-linea { transform: scaleX(0); }
 html.mov [data-mov='trazo-h']:not(.mov-activo):not([data-mov-entrada]) :is(.mov-brazo-h, .mov-brazo-v) { transform: scale(0); }
 html.mov :is([data-mov='encender'], [data-mov='desplegar'], [data-mov='colgar']):not(.mov-activo):not([data-mov-entrada]) { clip-path: inset(0 0 100% 0); }

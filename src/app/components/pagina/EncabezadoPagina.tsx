@@ -56,7 +56,7 @@ export default async function EncabezadoPagina({ titulo, bajada, meta, hoja, sec
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(generateBreadcrumbSchema(lang, migas)) }} />
       <section className="relative">
         <Rieles modo="pagina" />
-        <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
+        <DivisorSeccion entrada={250} className="absolute inset-x-0 top-16 md:top-[72px]" />
         <div className="contenedor-reticula relative z-[2] pt-16 md:pt-[72px]">
           <div className="grid md:grid-cols-4">
             {/* Móvil: franja de la cartela y puntos */}

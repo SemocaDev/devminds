@@ -27,9 +27,9 @@ export default function HomeClient({ featuredProjects }: Props) {
     <div className="flex min-h-screen w-full flex-col">
       <Navbar />
       <main className="relative flex-1">
-        <Reticula />
+        <Reticula entrada />
         <Hero />
-        <DivisorSeccion />
+        <DivisorSeccion entrada={550} />
         <Escalera />
         <DivisorSeccion />
         <Projects projects={featuredProjects} />
