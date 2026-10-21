@@ -20,10 +20,6 @@
     "portfolio": {
       "title": "Trabajos: páginas web y software hechos en Neiva | DevMinds",
       "description": "Proyectos reales de DevMinds: sistemas contables, páginas web y apps para negocios de Neiva, el Huila y Colombia. Mira qué se hizo en cada uno."
-    },
-    "notFound": {
-      "title": "Hoja no encontrada | DevMinds",
-      "description": "La página que buscas no existe o cambió de lugar."
     }
   },
   "Menu": {
@@ -59,15 +55,10 @@
     "loading": "Cargando experiencia..."
   },
   "NotFound": {
-    "title": "Página no encontrada",
-    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
-    "backHome": "Volver al Inicio",
-    "goBack": "Ir Atrás",
-    "usefulPages": "Páginas útiles:",
-    "aboutLink": "Sobre Nosotros",
-    "servicesLink": "Servicios",
-    "projectsLink": "Proyectos",
-    "contactLink": "Contacto"
+    "titulo": "Esta hoja no está en el plano.",
+    "bajada": "La página que buscas no existe o cambió de lugar. Estas son las hojas que sí están:",
+    "seccion": "Sin hoja",
+    "desconocida": "¿?"
   },
   "EmailTemplate": {
     "subject": "Nuevo Mensaje de Contacto - DevMinds",

@@ -1,170 +1,43 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Home, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
+import { getLocale, getTranslations } from 'next-intl/server';
+import MarcoPagina from '@/app/components/pagina/MarcoPagina';
+import EncabezadoPagina from '@/app/components/pagina/EncabezadoPagina';
+import CampoPuntos from '@/app/components/reticula/CampoPuntos';
+import { cn } from '@/lib/utils';
 
-export default function NotFound() {
-  const t = useTranslations('NotFound');
-  const params = useParams();
-  const lang = params.lang as string;
+/** Hoja 404: la cartela hace el chiste y la página ofrece las hojas que sí existen. */
+export default async function NotFound() {
+  const lang = await getLocale();
+  const [t, tCartela, tNav] = await Promise.all([getTranslations('NotFound'), getTranslations('Cartela'), getTranslations('Navbar')]);
+
+  const hojas = [
+    { numero: '01', nombre: tCartela('inicio'), ruta: '', color: 'bg-primary text-primary-foreground hover:bg-primary-hover' },
+    { numero: '02', nombre: tNav('services'), ruta: '/services', color: 'bg-secondary hover:bg-accent' },
+    { numero: '03', nombre: tNav('projects'), ruta: '/portfolio', color: 'bg-surface-3 hover:bg-accent' },
+    { numero: '04', nombre: tNav('about'), ruta: '/about', color: 'bg-accent-tint hover:bg-accent' },
+    { numero: '05', nombre: tNav('contact'), ruta: '/contact', color: 'bg-foreground text-background hover:bg-foreground/90 md:col-span-2' },
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
-      {/* Elementos decorativos con patrones */}
-      <div className="absolute top-12 right-12 w-32 h-32 pattern-dots-sparse opacity-95 pointer-events-none" />
-      <div className="absolute bottom-12 left-12 w-28 h-28 pattern-lines-grid opacity-95 pointer-events-none" />
-
-      <div className="container-main relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          {/* Error code animado */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative bracket-corners"
-          >
-            <h1 className="text-[10rem] md:text-[14rem] font-bold leading-none">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                404
-              </span>
-            </h1>
-
-            {/* Glitch effect */}
-            <motion.div
-              animate={{
-                opacity: [0, 0.5, 0],
-                x: [-2, 2, -2],
-              }}
-              transition={{
-                duration: 0.3,
-                repeat: Infinity,
-                repeatDelay: 3,
-              }}
-              className="absolute inset-0 text-[10rem] md:text-[14rem] font-bold leading-none text-primary/20 flex items-center justify-center"
-            >
-              404
-            </motion.div>
-          </motion.div>
-
-          {/* Mensaje */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              {t('title')}
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('description')}
-            </p>
-          </motion.div>
-
-          {/* Code snippet decorativo */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-block"
-          >
-            <div className="bg-card/50 backdrop-blur border-2 border-dotted-primary rounded-lg p-4 font-mono text-sm text-left relative pattern-diagonal">
-              <div className="text-muted-foreground relative z-10">
-                <span className="text-accent">if</span> (
-                <span className="text-primary">pageNotFound</span>) {'{'}
-              </div>
-              <div className="text-muted-foreground pl-4 relative z-10">
-                <span className="text-accent">return</span>{' '}
-                <span className="text-orange-500">&lt;Home /&gt;</span>;
-              </div>
-              <div className="text-muted-foreground relative z-10">{'}'}</div>
-            </div>
-          </motion.div>
-
-          {/* Botones de acción */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap gap-4 justify-center pt-4"
-          >
-            <Link href={`/${lang}`}>
-              <Button size="lg" className="group">
-                <Home className="mr-2 w-5 h-5" />
-                {t('backHome')}
-              </Button>
+    <MarcoPagina>
+      <EncabezadoPagina
+        titulo={t('titulo')}
+        bajada={t('bajada')}
+        hoja="404"
+        seccion={t('seccion')}
+        migas={[{ nombre: tCartela('inicio'), ruta: '' }, { nombre: t('desconocida'), ruta: '' }]}
+      />
+      <div className="contenedor-reticula relative z-[2]">
+        <nav className="grid grid-cols-2 md:grid-cols-4">
+          {hojas.map((h) => (
+            <Link key={h.numero} href={`/${lang}${h.ruta}`} className={cn('flex min-h-[140px] flex-col p-5 transition-colors md:min-h-[180px] md:p-6', h.color)}>
+              <span className="font-doto text-3xl font-black leading-none tracking-[-0.03em]">{h.numero}</span>
+              <span className="mt-auto font-display text-xl font-bold tracking-[-0.015em]">{h.nombre}</span>
             </Link>
-
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => window.history.back()}
-              className="group"
-            >
-              <ArrowLeft className="mr-2 w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              {t('goBack')}
-            </Button>
-          </motion.div>
-
-          {/* Links útiles */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="pt-8 border-t-2 border-t-dotted border-t-primary/40"
-          >
-            <p className="text-sm text-muted-foreground mb-4">
-              {t('usefulPages')}
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center text-sm">
-              <Link href={`/${lang}/about`} className="text-primary hover:underline">
-                {t('aboutLink')}
-              </Link>
-              <Link href={`/${lang}/services`} className="text-primary hover:underline">
-                {t('servicesLink')}
-              </Link>
-              <Link href={`/${lang}/portfolio`} className="text-primary hover:underline">
-                {t('projectsLink')}
-              </Link>
-              <Link href={`/${lang}/contact`} className="text-primary hover:underline">
-                {t('contactLink')}
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+          ))}
+          <div aria-hidden className="relative min-h-[140px] md:col-span-2"><CampoPuntos /></div>
+        </nav>
       </div>
-
-      {/* Efectos de fondo */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 4,
-          }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-tr from-accent/20 to-primary/20 blur-3xl"
-        />
-      </div>
-    </div>
+    </MarcoPagina>
   );
 }

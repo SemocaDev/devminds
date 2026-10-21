@@ -20,10 +20,6 @@
     "portfolio": {
       "title": "Work: Websites and Software We Have Built | DevMinds",
       "description": "Real projects by DevMinds: accounting systems, websites and apps for businesses. See what was built in each one and why."
-    },
-    "notFound": {
-      "title": "Sheet not found | DevMinds",
-      "description": "The page you are looking for does not exist or has moved."
     }
   },
   "Menu": {
@@ -59,15 +55,10 @@
     "loading": "Loading experience..."
   },
   "NotFound": {
-    "title": "Page not found",
-    "description": "Sorry, the page you're looking for doesn't exist or has been moved.",
-    "backHome": "Back to Home",
-    "goBack": "Go Back",
-    "usefulPages": "Useful pages:",
-    "aboutLink": "About Us",
-    "servicesLink": "Services",
-    "projectsLink": "Projects",
-    "contactLink": "Contact"
+    "titulo": "This sheet isn't on the plan.",
+    "bajada": "The page you're looking for doesn't exist or has moved. These are the sheets that do:",
+    "seccion": "No sheet",
+    "desconocida": "?"
   },
   "EmailTemplate": {
     "subject": "New Contact Message - DevMinds",
