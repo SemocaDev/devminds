@@ -499,5 +499,17 @@
     "todos": "すべて",
     "filtrar": "種類で絞り込む",
     "vacio": "この種類のプロジェクトはまだありません。"
+  },
+  "Proyecto": {
+    "queHicimos": "制作内容",
+    "verSitio": "サイトを見る",
+    "siguiente": "次のプロジェクト",
+    "galeria": "その他の画面",
+    "ficha": {
+      "cliente": "クライアント",
+      "anio": "年",
+      "duracion": "期間",
+      "tecnologia": "技術"
+    }
   }
 }

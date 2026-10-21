@@ -499,5 +499,17 @@
     "todos": "All",
     "filtrar": "Filter by project type",
     "vacio": "No projects of this type yet."
+  },
+  "Proyecto": {
+    "queHicimos": "What we built",
+    "verSitio": "Visit the site",
+    "siguiente": "Next project",
+    "galeria": "More screenshots",
+    "ficha": {
+      "cliente": "Client",
+      "anio": "Year",
+      "duracion": "Duration",
+      "tecnologia": "Technology"
+    }
   }
 }

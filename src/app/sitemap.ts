@@ -1,7 +1,8 @@
 // src/app/sitemap.ts
 import { MetadataRoute } from 'next'
+import { getFechasProyectos } from '@/db/queries/projects'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.devminds.online'
 
   // Fecha del último cambio real de contenido de cada ruta. Actualízala al cambiar esa página:
@@ -48,6 +49,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: {
           languages: alternateLanguages,
         },
+      })
+    })
+  })
+
+  // Cada proyecto tiene su página; su fecha es la de su última actualización en la DB.
+  const proyectos = await getFechasProyectos()
+  proyectos.forEach(({ slug, updatedAt }) => {
+    const ruta = `/portfolio/${slug}`
+    const alternateLanguages: { [key: string]: string } = { 'x-default': `${baseUrl}/es${ruta}` }
+    languages.forEach(altLang => { alternateLanguages[altLang] = `${baseUrl}/${altLang}${ruta}` })
+    languages.forEach(lang => {
+      urls.push({
+        url: `${baseUrl}/${lang}${ruta}`,
+        lastModified: updatedAt ?? new Date(routes['/portfolio']),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: { languages: alternateLanguages },
       })
     })
   })

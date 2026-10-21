@@ -117,17 +117,27 @@ async function _getCategories(locale: string): Promise<CategoryWithTranslation[]
 }
 
 // Cached versions for public pages
-export const getProjects = unstable_cache(_getProjects, ['projects'], {
+export const getProjects = unstable_cache(_getProjects, ['projects-v2'], {
   revalidate: 3600,
   tags: ['projects'],
 });
 
-export const getFeaturedProjects = unstable_cache(_getFeaturedProjects, ['featured-projects'], {
+export const getFeaturedProjects = unstable_cache(_getFeaturedProjects, ['featured-projects-v2'], {
   revalidate: 3600,
   tags: ['projects'],
 });
 
 export const getCategories = unstable_cache(_getCategories, ['categories'], {
+  revalidate: 3600,
+  tags: ['projects'],
+});
+
+/** Slug y fecha de actualización de cada proyecto, para el sitemap. */
+async function _getFechasProyectos(): Promise<{ slug: string; updatedAt: Date | null }[]> {
+  return db.select({ slug: projects.slug, updatedAt: projects.updatedAt }).from(projects).orderBy(projects.sortOrder);
+}
+
+export const getFechasProyectos = unstable_cache(_getFechasProyectos, ['fechas-proyectos'], {
   revalidate: 3600,
   tags: ['projects'],
 });

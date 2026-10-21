@@ -499,5 +499,17 @@
     "todos": "Todos",
     "filtrar": "Filtrar por tipo de proyecto",
     "vacio": "Todavía no hay proyectos de este tipo."
+  },
+  "Proyecto": {
+    "queHicimos": "Qué hicimos",
+    "verSitio": "Ver el sitio",
+    "siguiente": "Siguiente proyecto",
+    "galeria": "Más capturas",
+    "ficha": {
+      "cliente": "Cliente",
+      "anio": "Año",
+      "duracion": "Duración",
+      "tecnologia": "Tecnología"
+    }
   }
 }
