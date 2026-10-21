@@ -29,15 +29,19 @@ export default function RevelarAlScroll() {
     const raiz = document.documentElement;
     if (!raiz.classList.contains('mov')) return;
 
-    const activar = (el: Element) => el.classList.add('mov-activo');
+    const pendientes = new Set<Element>();
+    // Al revelarse un elemento, también su contenido pendiente (cada pieza con su propio retraso): dentro de
+    // una banda que aún se despliega, el recorte impide que el observador vea entrar a sus hijos.
+    const activar = (el: Element) => {
+      for (const x of [el, ...el.querySelectorAll(PENDIENTES)]) {
+        x.classList.add('mov-activo');
+        io.unobserve(x);
+        pendientes.delete(x);
+      }
+    };
     const io = new IntersectionObserver(
       (entradas) => {
-        for (const e of entradas) {
-          if (e.isIntersecting || e.boundingClientRect.bottom < 0) {
-            activar(e.target);
-            io.unobserve(e.target);
-          }
-        }
+        for (const e of entradas) if (e.isIntersecting || e.boundingClientRect.bottom < 0) activar(e.target);
       },
       { rootMargin: '0px 0px -15% 0px' }
     );
@@ -46,9 +50,22 @@ export default function RevelarAlScroll() {
       document.querySelectorAll(PENDIENTES).forEach((el) => {
         // Ya pasado (por ancla o scroll restaurado): visible de inmediato.
         if (el.getBoundingClientRect().bottom < 0) activar(el);
-        else io.observe(el);
+        else if (!pendientes.has(el)) {
+          pendientes.add(el);
+          io.observe(el);
+        }
       });
     };
+    // Red de seguridad al bajar rápido: lo que ya quedó por encima de la ventana se activa.
+    let marcoScroll = 0;
+    const alDesplazar = () => {
+      if (marcoScroll || pendientes.size === 0) return;
+      marcoScroll = requestAnimationFrame(() => {
+        marcoScroll = 0;
+        for (const el of pendientes) if (el.getBoundingClientRect().bottom < 0) activar(el);
+      });
+    };
+    window.addEventListener('scroll', alDesplazar, { passive: true });
     observar();
     // Contenido que llega después (secciones diferidas, filtros): se observa al aparecer, una vez por fotograma.
     let marco = 0;
@@ -60,6 +77,8 @@ export default function RevelarAlScroll() {
 
     return () => {
       cancelAnimationFrame(marco);
+      cancelAnimationFrame(marcoScroll);
+      window.removeEventListener('scroll', alDesplazar);
       io.disconnect();
       mo.disconnect();
     };
