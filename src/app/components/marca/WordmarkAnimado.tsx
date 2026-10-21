@@ -9,7 +9,8 @@ const TEXTO = 'DevMinds';
 /**
  * "DevMinds" que alterna fuentes y descansa en Doto. La palabra fija el ancho que tiene en Doto,
  * así el resto del titular no se mueve. Se pausa fuera de pantalla, con la pestaña oculta,
- * con el cursor o el foco sobre el titular, y no anima con prefers-reduced-motion.
+ * con el cursor o el foco sobre el titular, y no anima con prefers-reduced-motion. La palabra es texto real:
+ * lectores de pantalla y buscadores leen "DevMinds" una sola vez.
  */
 export default function WordmarkAnimado({ className }: { className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -85,8 +86,7 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
 
   return (
     <span ref={ref} className={cn('whitespace-nowrap', className)}>
-      <span className="sr-only">{TEXTO}</span>
-      <span aria-hidden data-palabra className="wm-doto inline-block text-left">{TEXTO}</span>
+      <span data-palabra className="wm-doto inline-block text-left">{TEXTO}</span>
     </span>
   );
 }
