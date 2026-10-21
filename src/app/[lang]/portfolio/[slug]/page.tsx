@@ -14,6 +14,7 @@ import Reticula from '@/app/components/reticula/Reticula';
 import { fichaDe, galeriaDe, hojaDeProyecto, nombreCorto, proyectoYVecinos } from '@/lib/hojas';
 import { metadataDePagina } from '@/lib/metadata';
 import { lineaMeta } from '@/lib/proyectos';
+import type { CSSProperties } from 'react';
 
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
@@ -70,7 +71,7 @@ export default async function ProyectoPage({ params }: Props) {
       {/* Captura principal a todo el ancho de la retícula */}
       <div className="contenedor-reticula relative z-[2]">
         <div className="px-4 py-8 md:px-6 md:py-12">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-secondary md:aspect-[16/8]">
+          <div data-mov="descubrir" className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-secondary md:aspect-[16/8]">
             {principal ? (
               <Image src={principal} alt={p.title} fill priority sizes="(max-width: 768px) 100vw, 90vw" className="object-cover object-top" />
             ) : (
@@ -118,7 +119,7 @@ export default async function ProyectoPage({ params }: Props) {
             <ul className="grid gap-y-6 py-8 md:grid-cols-4 md:gap-y-10 md:py-12">
               {resto.map((src, i) => (
                 <li key={src} className="px-4 md:px-6">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-secondary">
+                  <div data-mov="descubrir" style={{ '--retraso': `${(i % 4) * 80}ms` } as CSSProperties} className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-secondary">
                     <Image src={src} alt={`${p.title} · ${i + 2}`} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover object-top" />
                   </div>
                 </li>
@@ -132,7 +133,7 @@ export default async function ProyectoPage({ params }: Props) {
       )}
 
       {/* Siguiente proyecto */}
-      <section className="banda-carbon relative z-[2]">
+      <section data-mov="desplegar" className="banda-carbon relative z-[2]">
         <Reticula />
         <div className="contenedor-reticula relative z-[2]">
           <div className="grid md:grid-cols-4">

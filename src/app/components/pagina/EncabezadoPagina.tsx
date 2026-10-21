@@ -5,6 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import CampoPuntos from '@/app/components/reticula/CampoPuntos';
 import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
 import Rieles from '@/app/components/reticula/Rieles';
+import NumeroHoja from '@/app/components/movimiento/NumeroHoja';
+import Palabras from '@/app/components/movimiento/Palabras';
 import type { Miga } from '@/lib/hojas';
 import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
 import { jsonLd } from '@/lib/jsonld';
@@ -39,17 +41,14 @@ export default async function EncabezadoPagina({ titulo, bajada, meta, hoja, sec
       <ArrowLeft className="size-4" />{madre.nombre}
     </Link>
   );
-  // En Doto el punto se lee como "+": se dibuja como un cuadrito para que "03.2" no parezca "03+2".
   const numero = (tamano: string) => (
     <span className={`font-doto font-black leading-none tracking-[-0.03em] text-primary ${tamano}`}>
-      <span aria-hidden>
-        {hoja.split('.').map((parte, i) => (
-          <span key={i}>{i > 0 && <span className="mx-[0.06em] inline-block size-[0.14em] bg-current" />}{parte}</span>
-        ))}
-      </span>
+      <NumeroHoja hoja={hoja} />
       <span className="sr-only">{hoja}</span>
     </span>
   );
+  // Gesto de la entrada corta de la página, con su retraso (ms).
+  const entra = (gesto: string, ms: number) => ({ 'data-mov': gesto, 'data-mov-entrada': '', style: { '--retraso': `${ms}ms` } as CSSProperties });
 
   return (
     <>
@@ -60,28 +59,28 @@ export default async function EncabezadoPagina({ titulo, bajada, meta, hoja, sec
         <div className="contenedor-reticula relative z-[2] pt-16 md:pt-[72px]">
           <div className="grid md:grid-cols-4">
             {/* Móvil: franja de la cartela y puntos */}
-            <div className="grid grid-cols-[1fr_auto] border-b border-guide md:hidden">
+            <div {...entra('aparecer', 300)} className="grid grid-cols-[1fr_auto] border-b border-guide md:hidden">
               <div className="border-r border-guide px-4">{volver}</div>
               <div className="flex items-center gap-2 px-4"><span className={rotulo}>{t('hoja')}</span>{numero('text-2xl')}</div>
             </div>
-            <div className="relative h-14 border-b border-guide md:hidden">
+            <div {...entra('encender', 350)} className="relative h-14 border-b border-guide md:hidden">
               <CampoPuntos />
               <Cruz className="left-0 top-full" />
               <Cruz className="left-full top-full" />
             </div>
 
             <div className="px-4 pb-10 pt-8 md:col-span-3 md:flex md:min-h-[320px] md:flex-col md:justify-end md:px-6 md:pb-12 md:pt-16">
-              {meta && <p className="mb-3 text-sm font-medium text-muted-foreground">{meta}</p>}
-              <h1 className="entrada max-w-[18ch] font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] [overflow-wrap:anywhere] sm:text-5xl lg:text-[3.25rem]">
-                {titulo}
+              {meta && <p {...entra('aparecer', 120)} className="mb-3 text-sm font-medium text-muted-foreground">{meta}</p>}
+              <h1 className="max-w-[18ch] font-display text-[2.125rem] font-bold leading-[1.04] tracking-[-0.025em] [overflow-wrap:anywhere] sm:text-5xl lg:text-[3.25rem]">
+                <Palabras texto={titulo} lang={lang} entrada={150} />
               </h1>
-              {bajada && <div className="entrada mt-5 max-w-[56ch] text-[17px] leading-relaxed text-muted-foreground md:text-lg" style={{ '--i': 1 } as CSSProperties}>{bajada}</div>}
+              {bajada && <div {...entra('aparecer', 400)} className="mt-5 max-w-[56ch] text-[17px] leading-relaxed text-muted-foreground md:text-lg">{bajada}</div>}
             </div>
 
             {/* Escritorio: la cartela */}
             <aside className="hidden md:flex md:flex-col">
-              <div className="relative border-b border-guide px-6">{volver}<Cruz className="left-0 top-full" /></div>
-              <nav aria-label={t('ruta')} className="border-b border-guide px-6 py-3 font-[family-name:var(--font-geist-mono)] text-xs text-muted-foreground">
+              <div {...entra('aparecer', 300)} className="relative border-b border-guide px-6">{volver}<Cruz className="left-0 top-full" /></div>
+              <nav {...entra('aparecer', 360)} aria-label={t('ruta')} className="border-b border-guide px-6 py-3 font-[family-name:var(--font-geist-mono)] text-xs text-muted-foreground">
                 <ol className="flex flex-wrap items-center">
                   {migas.map((m, i) => (
                     <li key={m.ruta + m.nombre} className="flex items-center">
@@ -95,7 +94,7 @@ export default async function EncabezadoPagina({ titulo, bajada, meta, hoja, sec
                   ))}
                 </ol>
               </nav>
-              <div className="relative min-h-[96px] flex-1"><CampoPuntos /></div>
+              <div {...entra('encender', 350)} className="relative min-h-[96px] flex-1"><CampoPuntos /></div>
               <div className="relative flex items-end justify-between gap-3 border-t border-guide px-6 pb-4 pt-3">
                 <Cruz className="left-0 top-0" />
                 <div>
