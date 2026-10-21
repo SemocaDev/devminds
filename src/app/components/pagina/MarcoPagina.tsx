@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ViewTransition } from 'react';
 import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
 import BarraMovil from '@/app/components/layout/BarraMovil';
@@ -8,13 +9,13 @@ import Reticula from '@/app/components/reticula/Reticula';
 export default function MarcoPagina({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <Navbar />
+      <ViewTransition name="navbar"><Navbar /></ViewTransition>
       <main className="relative flex-1">
-        <Reticula entrada />
+        <ViewTransition name="reticula"><Reticula entrada /></ViewTransition>
         {children}
       </main>
       <Footer conBarraMovil />
-      <BarraMovil />
+      <ViewTransition name="barra"><BarraMovil /></ViewTransition>
     </div>
   );
 }

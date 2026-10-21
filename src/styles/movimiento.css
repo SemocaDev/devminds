@@ -117,3 +117,25 @@ html.mov [data-mov='subir-barra']:not(.mov-activo):not([data-mov-entrada]) { tra
 html.mov.mov-entrada [data-palabra] { animation: wm-barrido-doto 330ms steps(1, end) 300ms; }
 html.mov.mov-entrada .wm-ranura::before { animation: wm-barrido-outfit 330ms steps(1, end) 300ms; }
 html.mov.mov-entrada .wm-ranura::after { animation: wm-barrido-geist 330ms steps(1, end) 300ms; }
+
+/* --- Paso entre páginas (View Transitions) ---
+   Navbar, retícula y barra móvil tienen nombre propio y se quedan quietas; el resto (contenido) se funde
+   y sube un poco. Sin soporte del navegador, cada página simplemente aparece. */
+@keyframes mov-vt-salir { to { opacity: 0; } }
+@keyframes mov-vt-entrar { from { opacity: 0; transform: translateY(8px); } }
+::view-transition-old(root) { animation: mov-vt-salir 200ms ease-out both; }
+::view-transition-new(root) { animation: mov-vt-entrar 280ms var(--mov-curva) both; }
+::view-transition-group(navbar),
+::view-transition-group(reticula),
+::view-transition-group(barra),
+::view-transition-new(navbar),
+::view-transition-new(reticula),
+::view-transition-new(barra) { animation: none; }
+::view-transition-old(navbar),
+::view-transition-old(reticula),
+::view-transition-old(barra) { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
