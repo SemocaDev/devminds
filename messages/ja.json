@@ -569,5 +569,11 @@
       "whatsapp": "WhatsApp",
       "llamar": "電話"
     }
+  },
+  "Cartela": {
+    "hoja": "シート",
+    "inicio": "ホーム",
+    "volverA": "{pagina}に戻る",
+    "ruta": "現在地"
   }
 }

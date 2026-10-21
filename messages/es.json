@@ -569,5 +569,11 @@
       "whatsapp": "WhatsApp",
       "llamar": "Llamar"
     }
+  },
+  "Cartela": {
+    "hoja": "Hoja",
+    "inicio": "Inicio",
+    "volverA": "Volver a {pagina}",
+    "ruta": "Estás en"
   }
 }
