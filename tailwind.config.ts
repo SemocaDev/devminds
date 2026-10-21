@@ -24,6 +24,8 @@ const config: Config = {
         'surface-3': 'hsl(var(--surface-3))',
         guide: 'hsl(var(--guide))',
         'guide-soft': 'hsl(var(--guide-soft))',
+        carbon: 'hsl(var(--carbon))',
+        nieve: 'hsl(var(--nieve))',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'

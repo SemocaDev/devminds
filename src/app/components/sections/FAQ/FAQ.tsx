@@ -4,11 +4,11 @@ import { useTranslations } from 'next-intl';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { PREGUNTAS } from '@/config/preguntas';
 
-/** Seis preguntas que deciden la compra: título en la columna 1, acordeón en las columnas 2–4. */
+/** Banda gris con las seis preguntas que deciden la compra: título en la columna 1, acordeón en las columnas 2–4. */
 export default function FAQ() {
   const t = useTranslations('Home.preguntas');
   return (
-    <section id="faq" className="py-16 md:py-24">
+    <section id="faq" className="bg-secondary py-16 md:py-24">
       <div className="contenedor-reticula relative z-[2]">
         <div className="grid gap-y-8 md:grid-cols-4">
           <div className="px-4 md:px-6">
