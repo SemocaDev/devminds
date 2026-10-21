@@ -7,6 +7,7 @@ import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
 import Rieles from '@/app/components/reticula/Rieles';
 import type { Miga } from '@/lib/hojas';
 import { generateBreadcrumbSchema } from '@/lib/schemas/breadcrumb-schema';
+import { jsonLd } from '@/lib/jsonld';
 
 type Props = {
   titulo: string;
@@ -52,7 +53,7 @@ export default async function EncabezadoPagina({ titulo, bajada, meta, hoja, sec
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema(lang, migas)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(generateBreadcrumbSchema(lang, migas)) }} />
       <section className="relative">
         <Rieles modo="pagina" />
         <DivisorSeccion className="absolute inset-x-0 top-16 md:top-[72px]" />
