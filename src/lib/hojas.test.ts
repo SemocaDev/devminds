@@ -8,6 +8,10 @@ describe('hojas del plano', () => {
     expect(nombreCorto('DevMinds Links')).toBe('DevMinds Links');
   });
 
+  it('si el nombre corto es solo la marca, usa el título completo', () => {
+    expect(nombreCorto('DevMinds - Este sitio')).toBe('DevMinds - Este sitio');
+  });
+
   it('cada proyecto es una subhoja de Portafolio', () => {
     expect(hojaDeProyecto(0)).toBe('03.1');
     expect(hojaDeProyecto(5)).toBe('03.6');

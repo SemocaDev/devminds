@@ -3,9 +3,10 @@ export type Miga = { nombre: string; ruta: string };
 
 export type DatoFicha = { clave: 'cliente' | 'anio' | 'duracion' | 'tecnologia'; valor: string };
 
-/** "RMConta - Software contable" → "RMConta": el nombre que cabe en la cartela. */
+/** "RMConta - Software contable" → "RMConta": el nombre que cabe en la cartela. Si queda solo la marca, el título completo. */
 export function nombreCorto(titulo: string): string {
-  return titulo.split(' - ')[0];
+  const corto = titulo.split(' - ')[0];
+  return corto === 'DevMinds' ? titulo : corto;
 }
 
 /** Cada proyecto es una subhoja de Portafolio (03): 03.1, 03.2… según su orden. */

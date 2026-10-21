@@ -8,6 +8,7 @@ import CampoPuntos from '@/app/components/reticula/CampoPuntos';
 import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
 import Reticula from '@/app/components/reticula/Reticula';
 import Cierre from '@/app/components/sections/Cierre/Cierre';
+import { jsonLd } from '@/lib/jsonld';
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -44,7 +45,7 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <MarcoPagina>
-      {persona && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(persona) }} />}
+      {persona && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(persona) }} />}
       <EncabezadoPagina
         titulo={t('titulo')}
         bajada={t('bajada')}
