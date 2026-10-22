@@ -14,7 +14,8 @@ const enlace = 'text-muted-foreground transition-colors hover:text-primary';
  */
 export default function Rieles({ modo = 'hero' }: { modo?: 'hero' | 'pagina' }) {
   const t = useTranslations('Home.rieles');
-  const lado = 'absolute top-[88px] z-[2] hidden w-16 flex-col items-center gap-5 min-[1360px]:flex';
+  // z-[3]: por encima de los contenedores de contenido (z-[2]) que ocupan también el margen del riel.
+  const lado = 'absolute top-[88px] z-[3] hidden w-16 flex-col items-center gap-5 min-[1360px]:flex';
   return (
     <>
       <div className={cn(lado, 'left-0')}>
