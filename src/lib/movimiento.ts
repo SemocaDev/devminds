@@ -1,10 +1,12 @@
 /** Curva del trazo de las líneas (power2.inOut), la misma que usa el CSS de movimiento. */
 export const CURVA_TRAZO = [0.45, 0, 0.55, 1] as const;
 
-/** Milisegundos que se muestra cada fuente durante un barrido de "DevMinds" o de un número en Doto. */
+/** Milisegundos que se muestra cada fuente en el barrido rápido de un número en Doto. */
 export const PASO_BARRIDO_MS = 110;
+/** Milisegundos que se muestra cada fuente en el barrido de "DevMinds" (ritmo pausado, a pedido del usuario). */
+export const PASO_WORDMARK_MS = 350;
 /** Pausa en Doto entre barridos de "DevMinds". */
-export const DESCANSO_WORDMARK_MS = 2600;
+export const DESCANSO_WORDMARK_MS = 4000;
 
 const [X1, Y1, X2, Y2] = CURVA_TRAZO;
 const bezier = (t: number, p1: number, p2: number) => 3 * (1 - t) ** 2 * t * p1 + 3 * (1 - t) * t ** 2 * p2 + t ** 3;

@@ -119,12 +119,13 @@ html.mov [data-mov-activo='quieto'] * { animation: none !important; }
 }
 .wm-ranura::before { font-family: var(--font-outfit); font-weight: 700; transform: scale(0.877); }
 .wm-ranura::after { font-family: var(--font-geist); font-weight: 600; transform: scale(0.84); }
-@keyframes wm-barrido-doto { 0% { opacity: 1; } 33.3% { opacity: 0; } 100% { opacity: 0; } }
-@keyframes wm-barrido-outfit { 0% { opacity: 0; } 33.3% { opacity: 1; } 66.6% { opacity: 0; } 100% { opacity: 0; } }
-@keyframes wm-barrido-geist { 0% { opacity: 0; } 66.6% { opacity: 1; } 100% { opacity: 1; } }
-html.mov.mov-entrada [data-palabra] { animation: wm-barrido-doto 330ms steps(1, end) 300ms; }
-html.mov.mov-entrada .wm-ranura::before { animation: wm-barrido-outfit 330ms steps(1, end) 300ms; }
-html.mov.mov-entrada .wm-ranura::after { animation: wm-barrido-geist 330ms steps(1, end) 300ms; }
+/* Dos fases de 350 ms (Outfit y Geist), el mismo ritmo que el ciclo de WordmarkAnimado. */
+@keyframes wm-barrido-doto { 0%, 100% { opacity: 0; } }
+@keyframes wm-barrido-outfit { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes wm-barrido-geist { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 1; } }
+html.mov.mov-entrada [data-palabra] { animation: wm-barrido-doto 700ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::before { animation: wm-barrido-outfit 700ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::after { animation: wm-barrido-geist 700ms steps(1, end) 300ms; }
 
 /* --- Paso entre páginas (View Transitions) ---
    Navbar, retícula y barra móvil tienen nombre propio y se quedan quietas; el resto (contenido) se funde

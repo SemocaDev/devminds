@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { DESCANSO_WORDMARK_MS, PASO_BARRIDO_MS, fasesDisponibles } from '@/lib/movimiento';
+import { DESCANSO_WORDMARK_MS, PASO_WORDMARK_MS, fasesDisponibles } from '@/lib/movimiento';
 import { fuentesCargadas, pedirFuentes } from '@/app/components/movimiento/fuentes';
 import { cn } from '@/lib/utils';
 
@@ -46,7 +46,7 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
       poner(fases[paso]);
       const ultima = paso === fases.length - 1;
       paso = ultima ? 0 : paso + 1;
-      temporizador = window.setTimeout(tic, ultima ? DESCANSO_WORDMARK_MS : PASO_BARRIDO_MS);
+      temporizador = window.setTimeout(tic, ultima ? DESCANSO_WORDMARK_MS : PASO_WORDMARK_MS);
     };
 
     const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
