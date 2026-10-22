@@ -6,6 +6,8 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Paso entre páginas con la API View Transitions (<ViewTransition> de React).
+  experimental: { viewTransition: true },
   images: {
     remotePatterns: [
       {

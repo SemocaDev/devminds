@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
 import { lineaMeta } from '@/lib/proyectos';
 import { cn } from '@/lib/utils';
+import type { CSSProperties } from 'react';
 
 type Props = {
   proyecto: ProjectWithTranslation;
@@ -11,13 +12,15 @@ type Props = {
   tipo: string | null;
   /** El destacado ocupa dos columnas y usa una imagen más panorámica. */
   destacado?: boolean;
+  /** Retraso (ms) con que se descubre su captura al entrar en pantalla. */
+  retraso?: number;
 };
 
 /** Tarjeta de proyecto sobre la retícula: captura, tipo · cliente · año, título y descripción. */
-export default function TarjetaProyecto({ proyecto: p, href, tipo, destacado = false }: Props) {
+export default function TarjetaProyecto({ proyecto: p, href, tipo, destacado = false, retraso = 0 }: Props) {
   return (
     <Link href={href} className="group block">
-      <div className={cn('relative overflow-hidden rounded-xl border border-border bg-secondary', destacado ? 'aspect-[16/10]' : 'aspect-[4/3]')}>
+      <div data-mov="descubrir" style={{ '--retraso': `${retraso}ms` } as CSSProperties} className={cn('relative overflow-hidden rounded-xl border border-border bg-secondary', destacado ? 'aspect-[16/10]' : 'aspect-[4/3]')}>
         {p.images?.[0] && (
           <Image
             src={p.images[0]}

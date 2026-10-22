@@ -9,6 +9,7 @@ import DivisorSeccion, { Cruz } from '@/app/components/reticula/DivisorSeccion';
 import Reticula from '@/app/components/reticula/Reticula';
 import Cierre from '@/app/components/sections/Cierre/Cierre';
 import { jsonLd } from '@/lib/jsonld';
+import type { CSSProperties } from 'react';
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -57,7 +58,7 @@ export default async function AboutPage({ params }: Props) {
       {/* El fundador: foto, historia y datos */}
       <div className="contenedor-reticula relative z-[2]">
         <div className="grid md:grid-cols-4">
-          <div className="relative aspect-[4/5] bg-secondary md:aspect-auto md:min-h-[420px]">
+          <div data-mov="descubrir" className="relative aspect-[4/5] overflow-hidden bg-secondary md:aspect-auto md:min-h-[420px]">
             {fundador?.photo ? (
               <Image src={fundador.photo} alt={fundador.name} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover" />
             ) : (
@@ -90,7 +91,7 @@ export default async function AboutPage({ params }: Props) {
       </div>
 
       {/* Cómo trabajamos: los principios en banda carbón */}
-      <section className="banda-carbon relative z-[2]">
+      <section data-mov="desplegar" className="banda-carbon relative z-[2]">
         <Reticula />
         <div className="contenedor-reticula relative z-[2]">
           <div className="grid md:grid-cols-4">
@@ -101,7 +102,7 @@ export default async function AboutPage({ params }: Props) {
           </div>
           <ul className="grid gap-y-10 pb-16 md:grid-cols-4 md:pb-24">
             {PRINCIPIOS.map((clave, i) => (
-              <li key={clave} className="relative border-t border-guide px-4 pt-6 md:px-6">
+              <li key={clave} data-mov="aparecer" style={{ '--retraso': `${200 + i * 80}ms` } as CSSProperties} className="relative border-t border-guide px-4 pt-6 md:px-6">
                 <Cruz className="left-0 top-0" />
                 <Cruz className={i === PRINCIPIOS.length - 1 ? 'left-full top-0 min-[1360px]:hidden' : 'left-full top-0 md:hidden'} />
                 <span aria-hidden className="font-doto text-3xl font-black leading-none text-primary">+</span>

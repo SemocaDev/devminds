@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import TarjetaProyecto from '@/app/components/proyectos/TarjetaProyecto';
@@ -16,16 +16,33 @@ export default function FiltroProyectos({ proyectos, categorias }: Props) {
   const tTipos = useTranslations('Home.trabajos.tipos');
   const { lang } = useParams<{ lang: string }>();
   const [activa, setActiva] = useState<string | null>(null);
+  // Fondo del filtro activo: una sola pieza que se desliza entre celdas (solo transform).
+  const grupo = useRef<HTMLDivElement>(null);
+  const [marca, setMarca] = useState<CSSProperties | null>(null);
 
   // Solo categorías con proyectos: la DB guarda también un "todos" propio y no tiene sentido un filtro vacío.
   const conProyectos = categorias.filter((c) => proyectos.some((p) => p.category === c.id));
   const filtros = [{ id: null, nombre: t('todos') }, ...conProyectos.map((c) => ({ id: c.id, nombre: c.name }))];
   const visibles = activa ? proyectos.filter((p) => p.category === activa) : proyectos;
 
+  useLayoutEffect(() => {
+    const medir = () => {
+      const boton = grupo.current?.querySelector<HTMLElement>('[aria-pressed="true"]');
+      if (!boton) return;
+      setMarca({ width: boton.offsetWidth, height: boton.offsetHeight, transform: `translate(${boton.offsetLeft}px, ${boton.offsetTop}px)` });
+    };
+    medir();
+    window.addEventListener('resize', medir);
+    return () => window.removeEventListener('resize', medir);
+  }, [activa]);
+
   return (
     <>
       <div className="contenedor-reticula relative z-[2]">
-        <div role="group" aria-label={t('filtrar')} className="relative grid grid-cols-2 border-b border-guide md:grid-cols-4">
+        <div ref={grupo} role="group" aria-label={t('filtrar')} className="relative grid grid-cols-2 border-b border-guide md:grid-cols-4">
+          {marca && (
+            <span aria-hidden style={marca} className="absolute left-0 top-0 bg-foreground transition-transform duration-[350ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none" />
+          )}
           {filtros.map((f, i) => (
             <button
               key={f.id ?? 'todos'}
@@ -33,10 +50,11 @@ export default function FiltroProyectos({ proyectos, categorias }: Props) {
               aria-pressed={activa === f.id}
               onClick={() => setActiva(f.id)}
               className={cn(
-                'relative min-h-12 px-4 text-left text-sm font-medium transition-colors md:px-6',
+                'relative z-[1] min-h-12 px-4 text-left text-sm font-medium transition-colors md:px-6',
                 i % 2 === 0 && 'border-r border-guide md:border-r-0',
                 i < 2 && 'border-b border-guide md:border-b-0',
-                activa === f.id ? 'bg-foreground text-background' : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                // Hasta medir la celda (primer pintado) el fondo lo pone el propio botón.
+                activa === f.id ? cn('text-background', !marca && 'bg-foreground') : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
               )}
             >
               {f.nombre}
@@ -58,6 +76,7 @@ export default function FiltroProyectos({ proyectos, categorias }: Props) {
                   href={`/${lang}/portfolio/${p.slug}`}
                   tipo={tTipos.has(p.category) ? tTipos(p.category) : null}
                   destacado={i === 0}
+                  retraso={(i % 3) * 80}
                 />
               </li>
             ))}

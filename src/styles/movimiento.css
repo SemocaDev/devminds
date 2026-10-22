@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Movimiento (frente 4). Gestos del plano activados por atributos:
+   - data-mov="<gesto>"        qué gesto hace el elemento.
+   - data-mov-entrada          corre en la carga inicial (html.mov-entrada), con --retraso.
+   - data-mov-activo          lo pone el script de revelado (src/lib/revelado.ts) al entrar en pantalla;
+                               "quieto" = sin animación (al volver atrás).
+   Los estados ocultos solo existen con html.mov, que el script del <head> pone si no se pidió
+   reducir movimiento; si el JS no llega, el propio script lo quita: el contenido siempre se ve.
+   Solo se animan transform, opacity y clip-path.
+   ========================================================================== */
+
+:root {
+  --mov-curva: cubic-bezier(0.16, 1, 0.3, 1);
+  --mov-curva-trazo: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* La retícula mide todo el alto de la página: el trazo crece hasta la altura de la ventana y después se libera. */
+@keyframes mov-trazo-v { 0% { clip-path: inset(0 0 100% 0); } 99% { clip-path: inset(0 0 calc(100% - 100vh) 0); } 100% { clip-path: none; } }
+@keyframes mov-trazo-h { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes mov-brazo { from { transform: scale(0); } to { transform: none; } }
+/* Arranca invisible: durante el retraso (fill-mode backwards) no debe asomar antes de que el trazo llegue. */
+@keyframes mov-destello { 0% { opacity: 0; transform: scale(0.2); } 1% { opacity: 0.7; transform: scale(0.2); } 100% { opacity: 0; transform: scale(1.8); } }
+/* Los recortes terminan en `none`: así no cortan lo que sobresale de la celda (cruces en el borde). */
+@keyframes mov-encender { 0% { clip-path: inset(0 0 100% 0); } 99.9% { clip-path: inset(0 0 0 0); } 100% { clip-path: none; } }
+@keyframes mov-subir { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes mov-aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes mov-descubrir { 0% { clip-path: inset(100% 0 0 0); } 99.9% { clip-path: inset(0 0 0 0); } 100% { clip-path: none; } }
+@keyframes mov-zoom { from { transform: scale(1.08); } to { transform: none; } }
+@keyframes mov-subir-barra { from { transform: translateY(100%); } to { transform: none; } }
+
+[data-mov='trazo-h'] .mov-linea { transform-origin: left; }
+
+/* Máscara de cada palabra que sube */
+/* Margen simétrico: la máscara no corta acentos, "¿" ni descendentes aunque el interlineado sea apretado. */
+.mov-palabra { display: inline-block; overflow: hidden; vertical-align: top; padding-block: 0.2em; margin-block: -0.2em; }
+.mov-palabra > [data-mov='subir'] { display: inline-block; }
+
+/* --- Estado inicial oculto (solo elementos que esperan el scroll) --- */
+html.mov [data-mov='trazo-v']:not([data-mov-activo]):not([data-mov-entrada]) { clip-path: inset(0 0 100% 0); }
+html.mov [data-mov='trazo-h']:not([data-mov-activo]):not([data-mov-entrada]) .mov-linea { transform: scaleX(0); }
+html.mov [data-mov='trazo-h']:not([data-mov-activo]):not([data-mov-entrada]) :is(.mov-brazo-h, .mov-brazo-v) { transform: scale(0); }
+html.mov :is([data-mov='encender'], [data-mov='desplegar'], [data-mov='colgar']):not([data-mov-activo]):not([data-mov-entrada]) { clip-path: inset(0 0 100% 0); }
+html.mov [data-mov='subir']:not([data-mov-activo]):not([data-mov-entrada]) { transform: translateY(105%); }
+html.mov [data-mov='aparecer']:not([data-mov-activo]):not([data-mov-entrada]) { opacity: 0; }
+html.mov [data-mov='descubrir']:not([data-mov-activo]):not([data-mov-entrada]) { clip-path: inset(100% 0 0 0); }
+html.mov [data-mov='subir-barra']:not([data-mov-activo]):not([data-mov-entrada]) { transform: translateY(100%); }
+
+/* Al volver atrás, lo que ya está en pantalla aparece sin animación. */
+html.mov [data-mov-activo='quieto'],
+html.mov [data-mov-activo='quieto'] * { animation: none !important; }
+
+/* --- Animación: en la entrada inicial o al activarse ---
+   fill-mode backwards: solo el estado inicial se sostiene durante el retraso; al terminar no queda nada
+   aplicado (cada gesto termina en el estado natural) y los :hover siguen funcionando. */
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='trazo-v'] {
+  animation: mov-trazo-v 700ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='trazo-h'] .mov-linea {
+  animation: mov-trazo-h 750ms var(--mov-curva-trazo) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='trazo-h'] .mov-brazo-h {
+  animation: mov-brazo 350ms var(--mov-curva) var(--retraso-cruz, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='trazo-h'] .mov-brazo-v {
+  animation: mov-brazo 450ms var(--mov-curva) calc(var(--retraso-cruz, 0ms) + 40ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='trazo-h'] .mov-destello {
+  animation: mov-destello 500ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso-cruz, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='encender'] {
+  animation: mov-encender 1000ms cubic-bezier(0.33, 1, 0.68, 1) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='desplegar'] {
+  animation: mov-encender 900ms cubic-bezier(0.65, 0, 0.35, 1) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='colgar'] {
+  animation: mov-encender 800ms var(--mov-curva) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='subir'] {
+  animation: mov-subir 800ms var(--mov-curva) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='aparecer'] {
+  animation: mov-aparecer 600ms var(--mov-curva) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='descubrir'] {
+  animation: mov-descubrir 900ms cubic-bezier(0.65, 0, 0.35, 1) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='descubrir'] > * {
+  animation: mov-zoom 1200ms var(--mov-curva) var(--retraso, 0ms) backwards;
+}
+:is(html.mov.mov-entrada [data-mov-entrada], html.mov [data-mov-activo])[data-mov='subir-barra'] {
+  animation: mov-subir-barra 600ms var(--mov-curva) var(--retraso, 0ms) backwards;
+}
+
+/* Barridos de números en Doto: solo cambia la familia, no el tamaño */
+.bd-outfit { font-family: var(--font-outfit); }
+.bd-mono { font-family: var(--font-geist-mono); }
+.bd-serif { font-family: var(--font-instrument); font-style: italic; }
+
+/* "DevMinds": ranura de ancho fijo (el de Doto, 5,2 em; ninguna otra fuente lo supera) para que el titular
+   no se mueva al cambiar de fuente. En línea con el titular, line-height 0: el cambio de tamaño entre fuentes
+   no altera la altura de la línea. En móvil va en su propia banda, con alto fijo. */
+.wm-ranura { display: inline-block; width: 5.2em; line-height: 0; white-space: nowrap; }
+@media (max-width: 767px) {
+  .wm-ranura { display: block; height: 0.95em; line-height: 0.95; }
+}
+
+/* Primer barrido desde el primer pintado, sin JS. Son capas superpuestas (Outfit y Geist, ya cargadas por la
+   página) que se alternan solo con opacidad: lo anima la GPU aunque el hilo principal esté ocupado hidratando.
+   Después, el ciclo de WordmarkAnimado cambia la fuente real y suma Geist Mono e Instrument Serif.
+   Las capas son pseudo-elementos (no están en el DOM: el H1 sigue diciendo "DevMinds" una vez) con texto
+   alternativo vacío para que los lectores de pantalla no las lean. */
+.wm-ranura { position: relative; }
+.wm-ranura::before,
+.wm-ranura::after {
+  content: 'DevMinds' / '';
+  position: absolute; left: 0; display: inline-block; opacity: 0; pointer-events: none;
+  font-size: 1.14em; transform-origin: 0 75%;
+}
+.wm-ranura::before { font-family: var(--font-outfit); font-weight: 700; transform: scale(0.877); }
+.wm-ranura::after { font-family: var(--font-geist); font-weight: 600; transform: scale(0.84); }
+@keyframes wm-barrido-doto { 0% { opacity: 1; } 33.3% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes wm-barrido-outfit { 0% { opacity: 0; } 33.3% { opacity: 1; } 66.6% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes wm-barrido-geist { 0% { opacity: 0; } 66.6% { opacity: 1; } 100% { opacity: 1; } }
+html.mov.mov-entrada [data-palabra] { animation: wm-barrido-doto 330ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::before { animation: wm-barrido-outfit 330ms steps(1, end) 300ms; }
+html.mov.mov-entrada .wm-ranura::after { animation: wm-barrido-geist 330ms steps(1, end) 300ms; }
+
+/* --- Paso entre páginas (View Transitions) ---
+   Navbar, retícula y barra móvil tienen nombre propio y se quedan quietas; el resto (contenido) se funde
+   y sube un poco. Sin soporte del navegador, cada página simplemente aparece. */
+@keyframes mov-vt-salir { to { opacity: 0; } }
+@keyframes mov-vt-entrar { from { opacity: 0; transform: translateY(8px); } }
+::view-transition-old(root) { animation: mov-vt-salir 200ms ease-out both; }
+::view-transition-new(root) { animation: mov-vt-entrar 280ms var(--mov-curva) both; }
+::view-transition-group(navbar),
+::view-transition-group(reticula),
+::view-transition-group(barra),
+::view-transition-new(navbar),
+::view-transition-new(reticula),
+::view-transition-new(barra) { animation: none; }
+::view-transition-old(navbar),
+::view-transition-old(reticula),
+::view-transition-old(barra) { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* Si "reducir movimiento" se activa a mitad de visita: nada se anima y todo queda visible. */
+@media (prefers-reduced-motion: reduce) {
+  html.mov [data-mov], html.mov [data-mov] *, html.mov [data-palabra], html.mov .wm-ranura::before, html.mov .wm-ranura::after {
+    animation: none !important;
+  }
+  html.mov [data-mov] { clip-path: none !important; opacity: 1 !important; transform: none !important; }
+}

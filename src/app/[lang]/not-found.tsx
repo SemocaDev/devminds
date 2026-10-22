@@ -4,6 +4,8 @@ import MarcoPagina from '@/app/components/pagina/MarcoPagina';
 import EncabezadoPagina from '@/app/components/pagina/EncabezadoPagina';
 import CampoPuntos from '@/app/components/reticula/CampoPuntos';
 import { cn } from '@/lib/utils';
+import type { CSSProperties } from 'react';
+import NumeroDoto from '@/app/components/movimiento/NumeroDoto';
 
 /** Hoja 404: la cartela hace el chiste y la página ofrece las hojas que sí existen. */
 export default async function NotFound() {
@@ -29,9 +31,9 @@ export default async function NotFound() {
       />
       <div className="contenedor-reticula relative z-[2]">
         <nav className="grid grid-cols-2 md:grid-cols-4">
-          {hojas.map((h) => (
-            <Link key={h.numero} href={`/${lang}${h.ruta}`} className={cn('flex min-h-[140px] flex-col p-5 transition-colors md:min-h-[180px] md:p-6', h.color)}>
-              <span className="font-doto text-3xl font-black leading-none tracking-[-0.03em]">{h.numero}</span>
+          {hojas.map((h, i) => (
+            <Link key={h.numero} href={`/${lang}${h.ruta}`} data-mov="colgar" style={{ '--retraso': `${i * 70}ms` } as CSSProperties} className={cn('flex min-h-[140px] flex-col p-5 transition-colors md:min-h-[180px] md:p-6', h.color)}>
+              <NumeroDoto valor={h.numero} className="text-3xl font-black leading-none tracking-[-0.03em]" />
               <span className="mt-auto font-display text-xl font-bold tracking-[-0.015em]">{h.nombre}</span>
             </Link>
           ))}

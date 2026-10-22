@@ -1,5 +1,6 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
@@ -57,7 +58,7 @@ const Navbar = () => {
         conFondo ? 'border-border bg-background/90 backdrop-blur-md' : 'border-transparent bg-transparent'
       )}
     >
-      <div className="contenedor-reticula">
+      <div data-mov="aparecer" data-mov-entrada="" style={{ '--retraso': '100ms' } as CSSProperties} className="contenedor-reticula">
         <div className="grid h-16 grid-cols-[1fr_auto] items-center md:h-[72px] lg:grid-cols-4">
           <Link href={`/${lang}`} className="justify-self-start px-4 transition-opacity hover:opacity-75 md:px-6">
             <LogoHorizontal alto={24} prioridad />

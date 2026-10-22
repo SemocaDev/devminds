@@ -1,6 +1,8 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { ViewTransition, useEffect } from 'react';
+import { hojaDesde } from '@/lib/movimiento';
 import Navbar from '@/app/components/layout/Navbar';
 import Footer from '@/app/components/layout/Footer/Footer';
 import BarraMovil from '@/app/components/layout/BarraMovil';
@@ -23,13 +25,15 @@ type Props = {
 };
 
 export default function HomeClient({ featuredProjects }: Props) {
+  // La home es la hoja 01: desde aquí barre la cartela de la próxima página.
+  useEffect(() => { hojaDesde('01'); }, []);
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <Navbar />
+      <ViewTransition name="navbar"><Navbar /></ViewTransition>
       <main className="relative flex-1">
-        <Reticula />
+        <ViewTransition name="reticula"><Reticula entrada /></ViewTransition>
         <Hero />
-        <DivisorSeccion />
+        <DivisorSeccion entrada={550} />
         <Escalera />
         <DivisorSeccion />
         <Projects projects={featuredProjects} />
@@ -43,7 +47,7 @@ export default function HomeClient({ featuredProjects }: Props) {
         <Cierre />
       </main>
       <Footer conBarraMovil />
-      <BarraMovil />
+      <ViewTransition name="barra"><BarraMovil /></ViewTransition>
     </div>
   );
 }

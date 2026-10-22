@@ -9,6 +9,7 @@ import Cierre from '@/app/components/sections/Cierre/Cierre';
 import { ESCALONES } from '@/config/escalones';
 import { enlaceWhatsApp } from '@/lib/enlaces';
 import { cn } from '@/lib/utils';
+import type { CSSProperties } from 'react';
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -40,14 +41,14 @@ export default async function ServicesPage({ params }: Props) {
             {i > 0 && <DivisorSeccion />}
             <div className="contenedor-reticula relative z-[2]">
               <div className="grid md:grid-cols-4">
-                <div className={cn('flex min-h-[180px] flex-col p-5 md:min-h-[240px] md:p-6', e.fondo)}>
+                <div data-mov="colgar" className={cn('flex min-h-[180px] flex-col p-5 md:min-h-[240px] md:p-6', e.fondo)}>
                   <span className={cn('text-[13px] font-medium', e.tenue)}>{tEscalera(`pasos.${e.clave}.etiqueta`)}</span>
                   <h2 className="mt-1 font-display text-2xl font-bold tracking-[-0.015em] md:text-[1.625rem]">{tEscalera(`pasos.${e.clave}.titulo`)}</h2>
                   {tEscalera.has(`pasos.${e.clave}.tiempo`) && (
                     <span className="mt-auto pt-4 font-doto text-xl font-black tracking-[-0.03em]">{tEscalera(`pasos.${e.clave}.tiempo`)}</span>
                   )}
                 </div>
-                <div className="px-4 py-8 md:col-span-2 md:px-6 md:py-10">
+                <div data-mov="aparecer" style={{ '--retraso': '150ms' } as CSSProperties} className="px-4 py-8 md:col-span-2 md:px-6 md:py-10">
                   <p className={rotulo}>{t('paraQuien')}</p>
                   <p className="mt-2 max-w-[52ch] text-[17px] leading-relaxed">{t(`pasos.${e.clave}.paraQuien`)}</p>
                   <p className={cn(rotulo, 'mt-6')}>{t('incluye')}</p>
@@ -59,7 +60,7 @@ export default async function ServicesPage({ params }: Props) {
                     ))}
                   </ul>
                 </div>
-                <div className="flex items-end px-4 pb-10 md:px-6 md:py-10">
+                <div data-mov="aparecer" style={{ '--retraso': '250ms' } as CSSProperties} className="flex items-end px-4 pb-10 md:px-6 md:py-10">
                   <a
                     href={enlaceWhatsApp(t(`pasos.${e.clave}.whatsapp`))}
                     target="_blank"
