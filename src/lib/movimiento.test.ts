@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fasesDisponibles, partirPalabras, progresoTrazo, retrasoCruce, tiempoParaProgreso } from './movimiento';
+import { barridoNumero, fasesDisponibles, hojaDesde, partirPalabras, progresoTrazo, reiniciarHojas, retrasoCruce, tiempoParaProgreso } from './movimiento';
 
 describe('curva del trazo', () => {
   it('va de 0 a 1 y pasa por el medio', () => {
@@ -30,8 +30,10 @@ describe('palabras del titular', () => {
     expect(p.at(-1)).toBe('necesita.');
   });
 
-  it('en japonés el bloque sube entero', () => {
-    expect(partirPalabras('あなたのビジネスに', 'ja')).toEqual(['あなたのビジネスに']);
+  it('en japonés parte por segmentos, sin perder ni añadir texto', () => {
+    const p = partirPalabras('は、あなたのビジネスに必要なソフトウェアをつくります。', 'ja');
+    expect(p.length).toBeGreaterThan(3);
+    expect(p.join('')).toBe('は、あなたのビジネスに必要なソフトウェアをつくります。');
   });
 });
 
@@ -40,5 +42,34 @@ describe('barrido de DevMinds', () => {
     expect(fasesDisponibles(new Set())).toEqual(['wm-doto']);
     expect(fasesDisponibles(new Set(['outfit']))).toEqual(['wm-outfit', 'wm-doto']);
     expect(fasesDisponibles(new Set(['serif', 'outfit', 'mono']))).toEqual(['wm-outfit', 'wm-mono', 'wm-serif', 'wm-doto']);
+  });
+});
+
+describe('barrido de números', () => {
+  it('solo usa las fuentes ya cargadas', () => {
+    expect(barridoNumero(new Set())).toEqual([]);
+    expect(barridoNumero(new Set(['mono']))).toEqual(['bd-mono']);
+    expect(barridoNumero(new Set(['serif', 'outfit', 'mono']))).toEqual(['bd-outfit', 'bd-mono', 'bd-serif']);
+  });
+});
+
+describe('hoja de partida de la cartela', () => {
+  it('la primera página interna parte de la home (01)', () => {
+    reiniciarHojas();
+    expect(hojaDesde('02')).toBe('01');
+  });
+
+  it('las dos cartelas (móvil y escritorio) de una misma página reciben la misma hoja de partida', () => {
+    reiniciarHojas();
+    hojaDesde('02');
+    expect(hojaDesde('03.2')).toBe('02');
+    expect(hojaDesde('03.2')).toBe('02');
+  });
+
+  it('pasar por la home vuelve a partir de 01', () => {
+    reiniciarHojas();
+    hojaDesde('02');
+    hojaDesde('01');
+    expect(hojaDesde('03')).toBe('01');
   });
 });

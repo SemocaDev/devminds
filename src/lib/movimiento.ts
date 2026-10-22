@@ -47,16 +47,43 @@ export function retrasoCruce(fraccion: number, inicioMs: number, duracionMs: num
   return Math.round(inicioMs + tiempoParaProgreso(fraccion) * duracionMs);
 }
 
-/** Palabras de un título para que suban una a una; en japonés (sin espacios) sube el bloque entero. */
+/**
+ * Palabras de un título para que suban una a una. En japonés no hay espacios: se parte por segmentos
+ * (Intl.Segmenter), así el titular conserva su diseño y se unen sin espacios.
+ */
 export function partirPalabras(texto: string, lang: string): string[] {
-  if (lang === 'ja') return [texto];
+  if (lang === 'ja') return [...new Intl.Segmenter('ja', { granularity: 'word' }).segment(texto)].map((s) => s.segment);
   return texto.split(/\s+/).filter(Boolean);
 }
 
-type FuenteBarrido = 'outfit' | 'mono' | 'serif';
+export type FuenteBarrido = 'outfit' | 'mono' | 'serif';
 const ORDEN_BARRIDO: FuenteBarrido[] = ['outfit', 'mono', 'serif'];
 
 /** Clases del barrido de "DevMinds" con las fuentes ya cargadas (así nunca asoma la de respaldo); siempre termina en Doto. */
 export function fasesDisponibles(cargadas: Set<FuenteBarrido>): string[] {
   return [...ORDEN_BARRIDO.filter((f) => cargadas.has(f)).map((f) => `wm-${f}`), 'wm-doto'];
+}
+
+/** Clases del barrido de un número en Doto con las fuentes ya cargadas (sin fuente de respaldo). */
+export function barridoNumero(cargadas: Set<FuenteBarrido>): string[] {
+  return ORDEN_BARRIDO.filter((f) => cargadas.has(f)).map((f) => `bd-${f}`);
+}
+
+// Hoja de partida de la cartela en la navegación: la última hoja vista (la home es la 01). Las dos cartelas
+// de una página (móvil y escritorio) piden la misma hoja de destino y deben recibir la misma de partida.
+let hojaActual = '01';
+let ultimaPeticion: { destino: string; desde: string } | null = null;
+
+/** Hoja desde la que barre la cartela al llegar a `destino`; registra `destino` como la hoja actual. */
+export function hojaDesde(destino: string): string {
+  if (ultimaPeticion?.destino === destino) return ultimaPeticion.desde;
+  ultimaPeticion = { destino, desde: hojaActual };
+  hojaActual = destino;
+  return ultimaPeticion.desde;
+}
+
+/** Solo para pruebas: vuelve al estado inicial (en la home). */
+export function reiniciarHojas(): void {
+  hojaActual = '01';
+  ultimaPeticion = null;
 }

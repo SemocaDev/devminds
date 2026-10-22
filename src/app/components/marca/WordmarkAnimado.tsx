@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import { DESCANSO_WORDMARK_MS, PASO_BARRIDO_MS, fasesDisponibles } from '@/lib/movimiento';
+import { fuentesCargadas, pedirFuentes } from '@/app/components/movimiento/fuentes';
 import { cn } from '@/lib/utils';
 
 const TEXTO = 'DevMinds';
-type Fuente = 'outfit' | 'mono' | 'serif';
 
 /**
  * "DevMinds" que barre fuentes y descansa en Doto. El primer barrido es CSS (corre desde el primer pintado);
@@ -23,18 +23,9 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
     if (!raiz || !palabra) return;
     const titular = raiz.closest('h1') ?? raiz;
     const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const css = getComputedStyle(document.documentElement);
-    const familia = (variable: string) => css.getPropertyValue(variable);
-    const FUENTES: Record<Fuente, string> = {
-      outfit: `700 1em ${familia('--font-outfit')}`,
-      mono: `600 1em ${familia('--font-geist-mono')}`,
-      serif: `italic 400 1em ${familia('--font-instrument')}`,
-    };
-
     const poner = (clase: string) => { palabra.className = `inline-block text-left ${clase}`; };
-    const cargadas = () => new Set((Object.keys(FUENTES) as Fuente[]).filter((f) => document.fonts.check(FUENTES[f])));
     // Geist Mono e Instrument Serif no se precargan: se piden ya y se suman al barrido cuando lleguen.
-    Object.values(FUENTES).forEach((f) => document.fonts.load(f).catch(() => []));
+    pedirFuentes();
 
     let visible = true;
     let encima = false;
@@ -51,7 +42,7 @@ export default function WordmarkAnimado({ className }: { className?: string }) {
         temporizador = window.setTimeout(tic, 1000);
         return;
       }
-      if (paso === 0) fases = fasesDisponibles(cargadas());
+      if (paso === 0) fases = fasesDisponibles(fuentesCargadas());
       poner(fases[paso]);
       const ultima = paso === fases.length - 1;
       paso = ultima ? 0 : paso + 1;

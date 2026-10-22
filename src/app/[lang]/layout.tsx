@@ -9,6 +9,7 @@ import { generateOrganizationSchema, generateLocalBusinessSchema } from "@/lib/s
 import "@/styles/globals.css";
 import "@/styles/movimiento.css";
 import RevelarAlScroll from "@/app/components/movimiento/RevelarAlScroll";
+import { instalarRevelado } from "@/lib/revelado";
 
 // Font configurations
 const geist = Geist({
@@ -147,7 +148,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Habilita los estados ocultos del movimiento (html.mov) y la entrada inicial (html.mov-entrada), salvo con
-// "reducir movimiento". Si RevelarAlScroll no monta en 3 s, quita html.mov para que todo se vea.
+// "reducir movimiento". Si el script de revelado (fin de <body>) no corre en 3 s, quita html.mov: todo se ve.
 const SCRIPT_MOVIMIENTO = `(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var d=document.documentElement;d.classList.add('mov','mov-entrada');setTimeout(function(){if(!window.__movListo)d.classList.remove('mov','mov-entrada')},3000)}catch(e){}})();`;
 
 export default async function RootLayout(props: Props) {
@@ -219,6 +220,8 @@ export default async function RootLayout(props: Props) {
             <RevelarAlScroll />
             {props.children}
           </NextIntlClientProvider>
+          {/* Revelado al hacer scroll: corre al terminar de leer el HTML, sin esperar a React. */}
+          <script dangerouslySetInnerHTML={{ __html: `(${instalarRevelado.toString()})();` }} />
           <Toaster
             position="top-center"
             toastOptions={{

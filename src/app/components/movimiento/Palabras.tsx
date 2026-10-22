@@ -10,12 +10,12 @@ type Props = {
   paso?: number;
 };
 
-/** Texto que sube palabra a palabra dentro de su máscara. Es texto real: se lee y se indexa igual. */
+/** Texto que sube palabra a palabra dentro de su máscara (en japonés, por segmentos y sin espacios). Es texto real: se lee y se indexa igual. */
 export default function Palabras({ texto, lang, entrada, paso = 45 }: Props) {
   const inicio = entrada ?? 0;
   return partirPalabras(texto, lang).map((palabra, i) => (
     <Fragment key={i}>
-      {i > 0 && ' '}
+      {i > 0 && lang !== 'ja' && ' '}
       <span className="mov-palabra">
         <span
           data-mov="subir"
