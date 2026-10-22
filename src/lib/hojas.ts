@@ -21,12 +21,24 @@ export function proyectoYVecinos<T extends { slug: string }>(lista: T[], slug: s
   return { proyecto: lista[indice], indice, siguiente: lista[(indice + 1) % lista.length] };
 }
 
+const UNIDADES: Record<string, 'day' | 'week' | 'month' | 'year'> = {
+  dia: 'day', dias: 'day', semana: 'week', semanas: 'week', mes: 'month', meses: 'month', ano: 'year', anos: 'year',
+};
+
+/** La duración se guarda en español ("3 meses"); se reescribe en el idioma de la página. Lo que no se entiende queda tal cual. */
+function duracionEn(duracion: string, lang: string): string {
+  const m = duracion.trim().match(/^(\d+)\s+(\p{L}+)$/u);
+  const unidad = m && UNIDADES[m[2].toLowerCase().normalize('NFD').replace(/\p{M}/gu, '')];
+  if (!m || !unidad) return duracion;
+  return new Intl.NumberFormat(lang, { style: 'unit', unit: unidad, unitDisplay: 'long' }).format(Number(m[1]));
+}
+
 /** Datos de la ficha del proyecto, sin los que faltan. */
-export function fichaDe(p: { client: string | null; year: number; duration: string | null; technologies: string[] }): DatoFicha[] {
+export function fichaDe(p: { client: string | null; year: number; duration: string | null; technologies: string[] }, lang: string): DatoFicha[] {
   const datos: DatoFicha[] = [];
   if (p.client) datos.push({ clave: 'cliente', valor: p.client });
   datos.push({ clave: 'anio', valor: String(p.year) });
-  if (p.duration) datos.push({ clave: 'duracion', valor: p.duration });
+  if (p.duration) datos.push({ clave: 'duracion', valor: duracionEn(p.duration, lang) });
   if (p.technologies.length > 0) datos.push({ clave: 'tecnologia', valor: p.technologies.join(' · ') });
   return datos;
 }
