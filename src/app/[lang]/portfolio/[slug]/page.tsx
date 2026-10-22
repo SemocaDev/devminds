@@ -86,7 +86,7 @@ export default async function ProyectoPage({ params }: Props) {
       <div className="contenedor-reticula relative z-[2]">
         <div className="grid md:grid-cols-4">
           <dl className="space-y-4 bg-secondary px-4 py-8 md:px-6 md:py-10">
-            {fichaDe(p).map((d) => (
+            {fichaDe(p, lang).map((d) => (
               <div key={d.clave}>
                 <dt className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">{t(`ficha.${d.clave}`)}</dt>
                 <dd className="mt-1 text-[15px] font-medium">{d.valor}</dd>

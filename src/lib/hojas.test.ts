@@ -29,13 +29,28 @@ describe('hojas del plano', () => {
   });
 
   it('la ficha omite los datos que faltan', () => {
-    expect(fichaDe({ client: null, year: 2026, duration: null, technologies: [] })).toEqual([{ clave: 'anio', valor: '2026' }]);
-    expect(fichaDe({ client: 'Pymes', year: 2025, duration: '3 meses', technologies: ['Next.js', 'PostgreSQL'] })).toEqual([
+    expect(fichaDe({ client: null, year: 2026, duration: null, technologies: [] }, 'es')).toEqual([{ clave: 'anio', valor: '2026' }]);
+    expect(fichaDe({ client: 'Pymes', year: 2025, duration: '3 meses', technologies: ['Next.js', 'PostgreSQL'] }, 'es')).toEqual([
       { clave: 'cliente', valor: 'Pymes' },
       { clave: 'anio', valor: '2025' },
       { clave: 'duracion', valor: '3 meses' },
       { clave: 'tecnologia', valor: 'Next.js · PostgreSQL' },
     ]);
+  });
+
+  it('la duración se escribe en el idioma de la página', () => {
+    const duracion = (d: string, lang: string) => fichaDe({ client: null, year: 2026, duration: d, technologies: [] }, lang)[1].valor;
+    expect(duracion('1 mes', 'en')).toBe('1 month');
+    expect(duracion('3 meses', 'en')).toBe('3 months');
+    expect(duracion('1 mes', 'ja')).toBe('1 か月');
+    expect(duracion('2 semanas', 'en')).toBe('2 weeks');
+    expect(duracion('1 año', 'ja')).toBe('1 年');
+    expect(duracion('10 días', 'en')).toBe('10 days');
+    expect(duracion('1 mes', 'es')).toBe('1 mes');
+  });
+
+  it('una duración que no se entiende se muestra tal cual', () => {
+    expect(fichaDe({ client: null, year: 2026, duration: 'Continuo', technologies: [] }, 'en')[1].valor).toBe('Continuo');
   });
 
   it('la galería separa la captura principal del resto', () => {
