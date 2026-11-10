@@ -19,7 +19,8 @@ import {
   rectSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { X, Plus, Loader2, GripVertical } from 'lucide-react';
+import { X, Plus, Loader2, GripVertical, Play } from 'lucide-react';
+import { esVideo, posterDe } from '@/lib/medios';
 
 type Props = {
   images: string[];
@@ -56,13 +57,22 @@ function SortableItem({
       style={style}
       className="relative w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-700 group"
     >
-      <Image
-        src={url}
-        alt="Project image"
-        fill
-        className="object-cover"
-        sizes="128px"
-      />
+      {posterDe(url) ? (
+        <Image
+          src={posterDe(url)!}
+          alt="Project image"
+          fill
+          className="object-cover"
+          sizes="128px"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gray-800" />
+      )}
+      {esVideo(url) && (
+        <div className="absolute bottom-1 left-1 flex items-center gap-1 rounded bg-black/70 px-1.5 py-0.5 text-[10px] text-white">
+          <Play className="w-3 h-3" /> Video
+        </div>
+      )}
       {/* Handle de arrastre */}
       <div
         {...attributes}
@@ -107,7 +117,7 @@ export default function SortableImageGrid({ images, onChange, folder }: Props) {
     const newImages = [...images];
 
     for (const file of Array.from(files)) {
-      if (!file.type.startsWith('image/')) continue;
+      if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) continue;
 
       try {
         const formData = new FormData();
@@ -119,9 +129,11 @@ export default function SortableImageGrid({ images, onChange, folder }: Props) {
           body: formData,
         });
 
+        const data = await res.json();
         if (res.ok) {
-          const data = await res.json();
           newImages.push(data.url);
+        } else {
+          alert(data.error || 'Error al subir el archivo');
         }
       } catch {
         // Continuar con las demás imágenes
@@ -218,14 +230,14 @@ export default function SortableImageGrid({ images, onChange, folder }: Props) {
       <input
         ref={inputRef}
         type="file"
-        accept="image/jpeg,image/png,image/webp,image/avif"
+        accept="image/jpeg,image/png,image/webp,image/avif,video/mp4,video/webm"
         multiple
         className="hidden"
         onChange={handleFileChange}
       />
 
       <p className="text-xs text-gray-500">
-        Arrastra, pega (Ctrl+V) o haz click para agregar. Máximo 5MB por imagen.
+        Arrastra, pega (Ctrl+V) o haz click para agregar. Máximo 5MB por imagen y 4MB por video (MP4 o WebM).
       </p>
     </div>
   );

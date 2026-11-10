@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ProjectWithTranslation } from '@/db/queries/projects';
 import { lineaMeta } from '@/lib/proyectos';
+import { posterDe } from '@/lib/medios';
 import { cn } from '@/lib/utils';
 import type { CSSProperties } from 'react';
 
@@ -18,12 +19,14 @@ type Props = {
 
 /** Tarjeta de proyecto sobre la retícula: captura, tipo · cliente · año, título y descripción. */
 export default function TarjetaProyecto({ proyecto: p, href, tipo, destacado = false, retraso = 0 }: Props) {
+  // Si la primera pieza es un video, la tarjeta muestra su primer fotograma.
+  const portada = p.images?.[0] ? posterDe(p.images[0]) : null;
   return (
     <Link href={href} className="group block">
       <div data-mov="descubrir" style={{ '--retraso': `${retraso}ms` } as CSSProperties} className={cn('relative overflow-hidden rounded-xl border border-border bg-secondary', destacado ? 'aspect-[16/10]' : 'aspect-[4/3]')}>
-        {p.images?.[0] && (
+        {portada && (
           <Image
-            src={p.images[0]}
+            src={portada}
             alt={p.title}
             fill
             sizes={destacado ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 25vw'}
