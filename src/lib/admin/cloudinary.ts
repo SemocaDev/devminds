@@ -6,17 +6,21 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function uploadImage(
+export type TipoMedio = 'image' | 'video';
+
+/** Sube una imagen o un video a Cloudinary. Las imágenes se optimizan al subir; los videos se guardan tal cual. */
+export async function uploadMedia(
   buffer: Buffer,
-  folder: string
+  folder: string,
+  tipo: TipoMedio = 'image'
 ): Promise<{ url: string; publicId: string }> {
   return new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
         {
           folder: `devminds/${folder}`,
-          resource_type: 'image',
-          transformation: [{ quality: 'auto', fetch_format: 'auto' }],
+          resource_type: tipo,
+          ...(tipo === 'image' && { transformation: [{ quality: 'auto', fetch_format: 'auto' }] }),
         },
         (error, result) => {
           if (error || !result) {
@@ -33,6 +37,8 @@ export async function uploadImage(
   });
 }
 
-export async function deleteImage(publicId: string): Promise<void> {
-  await cloudinary.uploader.destroy(publicId);
+export const uploadImage = (buffer: Buffer, folder: string) => uploadMedia(buffer, folder, 'image');
+
+export async function deleteImage(publicId: string, tipo: TipoMedio = 'image'): Promise<void> {
+  await cloudinary.uploader.destroy(publicId, { resource_type: tipo });
 }

@@ -9,13 +9,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { publicId } = await request.json();
+    const { publicId, tipo } = await request.json();
 
     if (!publicId) {
       return NextResponse.json({ error: 'publicId requerido' }, { status: 400 });
     }
 
-    await deleteImage(publicId);
+    await deleteImage(publicId, tipo === 'video' ? 'video' : 'image');
 
     return NextResponse.json({ success: true });
   } catch {

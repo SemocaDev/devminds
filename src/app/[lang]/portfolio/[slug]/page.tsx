@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -12,7 +11,9 @@ import CampoPuntos from '@/app/components/reticula/CampoPuntos';
 import DivisorSeccion from '@/app/components/reticula/DivisorSeccion';
 import Reticula from '@/app/components/reticula/Reticula';
 import { fichaDe, galeriaDe, hojaDeProyecto, nombreCorto, proyectoYVecinos } from '@/lib/hojas';
+import Medio from '@/app/components/proyectos/Medio';
 import { metadataDePagina } from '@/lib/metadata';
+import { posterDe } from '@/lib/medios';
 import { lineaMeta } from '@/lib/proyectos';
 import type { CSSProperties } from 'react';
 
@@ -29,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
   const p = (await getProjects(lang)).find((x) => x.slug === slug);
   if (!p) return {};
-  const imagen = p.images[0] ? { url: p.images[0], alt: p.title } : undefined;
+  const portada = p.images[0] ? posterDe(p.images[0]) : null;
+  const imagen = portada ? { url: portada, alt: p.title } : undefined;
   return metadataDePagina({ lang, ruta: `/portfolio/${slug}`, title: `${p.title} | DevMinds`, description: p.description, imagen });
 }
 
@@ -73,7 +75,7 @@ export default async function ProyectoPage({ params }: Props) {
         <div className="px-4 py-8 md:px-6 md:py-12">
           <div data-mov="descubrir" className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-secondary md:aspect-[16/8]">
             {principal ? (
-              <Image src={principal} alt={p.title} fill priority sizes="(max-width: 768px) 100vw, 90vw" className="object-cover object-top" />
+              <Medio src={principal} alt={p.title} priority sizes="(max-width: 768px) 100vw, 90vw" className="object-cover object-top" />
             ) : (
               <CampoPuntos />
             )}
@@ -120,7 +122,7 @@ export default async function ProyectoPage({ params }: Props) {
               {resto.map((src, i) => (
                 <li key={src} className="px-4 md:px-6">
                   <div data-mov="descubrir" style={{ '--retraso': `${(i % 4) * 80}ms` } as CSSProperties} className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-secondary">
-                    <Image src={src} alt={`${p.title} · ${i + 2}`} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover object-top" />
+                    <Medio src={src} alt={`${p.title} · ${i + 2}`} sizes="(max-width: 768px) 100vw, 25vw" className="object-cover object-top" />
                   </div>
                 </li>
               ))}
