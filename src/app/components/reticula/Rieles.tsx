@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin } from 'lucide-react';
+import { Facebook, Github, Linkedin } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import contactConfig from '@/config/contact.json';
 import { cn } from '@/lib/utils';
@@ -25,7 +25,10 @@ export default function Rieles({ modo = 'hero' }: { modo?: 'hero' | 'pagina' }) 
         <a href={contactConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={enlace}>
           <Linkedin className="size-[18px]" />
         </a>
-        <span className="text-xs tracking-[0.08em] text-muted-foreground [writing-mode:vertical-rl]">GitHub · LinkedIn</span>
+        <a href={contactConfig.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className={enlace}>
+          <Facebook className="size-[18px]" />
+        </a>
+        <span className="text-xs tracking-[0.08em] text-muted-foreground [writing-mode:vertical-rl]">GitHub · LinkedIn · Facebook</span>
       </div>
       {modo !== 'pagina' && (
         <div className={cn(lado, 'right-0')}>
