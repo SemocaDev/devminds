@@ -11,7 +11,7 @@ import ja from '../../../messages/ja.json';
 const BASE = 'https://www.devminds.online';
 const MENSAJES = { es, en, ja } as const;
 const LOGO = `${BASE}/android-chrome-512x512.png`;
-const SAME_AS = [contactConfig.socials.github, contactConfig.socials.linkedin];
+const SAME_AS = [contactConfig.socials.github, contactConfig.socials.linkedin, contactConfig.socials.facebook];
 
 export function mensajesDe(lang: string) {
   return MENSAJES[lang as keyof typeof MENSAJES] ?? MENSAJES.es;
