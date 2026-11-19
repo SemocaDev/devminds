@@ -27,6 +27,12 @@ describe('datos estructurados', () => {
     }
   });
 
+  it('la Página de Facebook del estudio va en sameAs de la organización y del negocio local', () => {
+    const facebook = 'https://www.facebook.com/devminds.online';
+    expect(generateOrganizationSchema('es').sameAs).toContain(facebook);
+    expect(generateLocalBusinessSchema('es').sameAs).toContain(facebook);
+  });
+
   it('solo el mercado en español se presenta como local', () => {
     expect(JSON.stringify(generateOrganizationSchema('es').areaServed)).toContain('Neiva');
     expect(JSON.stringify(generateOrganizationSchema('en').areaServed)).not.toContain('Neiva');
