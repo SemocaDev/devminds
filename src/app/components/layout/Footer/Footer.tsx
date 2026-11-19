@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 import LogoHorizontal from '@/app/components/marca/LogoHorizontal';
 import SelectorIdioma from '@/app/components/layout/SelectorIdioma';
 import contactConfig from '@/config/contact.json';
@@ -48,6 +48,7 @@ export default function Footer({ conBarraMovil = false }: { conBarraMovil?: bool
             <ul className="mt-2">
               <li><a href={contactConfig.socials.github} target="_blank" rel="noopener noreferrer" className={enlace}><Github className="size-4" />GitHub</a></li>
               <li><a href={contactConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" className={enlace}><Linkedin className="size-4" />LinkedIn</a></li>
+              <li><a href={contactConfig.socials.facebook} target="_blank" rel="noopener noreferrer" className={enlace}><Facebook className="size-4" />Facebook</a></li>
               <li><a href={enlaceCorreo()} className={enlace}><Mail className="size-4" />{contactConfig.email}</a></li>
             </ul>
           </div>
